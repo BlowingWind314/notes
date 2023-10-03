@@ -1,0 +1,181 @@
+\section{一元多项式环}
+\subsection{一元多项式环的基本理论}
+\subsection{$\mathbb{C},\mathbb{R},\mathbb{Q}$上多项式的因式分解}
+\begin{prob}[2]
+	设$f(x)\in\mathbb{R}[x]$，对任意$a\in\mathbb{R},\,f(a)\ge0$.证明$f(x)$可表为
+	\[
+		f(x)=g(x)^2+h(x)^2,
+	\]
+	其中$g(x),h(x)\in\mathbb{R}[x]$.
+\end{prob}
+\begin{proof}
+	显然$f$是偶数次的，因此$f$可写为恒正的二次因式之积.注意到
+	\[
+		x^2+px+q=\left(x+\frac{p}{2}\right)^2+\left(\frac{1}{2}\sqrt{4q-p^2}\right)^2,
+	\]
+	再反复利用Lagrange恒等式
+	\[
+		(a_1^2+a_2^2)(b_1^2+b_2^2)=(a_1b_1+a_2b_2)^2+(a_1b_2-a_2b_1)^2,
+	\]
+	即可证明$f$是两个多项式的平方和.
+\end{proof}
+\begin{prob}[3]
+	将$\mathbb{C}$看作有理数域$\mathbb{Q}$上的线性空间.设$f(x)$是$\mathbb{Q}[x]$内的一个$n$次不可约多项式，$\alpha\in\mathbb{C}$是$f(x)$的一个根.令
+	\[
+		\mathbb{Q}[\alpha]=\left\{a_0+a_1\alpha+\cdots+a_{n-1}\alpha^{n-1}\mid a_i\in\mathbb{Q}\right\}.
+	\]
+	证明$\mathbb{Q}[\alpha]$是$\mathbb{C}$的一个有限维子空间，并求$\mathbb{Q}[\alpha]$的一组基.
+\end{prob}
+\begin{proof}
+	显然$\mathbb{Q}[\alpha]$是子空间.断言$1,\alpha,\cdots,\alpha^{n-1}$是$\mathbb{Q}[\alpha]$的一组基.若不然，假设$n$最小，将有次数小于$n$的多项式$g(x)\in\mathbb{Q}[\alpha]$使得$g(\alpha)=0$，矛盾.因此$\dim_{\mathbb{Q}}\mathbb{Q}[\alpha]=n$.
+\end{proof}
+\begin{prob}[4]
+	续上题.设$\beta=a_0+a_1\alpha+\cdots+a_{n-1}\alpha^{n-1}$是$\mathbb{Q}[\alpha]$内的一个非零元素.证明在$\mathbb{Q}[\alpha]$内存在一个元素$\gamma$使得$\beta\gamma=1$.
+\end{prob}
+\begin{proof}
+	考虑环同态$\mathbb{Q}[x]\to\mathbb{C}$就有$\mathbb{Q}[x]/(f(x))\cong\mathbb{Q}[\alpha]$.而$f$不可约，从而$(f(x))$是极大理想，进而$\mathbb{Q}[\alpha]$是域.
+\end{proof}
+\begin{prob}[6]
+	给定$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0\in\mathbb{Z}[x]$.设存在素数$p$及非负整数$k$使得$p\nmid a_n,p\mid a_{k-1},p\mid a_{k-2},\cdots,p\mid a_0$，但$p^2\nmid a_0$.证明$f(x)$在$\mathbb{Z}[x]$中有次数$\ge k$的不可约因子$\varphi(x)$.
+\end{prob}
+\begin{proof}
+	设$f(x)=\varphi(x)g(x)$，其中$\varphi(x)=b_mx^m+b_{m-1}x^{m-1}+\cdots+b_0$不可约.设$p\mid b_0$.由于$p\nmid a_n$，有$p\nmid b_m$.取$l$极小满足$p\nmid b_l$.令$g(x)=c_sx^s+c_{s-1}x^{s-1}+\cdots+c_0$，则考虑$f(x)$中的$l$次项系数
+	\[
+		a_l=\sum_{i+j=l}b_ic_j=b_lc_0+b_{l-1}c_1+\cdots,
+	\]
+	由于$p\mid b_{l-1},\cdots,p\mid b_0$但$p\nmid b_l$，因此$p\nmid a_l$，进而$m\ge l\ge k$.
+\end{proof}
+\begin{prob}[10]
+	设$f(x)=a_0+a_1x+\cdots+a_nx^n\in\mathbb{Z}[x]$，其中$a_0$为素数且$a_0>|a_1|+\cdots+|a_n|$.证明$f(x)$为$\mathbb{Z}[x]$内不可约多项式.
+\end{prob}
+\begin{proof}
+	若不然，设
+	\[
+		f(x)=(b_mx^m+\cdots+b_1x+b_0)(c_kx^k+\cdots+c_1x+c_0),
+	\]
+	其中$m,n>0$.设$\alpha\in\mathbb{C}$使得$f(\alpha)=0$，则必然$|\alpha|>1$.否则
+	\[
+		a_0=|a_1\alpha+\cdots+a_n\alpha^n|\le|a_1|+\cdots+|a_n|,
+	\]
+	矛盾.令$\beta_1,\cdots,\beta_m$是$b_mx^m+\cdots+b_0$的全部复根，则$|\beta_i|>1$，有
+	\[
+		|b_0|=|b_m||\beta_1\cdots\beta_m|>|b_m|\ge 1.
+	\]
+	同理$|c_0|>1$.然而$a_0=b_0c_0$非素数，矛盾.
+\end{proof}
+\subsection{实系数多项式根的分布}
+\begin{prob}[2]
+	讨论下列多项式实根的分布情况：
+
+	(1)$nx^n-x^{n-1}-x^{n-2}-\cdots-1$.
+
+	(2)$x^n+px+q\,(p,q\in\mathbb{R})$，设多项式无重根.
+\end{prob}
+\begin{sol}
+	(1)注意到$1$是一个实根，令
+	\[
+		F(x)=(x-1)(nx^n-x^{n-1}-x^{n-2}-\cdots-1)=nx^{n+1}-(n+1)x^n+1,
+	\]
+	则$F'(x)=n(n+1)x^{n-1}(x-1)$.通过对导数的讨论易知：当$n$是偶数时，两个实根$1$和$(-1,0)$.当$n$是奇数时，一个实根$1$.
+
+	(2)计算得到它的Sturm序列为
+	\begin{align*}
+		f_0 & =x^n+px+q,    & f_1 & =nx^{n-1}+p,                                \\
+		f_2 & =-p(n-1)x-nq, & f_3 & =-p-n\left(\frac{-nq}{(n-1)p}\right)^{n-1}.
+	\end{align*}
+	先设$p\ne 0$，按$n$的奇偶性讨论：
+
+	(i)$n$为奇数.此时再按$p$的正负分类.(a)若$p>0$，则只有一个根.(b)若$p<0$，情况取决于$f_3$的正负，即
+	\[
+		\Delta=\left(\frac{|p|}{n}\right)^n-\left(\frac{|q|}{n-1}\right)^{n-1}
+	\]
+	的正负：若$\Delta>0$，则有三个根.若$\Delta<0$，只有一个根.(情况$\Delta=0$不会出现，因这时$f_3=0$，但这意味着$f_2\mid f_1$，根据无重根假设将有$p=0$)
+
+	(ii)$n$为偶数.此时再按$p$的正负分类.(a)若$p>0$，只有一个根.(b)若$p<0$，还需看$q,\Delta$的正负：若$q\le 0$或$q>0,\Delta>0$，有两个根.若$q>0$且$\Delta<0$，没有根.
+
+	下面讨论$p=0$情形.若$n$为奇数，只有一个根.若$n$为偶数，看$q$的正负：若$q<0$，则有两个根.若$q=0$，只有一个根.若$q>0$，没有根.
+\end{sol}
+\begin{prob}[5]
+	设$f(x)$是$n$次实系数多项式，$a,b\in\mathbb{R},\,a<b$.若$f(x)-a,f(x)-b$都有$n$个不同的实根，证明对任意实数$\lambda\,(a<\lambda<b)$，$f(x)-\lambda$也有$n$个不同的实根.
+\end{prob}
+\begin{proof}
+	考虑$f'(x)$的$n-1$个实根即可.
+\end{proof}
+\begin{prob}[6]
+	求Hermite多项式$\displaystyle P_n(x)=(-1)^ne^{\frac{x^2}{2}}\frac{\mathrm{d}^n}{\dif x^n}(e^{-\frac{x^2}{2}})$的实根个数.
+\end{prob}
+\begin{sol}[法一]
+	不难证明如下引理：若$f^{(k)}(a)=f^{(k)}(b)$对任意$0\le k\le n-1$成立，则$f^{(n)}(x)$在$(a,b)$上有$n$个不同的零点.($a,b$可以为无穷)
+
+	现在令$u=e^{-\frac{x^2}{2}}$，则不难发现$u^{(n+1)}+xu^{(n)}+nu^{(n-1)}=0$，即
+	\[
+		P_{n+1}(x)-xP_n(x)+nP_{n-1}(x)=0.
+	\]
+	而$P_0(x)=1,\,P_1(x)=x$，故$P_n(x)$是$n$次多项式.令$f(x)=e^{-\frac{x^2}{2}}$，由于$e^{\frac{x^2}{2}}f^{(k)}(x)$是多项式，有$f^{(k)}(\pm\infty)=0$对$0\le k\le n-1$成立.由引理即得$P_n(x)$有$n$个不同的实根.
+\end{sol}
+\begin{sol}[法二]
+	易知上述递推和$P_n'(x)=xP_n(x)-P_{n+1}(x)$.由递推可知
+	\begin{gather*}
+		(P_n(x),P_{n-1}(x))=(P_{n-2}(x),P_{n-1}(x))=\cdots=(P_1(x),P_0(x))=1,\\
+		(P_n(x),P_n'(x))=(P_n(x),P_{n-1}(x))=1,
+	\end{gather*}
+	所以$P_k(x),P_{k+1}(x)$无公共根，$P_n(x)$无重根.现在设$P_n(\alpha)=0$，则
+	\begin{gather*}
+		P_{n+1}(\alpha)=-nP_{n-1}(\alpha),\\
+		(P_n(x)P_{n-1}(x))'\Big|_{x=\alpha}=-P_{n-1}(\alpha)P_{n+1}(\alpha)>0,
+	\end{gather*}
+	所以$P_n,P_{n-1},\cdots,P_1=x,P_0=1$成为Sturm序列.注意$P_n$是首一的$n$次多项式，所以$P_n(x)$有$n$个不同的实根.
+\end{sol}
+\begin{prob}[7]
+	求多项式$E_n(x)=1+x+\cdots+\dfrac{x^n}{n!}$的实根个数.
+\end{prob}
+\begin{sol}
+	不难验证$E_n,E_{n-1},-\dfrac{x^n}{n!},-1$是一个Sturm序列，所以$n$为奇数时一个根，$n$为偶数时没有根.
+\end{sol}
+\subsection{单变量有理函数域}
+\begin{prob}[1]
+	设数域$K$上的有理函数域$K(x)$内的非零既约分式$f(x)/g(x)$满足方程
+	\[
+		a_0(x)y^n+a_1(x)y^{n-1}+\cdots+a_n(x)=0\quad(a_i(x)\in K[x],\,a_0(x)\ne 0).
+	\]
+	证明$f(x)\mid a_n(x),\,g(x)\mid a_0(x)$.
+\end{prob}
+\begin{proof}
+	显然
+	\[
+		a_0(x)(f(x))^n+a_1(x)(f(x))^{n-1}g(x)+\cdots+a_{n-1}(x)f(x)(g(x))^{n-1}+a_n(x)(g(x))^n=0,
+	\]
+	所以$f(x)\mid a_n(x)(g(x))^n,\,g(x)\mid a_0(x)(f(x))^n$.注意$f,g$互素即可.
+\end{proof}
+\begin{prob}[3]
+	证明：在有理函数域$\mathbb{Q}(x)$内不存在有理分式$f(x)/g(x)$满足如下方程：
+	\[
+		y^n+y+(x^m+5)=0,
+	\]
+	其中$m,n>1$.
+\end{prob}
+\begin{proof}
+	若不然，由上题知$f(x)\mid x^m+5,\,g(x)=1$.但由Eisenstein判别法$x^m+5$不可约，所以$f(x)=1$或$x^m+5$.直接验证可知不成立.
+\end{proof}
+\begin{prob}[4]
+	证明$\mathbb{C}(x)[y]$中多项式$y^3+(x^2+1)/x$不可约.
+\end{prob}
+\begin{proof}
+	若不然，它有一次因式，并且对应的根只能是如下之一
+	\[
+		1,\,x+\mi,\,x-\mi,\,x^2+1,\,\frac{1}{x},\,\frac{x+\mi}{x},\,\frac{x-\mi}{x},\,\frac{x^2+1}{x}.
+	\]
+	直接验证可知它们都不是根.
+\end{proof}
+\newpage
+\subsection{群、环和域的基本概念}
+\begin{prob}[12]
+	试找出一个环$R$，它有无穷多个左单位元，但是没有单位元.
+\end{prob}
+\begin{sol}
+	任取一个无限集$S$，在$S$上定义乘法$\cdot$为$x\cdot y=y$，则$S$成为一个半群，其中任何元素都是左单位元.半群环$\mathbb{Z}[S]$即为所求，其中
+	\[
+		\mathbb{Z}[S]=\left\{\sum_{g\in S}r_gg\mid r_g\in\mathbb{Z}\right\},
+	\]
+	即其中元素是$S$中元素的形式和.显然$S$中的任何元素都是环$\mathbb{Z}[S]$的左单位元，同时环$\mathbb{Z}[S]$没有单位元.
+\end{sol}

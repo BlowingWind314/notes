@@ -1,0 +1,289 @@
+\section{多元多项式环}
+\subsection{多元多项式环的基本概念}
+\begin{prob}[3]
+	设$n\ge 3$.证明数域$K$上多项式
+	\[
+		f(x_1,\cdots,x_n)=x_1^3+x_2^3+\cdots+x_n^3-3\sigma_3(x_1,x_2,\cdots,x_n)
+	\]
+	是可约的，其中$\sigma_3(x_1,\cdots,x_n)$是初等对称多项式.
+\end{prob}
+\begin{proof}
+	由Newton恒等式可知
+	\begin{align*}
+		s_2 & =\sigma_1s_1-2\sigma_2=\sigma_1^2-2\sigma_2,                               \\
+		s_3 & =\sigma_1s_2-\sigma_2s_1+3\sigma_3=\sigma_1^3-3\sigma_1\sigma_2+3\sigma_3,
+	\end{align*}
+	其中$s_k=\sum x_i^k$.于是$f=\sigma_1^3-3\sigma_1\sigma_2=\sigma_1(\sigma_1^2-3\sigma_2)$可约.
+\end{proof}
+\begin{prob}[4]
+	\hypertarget{ZeroPolynomialCriterion}{设}$f,g\in K[x_1,\cdots,x_n],\,g\ne 0$.若对使得$g(a_1,\cdots,a_n)\ne 0$的$K$内任一组元素$a_1,a_2,\cdots,a_n$都有$f(a_1,\cdots,a_n)=0$，且$K$是无限域，证明$f$是零多项式.
+\end{prob}
+\begin{proof}
+	若不然，$fg\ne 0$，在无限域$K$中存在$a_1,\cdots,a_n$使得$f(a_1,\cdots,a_n)g(a_1,\cdots,a_n)\ne 0$，从而$f(a_1,\cdots,a_n)\ne 0,\,g(a_1,\cdots,a_n)\ne 0$，矛盾.
+\end{proof}
+\begin{prob}[5]
+	证明$K[x_1,\cdots,x_n]$中齐次多项式$f(x_1,\cdots,x_n)$的因子也是齐次多项式.
+\end{prob}
+\begin{proof}
+	设$f=gh$，若$g$不齐次，将$g,h$写为齐次多项式之和，则$f$不齐次，矛盾.
+\end{proof}
+\begin{prob}[6]
+	设$p(x_1,\cdots,x_r)$是$K[x_1,\cdots,x_r]$内的不可约多项式，$n\ge r$.证明$p(x_1,\cdots,x_r)$也是$K[x_1,\cdots,x_n]$内的不可约多项式.
+\end{prob}
+\begin{proof}
+	若不然，$p=fg$，其中$f,g\in K[x_1,\cdots,x_n]$.由于$p$在$K[x_1,\cdots,x_r]$中不可约，显然$f,g$中存在次数非零的$x_k$项($k>r$).以$x_k$为主元整理$f,g$，取出其首项相乘将得出$p$中有非零次的$x_k$项，矛盾.
+\end{proof}
+\begin{prob}[7]
+	设$f=a_1x_1+\cdots+a_nx_n+b\in K[x_1,\cdots,x_n]$，$a_i$不全为零，证明$f$为$K[x_1,\cdots,x_n]$内不可约多项式.
+\end{prob}
+\begin{proof}
+	注意$\deg f=1$即证.
+\end{proof}
+\begin{prob}[8]
+	设$f(x_1,\cdots,x_r)\in K[x_1,\cdots,x_r],\,g(x_{r+1},\cdots,x_n)\in K[x_{r+1},\cdots,x_n]$.证明$f,g$视作$K[x_1,\cdots,x_n]$中的多项式是互素的.
+\end{prob}
+\begin{proof}
+	根据唯一分解定理，不妨设$f,g$不可约，从而它们没有非平凡的公因式.
+\end{proof}
+\begin{prob}[9]
+	在$K[x,y]$中给定两个多项式
+	\begin{align*}
+		f(x,y) & =a_0(x)y^n+a_1(x)y^{n-1}+\cdots+a_n(x)\ne 0, \\
+		g(x,y) & =b_0(x)y^m+b_1(x)y^{m-1}+\cdots+b_m(x)\ne 0,
+	\end{align*}
+	其中$a_i(x),b_j(x)\in K[x]$.设
+	\[
+		fg=c_0(x)y^{m+n}+c_1(x)y^{m+n-1}+\cdots+c_{m+n}(x).
+	\]
+	证明$\max\deg a_i(x)\le\max\deg c_k(x)$(零多项式次数定义为$-\infty$).
+\end{prob}
+\begin{proof}
+	设$f,g$的首项为$ax^py^q,bx^ry^s$，则$\max\deg a_i(x)=p$.我们知道$fg$的首项为$abx^{p+r}y^{q+s}$，即$\max\deg c_k(x)=p+r$，所以命题成立.
+\end{proof}
+\begin{prob}[11]
+	设$K$是无限域，$n$为正整数.给定$K$上$n^2$个不定元$\left\{x_{ij}\mid 1\le i,j\le n\right\}$的多项式$f(x_{11},x_{12},\cdots,x_{nn})$.若对$K$上任意可逆方阵$A=(a_{ij})$都有$f(a_{11},a_{12},\cdots,a_{nn})=0$，证明$f$为零多项式.
+\end{prob}
+\begin{proof}[法一]
+	由\hyperlink{ZeroPolynomialCriterion}{题目4}，取$g=\det(x_{ij})$即证.
+\end{proof}
+\begin{proof}[法二]
+	若不然，存在$A=(a_{ij})$使得$f(a_{ij})\ne 0$.作摄动$A(t)=A+tE$，不难发现存在可逆阵$A(t_0)$使得$f(a_{ij}+t_0\delta_{ij})\ne 0$，矛盾.
+\end{proof}
+\begin{prob}[12]
+	设$K$是无限域，$A,B$是$K$上两个$n$阶方阵，证明$(AB)^*=B^*A^*$.
+\end{prob}
+\begin{proof}
+	设$A$可逆，则$(AB)^*=B^*A^*$对任意可逆方阵$B$成立，由上题知$(AB)^*=B^*A^*$对全体方阵$B$成立.同理又知$(AB)^*=B^*A^*$对任意方阵$A$也成立.
+\end{proof}
+\begin{prob}[13]
+	给定复数域上二次多项式
+	\[
+		f(x,y)=ax^2+2bxy+cy^2+2dx+2ey+f.
+	\]
+	证明$f(x,y)$在$\mathbb{C}[x,y]$内可约的充分必要条件是$\begin{vmatrix}
+			a & b & d \\
+			b & c & e \\
+			d & e & f
+		\end{vmatrix}=0$.
+\end{prob}
+\begin{proof}
+	显然$f$与其齐次化
+	\[
+		\tilde{f}=ax^2+2bxy+cy^2+2dxz+2eyz+fz^2
+	\]
+	有相同的可约性.注意到作可逆线性变数替换不改变多元多项式的可约性，$\tilde{f}$作为复二次型有规范形$z_1^2+\cdots+z_r^2$，其中$1\le r\le 3$(零多项式不在考虑范围内)，只需在$\mathbb{C}[z_1,z_2,z_3]$中判定上述多项式的可约性即可.不难发现
+	\[
+		z_1^2=z_1\cdot z_1,\qquad z_1^2+z_2^2=(z_1+\mi z_2)(z_1-\mi z_2),
+	\]
+	所以$r<3$时不可约.而当$r=3$时，容易验证$z_1^2+z_2^2+z_3^2$不可约.因此$f$可约当且仅当二次型退化，即题述行列式为零.
+\end{proof}
+\subsection{对称多项式}
+\begin{prob}[7]
+	求一个$n$次方程，使其根的$k$次方之和$s_k$满足
+	\[
+		s_1=s_2=\cdots=s_{n-1}=0.
+	\]
+\end{prob}
+\begin{sol}
+	由Newton恒等式$\sigma_1=\cdots=\sigma_{n-1}=0$，所以方程为$x^n+a=0$.
+\end{sol}
+\begin{prob}[8]
+	求多项式$f(x)=x^3+px+q$的判别式$D(f)$.
+\end{prob}
+\begin{sol}[法一]
+	直接求得$s_1=0,\,s_2=-2p,\,s_3=-3q,\,s_4=2p^2$，于是
+	\[
+		D(f)=\begin{vmatrix}
+			3   & 0   & -2p  \\
+			0   & -2p & -3q  \\
+			-2p & -3q & 2p^2
+		\end{vmatrix}=-4p^3-27q^2.
+	\]
+\end{sol}
+\begin{sol}[法二]
+	先计算结式$\operatorname*{Res}(f,f')=4p^3+27q^2$，于是
+	\[
+		D(f)=-\operatorname*{Res}(f,f')=-4p^3-27q^2,
+	\]
+	其中利用了$D(f)=(-1)^{\frac{n(n-1)}{2}}a_0^{-1}\operatorname*{Res}(f,f')$.
+\end{sol}
+\begin{prob}[9]
+	设$p$是一个素数，证明
+	\[
+		\sum_{i=1}^{p-1}i^m\equiv\begin{cases}
+			-1\pmod p,           & (p-1)\mid m,  \\
+			\phantom{-}0\pmod p, & (p-1)\nmid m.
+		\end{cases}
+	\]
+\end{prob}
+\begin{proof}
+	在$\mathbb{F}_p[x]$上考虑多项式$x^{p-1}-1$，它的全部根为$1,\cdots,p-1$.注意到仅$\sigma_{p-1}=(-1)^p$非零，所以
+	\[
+		s_i=0\,(1\le i\le p-2),\quad s_{p-1}=(-1)^p(p-1)\sigma_{p-1}=p-1.
+	\]
+	不难发现若$m>p-1$，有$s_m=s_{m-p+1}$.因此当$(p-1)\mid m$时，$s_m=s_{p-1}=p-1$.当$(p-1)\nmid m$时，$s_m=0$.
+\end{proof}
+\begin{prob}[10]
+	证明：若$s_m$是多项式$f(x)=x^n-a$的$n$个根的$m$次方之和(此处设$a\in\mathbb{C}$)，则、
+	\[
+		s_m=\begin{cases}
+			na^{\frac{m}{n}}, & n\mid m, \\
+			0,                & n\nmid m
+		\end{cases}.
+	\]
+\end{prob}
+\begin{proof}
+	注意到$s_i=0\,(1\le i\le n-1),\,s_n=na$.若$m>n$，还有$s_m=as_{m-n}$，所以命题成立.
+\end{proof}
+\begin{prob}[11]
+	设$A$是域$K$上的$n$阶方阵.若存在$K$上$n$阶方阵$B$使得$AB-BA=aE+A$，其中$a\in K$.试求$A$的特征多项式.
+\end{prob}
+\begin{sol}
+	由于$aE+A$与$A$可交换，$aE+A$幂零，即$|\lambda E-aE-A|=\lambda^n$.用$\lambda+a$代入得到$|\lambda E-A|=(\lambda+a)^n$.
+\end{sol}
+\begin{prob}[12]
+	在域$K$上$n$元多项式环$K[x_1,\cdots,x_n]$内证明初等对称多项式$\sigma_1,\cdots,\sigma_n$与方幂和$s_1,\cdots,s_n$满足
+	\[
+		s_m=\begin{vmatrix}
+			\sigma_1  & 1            &        &          &          \\
+			2\sigma_2 & \sigma_1     & 1      &          &          \\
+			3\sigma_3 & \sigma_2     & \ddots & \ddots   &          \\
+			\vdots    & \vdots       &        & \sigma_1 & 1        \\
+			m\sigma_m & \sigma_{m-1} & \cdots & \sigma_2 & \sigma_1
+		\end{vmatrix},
+	\]
+	其中$1\le m\le n$.
+\end{prob}
+\begin{proof}
+	对$m$归纳.奠基平凡.注意行列式末行展开即为Newton恒等式，从而归纳完成.
+\end{proof}
+\begin{prob}[13]
+	设$f(x)$是无重根的$n$次实系数多项式，它的$n$个根的$k$次方记为$s_k$.证明$f(x)$的实根个数等于下述实二次型的符号差：
+	\[
+		f(x_1,\cdots,x_n)=\sum_{i=1}^{n}\sum_{j=1}^{n}s_{i+j-2}x_ix_j.
+	\]
+\end{prob}
+\begin{proof}
+	设二次型$f(x_1,\cdots,x_n)$的矩阵为$S$，则$\det(S)=D(f)\ne 0$，即$f(x_1,\cdots,x_n)$是满秩实二次型.记$f(x)$在$\mathbb{C}$中的$n$个根为$\alpha_1,\cdots,\alpha_n$，则
+	\[
+		S=\begin{bmatrix}
+			s_0     & s_1    & \cdots & s_{n-1}  \\
+			s_1     & s_2    & \cdots & s_n      \\
+			\vdots  & \vdots &        & \vdots   \\
+			s_{n-1} & s_n    & \cdots & s_{2n-1}
+		\end{bmatrix}=A'A,
+	\]
+	其中$A$为$\alpha_1,\cdots,\alpha_n$组成的Vandermonde矩阵.于是
+	\begin{gather*}
+		f=X'SX=(AX)'(AX)=y_1^2+y_2^2+\cdots+y_n^2,\\
+		y_i=x_1+\alpha_ix_2+\cdots+\alpha_i^{n-1}x_n=:r_i(x_1,\cdots,x_n)+\mi c_i(x_1,\cdots,x_n),
+	\end{gather*}
+	其中$r_i,c_i$为实线性形式.设$f(x)$的复根$\alpha_i,\alpha_j$共轭，则$y_i,y_j$也共轭，进而$y_i^2+y_j^2=2(r_i^2-c_i^2)$.又设$f(x)$有实根$\alpha_k$，则$c_k=0$，从而$y_k^2=r_k^2$.
+
+	根据5.3节\hyperlink{QuadraticFormOfDegreeOneLinearForm}{题目5}，分别用正、负惯性系数估计可得二次型$f$的符号差就等于$f(x)$的实根个数.
+\end{proof}
+\begin{prob}[14]
+	设$A$是数域$K$上的$n$阶方阵.如果
+	\[
+		\tr(A^k)=0\quad(1\le k\le n),
+	\]
+	证明$A$是幂零矩阵.
+\end{prob}
+\begin{proof}
+	设$A$的特征多项式的$n$个复根的幂和为$s_k$，取$A$的Jordan标准形可知$\tr(A^k)=s_k=0$.于是由Newton恒等式知$\sigma_k=0$，即$A$的特征多项式为$\lambda^n$，所以$A$幂零.
+\end{proof}
+\begin{note}
+	考虑$A$的特征多项式的分裂域作为域扩张可以证明命题在一般域上也成立.
+\end{note}
+\subsection{结式}
+\begin{prob}[1]
+	设$f,g\in K[x]$,$\deg f=n\,\deg g=m$，证明$R(f,g)=(-1)^{mn}R(g,f)$.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[2]
+	试求下面两个多项式$f,g$的判别式：
+	\[
+		f=x^n-a,\quad g=x^n+ax+b\quad(a,b\in\mathbb{C}).
+	\]
+\end{prob}
+\begin{sol}
+	只需求结式$R(g,g')$即可.
+	\begin{align*}
+		R(g,g') & =\begin{vmatrix}
+			1 & 0 & \cdots & 0      & a & b      &        &        &   &   \\
+			  & 1 & 0      & \cdots & 0 & a      & b      &        &   &   \\
+			  &   & \ddots & \ddots &   &        &        &        &   &   \\
+			  &   &        & 1      & 0 & \cdots & \cdots & 0      & a & b \\
+			n & 0 & \cdots & 0      & a &        &        &        &   &   \\
+			  & n & 0      & \cdots & 0 & a      &        &        &   &   \\
+			  &   & \ddots & \ddots &   &        &        &        &   &   \\
+			  &   &        & n      & 0 & \cdots & \cdots & 0      & a &   \\
+			  &   &        &        & n & 0      & \cdots & \cdots & 0 & a
+		\end{vmatrix}=(1-n)^{n-1}a^n+n^nb^{n-1},
+	\end{align*}
+	其中将前$n-1$行乘$-n$加到下面$n-1$行.于是
+	\[
+		D(g)=(-1)^{\frac{n(n-1)}{2}}((1-n)^{n-1}a^n+n^nb^{n-1}).
+	\]
+	特别地，$D(f)=(-1)^{\frac{(n-1)(n-2)}{2}}n^na^{n-1}$.
+\end{sol}
+\begin{prob}[6]
+	设$f,g,h$是数域$K$上三个一元多项式，证明$R(fg,h)=R(f,h)\cdot R(g,h)$.
+\end{prob}
+\begin{proof}
+	设$f,g,h$分别$n_1,n_2,m$次，$h$复根为$\beta_i$，则$\displaystyle R(fg,h)=(-1)^{(n_1+n_2)m}b_0^{n_1+n_2}\prod_i f(\beta_i)g(\beta_i)=R(f,h)R(g,h)$.
+\end{proof}
+\begin{prob}[7]
+	设$f,g$是数域$K$上两个一元多项式，证明
+	\[
+		D(fg)=D(f)D(g)(R(f,g))^2.
+	\]
+\end{prob}
+\begin{proof}
+	设$f,g$的首项系数分别为$a_0,b_0$，全部复根分别为$c_i,d_j$，则
+	\begin{align*}
+		D(fg) & =(a_0b_0)^{2n+2m-2}\prod_{i<j}(c_i-c_j)^2(d_i-d_j)^2\prod_{i,j}(c_i-d_j)^2                                          \\
+		      & =a_0^{2n-2}\prod_{i<j}(c_i-c_j)^2\cdot b_0^{2m-2}\prod_{i<j}(d_i-d_j)^2\cdot a_0^{2m}b_0^{2n}\prod_{i,j}(c_i-d_j)^2 \\
+		      & =D(f)D(g)\cdot\left(a_0^m\prod_{i}b_0\prod_j(c_i-d_j)\right)^2                                                      \\
+		      & =D(f)D(g)\cdot\left(a_0^m\prod_i g(c_i)\right)^2                                                                    \\
+		      & =D(f)D(g)R(f,g)^2,
+	\end{align*}
+	其中利用了$R(f,g)=a_0^m\prod g(c_i)$.
+\end{proof}
+\begin{prob}[8]
+	求$R(f(x),x-a)$.
+\end{prob}
+\begin{sol}
+	按第一列展开可得$D_n=a_n(-a)^n-D_{n-1}$，于是$R(f(x),x-a)=D_n=(-1)^nf(a)$.
+\end{sol}
+\begin{prob}[9]
+	设$f(x)=x^{n-1}+x^{n-2}+\cdots+1$.证明
+	\[
+		D(f)=(-1)^{\frac{(n-1)(n-2)}{2}}n^{n-2}.
+	\]
+\end{prob}
+\begin{proof}
+	由于$D(f)D(x-1)R(f(x),x-1)^2=D(x^n-1)$，所以$D(f)=(-1)^{\frac{(n-1)(n-2)}{2}}n^{n-2}$.
+\end{proof}

@@ -1,0 +1,32 @@
+%\documentclass[UTF8,a4paper,titlepage,twoside]{ctexart}
+\usepackage{amsmath,bm,graphicx,amssymb,mathrsfs,mathtools,breqn,geometry,fancyhdr,framed,xcolor,hyperref,nicematrix}
+\usepackage[inline]{enumitem}
+\hypersetup{colorlinks=true,linkcolor=violet,urlcolor=cyan}
+
+\newlist{mylist}{enumerate}{1}
+\setlist[mylist,1]{leftmargin=1.5cm,itemsep=1pt,parsep=1pt,topsep=1pt,label=\textnormal{(\arabic*)}}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\numberwithin{equation}{section}
+\newenvironment{prob}[1][]{\begin{shaded}\par{\noindent\bfseries 题目#1\enspace}}{\end{shaded}\par}
+\newenvironment{sol}[1][]{{\par\noindent\bf 解#1\quad}}{\hfill $\square$\par}
+\newenvironment{proof}[1][]{{\noindent\bf 证#1\quad}}{\hfill $\square$\par}
+\newenvironment{note}{{\par\noindent\bf 注\quad}\it}{\par}
+
+\DeclareMathOperator\dif{d\!}
+\DeclareMathOperator\rank{rank}
+\DeclareMathOperator\tr{Tr}
+\newcommand{\diag}[1]{\operatorname*{diag}(#1)}
+\newcommand\abs[1]{\left\lvert #1 \right\rvert}
+\newcommand\wavy[1]{\widetilde{#1}}
+\newcommand\mi{\mathrm{i}}
+
+\renewcommand\*{\discretionary{\,\mbox{$\cdot$}}{}{}}
+
+\allowdisplaybreaks
+\geometry{left=3cm,right=3cm,top=4cm,bottom=4cm}
+\pagestyle{fancy}
+\cfoot{\thepage}
+\fancyhead[RO,LE]{\leftmark}
+\chead{\LaTeX}
+\fancyhead[RE,LO]{高等代数简明教程题解}
+\renewcommand{\headrulewidth}{0.8pt}

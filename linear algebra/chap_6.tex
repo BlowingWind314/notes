@@ -1,0 +1,926 @@
+\section{带度量的线性空间}
+\subsection{欧几里得空间的定义和基本性质}
+\begin{prob}[2]
+	在$M_n(\mathbb{R})$中考虑全体$n$阶对称矩阵所成的子空间$V$.在$V$中定义二元函数如下：
+	\[
+		(A,B)=\tr(AB).
+	\]
+	证明：这个函数是一个内积，从而$V$关于它成一欧氏空间.
+\end{prob}
+\begin{proof}
+	见2.5节\hyperlink{TraceProperty}{题目23}.
+\end{proof}
+\begin{prob}[4]
+	证明：在欧氏空间中两向量$\alpha,\beta$正交的充分必要条件是：对任意实数$t$有
+	\[
+		\abs{\alpha+t\beta}\ge\abs\alpha.
+	\]
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[5]
+	在欧氏空间$V$内证明：
+
+	(1)$\abs{\alpha+\beta}\le\abs\alpha+\abs\beta$;
+
+	(2)令$d(\alpha,\beta)=\abs{\alpha-\beta}$，则
+	\[
+		d(\alpha,\gamma)\le d(\alpha,\beta)+d(\beta,\gamma).
+	\]
+\end{prob}
+\begin{proof}
+	显然.这说明内积空间一定是由内积诱导的赋范空间和度量空间.
+\end{proof}
+\begin{prob}[7]
+	设$\alpha_1,\alpha_2,\cdots,\alpha_n$是欧式空间$V$的一组基，证明：
+
+	(1)若$(\beta,\alpha_i)=0\,(i=1,2,\cdots,n)$，则$\beta=0$;
+
+	(2)若$(\beta_1,\alpha_i)=(\beta_2,\alpha_i)\,(i=1,2,\cdots,n)$，则$\beta_1=\beta_2$.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[15]
+	\hypertarget{GramMatrix}{设}$\alpha_1,\alpha_2,\cdots,\alpha_s$是欧氏空间$V$内一个向量组，令
+	\[
+		D=\begin{bmatrix}
+			(\alpha_1,\alpha_1) & (\alpha_1,\alpha_2) & \cdots & (\alpha_1,\alpha_s) \\
+			(\alpha_2,\alpha_1) & (\alpha_2,\alpha_2) & \cdots & (\alpha_2,\alpha_s) \\
+			\vdots              & \vdots              &        & \vdots              \\
+			(\alpha_s,\alpha_1) & (\alpha_s,\alpha_2) & \cdots & (\alpha_s,\alpha_s)
+		\end{bmatrix}.
+	\]
+	证明：$\alpha_1,\alpha_2,\cdots,\alpha_s$线性无关的充分必要条件是$\det D\ne0$.
+\end{prob}
+\begin{proof}
+	若$\alpha_1,\cdots,\alpha_s$线性无关，则$D$成为$L(\alpha_1,\cdots,\alpha_s)$中内积的度量矩阵，进而正定，即$\det D>0$.
+
+	若$\alpha_1,\cdots,\alpha_s$线性相关，则存在不全为零的$k_1,\cdots,k_s$使$\sum k_i\alpha_i=0$，所以$\det D=0$.
+\end{proof}
+\begin{note}
+	矩阵$D$称作是向量组$\alpha_1,\cdots,\alpha_s$的Gram矩阵.
+\end{note}
+\begin{prob}[17]
+	证明：实上三角矩阵为正交矩阵时必为对角矩阵，且对角线元素为$\pm 1$.
+\end{prob}
+\begin{proof}
+	注意到列向量组单位正交.
+\end{proof}
+\begin{prob}[18]
+	设$A$是一个$n$阶可逆实方阵.证明$A$可分解为一个正交矩阵$Q$和一个对角元为正的上三角矩阵$R$的乘积$A=QR$.并证明这种分解是唯一的\footnotemark.
+\end{prob}
+\footnotetext{这被称为\textbf{QR分解}}
+\begin{proof}
+	对$A$的列向量组作Schmidt正交化再单位化，将新的向量组按原序排列即得正交矩阵$Q$.此过程对应于对角元为正的上三角矩阵$R^{-1}$使得$Q=AR^{-1}$，所以$A=QR$.
+
+	设$A=Q_1R_1=Q_2R_2$为两种分解，则$Q_2^{-1}Q_1=R_2R_1^{-1}$既是正交阵又是对角元为正的上三角阵，由上题知$Q_2^{-1}Q_1=R_2R_1^{-1}=E$，所以$Q_1=Q_2,\ R_1=R_2$.
+\end{proof}
+\begin{prob}[19]
+	设$A$是$n$阶正定矩阵，证明存在上三角矩阵$T$使得$A=T'T$.
+\end{prob}
+\begin{proof}[法一]
+	$A$正定，所以顺序主子式全为正，由5.2节\hyperlink{TriangleTransformation}{题目9}，$A$可由三角形变换化为标准形，即存在单位上三角矩阵$R$使得$R'AR$是对角阵.于是不难得到存在上三角矩阵$S$使得$S'AS=E$，从而$A=T'T$，其中$T=S^{-1}$上三角.
+\end{proof}
+\begin{proof}[法二]
+	$A$正定，因此存在可逆矩阵$B$使得$A=B'B$.由上题，设$B=QR$，其中$Q$正交，$R$上三角，则$A=(QR)'QR=R'(Q'Q)R=R'R$.
+\end{proof}
+\begin{note}
+	相比于可逆矩阵，本题用对角元为正的上三角阵给出了正定矩阵更精细的刻画.
+\end{note}
+\begin{prob}[20]
+	设$f(\alpha)$是$n$维欧氏空间$V$内的一个线性函数，证明在$V$内存在一个固定向量$\beta$，使对一切$\alpha\in V$有
+	\[
+		f(\alpha)=(\alpha,\beta).
+	\]
+\end{prob}
+\begin{proof}
+	取$V$的一组标准正交基$\varepsilon_1,\cdots,\varepsilon_n$，并令
+	\[
+		\beta=\sum_{i=1}^{n}f(\varepsilon_i)\varepsilon_i,
+	\]
+	不难验证$\beta$满足要求.
+\end{proof}
+\begin{note}
+	事实上，这个结论\textnormal{({\kaishu Riesz表示定理})}对无穷维内积空间上的线性泛函也是成立的.
+\end{note}
+\begin{prob}[21]
+	设$M$是欧氏空间$V$的一个子空间.对任意$\alpha\in V$，$\alpha+M$称为$V$内一个{\heiti 线性流形}.对任意$\beta\in V$，向量$\beta-\xi$当$\xi$取$\alpha+M$内任意向量时，其长度$\abs{\beta-\xi}$的最小值称为$\beta$到线性流形$\alpha+M$的{\heiti 距离}.若
+	\[
+		\beta-\alpha=\beta_1+\beta_2\quad (\beta_1\in M,\,\beta_2\in M^{\perp}).
+	\]
+	证明$\beta$到$\alpha+M$的距离等于$\beta_2$的长度$\abs{\beta_2}$.
+\end{prob}
+\begin{proof}
+	对任意$\xi=\alpha+\eta\in \alpha+M$，有
+	\[
+		\abs{\beta-\xi}=\sqrt{(\beta_1+\beta_2-\eta)}=\sqrt{(\beta_1-\eta)^2+\beta_2^2}\ge\abs{\beta_2},
+	\]
+	当$\xi=\alpha+\beta_1$时取等.
+\end{proof}
+\begin{prob}[22]
+	在欧氏空间$V$中给定两个子空间$M,N$，又设$\alpha,\beta$为$V$内两个向量.令
+	\[
+		d=\min\{\abs{\xi-\zeta}\mid\xi\in \alpha+M,\,\zeta\in\beta+N\}.
+	\]
+	$d$称为$\alpha+M,\beta+N$之间的{\heiti 距离}.设
+	\[
+		\beta-\alpha=\beta_1+\beta_2\quad(\beta_1\in M+N,\,\beta_2\in(M+N)^\perp).
+	\]
+	证明$d=\abs{\beta_2}$.
+\end{prob}
+\begin{proof}
+	与上题同理.
+\end{proof}
+\begin{prob}[23]
+	在实数域线性空间$\mathbb{R}[x]_{n+1}$上定义内积：若$f,g\in\mathbb{R}[x]_{n+1}$，令
+	\[
+		(f,g)=\int_{-1}^1f(x)g(x)\dif x,
+	\]
+	则$\mathbb{R}[x]_{n+1}$成为一线性空间.证明下面的Legendre多项式
+	\begin{align*}
+		P_0(x) & =1,                                                                           \\
+		P_k(x) & =\frac{1}{2^kk!}\frac{\mathrm{d}^k}{\dif x^k}[(x^2-1)^k]\quad(k=1,2,\cdots,n)
+	\end{align*}
+	是$\mathbb{R}[x]_{n+1}$的一组正交基.
+\end{prob}
+\begin{proof}
+	记$D$为微分算子，设$k>l\ge0$，利用分部积分可得
+	\begin{align*}
+		  & {}\int_{-1}^1x^lP_k(x)\dif x=\int_{-1}^1x^lD^k[(x^2-1)^k]\dif x                                                        \\
+		= & {}\left[x^lD^{k-1}[(x^2-1)^k]-D(x^l)D^{k-2}[(x^2-1)^k]+\cdots+(-1)^{k-1}D^{k-1}(x^l)\cdot(x^2-1)^k\right]\bigg|_{-1}^1 \\
+		  & {}\hspace{20em}+(-1)^k\int_{-1}^1(x^2-1)^kD^k(x^l)\dif x                                                               \\
+		= & {}(0+\cdots+0)+0=0,
+	\end{align*}
+	于是$P_0,P_1,\cdots,P_n$正交，从而是一组正交基.
+\end{proof}
+\begin{prob}[24]
+	证明Legendre多项式$P_k(x)$是$k$次多项式并求出$P_k(x)$的一个递推公式.
+\end{prob}
+\begin{sol}
+	考虑$xP_n(x)\in\mathbb{R}[x]_{n+2}$，假设
+	\[
+		xP_n(x)=\sum_{k=0}^{n+1}\alpha_kP_k(x),
+	\]
+	根据正交性不难得到
+	\begin{gather*}
+		xP_n(x)=\alpha_{n-1}P_{n-1}+\alpha_nP_n(x)+\alpha_{n+1}P_{n+1}(x),
+		\shortintertext{并且其中}
+		\alpha_{n-1}=\frac{(xP_{n-1},P_n)}{(P_{n-1},P_{n-1})},\enspace\alpha_n=\frac{(xP_n,P_n)}{(P_n,P_n)},\enspace\alpha_{n+1}=\frac{(xP_n,P_{n+1})}{(P_{n+1},P_{n+1})}.
+	\end{gather*}
+	不难求得({\color{purple}\kaishu 见注})$\alpha_{n+1}=\dfrac{n+1}{2n+1},\,\alpha_n=0,\,\alpha_{n-1}=\dfrac{n}{2n+1}$.于是有递推公式
+	\[
+		(n+1)P_{n+1}(x)-(2n+1)xP_n(x)+nP_{n-1}(x)=0.
+	\]
+	代入$P_0(x)=1,\,P_1(x)=x$易得
+	\[
+		P_n(x)=\sum_{k=0}^{\lfloor\frac{n}{2}\rfloor}(-1)^k\frac{(2n-2k)!}{2^kk!(n-k)!(n-2k)!}x^{n-2k},
+	\]
+	由此易知$\deg P_n(x)=n$.
+\end{sol}
+\begin{note}
+	我们不加证明的使用下述引理：
+	\[
+		\int_0^{\frac{\pi}{2}}\sin^k\theta\dif\theta=\begin{cases}
+			\dfrac{(2n)!!}{(2n+1)!!},                    & k=2n+1, \\
+			\dfrac{(2n-1)!!}{(2n)!!}\cdot\dfrac{\pi}{2}, & k=2n.
+		\end{cases}.
+	\]
+	我们事实上只用到它的奇数情形.利用上题正交性的证明和分部积分作如下计算
+	\begin{align*}
+		(P_n,P_n) & =\frac{1}{(2^nn!)^2}\int_{-1}^1\frac{(2n)!}{n!}x^n\frac{\mathrm{d}^n}{\dif x^n}(x^2-1)^n\dif x                                                                                      \\
+		          & =\frac{1}{(2^nn!)^2}\frac{(2n)!}{n!}n!{\color{violet}\underbrace{(-1)^n\int_{-1}^1(x^2-1)^n\dif x}_{\textstyle=2\int_0^{\frac{\pi}{2}}\sin^{2n+1}\theta\dif\theta}}=\frac{2}{2n+1}.
+	\end{align*}
+	\vspace{-1em}
+	\begin{align*}
+		(xP_n,P_n) & =\frac{1}{(2^nn!)^2}\int_{-1}^1x\frac{\mathrm{d}^n}{\dif x^n}(x^2-1)^n\frac{\mathrm{d}^n}{\dif x^n}(x^2-1)^n\dif x              \\
+		           & =\frac{1}{(2^nn!)^2}\frac{(2n)!}{n!}\int_{-1}^1x^{n+1}\frac{\mathrm{d}^n}{\dif x^n}(x^2-1)^n\dif x                              \\
+		           & =\frac{1}{(2^nn!)^2}\frac{(2n)!}{n!}(n+1)!(-1)^n{\color{teal}\underbrace{\int_{-1}^1x(x^2-1)^n\dif x}_{\text{奇函数的积分}}}=0.
+	\end{align*}
+	\vspace{-1em}
+	\begin{align*}
+		(xP_n,P_{n+1}) & =\frac{1}{2^nn!}\frac{1}{2^{n+1}(n+1)!}\int_{-1}^1x\frac{\mathrm{d}^n}{\dif x^n}(x^2-1)^n\frac{\mathrm{d}^{n+1}}{\dif x^{n+1}}(x^2-1)^{n+1}\dif x \\
+		               & =\frac{1}{2^nn!}\frac{1}{2^{n+1}(n+1)!}\frac{(2n)!}{n!}\int_{-1}^1x^{n+1}\frac{\mathrm{d}^{n+1}}{\dif x^{n+1}}(x^2-1)^{n+1}\dif x                 \\
+		               & =\frac{n+1}{2n+1}(P_{n+1},P_{n+1})                                                                                                                \\
+		               & =\frac{2(n+1)}{(2n+1)(2n+3)}.
+	\end{align*}
+	由此得到$\alpha_{n+1}=\dfrac{n+1}{2n+1},\,\alpha_n=0,\,\alpha_{n-1}=\dfrac{n}{2n+1}$.
+\end{note}
+\begin{prob}[25]
+	在欧氏空间$\mathbb{R}^{2n}$中求下列齐次线性方程组
+	\[
+		x_1-x_2+x_3-x_4+\cdots+x_{2n-1}-x_{2n}=0
+	\]
+	的解空间的一组单位正交基.
+\end{prob}
+\begin{sol}
+	设此方程的解空间为$V$，则$\dim V=2n-1$.取
+	\[
+		\psi_i=\varepsilon_i+\varepsilon_{i+1},\qquad 1\le i\le 2n-1,
+	\]
+	其中$\varepsilon_i$是$\mathbb{R}^{2n}$的标准基，则$\psi_i$是$V$的一组基.作Schmidt正交化
+	\begin{align*}
+		\eta_1      & =\psi_1,                                                                                                                          \\
+		\eta_2      & =\psi_2-\frac{1}{\abs{\eta_1}^2}\eta_1=\frac{1}{2}(-\varepsilon_1+\varepsilon_2)+\varepsilon_3,                                   \\
+		            & \vdots                                                                                                                            \\
+		\eta_{2n-1} & =\psi_{2n-1}-\frac{1}{\abs{\eta_{2n-2}}^2}\eta_{2n-2}=\frac{(-1)^{n}}{2n-1}\sum_{i=1}^{2n-1}(-1)^i\varepsilon_i+\varepsilon_{2n},
+	\end{align*}
+	再作单位化$(\eta_k,\eta_k)=1+\dfrac{1}{k}=\dfrac{k+1}{k}$，有
+	\[
+		\tau_k=\frac{\eta_k}{\abs{\eta_k}}=\left(\frac{(-1)^{n-1}}{\sqrt{k(k+1)}},\frac{(-1)^n}{\sqrt{k(k+1)}},\cdots,\frac{1}{\sqrt{k(k+1)}},1,0,\cdots,0\right),\enspace 1\le k\le 2n-1,
+	\]
+	$\tau_1,\cdots,\tau_{2n-1}$即为解空间$V$的一组单位正交基.
+\end{sol}
+\subsection{欧几里得空间中的特殊线性变换}
+\begin{prob}[1]
+	设$\eta$是$n$维欧氏空间$V$内的一个单位向量，定义$V$内一个线性变换如下：
+	\[
+		\bm A\alpha=\alpha-2(\eta,\alpha)\eta\quad(\alpha\in V),
+	\]
+	称这样的线性变换$\bm A$为一个{\heiti 镜面反射}.证明：
+
+	(1)$\bm A$是正交变换；
+
+	(2)$\bm A$是第二类的；
+
+	(3)$\bm A^2=\bm E$；
+
+	(4)设$\bm B$是$V$内一个第二类正交变换，则必有
+	\[
+		\bm B=\bm A\cdot \bm B_1,
+	\]
+	其中$\bm B_1$是$V$内一个第一类正交变换.
+\end{prob}
+\begin{proof}
+	不难验证$(\bm A\alpha,\bm A\beta)=(\alpha,\beta)$.将$\eta$扩充为$V$的标准正交基，则$\bm A$在此基下的矩阵为$A=\diag{-1,E_{n-1}}$，即$\det A=-1,\ A^2=E$.因此$\bm A$是对合(或称幂幺)的第二类正交变换.
+
+	设$\bm A$为任一镜面反射，$A,B$分别为$\bm A,\bm B$在一组标准正交基下的矩阵，记$\bm B_1=\bm A\bm B$，它的矩阵为$B_1$，则$B_1B_1'=ABB'A'=E,\ \abs{B_1}=\abs{A}\abs{B}=1$，即$\bm B_1$是第一类正交变换，且$\bm B=\bm A^{-1}\bm B=\bm A\bm B$.
+\end{proof}
+\begin{prob}[2]
+	\hypertarget{Reflection}{设}$V$是一个$n$维欧氏空间，$V$中一个正交变换$\bm A$有特征值$\lambda_0=1$，且$\dim V_{\lambda_0}=n-1$，证明$\bm A$是一个镜面反射.
+\end{prob}
+\begin{proof}
+	将$V_{\lambda_0}$的标准正交基$\varepsilon_1,\cdots,\varepsilon_{n-1}$扩充为$V$的标准正交基$\varepsilon_1,\cdots,\varepsilon_n$，则$V=V_{\lambda_0}\oplus L(\varepsilon_n)$，且$L(\varepsilon_n)=V_{\lambda_0}^\perp$.显然$\bm A$的矩阵为$A=\diag{E_{n-1},-1}$，所以$\bm A$是一个镜面反射.
+\end{proof}
+\begin{note}
+	不难发现逆命题也成立($n\ge 2$).
+\end{note}
+\begin{prob}[3]
+	设$\alpha_1,\alpha_2,\cdots,\alpha_s$和$\beta_1,\beta_2,\cdots,\beta_s$是$n$维欧氏空间$V$中两个向量组，证明存在一个正交变换$\bm A$，使得
+	\[
+		\bm A\alpha_i=\beta_i\quad(i=1,2,\cdots,s)
+	\]
+	的充分必要条件是
+	\[
+		(\alpha_i,\alpha_j)=(\beta_i,\beta_j)\quad(i,j=1,2,\cdots,s).
+	\]
+\end{prob}
+\begin{proof}
+	必要性显然.下证充分性.注意到
+	\begin{align*}
+		                    & {}\exists (\lambda_1,\cdots,\lambda_s)\ne0\,\,(\sum_{i=1}^s\lambda_i\alpha_i=0)                                              \\
+		\Longleftrightarrow & {}\exists (\lambda_1,\cdots,\lambda_s)\ne0\,\forall k\in\mathbb{N}\,\biggl((\sum_{i=1}^s\lambda_i\alpha_i,\alpha_k)=0\biggr) \\
+		\Longleftrightarrow & {}\exists (\lambda_1,\cdots,\lambda_s)\ne0\,\forall k\in\mathbb{N}\,\biggl((\sum_{i=1}^s\lambda_i\beta_i,\beta_k)=0\biggr)   \\
+		\Longleftrightarrow & {}\exists (\lambda_1,\cdots,\lambda_s)\ne0\,\,(\sum_{i=1}^s\lambda_i\beta_i=0),
+	\end{align*}
+	因此$\alpha_1,\cdots,\alpha_s$线性无关$\Longleftrightarrow$$\beta_1,\cdots,\beta_s$线性无关.另一证明见注.
+
+		假设$\alpha_{i_1},\cdots,\alpha_{i_r}$是$\alpha_1,\cdots,\alpha_s$的极大线性无关组，则$\beta_{i_1},\cdots,\beta_{i_r}$也是$\beta_1,\cdots,\beta_s$的极大线性无关组.记
+	\[
+		V_1=L(\alpha_1,\cdots,\alpha_s),\,V_2=L(\beta_1,\cdots,\beta_s),
+	\]
+	并分别取$V_1^\perp,\,V_2^\perp$的标准正交基为$\varepsilon_1,\cdots,\varepsilon_{n-r}$和$\eta_1,\cdots,\eta_{n-r}$，则基$\alpha_{i_1},\cdots,\alpha_{i_r},\varepsilon_1,\cdots,\varepsilon_{n-r}$和$\beta_{i_1},\cdots,\beta_{i_r},\eta_1,\cdots,\eta_{n-r}$有相同的度量矩阵$\diag{G,E_{n-r}}$，其中$G$是$\alpha_{i_1},\cdots,\alpha_{i_r}$的度量矩阵.
+
+	现在命$\bm A\in\mathrm{End}(V)$满足$\bm A\alpha_{i_k}\beta_{i_k},\ \bm A\varepsilon_k=\eta_k$.注意到
+	\[
+		\alpha_j=\sum_{k=1}^r\lambda_k\alpha_{i_k}\iff\beta_j=\sum_{k=1}^r\lambda_k\beta_{i_k},
+	\]
+	因此对任意$i\in\{1,\cdots,s\}$有$\bm A\alpha_i=\beta_i$.另一方面，对任意$v_1,v_2\in V$，假设它们在基$\alpha_{i_1},\cdots,\alpha_{i_r},\ \varepsilon_1,\cdots,\varepsilon_{n-r}$下的坐标分别为$X_1,X_2$，则有$AX_i=X_i\,(i=1,2)$.于是
+	\[
+		(\bm A v_1,\bm A v_2)=(AX_1)'\begin{bmatrix}
+			G & 0       \\
+			0 & E_{n-r}
+		\end{bmatrix}(AX_2)=X_1'\begin{bmatrix}
+			G & 0       \\
+			0 & E_{n-r}
+		\end{bmatrix}X_2=(v_1,v_2),
+	\]
+	$\bm A$是正交变换.
+\end{proof}
+\begin{note}
+	$\alpha_1,\cdots\alpha_s$线性无关$\Leftrightarrow$\,\textnormal{Gram}矩阵非退化$\Leftrightarrow$$\beta_1,\cdots\beta_s$线性无关.(见6.1节\hyperlink{GramMatrix}{题目15})
+\end{note}
+\begin{prob}[4]
+	设$\alpha,\beta$是欧氏空间中两个不同的单位向量，证明存在一个镜面反射$\bm A$，使得$\bm A\alpha=\beta$.
+\end{prob}
+\begin{proof}
+	命$\eta=\dfrac{\alpha-\beta}{\abs{\alpha-\beta}}$，它对应的镜面反射$\bm A$满足要求.
+\end{proof}
+\begin{prob}[5]
+	证明：$n$维欧氏空间中任一正交变换都可以表成一系列镜面反射的乘积.
+\end{prob}
+\begin{proof}
+	对维数$n$作归纳.当$n=1$时，若$\bm A\in\mathrm{O}(1)$，则$\bm A=\bm E$或$\bm A$为镜面反射.由上题，设镜面反射$\bm M$将单位向量$\varepsilon$映为$-\varepsilon$，则$\bm A=\bm M^2$或$\bm A=\bm M$.
+
+	设命题对$n-1$维成立，对$n$维欧氏空间$V$，取标准正交基$\varepsilon_1,\cdots,\varepsilon_n$并设$\bm A\varepsilon_i=\alpha_i$.由上题，存在镜面反射$\bm M_n$使得$\bm M_n\alpha_1=\varepsilon_1$.于是$L(\varepsilon_1)$是$\bm M_n\bm A$的不变子空间，而$\bm M_n\bm A$是正交变换，所以$W=L(\varepsilon_1)^\perp$也是其不变子空间.
+
+	记$\widetilde{\bm A}=(\bm M_n\bm A)|_W$，则$\widetilde{\bm A}$是$n-1$维欧氏空间$W$上的正交变换，从而可写为反射的乘积$\widetilde{\bm A}=\bm M_s\cdots\bm M_1$.补充定义
+	\[
+		\bm M_i\varepsilon_1=\varepsilon_1\quad(i=1,\cdots,s),
+	\]
+	则$\bm M_1,\cdots,\bm M_{s}$成为$V$上的镜面反射，且$\bm M_{n}\bm A=\bm M_{s}\cdots\bm M_1$，即$\bm A=\bm M_n\bm M_s\cdots\bm M_1$.
+\end{proof}
+\begin{prob}[6]
+	设$\bm A$是欧氏空间$V$内的一个变换，对任意$\alpha,\beta\in V$，有$(\bm A\alpha,\bm A\beta)=(\alpha,\beta)$，证明$\bm A$是一个正交变换.
+\end{prob}
+\begin{proof}
+	只需说明线性.对任意$\alpha,\beta\in V$以及$k,l\in\mathbb{R}$不难验证有
+	\[
+		(\bm A(k\alpha+l\beta)-k\bm A\alpha-l\bm A\beta,\bm A(k\alpha+l\beta)-k\bm A\alpha-l\bm A\beta)=0,
+	\]
+	即$\bm A(k\alpha+l\beta)=k\bm A\alpha+l\bm A\beta$.
+\end{proof}
+\begin{note}
+	这意味着正交变换天然是线性的.
+\end{note}
+\begin{prob}[7]
+	设$V$是$n$维欧氏空间，$\bm A$是镜面反射，$\bm B$是正交变换.证明$\bm B^{-1}\bm A\bm B$也是一个镜面反射.
+\end{prob}
+\begin{proof}
+	$n=1$时显然.当$n\ge 2$时，由\hyperlink{Reflection}{题目2}可知$\bm A$有特征值$\lambda_0=1$且$\dim V_{\lambda_0}=n-1$.特征多项式是相似不变量，所以$\bm B^{-1}\bm A\bm B$也有特征值$\lambda_0=1$，设其特征子空间为$\widetilde{V}_{\lambda_0}$.
+
+	取$V_{\lambda_0}$的标准正交基$\varepsilon_1,\cdots,\varepsilon_{n-1}$，扩为$V$的标准正交基$\varepsilon_1,\cdots,\varepsilon_n$，则$\bm A\varepsilon_i=\varepsilon_i\,(i\ne n),\ \bm A\varepsilon_n=-\varepsilon_n$.记$\eta_i=\bm B^{-1}\varepsilon_i$，则$\eta_1,\cdots,\eta_n$也是一组标准正交基.同时
+	\[
+		\bm B^{-1}\bm A\bm B\eta_i=\eta_i\,(i\ne n),\,\bm B^{-1}\bm A\bm B\eta_n=-\eta_n,
+	\]
+	因此$\dim\widetilde{V}_{\lambda_0}=n-1$，于是$\bm B^{-1}\bm A\bm B$是镜面反射.
+\end{proof}
+\begin{prob}[8]
+	设$\bm A$是$n$维欧氏空间$V$内一镜面反射.令
+	\[
+		f(\alpha,\beta)=(\bm A\alpha,\beta)\quad(\forall\alpha,\beta\in V).
+	\]
+	证明$f(\alpha,\beta)$为$V$内对称双线性函数.
+\end{prob}
+\begin{proof}
+	$f(\alpha,\beta)=(AX)'Y=X'A^{-1}Y=X'AY=f(\beta,\alpha)$.
+\end{proof}
+\begin{note}
+	镜面反射是对称变换.(对合正交变换是对称变换)
+\end{note}
+\begin{prob}[10]
+	设$V$为$n$维欧氏空间，$\bm A$与$\bm A^*$为$V$内两个线性变换.如果对任意$\alpha,\beta\in V$有
+	\[
+		(\bm A\alpha,\beta)=(\alpha,\bm A^*\beta),
+	\]
+	则称$\bm A^*$为$\bm A$的{\heiti 共轭变换}.证明：$\bm A$与$\bm A^*$在$V$的任一组标准正交基下的矩阵互为转置.
+\end{prob}
+\begin{proof}
+	取定$V$的一组标准正交基，则$(\bm A\alpha,\beta)=(\alpha,\bm A^*\beta)$等价于$X'A'Y=X'A^*Y$，所以$A^*=A'$，其中$A^*$表示$\bm A^*$的矩阵.
+\end{proof}
+\begin{prob}[11]
+	续上题.
+
+	(1)证明：对$V$内每个线性变换$\bm A$，其共轭变换存在且唯一，并且$(\bm A^*)^*=\bm A$.
+
+	(2)证明$\bm A$是对称变换的充分必要条件是$\bm A^*=\bm A$.
+\end{prob}
+\begin{proof}
+	(1)由上题立得.
+
+	(2)$\bm A$对称等价于$(\bm A\alpha,\beta)=(\alpha,\bm A\beta)$，即$\bm A^*=\bm A$.
+\end{proof}
+\begin{note}
+	根据(2)，对称变换也称自共轭线性变换.
+\end{note}
+\begin{prob}[12]
+	证明：对$n$维欧氏空间$V$内任一线性变换$\bm A$，$\bm A+\bm A^*$是一个对称变换.
+\end{prob}
+\begin{proof}
+	$(\bm A+\bm A^*)^*=\bm A+\bm A^*$.
+\end{proof}
+\begin{prob}[13]
+	设$\bm A$是$n$维欧氏空间$V$内的一个线性变换，如果$\bm A^*=-\bm A$，即对任意$\alpha,\beta\in V$有
+	\[
+		(\bm A\alpha,\beta)=-(\alpha,\bm A\beta),
+	\]
+	则称$\bm A$是一个{\heiti 反对称变换}.证明：
+
+	(1)$\bm A$为反对称变换的充分必要条件是：$\bm A$在某一组标准正交基下的矩阵是反对称矩阵.
+
+	(2)如果$M$是反对称变换$\bm A$的不变子空间，而$M$的正交补$M^\perp$也是$\bm A$的不变子空间.
+\end{prob}
+\begin{proof}
+	(1)$\bm A$反对称$\Leftrightarrow\bm A^*=-\bm A\Leftrightarrow A'=-A\Leftrightarrow A$反对称.
+
+	(2)设$\alpha\in W,\beta\in W^\perp$，则$0=(\bm A\alpha,\beta)=-(\alpha,\bm A\beta)$，即$\bm A\beta\in W^\perp$.
+\end{proof}
+\begin{prob}[16]
+	设$A$是$n$阶实对称矩阵，证明：$A$正定的充分必要条件是$A$的特征多项式的根全大于零.
+\end{prob}
+\begin{proof}
+	$A$可正交对角化，且其正交对角化后的对角元都是$A$的特征值.
+\end{proof}
+\begin{prob}[17]
+	设$A,B$都是$n$阶实对称矩阵，证明：存在正交矩阵$T$，使得$T^{-1}AT=B$的充分必要条件是$A$与$B$的特征多项式相同.
+\end{prob}
+\begin{proof}
+	$A$与$B$特征多项式相同$\Leftrightarrow$$A$与$B$有相同特征值(记重数)$\Leftrightarrow$$A$与$B$与同一对角阵正交相似$\Leftrightarrow$$A$与$B$正交相似.
+\end{proof}
+\begin{note}
+	这说明$\mathrm{O}(n)$共轭作用在实对称矩阵上时，按特征值(计重数)划分轨道.
+\end{note}
+\begin{prob}[18]
+	设$A,B$是$n$阶实对称矩阵，$A$正定，证明：存在一可逆矩阵$T$，使得$T'AT$和$T'BT$同时成对角形.
+\end{prob}
+\begin{proof}
+	$A$正定，存在可逆矩阵$P$使得$P'AP=E$.由于$P'BP$实对称，存在正交矩阵$Q$使得$Q'P'BPQ$成对角形，此时$Q'P'APQ=Q'Q=E$.记$T=PQ$可逆，则$T'AT=E,T'BT$都成对角形.
+\end{proof}
+\begin{prob}[19]
+	设$A$为正定矩阵，$B$为实矩阵.
+
+	(1)证明：对于任意正整数$k$，$A^k$也正定；
+
+	(2)如果对于某一正整数$r$有$A^rB=BA^r$，证明：$AB=BA$.
+\end{prob}
+\begin{proof}
+	(1)存在正交矩阵$T$使得$T'AT=D$，其中$D$是对角元恒正的对角阵.于是$T'A^kT=D^k$，所以$A^k$正定.
+
+	(2)设$T'AT=D$对角，$T$正交，则$D^rT'BT=T'BTD^r$.记$D=\diag{\lambda_1,\cdots,\lambda_n}$ , $T'BT=(b_{ij})$，则$(\lambda_i^r-\lambda_j^r)b_{ij}=0$.鉴于$\lambda_i>0$，这蕴含$(\lambda_i-\lambda_j)b_{ij}=0$，即$DT'BT=T'BTD$，亦即$AB=BA$.
+\end{proof}
+\begin{note}
+	一般地$AB=BA\Rightarrow A^rB=BA^r$.本题说明对(半)正定阵反过来也对.
+\end{note}
+\begin{prob}[20]
+	设$\bm A$是欧氏空间$V$内一个变换，如果对任意$\alpha,\beta\in V$都有$(\bm A\alpha,\beta)=(\alpha,\bm A\beta)$，证明$\bm A$是$V$内的对称变换.
+\end{prob}
+\begin{proof}
+	对任意$\alpha,\beta,\gamma\in V,\,k,l\in\mathbb{R}$有
+	\[
+		(\bm A(k\alpha+l\beta)-k\bm A\alpha-l\bm A\beta,\gamma)=0,
+	\]
+	取$\gamma=\bm A(k\alpha+l\beta)-k\bm A\alpha-l\bm A\beta$即得$\bm A$线性.
+\end{proof}
+\begin{note}
+	反对称变换同理.
+\end{note}
+\begin{prob}[21]
+	设$\bm A$是欧式空间$V$内的一个线性变换，证明$\bm A$是反对称变换的充分必要条件是对任意$\alpha\in V$有$(\bm A\alpha,\alpha)=0$.
+\end{prob}
+\begin{proof}
+	必要性显然.由于$(\bm A\alpha,\beta)+(\alpha,\bm A\beta)=(\bm A(\alpha+\beta),\alpha+\beta)=0$，充分性得证.
+\end{proof}
+\begin{prob}[22]
+	设$A$是一个$n$阶实对称矩阵.证明$A$半正定的充分必要条件是存在$n$阶实对称矩阵$B$使得$A=B^2$.
+\end{prob}
+\begin{proof}
+	(充分性)存在正交阵$T$使得$B=T'DT$，其中$D$为对角阵.$A=T'D^2T$而$D^2$半正定.
+
+	(必要性)$A$半正定，存在正交阵$T$使得$A=T'D^2T=(T'DT)^2$.
+\end{proof}
+\begin{note}
+	事实上存在唯一的半正定阵$B$使得$A=B^2$.设$A=B_1^2=B_2^2$，则$B_1B_2^2=B_2^2B_1$.而$B_2$半正定，所以$B_1B_2=B_2B_1$.现在$A,B_1,B_2$均可换，可同时正交对角化，因此$B_1=B_2$.这说明半正定阵$A$存在唯一的半正定平方根$\sqrt A$.特别地，正定阵有唯一的正定平方根.
+\end{note}
+\begin{prob}[23]
+	设$A$是$n$阶实矩阵，证明存在$n$阶实对称矩阵$B$，使得$A'A=B^2$.
+\end{prob}
+\begin{proof}
+	$X'A'AX=(AX)'AX\ge 0$，即$A'A$半正定，由上题即证.
+\end{proof}
+\begin{prob}[24]
+	设$\bm A,\bm B$是$n$维欧氏空间$V$内的两个对称变换.证明：$V$内存在一组标准正交基$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$，使$\bm A,\bm B$在此组基下的矩阵同时成对角形的充分必要条件是$\bm{AB}=\bm{BA}$.
+\end{prob}
+\begin{proof}
+	(充分性)$\bm A$可对角化，所以$V=\displaystyle\bigoplus_{i=1}^rV_{\lambda_i}$，只要选取$V_{\lambda_i}$中的标准正交基合并起来就能使$\bm A$的矩阵成对角形.因为$\bm A,\bm B$可交换，$V_{\lambda_i}$也是$\bm B$的不变子空间.在$V_{\lambda_i}$中可以选取标准正交基使对称变换$\bm B|_{V_{\lambda_i}}$在基下的矩阵成对角形，因此存在$V$中标准正交基$\varepsilon_1,\cdots,\varepsilon_n$使得$\bm A,\bm B$的矩阵同时为对角形.
+
+	(必要性)假设$\bm A\varepsilon_i=\lambda_i\varepsilon_i,\,\bm B\varepsilon_i=\mu_i\varepsilon_i$.对任意$\alpha\in V$，设$\alpha=\sum k_i\varepsilon_i$，则不难得到
+	\[
+		\bm{AB}\alpha=\sum k_i\lambda_i\mu_i\varepsilon_i=\bm{BA}\alpha,
+	\]
+	即$\bm{AB}=\bm{BA}$.
+\end{proof}
+\begin{prob}[25]
+	\hypertarget{LemmaOfNormalTransformation}{设}$A$是$n$阶实矩阵且$AA'=A'A$.令$\lambda_0$为$A$的特征多项式$f(\lambda)=\abs{\lambda E-A}$的一个根，又设$X$为$\mathbb{C}$上$n\times 1$矩阵，使得$AX=\lambda_0X$.证明：$A'X=\overline{\lambda}_0X$.
+\end{prob}
+\begin{proof}
+	只需证
+	\[
+		(A'X-\overline{\lambda}_0X)'\overline{(A'X-\overline{\lambda}_0X)}=0\,\Leftrightarrow\,X'AA'\overline{X}=X'A'A\overline{X},
+	\]
+	而$AA'=A'A$，命题得证.
+\end{proof}
+\begin{prob}[26]
+	设$\bm A$是$n$维欧氏空间$V$内的一个线性变换.如果$M$是$A$的不变子空间，证明$M^\perp$是$A$的共轭变换$\bm A^*$的不变子空间.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[27]
+	设$\bm A$是$n$维欧氏空间$V$内的一个线性变换.若$\bm A\bm A^*=\bm A^*\bm A$，则$\bm A$称为$V$内的{\heiti 正规变换}.
+
+	设$\bm A$是$V$内的一个正规变换.证明$V$内存在一组标准正交基，使$\bm A$在该组标准正交基下的矩阵成准对角形
+	\[
+		D=\diag{D_1,D_2,\cdots,D_r,\lambda_{r+1},\cdots,\lambda_s},\quad D_i=\begin{bmatrix}
+			a_i  & b_i \\
+			-b_i & a_i
+		\end{bmatrix}.
+	\]
+	而$\lambda_{r+1},\cdots,\lambda_s$为$\bm A$的特征值.
+\end{prob}
+\begin{proof}
+	$n=1,2$时显然.设命题对小于$n$维的空间成立.对$n$维欧氏空间$V$，先任取一组标准正交基，$\bm A$的特征多项式至少有一个根$\lambda$.
+
+	若$\lambda$是实根，$\bm A$有特征值$\lambda$，由上题知$V_{\lambda}^\perp$是$\bm A^*$的不变子空间.由归纳假设，存在$V_{\lambda}^\perp$的标准正交基使得$\bm A^*|_{V_\lambda^\perp}$的矩阵为题述准对角形$\widetilde{D}$.再取$V_{\lambda}$中的单位向量并入得到$V$的一组标准正交基.在这组基下$\bm A$的矩阵为$D=\diag{\widetilde{D}',\lambda}$符合要求.
+
+	若$\lambda=a+b\mi$是复根，结合\hyperlink{LemmaOfNormalTransformation}{题目25}，存在$X=U+\mi W\in\mathbb{C}^n$使得
+	\[
+		AX=\lambda X,\quad A'X=\overline{\lambda}X.
+	\]
+	不妨设$U$是单位向量.往证$W$也是与$U$正交的单位向量.注意到$X'A'X=\lambda X'X=\overline{\lambda}X'X$，从而$X'X=0$，即
+	\[
+		U'U-W'W=0,\quad U'W+W'U=0,
+	\]
+	所以$W$是单位向量，且$(U,W=U'W=W'U=0$.$U,W$满足
+	\[
+		AU=aU-bW,\quad AW=bU+aW.
+	\]
+	于是$V$中对应存在正交单位向量$\eta_1,\eta_2,\,M=L(\eta_1,\eta_2)$是$\bm A$的不变子空间，$\bm A|_M$的矩阵为
+	\[
+		D_1=\begin{bmatrix}
+			a  & b \\
+			-b & a
+		\end{bmatrix}.
+	\]
+	而$M^\perp$是$\bm A^*$的不变子空间.由归纳假设，存在$M^\perp$中标准正交基使得$\bm A^*|_{M^\perp}$的矩阵为$\widetilde{D}$，并入$\eta_1,\eta_2$后就存在$V$中的标准正交基使得$\bm A$的矩阵为$D=\diag{D_1,\widetilde{D}'}$符合要求.
+\end{proof}
+\begin{note}
+	本题给出了实正规变换的标准形式.过程中也可以直接利用下题而不用考虑共轭变换$\bm A^*$的矩阵.
+\end{note}
+\begin{prob}[28]
+	\hypertarget{NormalTansformationInvariantSubspace}{设}$\bm A$是$n$维线性空间$V$内的一个正规变换.如果$M$是$\bm A$的不变子空间，证明$M^\perp$也是$\bm A$的不变子空间.
+\end{prob}
+\begin{proof}
+	将$M$的标准正交基扩充为$V$的标准正交基，$\bm A$在基下的矩阵为
+	\[
+		A=\begin{pmatrix}
+			A_1 & A_2 \\
+			0   & A_3
+		\end{pmatrix}.
+	\]
+	$\bm A$正规，即$AA'=A'A$.根据2.6节\hyperlink{LemmaOfNormalTransformationSubspace}{题目11}得$A_2=0$，因此$M^\perp$也是$\bm A$的不变子空间.
+\end{proof}
+\begin{prob}[29]
+	设$U$是$n$维欧式空间，$V$为$m$维欧氏空间($m\ge 3$).在$U$内取定一组标准正交基$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$.
+
+	(1)在$\mathrm{Hom}(U,V)$内定义内积如下：对于任意$f,g\in\mathrm{Hom}(U,V)$，令
+	\[
+		(f,g)=\sum_{i=1}^n(f(\varepsilon_i),g(\varepsilon_i)),
+	\]
+	证明$\mathrm{Hom}(U,V)$关于此内积成为欧氏空间；
+
+	(2)在上题所定义的欧氏空间$\mathrm{Hom}(U,V)$内，对于任意$\bm A\in\mathrm{End}(U)$，定义
+	\[
+		(\bm T(\bm A)f)(\alpha)=f(\bm A\alpha)\quad(\forall f\in\mathrm{Hom}(U,V),\alpha\in U),
+	\]
+	则$\bm T(\bm A)$是$\mathrm{Hom}(U,V)$内的一个线性变换.证明$\bm T(\bm A)$是$\mathrm{Hom}(U,V)$内的正交变换的充分必要条件是$\bm A$是$U$内的正交变换.
+\end{prob}
+\begin{proof}
+	(1)显然.
+
+	(2)(充分性)设$\bm A$的矩阵$A=(a_{ij})$正交，则
+	\begin{align*}
+		  & {}(\bm T(\bm A)f,\bm T(\bm A)g)=\sum_{i=1}^n(f(\bm A\varepsilon_i),g(\bm A\varepsilon_i))                                 \\
+		= & {}\sum_{i=1}^n\biggl(f\Bigl(\sum_{j=1}^na_{ji}\varepsilon_j\Bigr),g\Bigl(\sum_{k=1}^na_{ki}\varepsilon_k\Bigr)\biggr)     \\
+		= & {}\sum_{j,k}\Bigl(\underbrace{\sum_{i=1}^na_{ji}a_{ki}}_{\textstyle=\delta_{jk}}\Bigr)(f(\varepsilon_j),g(\varepsilon_k)) \\
+		= & {}\sum_{k=1}^n(f(\varepsilon_k),g(\varepsilon_k))=(f,g).
+	\end{align*}
+
+	(必要性)取单位向量$\eta\in V$，命$f_i(\varepsilon_j)=\delta_{ij}\eta$并记$A=(a_{ij})$.
+	\begin{align*}
+		         & {}(\bm T(\bm A)f_i,\bm T(\bm A)f_j)=(f_i,f_j)                                                                                   \\
+		\implies & {}\sum_{k,l}\Bigl(\sum_{r=1}^na_{kr}a_{lr}\Bigr)(\delta_{ik}\eta,\delta_{jl}\eta)=\sum_{k=1}^n(\delta_{ik}\eta,\delta_{jk}\eta) \\
+		\implies & {}\sum_{r=1}^na_{ir}a_{jr}=\delta_{ij},
+	\end{align*}
+	所以$\bm A$是正交变换.
+\end{proof}
+\subsection{酉空间}
+{\color{blue}注意}：将用$\dagger$符号表示矩阵的共轭转置.
+\begin{prob}[2]
+	证明：一个$n$阶复矩阵$U$是酉矩阵当且仅当它的行(或列)向量组构成酉空间$\mathbb{C}^n$的一组标准正交基.
+\end{prob}
+\begin{proof}
+	$U$把标准基变为一组标准正交基，所以$U$的行向量组是$\mathbb{C}^n$的标准正交基，而$U'$也是酉矩阵，所以$U$的列向量组也是标准正交基.
+\end{proof}
+\begin{prob}[3]
+	在$n$维酉空间$V$内取定一组基$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$，定义$G=((\varepsilon_i,\varepsilon_j))$.$G$称为此组基的度量矩阵.
+
+	(1)证明$G$可逆；
+
+	(2)证明$\overline{G}'=G$；
+
+	(3)若$\alpha=(\varepsilon_1,\cdots,\varepsilon_n)X,\,\beta=(\varepsilon_1,\cdots,\varepsilon_n)Y$，证明$(\alpha,\beta)=X'G\overline{Y}$.
+\end{prob}
+\begin{proof}
+	(1)假设$G$的行向量组线性相关，不难推出$\varepsilon_1,\cdots,\varepsilon_n$线性相关，矛盾.
+
+	(2)显然.
+
+	(3)$(\alpha,\beta)=\sum x_i\overline{y}_j(\varepsilon_i,\varepsilon_j)=X'G\overline{Y}$.
+\end{proof}
+\begin{prob}[5]
+	酉变换的特征值的模等于$1$.
+\end{prob}
+\begin{proof}
+	设酉变换$\bm A$有特征值$\lambda$，即$\bm A\eta=\lambda\eta$，则$\bm A^*\eta=\overline{\lambda}\eta,\,\eta=\bm A\bm A^*=\lambda\overline{\lambda}\eta$，所以$|\lambda|=1$.
+\end{proof}
+\begin{prob}[10]
+	将一个复方阵$U$分解为实部和虚部$U=P+\mi Q$.证明$U$为酉矩阵的充分必要条件是：$P'Q$对称，且$P'P+Q'Q=E$.
+\end{prob}
+\begin{proof}
+	$U^{-1}=U^\dagger$$\,\Leftrightarrow\,U^\dagger U=P'P+Q'Q+\mi(P'Q-Q'P)=E$$\,\Leftrightarrow\,$$P'Q$对称且$P'P+Q'Q=E$.
+\end{proof}
+\begin{prob}[11]
+	证明矩阵
+	\[
+		U=\frac{1}{\sqrt{n}}\begin{bmatrix}
+			1      & 1            & \cdots & 1                \\
+			1      & \omega       & \cdots & \omega^{n-1}     \\
+			\vdots & \vdots       &        & \vdots           \\
+			1      & \omega^{n-1} & \cdots & \omega^{(n-1)^2}
+		\end{bmatrix}\qquad(\omega=e^{\frac{2\pi\mi}{n}})
+	\]
+	是酉矩阵.
+\end{prob}
+\begin{proof}
+	不难发现
+	\[
+		UU^\dagger=\frac{1}{n}\begin{bmatrix}
+			n      & 0      & \cdots & 0      \\
+			0      & n      & \cdots & 0      \\
+			\vdots & \vdots &        & \vdots \\
+			0      & 0      & \cdots & n
+		\end{bmatrix}=E,
+	\]
+	所以$U$是酉矩阵.
+\end{proof}
+\begin{prob}[12]
+	证明任一个二阶酉矩阵$U$可分解为
+	\[
+		U=\begin{bmatrix}
+			e^{\mi\theta_1} & 0               \\
+			0               & e^{\mi\theta_2}
+		\end{bmatrix}\begin{bmatrix*}[r]
+			\cos\varphi&-\sin\varphi\\
+			\sin\varphi&\cos\varphi
+		\end{bmatrix*}\begin{bmatrix}
+			e^{\mi\theta_3} & 0               \\
+			0               & e^{\mi\theta_4}
+		\end{bmatrix},
+	\]
+	其中$\theta_1,\theta_2,\theta_3,\theta_4,\varphi$为实数.
+\end{prob}
+\begin{proof}
+	利用酉矩阵相关性质不难得到$|\det(U)|=1$，存在$\theta\in[0,\frac{\pi}{2}],\alpha,\beta,\varphi\in[0,2\pi)$使得
+	\[
+		U=\begin{bmatrix}
+			e^{\mi\alpha}\cos\theta & -e^{i(\varphi-\beta)}\sin\theta   \\
+			e^{\mi\beta}\sin\theta  & e^{\mi(\varphi-\alpha)}\cos\theta
+		\end{bmatrix}=\begin{bmatrix}
+			e^{-\mi\beta} & 0              \\
+			0             & e^{-\mi\alpha}
+		\end{bmatrix}\begin{bmatrix}
+			\cos\theta & -\sin\theta \\
+			\sin\theta & \cos\theta
+		\end{bmatrix}\begin{bmatrix}
+			e^{\mi(\alpha+\beta)} & 0              \\
+			0                     & e^{\mi\varphi}
+		\end{bmatrix},
+	\]
+	这就完成了分解.
+\end{proof}
+\begin{prob}[14]
+	设$\bm A$是$n$维酉空间$V$内的一个正规变换，$M$是$\bm A$的不变子空间，证明：$M$的正交补$M^\perp$也是$\bm A$的不变子空间.
+\end{prob}
+\begin{proof}[法一]
+	与上节\hyperlink{NormalTansformationInvariantSubspace}{题目28}同理，注意到$\tr(A^\dagger A)=\sum|a_{ij}|^2$即证.
+\end{proof}
+\begin{proof}[法二]
+	$\bm A|_M$作为正规变换可对角化，$\bm A$也可对角化.
+\end{proof}
+\begin{prob}[15]
+	设$\bm A$是$n$维酉空间$V$内的一个线性变换.如果存在一个复系数多项式$f(\lambda)$使得$\bm A=f(\bm A^*)$，证明在$V$内存在一组标准正交基，使得$\bm A$在这组基下的矩阵成对角形.
+\end{prob}
+\begin{proof}
+	注意到$\bm A\bm A^*=\bm A^*\bm A=\bm A^*f(\bm A^*)$，即$\bm A$正规.
+\end{proof}
+\begin{prob}[16]
+	设$\bm A$是$n$维酉空间$V$内的一个线性变换，$\bm A^*=-\bm A$.证明：$\bm A$的非零特征值都是纯虚数.
+\end{prob}
+\begin{proof}
+	设$\bm A$对角化为矩阵$A$，则$A^\dagger=-A$，即$A+\overline{A}=0$，因此$\bm A$的特征值实部都为零.
+\end{proof}
+\begin{prob}[17]
+	设$\bm A$是$n$维酉空间$V$中的一个厄米变换，证明：对任意$\alpha\in V$，$(\bm A\alpha,\alpha)$是实数.
+\end{prob}
+\begin{proof}
+	$(\bm A\alpha,\alpha)=(\alpha,\bm A\alpha)=\overline{(\bm A\alpha,\alpha)}$.
+\end{proof}
+\begin{prob}[18]
+	设$\bm A$是$n$维酉空间$V$中的一个厄米变换.如果对$V$中任意非零向量$\alpha$都有
+	\[
+		(\bm A\alpha,\alpha)>0,
+	\]
+	则称$\bm A$为{\heiti 正定厄米变换}.证明：一个厄米变换正定的充分必要条件是其特征值都大于零.
+\end{prob}
+\begin{proof}
+	根据厄米二次型的对角化立得.
+\end{proof}
+\begin{prob}[19]
+	证明：任一可逆厄米变换$\bm A$的平方$\bm A^2$是正定厄米变换.对任意正定厄米变换$\bm A$，存在唯一正定厄米变换$\bm B$，使得$\bm A=\bm B^2$.
+\end{prob}
+\begin{proof}
+	显然$\bm A^2$厄米.注意到若$\lambda\ne 0$是$\bm A$特征值，$\lambda^2$是$\bm A^2$的特征值，由上题即知$\bm A^2$正定.若$\bm A$正定，不妨设其矩阵为对角阵$\diag{\lambda_1,\cdots,\lambda_n}$.鉴于$\lambda_k>0$，设$\diag{\sqrt{\lambda_1},\cdots,\sqrt{\lambda_n}}$对应的正定厄米变换为$\bm B$，则$\bm A=\bm B^2$.现在设$\bm A=\bm B_1^2=\bm B_2^2$，则$\bm A,\bm B_1,\bm B_2$两两可换，可同时酉对角化.再根据$\bm B_1,\bm B_2$正定即可得$\bm B_1=\bm B_2$.
+\end{proof}
+\begin{prob}[20]
+	任一可逆线性变换$\bm A$与其共轭变换$\bm A^*$的乘积$\bm A\bm A^*$是正定厄米变换.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[21]
+	设$\bm A,\bm B$是$n$维酉空间$V$内的两个厄米变换.证明$\bm{AB}$是厄米变换的充要条件是$\bm{AB}=\bm{BA}$.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[22]
+	设$\bm A,\bm B$是$n$维酉空间$V$内的两个厄米变换，证明$\bm{AB}+\bm{BA}$和$\mi(\bm{AB}-\bm{BA})$也是厄米变换.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[23]
+	设$\bm A$是$n$维酉空间$V$内的线性变换.证明：以下三个条件中的任何两条都蕴含第三条.\quad
+	\begin{enumerate*}
+		\item[(1)] $\bm A$是厄米变换.
+		\item[(2)] $\bm A$是酉变换.
+		\item[(3)] $\bm A^2=\bm E$.
+	\end{enumerate*}
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[24]
+	如果$\bm A,\bm B$是$n$维酉空间$V$内的两个正定厄米变换，$\bm U$是$V$内的酉变换.证明：当$\bm A=\bm{BU}$或$\bm B=\bm{UA}$时，有$\bm A=\bm B$且$\bm U=\bm E$.
+\end{prob}
+\begin{proof}
+	$\bm A=\bm{BU}=\bm U^{-1}\bm B$，注意到$\bm A^2=\bm B^2$，所以$\bm A=\bm B$且$\bm U=\bm E$.
+\end{proof}
+\begin{prob}[25]
+	设$\bm A$是$n$维酉空间$V$内的可逆线性变换.证明$\bm A$可唯一分解\footnotemark 为$\bm A=\bm P\bm U_1=\bm U_2\bm P$，其中$\bm P$是正定厄米变换，$\bm U_1,\bm U_2$为酉变换.
+\end{prob}
+\footnotetext{这被称为\textbf{极分解}}
+\begin{proof}
+	取$\bm P=\sqrt{\bm A\bm A^*}$，则$\bm P$正定厄米.再令$\bm U_1=\bm P^{-1}\bm A$，则有
+	\[
+		\bm U_1\bm U_1^*=\bm P^{-1}\bm A\bm A^*\bm P^{-1}=\bm P^{-1}\bm P^2\bm P^{-1}=\bm E,
+	\]
+	即$\bm U_1$是酉变换，且$\bm A=\bm P\bm U_1$.再取$\bm U_2=\bm A\bm P^{-1}$同理就有$\bm A=\bm U_2\bm P$.
+
+	现在假设$\bm A=\bm P_1\bm U_1=\bm P_2\bm U_2$.首先$\bm A^2=\bm P_1^2=\bm P_2^2$，所以$\bm P_1=\bm P_2$.再由$\bm P$可逆即得$\bm U_1=\bm U_2$.因此可逆变换的极分解是唯一的.
+\end{proof}
+\begin{prob}[26]
+	设$\bm A$是$n$维酉空间中一个正定厄米变换，它在标准正交基下的矩阵$A$称为{\heiti 正定厄米矩阵}.以$A$为矩阵的厄米二次型$X^\dagger AX$称为{\heiti 正定厄米型}.证明：任一正定厄米型可用可逆线性变数替换$X=TZ$化为$\overline{z}_1z_1+\overline{z}_2z_2+\cdots+\overline{z}_nz_n$.
+\end{prob}
+\begin{proof}
+	首先此正定厄米型可酉变换为$d_1\overline{z}_1z_1+\cdots+d_n\overline{z}_nz_n$，其中$d_i>0$.余显然.
+\end{proof}
+\begin{prob}[27]
+	设$A,B$是厄米矩阵，且$A$正定，则$A,B$可同时合同对角化.
+\end{prob}
+\begin{proof}
+	$A$正定厄米，由上题，$T^\dagger AT=E$，其中$T$可逆.而$T^\dagger BT$厄米，于是存在酉矩阵$U$使得$U^\dagger T^\dagger BTU$为对角阵，而$U^\dagger T^\dagger ATU=U^\dagger U=E$.
+\end{proof}
+\begin{prob}[28]
+	设$V$是$n$维酉空间，$\bm A,\bm B$是$V$内的厄米变换，$\bm A$正定，$\bm B$半正定.证明$V$内存在一组基，使得$\bm{AB}$在此基下的矩阵为对角阵，且主对角元非负.
+\end{prob}
+\begin{proof}
+	取$\bm C=\bm A^{1/2}\bm B^{1/2}$，则$\bm C\bm C^*=\bm A^{-1/2}(\bm{AB})\bm A^{1/2}$，即$\bm{AB}$与半正定的$\bm C\bm C^*$相似.
+\end{proof}
+\begin{prob}[29]
+	设$V$是$n$维酉空间.
+
+	(1)设$M$是$V$的子空间.在商空间$V/M$内定义内积如下：设从$V$到$M^\perp$的投影为$\bm P$，令$(\overline{\alpha},\overline{\beta})=(\bm P\alpha,\bm P\beta)$.证明$V/M$关于此内积成酉空间.
+
+	(2)设$\bm A$为$V$内线性变换，证明在$V$内存在一组标准正交基，使得$\bm A$在该组基下的矩阵成上三角形.\footnotemark
+\end{prob}
+\footnotetext{这被称为\textbf{Schur定理}.即使在不带内积结构时，复矩阵也总能相似为上三角阵.}
+\begin{proof}
+	(1)良定性显然.注意到$\bm P$是线性的，这确实构成内积.
+
+	(2)归纳.奠基平凡.设对$n-1$维酉空间可上三角化，$\bm A$总有特征值$\lambda$和$\bm A\eta=\lambda\eta$.取$M=L(\eta)$，则$M$是$A$的不变子空间.在$n-1$维商空间$V/M$中，$\bm A$在标准正交基下可上三角化.取这些基在$M^\perp$中的投影，再并上$\eta$就得到$V$的一组正交基.不妨设$\eta$是单位向量，那么在这组单位正交基下，$\bm A$的矩阵成上三角.
+\end{proof}
+\subsection{四维时空空间与辛空间}
+\begin{prob}[1]
+	在四维时空空间$\mathbb{R}^4$内定义线性变换
+	\[
+		\bm S\begin{bmatrix}
+			x_1 \\
+			x_2 \\
+			x_3 \\
+			x_4
+		\end{bmatrix}=\begin{bmatrix}
+			-x_1 \\
+			-x_2 \\
+			-x_3 \\
+			x_4
+		\end{bmatrix}.
+	\]
+	证明$\bm S$是一个Lorentz变换.
+\end{prob}
+\begin{proof}
+	显然它在标准基下的矩阵为$-E$，于是$(-E)'I(-E)=I$.同时$\bm S$将正类时向量变为正类时向量，即$\bm S$是Lorentz变换.
+\end{proof}
+\begin{prob}[2]
+	在四维时空空间$\mathbb{R}^4$内一个Lorentz变换$\bm A$，若它的行列式为$1$，则$\bm A$称为{\heiti 正常\textbf{Lorentz}变换}.如果$\bm S$如上题所述，证明任一非正常Lorentz变换$\bm U$都可表示为$\bm U=\bm S\bm A$，其中$\bm A$是正常Lorentz变换.
+\end{prob}
+\begin{proof}
+	注意到任何广义Lorentz变换的行列式为$\pm 1$.
+\end{proof}
+\begin{prob}[3]
+	设$V$是$n$维准Euclid空间.设$\alpha\in V$，对任意$\beta\in V$都有$(\alpha,\beta)=0$，证明$\alpha=0$.
+\end{prob}
+\begin{proof}
+	取一组基，则$X'GY=0$对任意$Y$成立，故$X'G=0$.度量矩阵$G$满秩，所以$X=0$，即$\alpha=0$.
+\end{proof}
+\begin{prob}[4]
+	续上题.设$\bm A$为$V$内一个线性变换.如果对任意$\alpha,\beta\in V$都有$(\bm A\alpha,\bm A\beta)=(\alpha,\beta)$，则称$\bm A$为$V$内一个{\heiti 正交变换}.在$V$内取定一组基$\epsilon_1,\epsilon_2,\cdots,\epsilon_n$，令$G=((\epsilon_i,\epsilon_j))$，称为这组基的{\heiti 度量矩阵}.若$V$内线性变换$\bm A$在此组基下的矩阵为$A$，证明$\bm A$为正交变换的充分必要条件是$A'GA=G$.
+\end{prob}
+\begin{proof}
+	$\bm A$是正交变换$\Longleftrightarrow$$(\bm A\alpha,\bm A\beta)=(\alpha,\beta)$$\Longleftrightarrow$$X'A'GAY=X'GY$$\Longleftrightarrow$$A'GA=G$.
+\end{proof}
+\begin{prob}[5]
+	证明：在$n=2m$维辛空间中存在一组基$\eta_1,\eta_2,\cdots,\eta_n$，使得度量矩阵为
+	\[
+		G=\begin{bmatrix}
+			0  & I \\
+			-I & 0
+		\end{bmatrix},
+	\]
+	其中$I$是反对角线全为$1$的$m$阶方阵.
+\end{prob}
+\begin{proof}
+	取第二类辛基$\epsilon_1,\cdots,\epsilon_n$再命$\eta_i=\epsilon_i,\,\eta_{2m+1-i}=\epsilon_{m+i}\,(1\le i\le m)$即可.
+\end{proof}
+\begin{prob}[6]
+	设$\bm R$为$n=2m$维辛空间$V$内的辛变换，如果$\bm R$有$n$个不同的特征值，证明$V$内存在一组第一类辛基，使得$\bm R$在此组基下的矩阵成对角形.
+\end{prob}
+\begin{proof}
+	当$m=1$时，由于内积满秩，设$\bm R\alpha_i=\lambda_i\alpha_i$，不妨设$(\alpha_1,\alpha_2)=1$，则$\epsilon_1,\epsilon_2$是第一类辛基，并且$\bm R$的矩阵为对角$\diag{\lambda_1,\lambda_2}$.设命题对$m-1$成立，则对$n=2m$维辛空间$V$，由于全体特征向量组成一组基，不妨设特征向量$(\epsilon_1,\epsilon_2)=1$.记$M=L(\epsilon_1,\epsilon_2)$，则$V=M\oplus M^\perp$.注意到$\lambda_1\lambda_2=1$，所以$\lambda_1,\lambda_2\ne 0$，从而$(\alpha,\epsilon_i)=0$蕴含$(\bm R\alpha,\epsilon_i)=0$，因此$M^\perp$是$\bm R$的不变子空间，并且$M^\perp$继承$V$的内积成为$n-2$维辛空间.显然$M^\perp\cong V/M$，并且在为商空间赋予诱导内积后这也是辛空间之间的同构.在$n-2$维辛空间$V/M$中，诱导的辛变换$\bm R$有$n-2$个特征值，于是存在第一类辛基$\bar{\epsilon}_3,\cdots,\bar{\epsilon}_n$使得$\bm R$的矩阵成对角形.将此结论移至$M^\perp$可知存在$M^\perp$的第一类辛基$\epsilon_3,\cdots,\epsilon_n$使得$\bm R|_{M^\perp}$的矩阵成对角形.于是存在$V$的第一类辛基$\epsilon_1,\cdots,\epsilon_n$使得$\bm R$的矩阵成对角形.归纳证毕.
+\end{proof}
+\begin{prob}[7]
+	设$V$为$2m$维辛空间，证明$V$内两组第一类辛基之间的过渡矩阵为辛矩阵.
+\end{prob}
+\begin{proof}
+	设两组第一类辛基为$\epsilon_1,\cdots,\epsilon_{2m}$和$\eta_1,\cdots,\eta_{2m}$，它们的度量矩阵均为$G=(g_{ij})$.假设过渡矩阵$R=(r_{ij})$，即$\epsilon_k=r_{ik}\eta_i$，那么$(\epsilon_k,\epsilon_l)=r_{ik}r_{jl}(\eta_i,\eta_j)$，也即$r_{ik}r_{jl}g_{ij}=g_{kl}$.这就是$R'GR=G$的分量写法，所以$R$是辛矩阵.
+\end{proof}
+\begin{prob}[8]
+	设$\bm R$是$2m$维辛空间$V$内的线性变换，证明下列命题等价：
+
+	(1)$\bm R$为$V$内辛变换；
+
+	(2)$\bm R$将第一类辛基变为第一类辛基；
+
+	(3)$\bm R$在第一类辛基下的矩阵为辛矩阵.
+\end{prob}
+\begin{proof}
+	由上题易知(2)$\Leftrightarrow$(3)，往证(1)$\Leftrightarrow$(3).实际上，$\bm R$是辛变换$\Leftrightarrow$$(\bm R\alpha,\bm R\beta)=(\alpha,\beta)$.取一组第一类辛基，即为$X'R'GRY=X'GY$.上式对任意$X,Y$成立，故而$R'GR=G$，即$R$是辛矩阵.反之亦然.
+\end{proof}
+\begin{prob}[9]
+	设$V$是$2m$维辛空间，$M$是$V$的子空间.定义
+	\[
+		M^\perp=\left\{\alpha\in V\mid \forall\beta\in M,\,(\alpha,\beta)=0\right\},
+	\]
+	则$M^\perp$是$V$的子空间.
+
+	(1)证明$V=M\oplus M^\perp$的充要条件是$M$关于$V$的内积也成辛空间.
+
+	(2)举例说明存在$V$的子空间$M$，使得$V$不是$M$与$M^\perp$的直和.
+\end{prob}
+\begin{proof}
+	(1)(充分性)取$\alpha\in M\cap M^\perp$，则对任意$\beta\in M$有$(\alpha,\beta)=0$.根据$M$继承的内积非退化，可知$\alpha=0$，从而$M+M^\perp$是直和.取$W$的一组基$\epsilon_1,\cdots,\epsilon_k$扩充为$V$的基$\epsilon_1,\cdots,\epsilon_{2m}$，并设度量矩阵为$G$.将$\epsilon_1,\cdots,\epsilon_k$的坐标按列排成矩阵$\widetilde{X}$，则$\beta\in W^\perp$当且仅当$\beta$的坐标$Y$满足$\widetilde{X}'GY=0$.因此$W^\perp$与方程解空间同构，所以$\dim W^\perp=\dim V-\dim W$.于是$V=M\oplus M^\perp$.
+
+	(必要性)由于$M\cap M^\perp=0$，$M$上的内积非退化，所以$M$成辛空间.
+
+	(2)例如取$\mathbb{R}^{2n}$的第二类辛基$x_1,\cdots,x_n,y_1,\cdots,y_n$，命$M=L(x_1,x_2)$，则$M\subseteq M^\perp$.
+\end{proof}
+\begin{note}
+	在辛空间$V$中，子空间$W\subseteq V$的辛正交补$W^\perp$满足$(W^\perp)^\perp=W$和$\dim W+\dim W^\perp=\dim V$.但与正交补不同，可能有$W\cap W^\perp\ne0$.事实上共有如下几种情况：
+	\begin{mylist}
+		\item $W$是辛子空间：$W\cap W^\perp=0$.($W$继承的内积非退化)
+		\item $W$是迷向子空间：$W\subseteq W^\perp$.(内积限制在$W$上为$0$)
+		\item $W$ is coisotropic：$W^\perp\subseteq W$.($V/W^\perp$上内积非退化，即$W^\perp$是迷向子空间)
+		\item $W$是Lagrange子空间：$W=W^\perp$.(极大的迷向子空间)
+	\end{mylist}
+\end{note}

@@ -1,0 +1,704 @@
+\section{行列式}
+\subsection{平行六面体的有向体积}
+\subsection{\texorpdfstring{$n$}{n}阶方阵的行列式}
+\begin{prob}[2]
+	设 $f(A)$ 是 $M_n(K)\,(n\ge2)$ 上的列线性函数.证明下面三个命题等价：
+	\begin{mylist}
+		\item $f(A)$ 为反对称列线性函数；
+		\item 互换 $A$ 的 $i,j$ 两列 $(i\ne j)$ 得方阵 $B$ 时， $f(B)=-f(A)$ ；
+		\item 将 $A$ 的第 $j$ 列加上第 $i$ 列的 $k$ 倍 $(i\ne j)$ 得方阵 $B$ 时， $f(B)=f(A)$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	$(1)\Rightarrow(2)$ 只需注意到
+	\begin{align*}
+		f(A)+f(B) & =f(\cdots,\beta_i,\cdots,\beta_j,\cdots)+f(\cdots,\beta_j,\cdots,\beta_i,\cdots) \\
+		          & =f(\cdots,\beta_i+\beta_j,\cdots,\beta_i+\beta_j,\cdots)=0.
+	\end{align*}\par
+	$(2)\Rightarrow(3)$ 由 $f$ 列线性易得
+	\begin{align*}
+		f(B) & =f(\cdots,\beta_i,\cdots,\beta_j+k\beta_i,\cdots) \\
+		     & =f(A)+kf(\cdots,\beta_i,\cdots,\beta_i,\cdots).
+	\end{align*}
+	从(2)可知 $f(\cdots,\beta_i,\cdots,\beta_i,\cdots)=0$ ，于是 $f(B)=f(A)$ .\par
+	$(3)\Rightarrow(1)$ 由(3)可得 $f(\cdots,\beta_i,\cdots,\beta_i,\cdots)=f(\cdots,0,\cdots)=0$ ，于是 $f(A)$ 反对称.
+\end{proof}
+\begin{note}
+	实际上，我们需要区分交错和反对称两个相似的概念.交错是指$f(\alpha,\alpha)=0$，而反对称是指$f(\alpha,\beta)=-f(\beta,\alpha)$.在特征2的域上二者是不同的.本题实际上只用到交错性质，从而命题对任意域上的多重交错线性函数都成立.
+\end{note}
+\begin{prob}[3]
+	证明在 $M_n(K)$ 内存在无穷多个满足以下条件的列线性函数 $f(A)$ ：若 $\rank A<n$ ，则 $f(A)=0$ .
+\end{prob}
+\begin{proof}
+	例如 $f(A)=k\det A$ ，其中 $k\in K$ 是任取的.
+\end{proof}
+\begin{note}
+	显然这一证明只适用于无限域.
+\end{note}
+\begin{prob}[4]
+	设 $f(A)$ 为 $M_n(K)\,(n\ge2)$ 上的反对称列线性函数.如果存在一个满秩方阵 $A_0\in M_n(K)$ 使得 $f(A_0)=0$ ，证明 $f(A)\equiv0$ .
+\end{prob}
+\begin{proof}
+	不妨设 $\rank A=n$ ，则 $A_0$ 经一系列初等列变换化为 $A$ ，因此 $f(A)=f(A_0)=0$ .
+\end{proof}
+\begin{prob}[11]
+	由
+	\[
+		\begin{vmatrix}
+			1      & 1      & \cdots & 1      \\
+			1      & 1      & \cdots & 1      \\
+			\vdots & \vdots &        & \vdots \\
+			1      & 1      & \cdots & 1      \\
+		\end{vmatrix}=0,
+	\]
+	\hypertarget{Permutation}{证明}：前 $n$ 个自然数 $1,2,\cdots,n$ 所组成的排列中，奇、偶排列各占一半.
+\end{prob}
+\begin{proof}
+	设 $r,s$ 分别为前 $n$ 个自然数组成的排列中奇、偶排列的数量.注意到
+	\[
+		\begin{vmatrix}
+			1      & 1      & \cdots & 1      \\
+			1      & 1      & \cdots & 1      \\
+			\vdots & \vdots &        & \vdots \\
+			1      & 1      & \cdots & 1      \\
+		\end{vmatrix}\
+		=s-r=0,
+	\]
+	即证.
+\end{proof}
+\begin{prob}[12]
+	求
+	\[
+		\sum_{j_1j_2\cdots j_n}
+		\begin{vmatrix}
+			a_{1j_1} & a_{1j_2} & \cdots & a_{1j_n} \\
+			a_{2j_1} & a_{2j_2} & \cdots & a_{2j_n} \\
+			\vdots   & \vdots   &        & \vdots   \\
+			a_{nj_1} & a_{nj_2} & \cdots & a_{nj_n}
+		\end{vmatrix},
+	\]
+	其中和号表示对前 $n$ 个自然数的所有可能排列 $j_1j_2\cdots j_n$ 求和.
+\end{prob}
+\begin{sol}
+	记方阵 $(a_{ij})$ 的行列式为 $D$ .注意到排列 $j_1j_2\cdots j_n$ 的逆序数与通过对换将其化为自然序的次数有相同的奇偶性，于是
+	\[
+		\sum_{j_1j_2\cdots j_n}
+		\begin{vmatrix}
+			a_{1j_1} & a_{1j_2} & \cdots & a_{1j_n} \\
+			a_{2j_1} & a_{2j_2} & \cdots & a_{2j_n} \\
+			\vdots   & \vdots   &        & \vdots   \\
+			a_{nj_1} & a_{nj_2} & \cdots & a_{nj_n}
+		\end{vmatrix}
+		=\sum_{j_1j_2\cdots j_n}(-1)^{N(j_1j_2\cdots j_n)}D=0.
+	\]
+	最后一个等号是因为\hyperlink{Permutation}{题目11}.
+\end{sol}
+\begin{prob}[13]
+	设 $f(A)$ 为 $M_n(K)\,(n\ge 2)$ 上的反对称列线性函数且 $f(A)\not\equiv0$ .证明存在 $K$ 内非零常数 $a$ ，使 $f(A)=a\det A$ .
+\end{prob}
+\begin{proof}
+	记 $a=f(E)\ne0$ ，则 $f(E)/a=1$ ，且 $f(E)/a$ 还是一个反对称列线性函数，从而是行列式函数，即 $f(A)=a\det A$ .
+\end{proof}
+\begin{prob}[14]
+	设 $A$ 是奇数阶反对称矩阵，证明 $|A|=0$ .
+\end{prob}
+\begin{proof}[法一]
+	由于 $A$ 为奇数阶，所以
+	\[
+		A'=-A\implies |A'|=-|A|,
+	\]
+	即 $|A|=0$ .
+\end{proof}
+\begin{proof}[法二]
+	作映射$\varphi\colon a_{1\sigma(1)}\cdots a_{n\sigma(n)}\mapsto a_{\sigma(1)1}\cdots a_{\sigma(n)n}$，其中$\sigma(i)\ne i$.注意$\varphi^2=\operatorname*{id}$，所以$\varphi$是双射.断言$\varphi$将$|A|$的单项映到不同的单项，否则$a_{i\sigma(i)}$将能两两配对，与$n$为奇数矛盾.考虑到$A$反对称，因此$a_{1\sigma(1)}\cdots a_{n\sigma(n)}=-a_{\sigma(1)1}\cdots a_{\sigma(n)n}$，即$|A|$被分为两两相加为零的组合，于是$|A|=0$.
+\end{proof}
+\begin{note}
+	证法一在特征2的域上不能施行，但证法二说明了命题在任何域\footnotemark 上成立.当然在一般的域上反对称的定义需要补充对角元为零的条件.
+\end{note}
+\footnotetext{实际上，在任何交换环上成立}
+\begin{prob}[20]
+	证明：
+	\[
+		\begin{vmatrix}
+			b_1+c_1 & c_1+a_1 & a_1+b_1 \\
+			b_2+c_2 & c_2+a_2 & a_2+b_2 \\
+			b_3+c_3 & c_3+a_3 & a_3+b_3
+		\end{vmatrix}=2
+		\begin{vmatrix}
+			a_1 & b_2 & c_1 \\
+			a_2 & b_2 & c_2 \\
+			a_3 & b_3 & c_3
+		\end{vmatrix}.
+	\]
+\end{prob}
+\begin{proof}
+	显然
+	\[
+		\begin{vmatrix}
+			b_1+c_1 & c_1+a_1 & a_1+b_1 \\
+			b_2+c_2 & c_2+a_2 & a_2+b_2 \\
+			b_3+c_3 & c_3+a_3 & a_3+b_3
+		\end{vmatrix}
+		=\begin{vmatrix}
+			b_1 & c_1 & a_1 \\
+			b_2 & c_2 & a_2 \\
+			b_3 & c_3 & a_3
+		\end{vmatrix}+\begin{vmatrix}
+			c_1 & a_1 & b_1 \\
+			c_2 & a_2 & b_2 \\
+			c_3 & a_3 & b_3
+		\end{vmatrix}=2
+		\begin{vmatrix}
+			a_1 & b_2 & c_1 \\
+			a_2 & b_2 & c_2 \\
+			a_3 & b_3 & c_3
+		\end{vmatrix}.
+	\]
+\end{proof}
+\begin{prob}[23]
+	证明：
+	\[
+		\begin{vmatrix}
+			a_{11} & \cdots  & \cdots    & a_{1n} \\
+			a_{21} & \cdots  & a_{2,n-1} & 0      \\
+			\vdots & \iddots & \iddots   & \vdots \\
+			a_{n1} & 0       & \cdots    & 0
+		\end{vmatrix}
+		=(-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1}.
+	\]
+\end{prob}
+\begin{proof}
+	只需证排列 $n(n-1)\cdots 21$ 的逆序数为 $\frac{n(n-1)}{2}$ .这是显然的.
+\end{proof}
+\begin{prob}[24]
+	给定 $n-1$ 个互不相同的数 $a_1,a_2,\cdots,a_{n-1}$ ，令
+	\[
+		P(x)=
+		\begin{vmatrix}
+			1      & x       & x^2       & \cdots & x^{n-1}       \\
+			1      & a_1     & a_1^2     & \cdots & a_1^{n-1}     \\
+			\vdots & \vdots  & \vdots    &        & \vdots        \\
+			1      & a_{n-1} & a_{n-1}^2 & \cdots & a_{n-1}^{n-1}
+		\end{vmatrix}.
+	\]
+	\begin{mylist}
+		\item 证明： $P(x)$ 是一个 $n-1$ 次多项式；
+		\item 求出 $P(x)$ 的 $n-1$ 个根.
+	\end{mylist}
+\end{prob}
+\begin{sol}
+	根据Vandermonde行列式的结论易得
+	\[
+		P(x)=\prod_{1\le j<i\le n-1}(a_i-a_j)\prod_{k=1}^{n-1}(a_k-x).
+	\]
+	因此 $P(x)$ 是 $n-1$ 次多项式，且它的 $n-1$ 个根分别为 $a_1,\cdots,a_{n-1}$ .
+\end{sol}
+\begin{prob}[25]
+	设给定 $n$ 阶方阵 $A=(a_{ij})$ ，将其每个元素 $a_{ij}$ 乘以 $b^{i-j}\,(b\ne0)$ 后得到 $n$ 阶方阵 $B$ .证明： $|A|=|B|$ .
+\end{prob}
+\begin{proof}
+	注意到 $B=(a_{ij}b^{i-j})$ 且 $i_1+i_2+\cdots+i_n=1+2+\cdots+n$ ，按定义有
+	\begin{align*}
+		|B| & =\sum_{i_1i_2\cdots i_n}(-1)^{N(i_1i_2\cdots i_n)}a_{1i_1}b^{1-i_1}a_{2i_2}b^{2-i_2}\cdots a_{ni_n}b^{n-i_n} \\
+		    & =\sum_{i_1i_2\cdots i_n}(-1)^{N(i_1i_2\cdots i_n)}a_{1i_1}a_{2i_2}\cdots a_{ni_n}=|A|.
+	\end{align*}
+\end{proof}
+\begin{prob}[26-A]
+	计算下列 $n$ 阶行列式：
+
+	(1) $\begin{vmatrix}
+			a_1    & x      & x      & \cdots & \cdots & x      \\
+			x      & a_2    & x      & \cdots & \cdots & x      \\
+			x      & x      & a_3    & \cdots & \cdots & x      \\
+			\vdots &        &        & \ddots &        & \vdots \\
+			\vdots &        &        &        & \ddots & \vdots \\
+			x      & \cdots & \cdots & \cdots & x      & a_n
+		\end{vmatrix}$ ；\qquad\qquad
+	(3) $\begin{vmatrix}
+			a_1b_1 & a_1b_2 & a_1b_3 & \cdots & a_1b_n \\
+			a_1b_2 & a_2b_2 & a_2b_3 & \cdots & a_2b_n \\
+			a_1b_3 & a_2b_3 & a_3b_3 & \cdots & a_3b_n \\
+			\vdots & \vdots & \vdots &        & \vdots \\
+			a_1b_n & a_2b_n & a_3b_n & \cdots & a_nb_n
+		\end{vmatrix}$ .
+\end{prob}
+\begin{sol}
+	(1)从第 $n$ 行开始将每行减去上一行后化为
+	\begin{align*}
+		                      & {}\begin{vmatrix}
+			a_1    & x      & x      & \cdots & x         & x      \\
+			x-a_1  & a_2-x  & 0      & \cdots & 0         & 0      \\
+			0      & x-a_2  & a_3-x  & \cdots & 0         & 0      \\
+			\vdots & \vdots & \vdots &        & \vdots    & \vdots \\
+			0      & 0      & 0      & \cdots & a_{n-1}-x & 0      \\
+			0      & 0      & 0      & \cdots & x-a_{n-1} & a_n-x
+		\end{vmatrix}                                                               \\
+		=\prod_{i=1}^n(a_i-x)
+		                      & {}\begin{vmatrix}
+			\dfrac{x}{a_1-x}+1 & \dfrac{x}{a_2-x} & \dfrac{x}{a_3-x} & \cdots & \dfrac{x}{a_{n-1}-x} & \dfrac{x}{a_n-x} \\
+			-1                 & 1                & 0                & \cdots & 0                    & 0                \\
+			0                  & -1               & 1                & \cdots & 0                    & 0                \\
+			\vdots             & \vdots           & \vdots           &        & \vdots               & \vdots           \\
+			0                  & 0                & 0                & \cdots & 1                    & 0                \\
+			0                  & 0                & 0                & \cdots & -1                   & 1
+		\end{vmatrix}                                                               \\
+		=\prod_{i=1}^n(a_i-x) & {}\left|\operatorname*{diag}\left(\sum_{i=1}^{n}\frac{x}{a_i-x}+1,1,\cdots,1\right)\right| \\
+		=\prod_{i=1}^n(a_i-x) & {}\left(\sum_{i=1}^{n}\frac{x}{a_i-x}+1\right).
+	\end{align*}
+
+	(3)直接计算可得
+	\begin{align*}
+		\text{原式} & =a_1b_n\begin{vmatrix}
+			b_1    & a_1b_2 & a_1b_3 & \cdots & a_1b_n \\
+			b_2    & a_2b_2 & a_2b_3 & \cdots & a_2b_n \\
+			b_3    & a_2b_3 & a_3b_3 & \cdots & a_3b_n \\
+			\vdots & \vdots & \vdots &        & \vdots \\
+			1      & a_2    & a_3    & \cdots & a_n
+		\end{vmatrix}                          \\
+		            & =a_1b_n\begin{vmatrix}
+			0      & a_1b_2-a_2b_1 & a_1b_3-a_3b_1 & \cdots & a_1b_n-a_nb_1         \\
+			0      & 0             & a_2b_3-a_3b_2 & \cdots & a_2b_n-a_nb_2         \\
+			\vdots & \vdots        & \vdots        &        & \vdots                \\
+			0      & 0             & 0             & \cdots & a_{n-1}b_n-a_nb_{n-1} \\
+			1      & a_2           & a_3           & \cdots & a_n
+		\end{vmatrix}                          \\
+		            & =(-1)^{n+1}a_1b_n\prod_{i=1}^{n-1}(a_ib_{i+1}-a_{i+1}b_i).
+	\end{align*}
+\end{sol}
+\begin{prob}[26-B]
+	计算下列 $n$ 阶行列式：
+
+	(5) $\begin{vmatrix}
+			2\cos\alpha & 1           & 0           & \cdots & \cdots & 0           \\
+			1           & 2\cos\alpha & 1           &        &        & \vdots      \\
+			0           & 1           & 2\cos\alpha & \ddots &        & \vdots      \\
+			\vdots      &             & \ddots      & \ddots & \ddots & 0           \\
+			\vdots      &             &             & \ddots & \ddots & 1           \\
+			0           & \cdots      & \cdots      & 0      & 1      & 2\cos\alpha
+		\end{vmatrix}$ ；
+
+	(6) $\begin{vmatrix}
+			a_1    & a_2    & a_3    & \cdots & \cdots   & a_n    \\
+			-x_1   & x_2    & 0      & \cdots & \cdots   & 0      \\
+			0      & -x_2   & x_3    & 0      & \cdots   & 0      \\
+			\vdots &        & \ddots & \ddots &          & \vdots \\
+			\vdots &        &        & \ddots & \ddots   & 0      \\
+			0      & \vdots & \vdots & 0      & -x_{n-1} & x_n
+		\end{vmatrix}$ .
+\end{prob}
+\begin{sol}
+	(5){\bf 法一}\quad 这是三对角线行列式，带入公式即得.
+
+	(5){\bf 法二}\quad 设行列式为 $D_n$ ，按第一行展开可得递推
+	\[
+		D_n=2\cos\alpha D_{n-1}-D_{n-2}.
+	\]
+	这是二阶齐次线性递推.当 $\sin\alpha=0$ 时，特征方程仅一根 $\cos\alpha$ ，有 $D_n=(n+1)\cos^n\alpha$ .
+
+	当 $\sin\alpha\ne0$ 时，特征方程有两复根 $e^{\pm\mi\alpha}$ .此时
+	\[
+		D_n=\frac{e^{(n+1)\mi\alpha}-e^{-(n+1)\mi\alpha}}{e^{\mi\alpha}-e^{-\mi\alpha}}=\frac{\sin(n+1)\alpha}{\sin\alpha}.
+	\]
+
+	(6)不难发现
+	\begin{align*}
+		\text{原式}=x_1x_2\cdots x_n\begin{vmatrix}
+			\dfrac{a_1}{x_1} & \dfrac{a_2}{x_2} & \dfrac{a_3}{x_3} & \cdots & \dfrac{a_{n-1}}{x_{n-1}} & \dfrac{a_n}{x_n} \\
+			-1               & 1                & 0                & \cdots & 0                        & 0                \\
+			0                & -1               & 1                & \cdots & 0                        & 0                \\
+			\vdots           & \vdots           & \vdots           &        & \vdots                   & \vdots           \\
+			0                & 0                & 0                & \cdots & 1                        & 0                \\
+			0                & 0                & 0                & \cdots & -1                       & 1
+		\end{vmatrix}=x_1x_2\cdots x_n\sum_{i=1}^{n}\frac{a_i}{x_i}.
+	\end{align*}
+\end{sol}
+\begin{prob}[27]
+	设 $f_i(x)$ 是数域 $K$ 上的 $i$ 次多项式，其首项系数为 $a_i\,(i=0,1,2,\cdots,n-1)$ .又设 $b_1,b_2,\cdots,b_n$ 是 $K$ 内一组数.试计算下列 $n$ 阶行列式：
+	\[
+		\begin{vmatrix}
+			f_0(b_1)     & f_0(b_2)     & \cdots & f_0(b_n)     \\
+			f_1(b_1)     & f_1(b_2)     & \cdots & f_1(b_n)     \\
+			\vdots       & \vdots       &        & \vdots       \\
+			f_{n-1}(b_1) & f_{n-1}(b_2) & \cdots & f_{n-1}(b_n)
+		\end{vmatrix}.
+	\]
+\end{prob}
+\begin{sol}
+	由于只要有两列成比例，行列式就为零，所以原式等于
+	\begin{align*}
+		  & {}\begin{vmatrix}
+			a_0              & a_0              & \cdots & a_0              \\
+			a_1b_1           & a_1b_2           & \cdots & a_1b_n           \\
+			\vdots           & \vdots           &        & \vdots           \\
+			a_{n-1}b_1^{n-1} & a_{n-1}b_2^{n-1} & \cdots & a_{n-1}b_n^{n-1}
+		\end{vmatrix}=a_0a_1\cdots a_{n-1}\begin{vmatrix}
+			1         & 1         & \cdots & 1         \\
+			b_1       & b_2       & \cdots & b_n       \\
+			\vdots    & \vdots    &        & \vdots    \\
+			b_1^{n-1} & b_2^{n-1} & \cdots & b_n^{n-1}
+		\end{vmatrix} \\
+		= & {}a_0a_1\cdots a_{n-1}\prod_{1\le j<i\le n}(b_i-b_j),
+	\end{align*}
+	最后一个等号利用了Vandermonde行列式.
+\end{sol}
+\begin{prob}[28]
+	试计算下述 $n$ 阶行列式：
+	\[
+		\begin{vmatrix}
+			1                 & 1                 & \cdots & 1                 \\
+			\cos\alpha_1      & \cos\alpha_2      & \cdots & \cos\alpha_n      \\
+			\cos2\alpha_1     & \cos2\alpha_2     & \cdots & \cos2\alpha_n     \\
+			\vdots            & \vdots            &        & \vdots            \\
+			\cos(n-1)\alpha_1 & \cos(n-1)\alpha_2 & \cdots & \cos(n-1)\alpha_n
+		\end{vmatrix}
+	\]
+\end{prob}
+\begin{sol}
+	根据de Moivre公式易得
+	\[
+		\cos m\alpha=2^{m-1}\cos^m\alpha-(\mathrm{C}_m^2+2\mathrm{C}_m^4+\cdots)\cos^{m-2}\alpha+\cdots.
+	\]
+	由上题可知原行列式就等于
+	\begin{align*}
+		  & {}\begin{vmatrix}
+			1                         & 1                         & \cdots & 1                         \\
+			\cos\alpha_1              & \cos\alpha_2              & \cdots & \cos\alpha_n              \\
+			2\cos^2\alpha_1           & 2\cos^2\alpha_2           & \cdots & 2\cos^2\alpha_n           \\
+			\vdots                    & \vdots                    &        & \vdots                    \\
+			2^{n-2}\cos^{n-1}\alpha_1 & 2^{n-2}\cos^{n-1}\alpha_2 & \cdots & 2^{n-2}\cos^{n-1}\alpha_n
+		\end{vmatrix}                          \\
+		= & {}2^{\frac{(n-1)(n-2)}{2}}\begin{vmatrix}
+			1                  & 1                  & \cdots & 1                  \\
+			\cos\alpha_1       & \cos\alpha_2       & \cdots & \cos\alpha_n       \\
+			\vdots             & \vdots             &        & \vdots             \\
+			\cos^{n-1}\alpha_1 & \cos^{n-1}\alpha_2 & \cdots & \cos^{n-1}\alpha_n
+		\end{vmatrix}.
+	\end{align*}
+	因此原行列式的值为 $2^{\frac{(n-1)(n-2)}{2}}\displaystyle\prod_{1\le j<i\le n}(\cos\alpha_i-\cos\alpha_j)$ .
+\end{sol}
+\subsection{行列式的初步应用}
+\begin{prob}[1]
+	设 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 是一个线性无关向量组，而
+	\[
+		\beta_i=\sum_{j=1}^{s}a_{ij}a_j,\quad i=1,2,\cdots,s.
+	\]
+	证明 $\beta_1,\beta_2,\cdots,\beta_s$ 线性无关的充分必要条件是下述 $s$ 阶行列式
+	\[
+		\begin{vmatrix}
+			a_{11} & a_{12} & \cdots & a_{1s} \\
+			a_{21} & a_{22} & \cdots & a_{2s} \\
+			\vdots & \vdots &        & \vdots \\
+			a_{s1} & a_{s2} & \cdots & a_{ss}
+		\end{vmatrix}\ne0.
+	\]
+\end{prob}
+\begin{proof}
+	设 $x_1\beta_1+x_2\beta_2+\cdots+x_s\beta_s=0$ ，亦即
+	\[
+		x_1\sum_ja_{1j}\alpha_j+\cdots+x_s\sum_ja_{sj}\alpha_j=0.
+	\]
+	此式可改写为
+	\[
+		\sum_ia_{i1}x_i\alpha_1+\cdots+\sum_ia_{is}x_i\alpha_s=0.
+	\]
+	注意到 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 线性无关，上式等价于 $\sum_ia_{ij}x_i=0\,(1\le j\le s)$ .
+
+	于是 $\beta_1,\beta_2,\cdots,\beta_s$ 线性无关等价于方程组 $\sum_ia_{ij}x_i=0\,(1\le j\le s)$ 只有零解，也就等价于 $\det(a_{ij})\ne0$ .
+\end{proof}
+\begin{prob}[4]
+	给定线性方程组
+	\[
+		\sum_{j=1}^na_{ij}x_j=0,\quad i=1,\cdots,n-1,
+	\]
+	以 $M_i$ 表示其系数矩阵划去第 $i$ 列后所剩 $n-1$ 阶方阵的行列式.证明：
+	\begin{mylist}
+		\item  $(M_1,-M_2,\cdots,(-1)^{n-1}M_n)$ 是方程组的解；
+		\item 若上述方程组系数矩阵的秩为 $n-1$ ，则方程组的解均为 $(M_1,-M_2,\cdots,(-1)^{n-1}M_n)$ 的倍数.
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)在系数矩阵里加上第 $n$ 行 $(a_{i1},\cdots,a_{in})$ 得 $n$ 阶方阵 $A^i\,(1\le i\le n)$ ，对其按第 $n$ 行展开得
+	\[
+		(-1)^{i+1}a_{i1}M_1+\cdots+(-1)^{i+n}a_{in}M_n=0,\quad i=1,\cdots,s,
+	\]
+	整理即证.
+
+	(2)因为方程组基础解系中向量个数为 $1$ .
+\end{proof}
+\begin{prob}[5]
+	证明：对 $n$ 阶方阵 $A\,(n\ge2)$ ，有 $|A^*|=|A|^{n-1}$ .
+\end{prob}
+\begin{proof}
+	若 $A$ 满秩，由于 $|A||A^*|=|A|^n$ ，即证.
+
+	若 $A$ 不满秩，不妨设 $\rank A>0$ ，否则结论是平凡的.由于 $AA^*=|A|E=0$ ，矩阵 $A^*$ 的列向量都是方程 $AX=0$ 的解.注意到 $AX=0$ 基础解系中向量个数小于 $n$ ， $A^*$ 的列向量组一定线性相关，即 $\rank A^*<n$ .于是 $|A^*|=0=|A|^{n-1}$ .
+\end{proof}
+\begin{prob}[6]
+	\hypertarget{RankOfAdjoint}{设} $A$ 是 $n$ 阶方阵， $n\ge2$ .证明：
+	\[
+		\rank A^*=\begin{cases}
+			n, & \text{当}\,\rank A=n,   \\
+			1, & \text{当}\,\rank A=n-1, \\
+			0, & \text{当}\,\rank A<n-1.
+		\end{cases}
+	\]
+\end{prob}
+\begin{proof}
+	当 $\rank A=n$ 时，由上题知 $|A^*|=|A|^{n-1}\ne0$ .
+
+	当 $\rank A=n-1$ 时， $A$ 的一个 $n-1$ 阶子式非零，这恰是某个矩阵元的余子式，从而 $A^*$ 非零，即 $\rank A^*\ge1$ .同时与上题过程同理可知 $\rank A^*\le 1$ ，即证.
+
+	当 $\rank A<n-1$ 时， $A$ 的所有 $n-1$ 阶子式均为零，即所有余子式都为零.
+\end{proof}
+\begin{prob}[7]
+	设 $A,B,T$ 均为 $n$ 阶实方阵， $T$ 可逆.证明：
+	\begin{mylist}
+		\item 若 $B=T^{-1}AT$ ，则 $|B|=|A|$ ；
+		\item 若 $B=T'AT$ 且 $|A|>0$ ，则 $|B|>0$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)注意到 $|T||T^{-1}|=1$ ，因此 $|B|=|T^{-1}||A||T|=|A|$ .
+
+	(2) $|B|=|T'||A||T|=|T|^2|A|>0$ .
+\end{proof}
+\begin{prob}[8]
+	设将 $n$ 阶方阵 $R$ 分块
+	\[
+		R=\begin{bmatrix}
+			A & B \\
+			C & D
+		\end{bmatrix},
+	\]
+	其中 $A$ 为 $k$ 阶可逆方阵，证明：
+	\[
+		|R|=|A|\cdot|D-CA^{-1}B|.
+	\]
+\end{prob}
+\begin{proof}
+	注意到
+	\[
+		\begin{bmatrix}
+			E        & 0 \\
+			-CA^{-1} & E
+		\end{bmatrix}\begin{bmatrix}
+			A & B \\
+			C & D
+		\end{bmatrix}=\begin{bmatrix}
+			A & B          \\
+			0 & D-CA^{-1}B
+		\end{bmatrix},
+	\]
+	所以 $|R|=|A|\cdot|D-CA^{-1}B|$ .
+\end{proof}
+\begin{prob}[11]
+	给定数域 $K$ 上 $n$ 个互不相同的数 $a_1,a_2,\cdots,a_n$ ，又任意给定数域 $K$ 上 $n$ 个数 $b_1,b_2,\cdots,b_n$ .证明：存在数域 $K$ 上一个次数小于 $n$ 的多项式 $f(x)$ ，使得
+	\[
+		f(a_i)=b_i,\quad i=1,2,\cdots,n,
+	\]
+	且这样的多项式是唯一的.
+\end{prob}
+\begin{proof}
+	引入以下记号
+	\[
+		A=\begin{bmatrix}
+			1      & a_1    & a_1^2  & \cdots & a_1^{n-1} \\
+			1      & a_2    & a_2^2  & \cdots & a_2^{n-1} \\
+			\vdots & \vdots & \vdots &        & \vdots    \\
+			1      & a_n    & a_2^n  & \cdots & a_n^{n-1} \\
+		\end{bmatrix},\,B=\begin{bmatrix}
+			b_1 \\b_2\\\vdots\\b_n
+		\end{bmatrix},
+	\]
+	则根据Vandermonde行列式的性质，矩阵 $A$ 满秩，因而线性方程组 $AX=B$ 有唯一解.其解就是多项式 $f(x)$ 的各阶项系数，并且 $\deg f(x)<n$ .
+\end{proof}
+\begin{prob}[12]
+	计算下列 $n$ 阶行列式：
+	\begin{mylist}
+		\item  $\begin{vmatrix}
+				1+x_1y_1 & 1+x_1y_2 & \cdots & 1+x_1y_n \\
+				1+x_2y_1 & 1+x_2y_2 & \cdots & 1+x_2y_n \\
+				\vdots   & \vdots   &        & \vdots   \\
+				1+x_ny_1 & 1+x_ny_2 & \cdots & 1+x_ny_n
+			\end{vmatrix}$ ；
+		\item  $\begin{vmatrix}
+				s_0     & s_1    & s_2     & \cdots & s_{n-1}  \\
+				s_1     & s_2    & s_3     & \cdots & s_n      \\
+				s_2     & s_3    & s_4     & \cdots & s_{n+1}  \\
+				\vdots  & \vdots & \vdots  &        & \vdots   \\
+				s_{n-1} & s_n    & s_{n+1} & \cdots & s_{2n-2}
+			\end{vmatrix}$ ，\par
+		其中 $s_k=a_1^k+a_2^k+\cdots+a_n^k$ .
+	\end{mylist}
+\end{prob}
+\begin{sol}
+	(1)注意到原式等于
+	\[
+		\begin{vmatrix}
+			1      & x_1    & 0      & \cdots & 0      \\
+			1      & x_2    & 0      & \cdots & 0      \\
+			1      & x_3    & 0      & \cdots & 0      \\
+			\vdots & \vdots & \vdots &        & \vdots \\
+			1      & x_n    & 0      & \cdots & 0
+		\end{vmatrix}\begin{vmatrix}
+			1      & 1      & \cdots & 1      \\
+			y_1    & y_2    & \cdots & y_n    \\
+			0      & 0      & \cdots & 0      \\
+			\vdots & \vdots &        & \vdots \\
+			0      & 0      & \cdots & 0
+		\end{vmatrix}=0.
+	\]
+
+	(2)注意到原式等于
+	\[
+		\begin{vmatrix}
+			1         & 1         & \cdots & 1         \\
+			a_1       & a_2       & \cdots & a_n       \\
+			\vdots    & \vdots    &        & \vdots    \\
+			a_1^{n-1} & a_2^{n-1} & \cdots & a_n^{n-1}
+		\end{vmatrix}\begin{vmatrix}
+			1      & a_1    & \cdots & a_1^{n-1} \\
+			1      & a_2    & \cdots & a_2^{n-1} \\
+			\vdots & \vdots &        & \vdots    \\
+			1      & a_n    & \cdots & a_n^{n-1}
+		\end{vmatrix}=\prod_{1\le j<i\le n}(a_i-a_j)^2.
+	\]
+	实际上这就是多项式$f(x)=(x-a_1)\cdots(x-a_n)$的判别式$D(f)$.
+\end{sol}
+\begin{prob}[13]
+	设 $A,B$ 分别是数域 $K$ 上的 $n\times m$ 与 $m\times n$ 矩阵.证明：
+	\[
+		\begin{vmatrix}
+			E_m & B   \\
+			A   & E_n
+		\end{vmatrix}=|E_n-AB|=|E_m-BA|.
+	\]
+\end{prob}
+\begin{proof}
+	注意到
+	\begin{gather*}
+		\begin{bmatrix}
+			E_m & 0   \\
+			-A  & E_n
+		\end{bmatrix}\begin{vmatrix}
+			E_m & B   \\
+			A   & E_n
+		\end{vmatrix}=\begin{bmatrix}
+			E_m & B      \\
+			O   & E_n-AB
+		\end{bmatrix},\\
+		\begin{vmatrix}
+			E_m & B   \\
+			A   & E_n
+		\end{vmatrix}\begin{bmatrix}
+			E_m & 0   \\
+			-A  & E_n
+		\end{bmatrix}=\begin{bmatrix}
+			E_m-BA & B   \\
+			O      & E_n
+		\end{bmatrix},
+	\end{gather*}
+	于是原式得证.
+\end{proof}
+\begin{prob}[14]
+	给定数域 $K$ 上的 $m$ 阶方阵 $A$ ， $n$ 阶方阵 $B$ .令
+	\[
+		M=\begin{bmatrix}
+			C & A \\
+			B & O
+		\end{bmatrix},
+	\]
+	证明 $|M|=(-1)^{mn}|A||B|$ .
+\end{prob}
+\begin{proof}
+	不难发现通过 $mn$ 次两列互换即可将 $M$ 化为
+	\[
+		\widetilde{M}=\begin{bmatrix}
+			A & C \\
+			O & B
+		\end{bmatrix},
+	\]
+	于是 $|M|=(-1)^{mn}|\widetilde{M}|=(-1)^{mn}|A||B|$ .
+\end{proof}
+\begin{prob}[15]
+	给定数域 $K$ 内的数所组成的无穷序列 $a_0,a_1,a_2,\cdots$ .对于任意非负整数 $s,m$ ，定义
+	\[
+		A_{s,m}=\begin{bmatrix}
+			a_s     & a_{s+1}   & \cdots & a_{s+m}   \\
+			a_{s+1} & a_{s+2}   & \cdots & a_{s+m+1} \\
+			\vdots  & \vdots    &        & \vdots    \\
+			a_{s+m} & a_{s+m+1} & \cdots & a_{s+2m}
+		\end{bmatrix},
+	\]
+	如果存在非负整数 $n,k$ ，使得当 $s\ge k$ 时 $|A_{s,n}|=0$ ，证明：存在 $K$ 内不全为零的数 $b_0,b_1,\cdots,b_n$ 及非负整数 $S$ ，使得当 $s\ge S$ 时有
+	\[
+		a_sb_n+a_{s+1}b_{n-1}+\cdots+a_{s+n}b_0=0.
+	\]
+\end{prob}
+\begin{proof}
+	当 $n=0$ 时结论是平凡的，不妨设 $n$ 是具有题述性质的最小正整数.我们有如下引理：若存在某 $|A_{s,n-1}|=0	$ ，则 $|A_{s+1,n-1}|=0$.因此存在非负整数 $S$ ，使得当 $s\ge S$ 时恒有 $|A_{s,n-1}|\ne0$ ，否则就与 $n$ 为最小矛盾.
+
+	命题即证对任意 $s\ge S$ ，存在非零向量 $B=(b_0,b_1,\cdots,b_n)'$ 使得 $A_{s,n}B=0$ .考虑到 $|A_{s,n}|=0$ ，存在非零解 $B_s$ 使得 $A_{s,n}B_s=0$ .记 $A_{s,n}$ 的第 $k$ 行为 $i_k$ ，要说明存在一个公共解 $B$ ，只需证明 $i_{n+1}$ 能被 $i_1,\cdots,i_n$ 线性表示.
+
+	根据2.3节\hyperlink{SolveEquation}{题目11}， $\rank A_{s,n-1}=\rank A_{s,n}=n$ ，即证.
+
+	现在证明上述引理.首先通过按尾行展开可知如下\hypertarget{DeterminantWithAddedRowAndColumn}{加边行列式}命题成立
+	\[
+		\det\begin{pmatrix}
+			A      & \alpha \\
+			\beta' & z
+		\end{pmatrix}=\det(A)z-\beta'A^*\alpha.
+	\]
+	代入此处就有$\alpha'A^*_{s,n-1}\alpha=0$.根据\hyperlink{RankOfAdjoint}{题目6}，如果$\rank(A_{s,n-1})=n-2$，就有$\rank(A_{s,n-1}^*)=1$，从而$\alpha'A^*_{s,n-1}\alpha=\lambda\alpha'\alpha=0$.当$\alpha\ne0$时这推出$\lambda=0$，矛盾.因此$\rank(A_{s,n-1})<n-2$，从而$\rank(A_{s+1,n-1})<n-1$，引理成立.
+\end{proof}
+\subsection{Laplace展开式与Binet--Cauchy公式}
+\begin{prob}[3]
+	设 $A$ 是数域 $K$ 上的 $n$ 阶方阵，又给定 $k+l$ 个自然数，按次序排列如下
+	\begin{align*}
+		1\le i_1<i_2<\cdots<i_k\le n,
+		1\le j_1<j_2<\cdots<j_l\le n.
+	\end{align*}
+	如果 $k+l>n$ ，且 $A$ 的 $i_1,i_2,\cdots,i_k$ 行与 $j_1,j_2,\cdots,j_l$ 列交叉点处的元素全为零，证明 $|A|=0$ .
+\end{prob}
+\begin{proof}
+	根据Laplace定理，将行列式 $|A|$ 按 $i_1,\cdots,i_k$ 行展开，就有
+	\[
+		|A|=\sum_{1\le p_1<\cdots<p_k\le n}A\left\{\begin{array}{@{}ccc@{}}
+			i_1 & \cdots & i_k \\
+			p_1 & \cdots & p_k
+		\end{array}\right\}A\left[\begin{array}{@{}ccc@{}}
+				i_1 & \cdots & i_k \\
+				p_1 & \cdots & p_k
+			\end{array}\right].
+	\]
+	注意到 $k+l>n$ 因此 $p_1,\cdots,p_k$ 中一定有零行，因此和式中的每一项均为零.
+\end{proof}
+\begin{prob}[5]
+	证明Lagrange恒等式
+	\[
+		\biggl(\sum_{i=1}^{n}a_i^2\biggr)\biggl(\sum_{i=1}^{n}b_i^2\biggr)-\biggl(\sum_{i=1}^{n}a_ib_i\biggr)^2=\sum_{1\le j<k\le n}(a_jb_k-a_kb_j)^2.
+	\]
+\end{prob}
+\begin{proof}
+	根据Binet--Cauchy公式，上式左端即为
+	\begin{align*}
+		\begin{vmatrix}
+			\displaystyle \sum_{i=1}^{n}a_i^2  & \displaystyle \sum_{i=1}^{n}a_ib_i \\
+			\displaystyle \sum_{i=1}^{n}a_ib_i & \displaystyle \sum_{i=1}^{n}b_i^2
+		\end{vmatrix} & =\left|\begin{bmatrix}
+			a_1 & \cdots & a_n \\
+			b_1 & \cdots & b_n
+		\end{bmatrix}\begin{bmatrix}
+			a_1    & b_1    \\
+			\vdots & \vdots \\
+			a_n    & b_n
+		\end{bmatrix}\right|=\sum_{1\le i_1<i_2\le n}\begin{vmatrix}
+			a_{i_1} & a_{i_2} \\
+			b_{i_1} & b_{i_2}
+		\end{vmatrix}\begin{vmatrix}
+			a_{i_1} & b_{i_1} \\
+			a_{i_2} & b_{i_2}
+		\end{vmatrix} \\
+		                           & =\sum_{1\le j<k\le n}(a_jb_k-a_kb_j)^2.
+	\end{align*}
+\end{proof}

@@ -1,0 +1,15 @@
+test/
+
+*.log
+
+*.aux
+
+*.out
+
+*.thm
+
+*.toc
+
+*.synctex.gz
+
+*.pdf

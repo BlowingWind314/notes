@@ -1,0 +1,500 @@
+\section{线性变换的Jordan标准形}
+\subsection{幂零线性变换的Jordan标准形}
+\begin{prob}[1]
+	\hypertarget{CharacteristicPolynomialOfNilpotent}{设}在数域$K$上的$n$维线性空间$V$内的线性变换$\bm A$在基$\varepsilon_1,\cdots,\varepsilon_n$下的矩阵$A$的特征多项式为$f(\lambda)=\lambda^n$，证明$\bm A$是幂零线性变换.
+\end{prob}
+\begin{proof}
+	根据 \hyperlink{Hamilton-Cayley}{Cayley--Hamilton定理}有$\bm A^n=\bm 0$.
+\end{proof}
+\begin{prob}[2]
+	设$\bm A$是数域$K$上$n$维线性空间$V$内的幂零线性变换，令$\lambda_0=0$，$\bm A$的特征子空间$V_{\lambda_0}$的维数为$k$，证明$\bm A^{n-k+1}=0$.
+\end{prob}
+\begin{proof}
+	幂零变换$\bm A$的矩阵有Jordan标准形
+	\[
+		A=\diag{J_1,\cdots,J_s},
+	\]
+	其中$J_i$的阶设为$k_i$.注意到$\rank(A)=\sum\rank(J_i)\ge\rank(J_i)=k_i-1$，而$J_i^{k_i}=0$，于是$A^{\rank(A)+1}=0$，即$\bm A^{n-k+1}=\bm 0$.
+\end{proof}
+\begin{prob}[4]
+	设$A\in M_n(K)$是幂零矩阵.在$M_n(K)$内定义线性变换：
+	\[
+		\bm AX=AX-XA\quad(X\in M_n(K)).
+	\]
+	证明$\bm A$是幂零变换.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[6]
+	\hypertarget{InvariantSubspaceOfNipotent}{设}$\bm A$是$n$维线性空间$V$内的一个循环幂零变换，$\varepsilon_1,\cdots,\varepsilon_n$是它的一组循环基，试求$\bm A$的全部不变子空间.
+\end{prob}
+\begin{sol}
+	零子空间是平凡的，考虑非零的不变子空间$W$.取非零向量$\alpha\in W$，则$\bm A^k\alpha\in W$.用循环基表示$\alpha$将得到
+	\[
+		\varepsilon_r\in W,\,\varepsilon_{r+1},\cdots,\varepsilon_n\notin W.
+	\]
+	进而$\varepsilon_1,\cdots,\varepsilon_r\in W$.于是$L(\varepsilon_1,\cdots,\varepsilon_r)\subseteq W$.若不取等，取$\beta\in W\setminus L(\varepsilon_1,\cdots,\varepsilon_r)$，用$\bm A^k$作用不难发现就会有$\varepsilon_k\in W\,(k>r)$，矛盾.因此$\bm A$的全部不变子空间为$L(\varepsilon_1,\cdots,\varepsilon_k)\,(1\le k\le n)$和$\{0\}$.
+\end{sol}
+\begin{prob}[8]
+	设$\bm A,\bm B$是$n$维线性空间$V$内的两个幂零变换，且$\bm{AB}=\bm{BA}$，证明$\bm A+\bm B$也是幂零变换.
+\end{prob}
+\begin{proof}
+	$(\bm A+\bm B)^n=\sum\mathrm{C}_n^k\bm A^k\bm B^{n-k}=\bm 0$.
+\end{proof}
+\begin{prob}[9]
+	设$\bm A$是$n$维线性空间$V$内的幂零变换，证明$k\bm E+\bm A\,(k\ne 0)$可逆，并求其逆.
+\end{prob}
+\begin{sol}
+	见2.5节\hyperlink{InverseOfNilpotent}{题目19}.
+\end{sol}
+\begin{prob}[10]
+	设$\bm A$是$n$维线性空间$V$内的幂零变换，在某一组基下矩阵成Jordan标准形
+	\[
+		J=\begin{bmatrix}
+			J_1 &     &        &     \\
+			    & J_2 &        &     \\
+			    &     & \ddots &     \\
+			    &     &        & J_s
+		\end{bmatrix},\quad J_i=\begin{bmatrix}
+			0 & 1 &        &   \\
+			  & 0 & \ddots &   \\
+			  &   & \ddots & 1 \\
+			  &   &        & 0
+		\end{bmatrix}.
+	\]
+	证明：$\bm A$的特征值$\lambda_0=0$对应的特征子空间$V_{\lambda_0}$的维数等于$s$.
+\end{prob}
+\begin{proof}
+	与\hyperlink{InvariantSubspaceOfNipotent}{题目6}同理可以证明$\bm A$的不变子空间一定是各Jordan块对应的循环幂零变换的不变子空间的直和.因此$V_{\lambda_0}$即为$s$个一维不变子空间的直和，即$\dim V_{\lambda_0}=s$.
+\end{proof}
+\begin{prob}[11]
+	设$A\in M_2(K)$，若存在$B\in M_2(K)$使得$AB-BA=A$.证明$A$幂零.
+\end{prob}
+\begin{proof}[法一]
+	首先$\det(A)=0$，否则$A$可逆，有$E_2=B-A^{-1}BA$，取迹后得到
+	\[
+		2=\tr(E_2)=\tr(B-A^{-1}BA)=0,
+	\]
+	矛盾.又注意到$\tr(A)=\tr(AB-BA)=0$，所以$A$的特征多项式为$x^2$，即$A^2=0$.
+\end{proof}
+\begin{proof}[法二]
+	归纳可知$A^kB-BA^k=kA^k$.事实上有
+	\[
+		A^{k+1}B-{\color{blue}AB}A^k=A^{k+1}B-(BA+A)A^k=(k+1)A^{k+1}.
+	\]
+	现在在$M_n(K)$上作线性变换$\bm B$满足$\bm BX=XB-BX$.若$A$不是幂零矩阵，任意$k\in\mathbb{N}^*$都是$B$的特征值，矛盾.
+\end{proof}
+\begin{proof}[法三]
+	注意$A^{k+1}=A(A^kB)-(A^kB)A$，取迹后得到$\tr(A^k)=0$.设$\lambda_1,\cdots,\lambda_n$是$A$特征多项式的$n$个复根，则有
+	\[
+		\tr(A^k)=\sum_{i=1}^n\lambda_i^k.
+	\]
+	根据Newton恒等式知$A$的特征多项式只能为$x^n$.由\hyperlink{CharacteristicPolynomialOfNilpotent}{题目1}即得$A$幂零.
+\end{proof}
+\begin{note}
+	由证法三，命题对任意域成立.
+\end{note}
+\begin{prob}[13]
+	设$T$是数域$K$上的$n$阶方阵.在$M_n(K)$上定义线性变换如下：
+	\[
+		\bm T(X)=T'XT\quad(\forall X\in M_n(K)).
+	\]
+	(1)若$T$是幂零矩阵，证明$\bm T$是幂零变换.
+
+	\noindent(2)令$n=2,\,T=\begin{bmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{bmatrix}$，在$M_2(K)$中找一组基，使$\bm T$在该组基下的矩阵成Jordan形.
+
+	\noindent(3)若$\bm T$是幂零变换，证明$T$为幂零矩阵.
+\end{prob}
+\begin{proof}
+	(1)显然.
+
+	(2)在基$E_{11},E_{21},E_{12},E_{22}$下$\bm T$的矩阵有Jordan标准形$\diag{J_2,0}$.
+
+	(3)设$\bm T^k=\bm 0$，则$\bm T^k(E)=0$，即$(T^k)'T^k=0$.于是$T^k=0$.
+\end{proof}
+\begin{note}
+	容易发现(3)在一般的域上不成立.
+\end{note}
+\begin{prob}[14]
+	设$V$是数域$K$上的$n$维线性空间，$\bm A$是$V$内一个幂零变换.证明：使$\bm A^k=\bm 0$的最小正整数$k$等于$\bm A$的Jordan标准形中Jordan块的最大阶数.
+\end{prob}
+\begin{proof}
+	设Jordan块$J_i$的阶为$k_i$，注意到$J_i^{k_i-1}\ne0,\,J_i^{k_i}=0$.
+\end{proof}
+\subsection{一般线性变换的Jordan标准形}
+{\color{blue}注意}：本节内容都只能在数域\footnote{一般地，代数闭域的子域}中讨论.
+\begin{prob}[1]
+	设$\lambda_0$是线性变换$\bm A$的一个特征值，$\bm B=\bm A-\lambda_0\bm E$.令$M_i=\ker\bm B^i\,(i=0,1,\cdots)$.证明：使$M_k=M_{k+1}$成立的最小正整数$k$等于$\bm A$的Jordan标准形(若存在)$\,J$中以$\lambda_0$为特征值的Jordan块的最高阶数.
+\end{prob}
+\begin{proof}
+	以$\lambda_0$为特征值且阶数大于等于$k$的Jordan块个数等于
+	\[
+		\rank(B^{k-1})-\rank(B^k)=\dim M_k-\dim M_{k-1}>0.
+	\]
+	然而阶数大于等于$k+1$的Jordan块个数等于$\dim M_{k+1}-\dim M_k=0$.
+\end{proof}
+\begin{prob}[2]
+	续上题.令$N_i=\operatorname*{Im} B^i$.证明$\lambda_0$不是$\bm A|_{N_k}$的特征值，从而$\bm B|_{N_k}$可逆.
+\end{prob}
+\begin{proof}
+	若不然，存在$\alpha$使得$\bm B^k\alpha\ne 0$然而$\bm A\bm B^k\alpha=\lambda_0\bm B^k\alpha$，即$\bm B^{k+1}\alpha=0$.于是$M_k\ne M_{k+1}$，矛盾.因此$\ker\bm B|_{N_k}=\ker(\bm A-\lambda_0\bm E)|_{N_k}=\{0\}$，所以$\bm B|_{N_k}$可逆.
+\end{proof}
+\begin{prob}[3]
+	续上题.证明$\dim M_k$等于特征值$\lambda_0$的重数.
+\end{prob}
+\begin{proof}[法一]
+	注意到$\dim M_k$是以$\lambda_0$为特征值的Jordan块阶数和.
+\end{proof}
+\begin{proof}[法二]
+	$\bm B$在$M_k$上循环幂零，在$N_k$上可逆，所以$\bm A$的Jordan形中特征值$\lambda_0$重数等于$\dim M_k$.
+\end{proof}
+\begin{prob}[4]
+	\hypertarget{Tempdajdslka}{续上题}.设$\lambda_1$是$\bm A$的特征值且$\lambda_1\ne\lambda_0$.若存在整数$l$使得$(\bm A-\lambda_1\bm E)^l\alpha=0$，证明$\alpha\in N_k$.
+\end{prob}
+\begin{proof}
+	设$\alpha$非零.当$l\ge 0$时$\alpha\notin M_k$，否则由于$(\bm A-\lambda_0\bm E)^k\alpha=0$，在特征值$\lambda_1$对应的Jordan块中$(J-\lambda_0E)X=0$.而$J-\lambda_0E$主对角元全非零推出$X=0$，即$\alpha=0$，矛盾.当$l<0$时注意对角元非零的Jordan块的逆也有非零对角元.
+\end{proof}
+\begin{note}
+	这直接证明了不同的根子空间不交.多项式章节的准素分解将给出更精准的结果.
+\end{note}
+\begin{prob}[5]
+	设$A$是$n$阶复方阵，$A^k=E$.证明$A$在复数域上相似于对角矩阵.
+\end{prob}
+\begin{proof}[法一]
+	注意到
+	\[
+		A^k-E=(A-E)(E+A+A^2+\cdots+A^{k-1})=\prod_{i=1}^k(A-e^{\frac{2\pi\mi}{k}}E),
+	\]
+	根据4.4节\hyperlink{ConditionOfDiagonalized}{题目14}~知$A$可对角化.
+\end{proof}
+\begin{proof}[法二]
+	设$A$的Jordan标准形为$J$，则$J^k=E$，因此$J$中只有一阶Jordan块，即$J$是对角矩阵.
+\end{proof}
+\begin{prob}[7]
+	设$a_{12},a_{23},\cdots,a_{n-1,n}$为非零复数，求矩阵
+	\[
+		A=\begin{bmatrix}
+			a & a_{12} & a_{13} & \cdots & a_{1n}    \\
+			  & a      & a_{23} & \cdots & a_{2n}    \\
+			  &        & \ddots & \ddots & \vdots    \\
+			  &        &        & \ddots & a_{n-1,n} \\
+			  &        &        &        & a
+		\end{bmatrix}
+	\]
+	的Jordan标准形.
+\end{prob}
+\begin{sol}
+	显然$|\lambda E-A|=(\lambda-a)^n$.注意到$(A-aE)^k$最接近主对角线的第$k$条次对角线元素依次为$a_{12}a_{23}\cdots a_{k,k+1},\cdots,a_{n-k,n-k+1}\cdots a_{n-1,n}$，所以$\rank(A-aE)^k=n-k$，从而$A$的Jordan标准形$J$只有一个$n$阶Jordan块，即
+	\[
+		J=\begin{bmatrix}
+			a & 1 &        &   \\
+			  & a & \ddots &   \\
+			  &   & \ddots & 1 \\
+			  &   &        & a
+		\end{bmatrix}.
+	\]
+	这给出了一类复上三角矩阵的相似类代表.
+\end{sol}
+\begin{prob}[8]
+	设
+	\[
+		J=\begin{bmatrix}
+			0 & 1 &        &   \\
+			  & 0 & \ddots &   \\
+			  &   & \ddots & 1 \\
+			  &   &        & 0
+		\end{bmatrix}.
+	\]
+	求$J^k$的Jordan标准形.
+\end{prob}
+\begin{sol}
+	设$k<n$，则$\rank J^k=n-k$，于是$J^k$的Jordan标准形中只有一个$n-k$阶的Jordan块，即$J^k\sim\diag{J_{n-k},0}$.
+\end{sol}
+\begin{prob}[9]
+	证明在复数域中任意$n$阶方阵$A$与$A'$相似.
+\end{prob}
+\begin{proof}
+	$|A-\lambda E|=|A'-\lambda E|,\,\rank(A-\lambda E)^k=\rank(A'-\lambda E)^k$，二者Jordan标准形相同.
+\end{proof}
+\begin{prob}[10]
+	设$\bm A$是数域$K$上$n$维线性空间$V$内的线性变换，其特征多项式的根都属于$K$.设其全部互不相同的特征值为$\lambda_1,\lambda_2,\cdots,\lambda_k$.定义
+	\[
+		M_i=\left\{\alpha\in V\mid \exists m\in\mathbb{N}^*,\,(\bm A-\lambda_i\bm E)^m\alpha=0\right\}.
+	\]
+
+	(1)证明$M_i$是$V$的子空间，且为$\bm A$的不变子空间.
+
+	(2)证明$V=M_1\oplus M_2\oplus\cdots\oplus M_k$.
+
+	(3)若已知$\bm A$的Jordan标准形为$J=\diag{J_1,J_2,\cdots,J_s}$，试求$\bm A|_{M_i}$的Jordan标准形，再求$\bm A$在$V/M_i$内的诱导变换的Jordan标准形.
+\end{prob}
+\begin{proof}
+	(1)显然$M_i$是子空间.取$\alpha\in M_i$，则
+	\[
+		(\bm A-\lambda_i\bm E)^m\bm A\alpha=\bm A(\bm A-\lambda_i\bm E)^m\alpha=0,
+	\]
+	即$\bm A\alpha\in M_i$.
+
+	(2)对维数作归纳.奠基平凡.设命题在不大于$n$维时成立，对$n+1$维空间$V$，有$V=M_1\oplus N$，其中
+	\[
+		N=\left\{\alpha\in V\mid \exists m\in\mathbb{N}^*\,\exists\beta\in V,\,\alpha=(\bm A-\lambda_i\bm E)^m\beta\right\}.
+	\]
+	注意到$N$也是$\bm A$的不变子空间，$\dim M_1>0$.根据\hyperlink{Tempdajdslka}{题目4}~可知$M_2,\cdots,M_k\subseteq N$，于是限制$\bm A$到$N$上，由归纳假设即得$V=M_1\oplus M_2\oplus\cdots\oplus M_k$.
+
+	(3)注意到
+	\[
+		M_i=\bigcup_{k=1}^\infty\ker(\bm A-\lambda_i\bm E)^k,
+	\]
+	于是$\bm A|_{M_i}$的Jordan标准形即为$\diag{J_{i_1},\cdots,J_{i_r}}$，其中$J_{i_1},\cdots,J_{i_r}$是$J$中属于特征值$\lambda_i$的Jordan块.
+
+	由于$\bm A$的Jordan标准形$J$准对角，它在$V/M_i$上诱导变换的矩阵即为$\diag{J_{j_1},\cdots,J_{j_t}}$，其中$\{j_1,\cdots,j_t\}=\{1,\cdots,s\}\setminus\{i_1,\cdots,i_r\}$.
+\end{proof}
+\begin{note}
+	本题直接证明了Jordan标准形所需的准素分解.
+\end{note}
+\begin{prob}[11]
+	\hypertarget{JordanOfQuotient}{设}$\bm A$是数域$K$上$n$维线性空间$V$内的线性变换，$M$是$\bm A$的一个不变子空间.如果$\bm A|_M$以及$\bm A$在$V/M$内诱导变换的矩阵均相似于Jordan形矩阵$J_1,J_2$，证明$V$内存在一组基，使得在这组基下$\bm A$的矩阵成Jordan形矩阵.若$J_1=\diag{I_1,\cdots,I_r},\,J_2=\diag{L_1,\cdots,L_s}$无公共特征值.试求$\bm A$在$V$内的Jordan形矩阵.
+\end{prob}
+\begin{proof}
+	注意到$\bm A$的特征多项式为$|\lambda E-J_1||\lambda_2-J_2|$，所以$\bm A$的所有特征值都在$K$中，即$\bm A$具有Jordan标准形.若$J_1,J_2$无公共特征值，与上题类似可知$V=M\oplus N$，$\bm A|_M$的Jordan标准形为$J_1$，$\bm A|_N$的Jordan标准形与$\bm A$在$V/M$上的标准形$J_2$相同，所以$\bm A$的Jordan标准形为$\diag{J_1,J_2}=\diag{I_1,\cdots,I_r,L_1,\cdots,L_s}$.
+\end{proof}
+\begin{prob}[12]
+	设$V$是$n$维酉空间($n\ge 3$)，$\bm A$是$V$内的线性变换.证明$\bm A$为厄米变换的充分必要条件是：对$\bm A$的任意二维不变子空间$M$，在$M$内存在一组标准正交基使得$\bm A|_M$在这组基下的矩阵成实对角阵.
+\end{prob}
+\begin{proof}
+	必要性显然.考虑$\bm A$的Jordan标准形$J$.由条件知$J$只有一阶Jordan块，否则在高阶的Jordan块中取前两个基向量张成的不变子空间，由Jordan形的唯一性就与条件矛盾.因此$V$可对角化，$V$可写为特征子空间的直和
+	\[
+		V=V_{\lambda_1}\oplus\cdots\oplus V_{\lambda_s}.
+	\]
+	下面证明特征子空间两两正交且特征值是实的.任取非零向量$\alpha\in V_{\lambda_i},\,\beta\in V_{\lambda_j}$，则$\bm A|_{L(\alpha,\beta)}$可以实酉对角化.根据Jordan标准形的唯一性可知$\lambda_i,\lambda_j$是实数.假设$\epsilon_1,\epsilon_2$是能相应对角化$\bm A|_{L(\alpha,\beta)}$的标准正交基，不难发现可取$\alpha=\epsilon_1,\,\beta=\epsilon_2$，于是$(\alpha,\beta)=0$.因此$\bm A$可以实酉对角化，即$\bm A$是厄米变换.
+\end{proof}
+\begin{prob}[13]
+	给定数域$K$上的$m$阶方阵$A$和$n$阶方阵$B$，满足$A^2=B^2=0$.又设$C,D\in M_{m,n}(K)$.令
+	\[
+		F=\begin{bmatrix}
+			A & C \\
+			0 & B
+		\end{bmatrix},\quad G=\begin{bmatrix}
+			A & D \\
+			0 & B
+		\end{bmatrix}.
+	\]
+	如果$\rank(F)=\rank(G)=\rank(A)+\rank(B)$,$\rank(AC+CB)=\rank(AD+DB)$，证明$F,G$在$K$内相似.
+\end{prob}
+\begin{proof}
+	由于幂零变换总有Jordan标准形，根据\hyperlink{JordanOfQuotient}{题目11}，$F,G$都有Jordan标准形.由于几何重数小于等于代数重数，注意到
+	\begin{gather*}
+		\rank(F)=\rank(G)=\rank(A)+\rank(B),\\
+		\rank(F^2)=\rank\begin{bmatrix}
+			A^2 & AC+CB \\
+			0   & B^2
+		\end{bmatrix}=\rank\begin{bmatrix}
+			A^2 & AD+DB \\
+			0   & B^2
+		\end{bmatrix}=\rank(G^2),
+	\end{gather*}
+	就可断定$F,G$有相同的Jordan标准形.
+\end{proof}
+\subsection{最小多项式}
+\begin{prob}[1]
+	如果矩阵$A$的特征多项式与最小多项式相同，问$A$的Jordan标准形(在复数域中考虑)具有什么特点？
+\end{prob}
+\begin{sol}
+	此时代数重数=几何重数，每个特征值对应一个Jordan块.
+\end{sol}
+\begin{note}
+	此时$A$的有理标准形只有一块.
+\end{note}
+\begin{prob}[6]
+	给定数域$K$上的$m$阶方阵$A$，$n$阶方阵$B$，设它们的最小多项式分别为$\varphi(\lambda),\psi(\lambda)$.试求$\diag{A,B}$的最小多项式.
+\end{prob}
+\begin{sol}
+	$f(\diag{A,B})=0\Leftrightarrow f(A)=f(B)=0$，所以结果是$[\varphi(\lambda),\psi(\lambda)]$($\varphi,\psi$的最小公倍式).
+\end{sol}
+\begin{prob}[7]
+	求下述矩阵\footnotemark 的最小多项式：
+	\[
+		A=\begin{bmatrix}
+			0 & \cdots & 0      & -a_n   \\
+			1 & \ddots & \vdots & \vdots \\
+			  & \ddots & 0      & -a_2   \\
+			  &        & 1      & -a_1
+		\end{bmatrix}.
+	\]
+\end{prob}
+\footnotetext{称为\textbf{友矩阵}或\textbf{Frobenius矩阵}}
+\begin{sol}
+	注意到
+	\[
+		A\epsilon_k=\epsilon_{k+1},\quad 1\le k\le n-1,
+	\]
+	其中$\epsilon_k$是$K^n$中的标准基.于是
+	\begin{align*}
+		A\epsilon_n & =-a_n\epsilon_1-\cdots-a_2\epsilon_2-a_1\epsilon_1 \\
+		            & =-a_nA^{n-1}-\cdots-a_2A\epsilon_1-a_1\epsilon_1,
+	\end{align*}
+	再利用$A\epsilon_n=A^n\epsilon_1$，记$p(x)=x^n+a_nx^{n-1}+\cdots+a_2x+a_1$，就有
+	\[
+		p(A)\epsilon_1=A^n\epsilon_1+a_nA^{n-1}\epsilon_1+\cdots+a_2A\epsilon_1+a_1\epsilon_1=0.
+	\]
+	同时$p(A)\epsilon_k=p(A)A^{k-1}\epsilon_1=A^{k-1}p(A)\epsilon_1=0$，所以$p(A)=0$.发现$p(x)$是一个首一的$n$次多项式，所以它就是矩阵$A$的特征多项式\footnotemark 和最小多项式.
+\end{sol}
+\footnotetext{也可以直接求出特征多项式来说明这一点}
+\begin{prob}[8]
+	设数域$K$上$n$维线性空间$V$内的线性变换$\bm A$在基$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$下的矩阵为
+	\begin{gather*}
+		A=\begin{bmatrix}
+			B & 0 \\
+			0 & C
+		\end{bmatrix},\quad B=\begin{bmatrix}
+			\lambda_1 & -1        &        &           \\
+			          & \lambda_1 & \ddots &           \\
+			          &           & \ddots & -1        \\
+			          &           &        & \lambda_1
+		\end{bmatrix}_{k\times k},\quad C=\begin{bmatrix}
+			\lambda_2 & 0         & 1      &        &           \\
+			          & \lambda_2 & 0      & \ddots &           \\
+			          &           & \ddots & \ddots & 1         \\
+			          &           &        & \ddots & 0         \\
+			          &           &        &        & \lambda_2
+		\end{bmatrix}.
+	\end{gather*}
+
+	(1)在$V$内找一组基，使得$\bm A$在这组基下的矩阵成Jordan形.
+
+	(2)求$\bm A$的最小多项式.
+\end{prob}
+\begin{sol}
+	(1)显然，在基$\varepsilon_1,-\varepsilon_2,\varepsilon_3,\cdots,(-1)^{k+1}\varepsilon_k,\varepsilon_{k+1},\varepsilon_{k+3},\cdots,\varepsilon_n,\varepsilon_{k+2}$下$\bm A$的矩阵成Jordan形$\diag{J_1,J_2,J_3}$，其中$J_1$是特征值$\lambda_1$的$k$阶Jordan块，$J_2$是特征值$\lambda_2$的$n-k-1$阶Jordan块，$J_3$是特征值$\lambda_2$的$1$阶Jordan块.
+
+	(2)由$\bm A$的Jordan标准形知其最小多项式为$(\lambda-\lambda_1)^k(\lambda-\lambda_2)^{n-k-1}$.
+\end{sol}
+\begin{prob}[9]
+	设$\bm A$是四维欧氏空间$V$内的正交变换.如果$\bm A$无特征值，但$\bm A^2,\bm A^3$均有特征值，求$\bm A$的最小多项式.
+\end{prob}
+\begin{sol}
+	易知$\bm A$的特征多项式的四个复根分别为$e^{\mi\theta_1},e^{\mi\theta_2}$及其共轭.因此将$\bm A$复化可知它可对角化，从而$\mathbb{C}$上最小多项式为$(x^2-2x\cos\theta_1+1)(x^2-2x\cos\theta_2+1)$.由特征值条件易知$\theta_1=\frac{\pi}{2},\frac{3\pi}{2},\,\theta_2=\pm\frac{\pi}{3},\pm\frac{2\pi}{3}$，所以最小多项式为$(x^2+1)(x^2\pm x+1)$.
+\end{sol}
+\subsection{矩阵函数}
+\begin{prob}[8]
+	设$A$是实数域上的$n$阶反对称矩阵.证明$\cos A$是实对称矩阵，$\sin A$是实反对称矩阵.
+\end{prob}
+\begin{proof}
+	反对称矩阵$A$总相似于$\diag{S,\cdots,S,0,\cdots,0}$，其中$S=\begin{bmatrix}
+			0  & 1 \\
+			-1 & 0
+		\end{bmatrix}$，并且
+	\[
+		S^1=S,\,S^2=-E,\,S^3=-S,\,S^4=E.
+	\]
+	于是
+	\begin{align*}
+		\cos A & =\sum_{n=0}^\infty\frac{(-1)^nA^{2n}}{(2n)!}=\sum_{n=0}^\infty\frac{(-1)^n}{(2n)!}\diag{S^{2n},\cdots,S^{2n},0,\cdots,0}           \\
+		       & =\sum_{n=0}^\infty\frac{1}{(2n)!}\diag{E,0}.                                                                                       \\
+		\sin A & =\sum_{n=0}^\infty\frac{(-1)^nA^{2n+1}}{(2n+1)!}=\sum_{n=0}^\infty\frac{(-1)^n}{(2n+1)!}\diag{S^{2n+1},\cdots,S^{2n+1},0,\cdots,0} \\
+		       & =\sum_{n=0}^\infty\frac{1}{(2n+1)!}\diag{S,\cdots,S,0,\cdots,0}.
+	\end{align*}
+	因此$\cos A$对称，$\sin A$反对称.
+\end{proof}
+\begin{prob}[9]
+	设$A$是$\mathbb{C}$上的$n$阶方阵，其最小多项式为
+	\[
+		\varphi(x)=(x-\lambda_1)^{e_1}(x-\lambda_2)^{e_2}\cdots(x-\lambda_k)^{e_k},
+	\]
+	其中$\lambda_1,\lambda_2,\cdots,\lambda_k$两两不等.试求$e^A$的最小多项式.
+\end{prob}
+\begin{sol}
+	设$A$的Jordan标准形为$J=\diag{J_1,\cdots,J_s}$.任取$f(x)\in\mathbb{C}[x]$，有
+	\begin{gather*}
+		f(e^A)=0\iff f(e^J)=0\iff\forall i,\,f(e^{J_i})=0\iff\forall i,\,f(e^{\lambda_i})=0.
+		\shortintertext{于是}
+		f(x)=(x-e^{\lambda_1})(x-e^{\lambda_2})\cdots(x-e^{\lambda_k})
+	\end{gather*}
+	就是$e^A$的最小多项式.
+\end{sol}
+\begin{prob}[10]
+	考察二阶实反对称矩阵
+	\[
+		R=\begin{bmatrix}
+			0         & -\vartheta \\
+			\vartheta & 0
+		\end{bmatrix},
+	\]
+	有$R^2=-\vartheta^2E$.利用三角函数幂级数展开证明
+	\[
+		e^R=\begin{bmatrix}
+			\cos\vartheta & -\sin\vartheta \\
+			\sin\vartheta & \cos\vartheta
+		\end{bmatrix}.
+	\]
+\end{prob}
+\begin{proof}
+	计算得到
+	\begin{align*}
+		\begin{bmatrix}
+			\cos\vartheta & -\sin\vartheta \\
+			\sin\vartheta & \cos\vartheta
+		\end{bmatrix} & =\begin{bmatrix}
+			\displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n\vartheta^{2n}}{(2n)!}     & \displaystyle-\sum_{n=0}^{\infty}\frac{(-1)^n\vartheta^{2n+1}}{(2n+1)!} \\
+			\displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n\vartheta^{2n+1}}{(2n+1)!} & \displaystyle\sum_{n=0}^{\infty}\frac{(-1)^n\vartheta^{2n}}{(2n)!}
+		\end{bmatrix}                                                                                                                        \\
+		                           & =\sum_{n=0}^{\infty}\frac{(-1)^n\vartheta^{2n}}{(2n)!}E+\sum_{n=0}^{\infty}\frac{(-1)^n\vartheta^{2n}}{(2n+1)!}R=\sum_{n=0}^{\infty}\frac{R^n}{n!} \\
+		                           & =e^R,
+	\end{align*}
+	中途利用了$R^{2n}=(-1)^n\vartheta^{2n}E$.
+\end{proof}
+\begin{prob}[11]
+	在实数域上的三阶反对称矩阵表为
+	\begin{gather*}
+		R=\vartheta\begin{bmatrix}
+			0  & -u & v  \\
+			u  & 0  & -w \\
+			-v & w  & 0
+		\end{bmatrix},\quad u^2+v^2+w^2=1\\
+		\shortintertext{又令}
+		S=\begin{bmatrix}
+			w \\
+			v \\
+			u
+		\end{bmatrix},
+	\end{gather*}
+	证明$RS=0$，并且
+	\begin{align*}
+		R^{2k} & =(-\vartheta^2)^k(E-SS')^k                   \\
+		       & =(-\vartheta^2)^k(E-SS'),\quad k=1,2,\cdots.
+	\end{align*}
+	利用上式证明：
+	\[
+		e^R=\cos\vartheta\cdot E+(1-\cos\vartheta)SS'+\sin\vartheta\cdot(R/\vartheta).
+	\]
+	最后，证明$e^RS=S$.
+\end{prob}
+\begin{proof}
+	直接计算即可得到$RS=0$和$R^2=-\vartheta^2(E-SS')$，于是归纳得到
+	\[
+		R^{2k}=R^{2k-2}R^2=(-\vartheta^2)^k(E-SS')^k.
+	\]
+	又注意到有$S'S=1,\,(SS')^n=SS'$，于是利用$\displaystyle\sum_{i=0}^{n}\binom{n}{i}(-1)^i=(1-1)^i=0$可得
+	\[
+		(E-SS')^k=\sum_{i=0}^{k}\binom{k}{i}(-1)^i(SS')^i=\sum_{i=1}^{k}\binom{k}{i}SS'+E=E-SS',
+	\]
+	因此$R^{2k}=(-\vartheta^2)^k(E-SS')$.现在
+	\begin{align*}
+		e^R & =\sum_{n=0}^{\infty}\frac{R^n}{n!}=SS'+\sum_{n=0}^{\infty}\left(\frac{(-\vartheta^2)^n}{(2n+1)!}R+\frac{(-\vartheta^2)^n}{(2n)!}\right)(E-SS') \\
+		    & =SS'+(\sin\vartheta\cdot(R/\vartheta)+\cos\vartheta)(E-SS')                                                                                    \\
+		    & =\cos\vartheta\cdot E+(1-\cos\vartheta)SS'+\sin\vartheta\cdot(R/\vartheta)+\frac{1}{\vartheta}\sin\vartheta\cdot {\color{violet}RS}S'          \\
+		    & =\cos\vartheta\cdot E+(1-\cos\vartheta)SS'+\sin\vartheta\cdot(R/\vartheta).
+	\end{align*}
+	于是容易发现有$e^RS=S$.
+\end{proof}
+\begin{note}
+	在三维几何空间取定直角坐标系，设三个坐标向量为$\bm i,\bm j,\bm k$.空间一旋转$\bm A$在此标准正交基下的矩阵$A$为行列式等于$1$的正交矩阵，$A=e^R$.现设$\bm S=(\bm i,\bm j,\bm k)S$为题述向量，则
+	\[
+		\bm{AS}=(\bm i,\bm j,\bm k)(AS)=(\bm i,\bm j,\bm k)(e^RS)=(\bm i,\bm j,\bm k)S=\bm S.
+	\]
+	这表明$\bm S$所在直线在旋转$\bm A$下保持不动.于是$\bm A$为以此直线为旋转轴的一个刚体旋转.
+\end{note}

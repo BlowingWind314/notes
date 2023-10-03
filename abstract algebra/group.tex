@@ -1,0 +1,416 @@
+\chapter{群}\pagenumbering{arabic}
+\section{基本性质}
+\subsection{群与群同态}
+\begin{definition}
+	为非空集合$G$配备二元运算$\cdot$，则
+	\begin{itemize}
+		\item 若运算结合，称$G$是{\heiti 半群}.
+		\item 若还有幺元，称$G$是{\heiti 幺半群}.
+		\item 若任意元素还有逆元，称$G$是{\heiti 群}.
+		\item 若运算还交换，称$G$是{\heiti 交换群}或{\heiti \textbf{Abel} 群}.
+	\end{itemize}
+\end{definition}
+
+群的一个基本分类是有限群和无限群，群的基数称为群的{\heiti 阶}.我们主要讨论有限群.一个群的{\heiti 子群} $H\subseteq G$记为$H\le G$.例如
+\begin{itemize}
+	\item $\{e\},G$ 是 $G$ 的平凡子群.
+	\item 群 $G$ 的{\heiti 中心} $Z(G)=\{g\in G\mid \forall a\in G,\,ag=ga\}$ 是 $G$ 的子群.
+	\item 非空子集 $S\subseteq G$ 的{\heiti 中心化子} $\mathrm C_G(S)=\{g\in G\mid \forall a\in S,\,aga^{-1}=g\}$ 是 $G$ 的子群.
+	\item 非空子集 $S\subseteq G$ 的{\heiti 正规化子} $\mathrm N_G(S)=\{g\in G\mid \forall a\in S,\,aSa^{-1}=S\}$ 是 $G$ 的子群.
+\end{itemize}
+
+\begin{lemma}
+	非空子集$H\subseteq G$是子群$\iff$$\forall a,b\in H,\,ab^{-1}\in H$.\qed
+\end{lemma}
+
+对子群 $H\le G$，按照$ab^{-1}\in S\Leftrightarrow a\sim b$划分等价关系得到等价类为{\heiti 右陪集} $Hg$，进而有唯一的{\heiti 右陪集分解}
+\[
+	G=\bigcup_{g\in G}Hg=H\sqcup Hg_1\sqcup\cdots\sqcup Hg_k
+\]
+和{\heiti 右商集} $(G/H)_r$.类似地得到左陪集$gH$及左商集$(G/H)_l$.
+
+注意$gH\mapsto Hg^{-1}$是双射，可定义商集的基数为子群$H$在$G$中的{\heiti 指数} $[G:H]$.
+\begin{thm}[(Lagrange)]
+	对有限群$G$的子群$H$有$|G|=[G:H]|H|$.
+\end{thm}
+\begin{proof}
+	注意各陪集基数相同，由陪集分解显然.
+\end{proof}
+
+
+对子群 $H\le G$，任取 $g\in G$，则
+\[
+	gHg^{-1}:=\{ghg^{-1}\mid h\in H\},\quad\forall g\in G,
+\]
+也是 $G$ 的子群，称为 $H$ 的一个{\heiti 共轭子群}.
+如果子群 $H$ 共轭子群唯一（即 $H$ 自己），则称 $H$ 是{\heiti 正规子群}，记作 $H\nsg G$.例如
+\begin{itemize}
+	\item $\{e\},G$ 是 $G$ 的平凡正规子群.
+	\item 非空子集 $S\subseteq G$ 的中心化子是正规化子的正规子群 $\mathrm{C}_G(S)\nsg\mathrm{N}_G(S)$.
+	\item 子群 $H\le G$ 是它正规化子的正规子群 $H\nsg\mathrm{N}_G(H)$.
+\end{itemize}
+\begin{lemma}
+	$H\nsg G\iff\forall g\in G,\,gH=Hg$.\qed
+\end{lemma}
+\begin{cor}
+	指数$2$子群必正规.
+\end{cor}
+\begin{proof}
+	设$[G:H]=2$，显然$G=H\cup g_0H=H\cup Hg_0$.
+\end{proof}
+
+对正规子群来说，左右商集一致，可以定义乘法运算，反之亦然.
+\begin{lemma}
+	若$H\le G$，则$H\nsg G\iff\forall g_1,g_2\in G,\,(g_1H)(g_2H)=g_1g_2H$.\qed
+\end{lemma}
+
+对正规子群$H\nsg G$，在商集上如上定义乘法得到{\heiti 商群} $G/H$.显然$|G/H|=|G|/|H|$.
+
+\begin{definition}
+	群$G,\tilde{G}$之间的映射$\sigma\colon G\to G'$若保持运算
+	\[
+		\forall g_1,g_2\in G,\,\sigma(g_1g_2)=\sigma(g_1)\sigma(g_2),
+	\]
+	则称$\sigma$是群$G$到$\tilde{G}$的{\heiti 群同态}.特别地，既单又满的同态称为{\heiti 群同构}，记为$G\cong\tilde{G}$.
+
+	$G$到$\tilde{G}$的全体群同态按复合构成群$\hom(G,\tilde{G})$.特别地，$G$到自身的全体自同构构成{\heiti 自同构群} $\operatorname*{Aut}(G)$.
+\end{definition}
+
+自然地，考虑一个同态的{\heiti 核} $\ker\sigma=\left\{g\in G\mid \sigma(g)=\tilde{e}\right\}$与{\heiti 像} $\Im G=\sigma(G)$.
+\begin{prop}
+	$\sigma\in\hom(G,\tilde{G})\implies\ker\sigma\nsg G,\,\Im G<\tilde{G}$.\qed
+\end{prop}
+
+反之，对正规子群$H\nsg G$，考虑{\heiti 自然映射} $\pi\colon G\to G/H,g\mapsto gH$.
+\begin{prop}
+	$H\nsg G\implies\exists\pi\in\hom(G,G/H),\,H=\ker\pi$.\qed
+\end{prop}
+
+因此，\emph{正规子群}$\Leftrightarrow$\emph{同态核}.这一观点非常重要.
+
+任何范畴中基本都有差不多的定理，群范畴也不例外.
+\begin{thm}[(群同态基本定理)]
+	$\sigma\in\hom(G,\tilde{G})\implies G/\ker\sigma\cong\Im G$.
+\end{thm}
+\begin{proof}
+	定义$G/\ker\sigma\to\Im G,g\ker\sigma\mapsto\sigma(g)$，良定和同态都是显然的.
+\end{proof}
+\subsection{群运算与群同构}
+来考虑群之间的运算.对群$H,K$，显然$H\cap K$也是群.但$HK$不一定，事实上
+\begin{lemma}
+	若$H,K$是群，则$HK$是群$\iff HK=KH$.\hypertarget{lemma:HKgrp}{}
+\end{lemma}
+\begin{proof}
+	$(h_1k_1)(h_2k_2)^{-1}=h_1{\color{gray}k_1k_2^{-1}h_2^{-1}}=h_1{\color{gray}h_3k_3}\in HK$.
+\end{proof}
+
+为什么恰好考虑这两个群？它们有密切的关系.
+\begin{lemma}
+	若$H,K$是群，则$|HK|=\dfrac{|H||K|}{|H\cap K|}$.
+\end{lemma}
+\begin{proof}
+	能操作的只有子群$H\cap K$，因此取$H$的陪集分解$H=\bigcup h_i(H\cap K)$，则
+	\[
+		HK=\bigcup_ih_i(H\cap K)K=\bigcup_i h_iK.
+	\]
+	由$h_ih_j^{-1}\notin K$易得是无交并，于是$|HK|=[H:H\cap K]|K|$.
+\end{proof}
+
+对群$HK$有$[HK:K]=[H:H\cap K]$.进一步就是“交”和“积”重要的群同构定理.
+\begin{thm}[(第一群同构)]
+	设$H\le G,N\nsg G$，则
+	\begin{enumerate}
+		\item $HN\le G,H\cap N\nsg H$.
+		\item $H/H\cap N\cong HN/N$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	由\hyperlink{lemma:HKgrp}{引理4}，验证$HN=NH$即可说明$HN\le G$.注意$hnh^{-1}\in N$蕴含$hn\in NH$，因此$HN\le G$.现在$N\nsg HN$，定义满同态$\sigma\colon H\to HN/N$为$h\mapsto hN$，则$H\cap N=\ker\sigma\nsg H$并且$H/H\cap N\cong HN/N$.
+\end{proof}
+
+下面来考虑重要的商结构.设$N\nsg G$，则$G/N$的子群和正规子群如何？容易发现
+\begin{itemize}
+	\item 若$H/N\le G/N$，则$N\le H\le G$.
+	\item 若$H/N\nsg G/N$，则$N\le H\nsg G$\footnotemark.
+\end{itemize}
+\footnotetext{由同态基本定理，这说明任何同态都给出了两群之间(正规)子群的一一对应.}
+
+反之如何？进一步，在商群内再作商群得到怎样的结构？
+\begin{thm}[(第二群同构)]
+	设$N\nsg G,N\le H\nsg G$\footnotemark，则
+	\begin{enumerate}
+		\item $H/N\nsg G/N$.
+		\item $(G/N)/(H/N)\cong G/H$.
+	\end{enumerate}
+\end{thm}
+\footnotetext{注意$\nsg$没有传递性，因此像$N\nsg H\nsg G$的写法不意味着$N\nsg G$.}
+\begin{proof}
+	定义满同态$\sigma\colon G/N\to H/N,gN\mapsto gH$，则$H/N=\ker\sigma\nsg G/N$且(2)成立.
+\end{proof}
+
+设$G,\tilde{G}$是群，在$G\times\tilde{G}$上定义自然的运算得到{\heiti 直积} $G\times\tilde{G}$也是群（若运算是加法，写为{\heiti 直和} $G\oplus\tilde{G}$）.直积与顺序无关，因为显然有同构$G\times\tilde{G}\cong\tilde{G}\times G$.认为$G\cong G\times\{\tilde{e}\}\le G\times\tilde{G}	$，则有$G,\tilde{G}\nsg G\times\tilde{G}$.
+
+现在，考虑子结构何以“拼”出大结构.设$H,K\le G$，则能否有$G\cong H\times K$?
+\begin{prop}[(内直积)]
+	$G\cong H\times K$且同构为$hk\mapsto(h,k)$当且仅当
+	\begin{enumerate}
+		\item $G=HK$.
+		\item $H\cap K=\{e\}$.
+		\item $H,K\nsg G$\emph{或}$H,K$中元素可换.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	显然.唯一需要说明的是(3)中前者可行.若$H,K\nsg G$，则$hkh^{-1}k^{-1}\in H\cap K=\{e\}$，因此$hk=kh$.
+\end{proof}
+
+此时简单记内直积为$G=H\times K$.不难证明有$G/H\cong K,G/K\cong H$.
+
+若群不能分解为两个正规子群的直积，则称$G$是{\heiti 不可分解的}.群的直积分解此后将被用作处理有限交换群的结构，即将其分解为若干$p${\heiti 群}（阶为素数$p$的幂次的群）的直积再作处理.但对一般的非交换群，直积分解的效果有限.
+
+\begin{remark}
+	若放宽条件如何？若(1)(2)不变而(3)只有$H\nsg G$，则有{\heiti 半直积} $G\cong H\rtimes K$.也类似地记作$G=H\rtimes K$.此时也有$G/H\cong K$.半直积概念直接来自于群作用.%//TODO:半直积
+	用半直积运算可以拼出更一般的群，但前提是它有非平凡正规子群，因此有单群的概念.%//TODO:单群
+\end{remark}
+\subsection{幺半群}
+类似于群，幺半群之间也可以定义{\heiti 幺半群同态}，并且若$\varphi\colon S\to S'$是同态，则$\varphi(S),\ker\varphi$是子幺半群.但是由于$\ker\varphi$一般没有群中的正规性，理解它更困难些.
+
+为此，在幺半群$S$上引入一种特殊的等价关系.若$S$上的等价关系$\sim$满足$a\sim b,c\sim d$蕴含$ac\sim bd$，则称$\sim$是$S$上的{\heiti 同余关系}，从而得到{\heiti 同余类}.现在设$\sim$是幺半群$S$上的同余关系，则全体同余类构成{\heiti 商幺半群} $S/\sim$，并且有$S$到$S/\sim$的{\heiti 自然同态}.
+\begin{lemma}
+	设$\varphi\colon S\to S'$是幺半群同态，定义$a\sim b\Leftrightarrow\varphi(a)=\varphi(b)$，则$\sim$是同余关系.\qed
+\end{lemma}
+
+因此，现在\emph{同态核$\Leftrightarrow$幺元同余类}，并且有类似的同态定理.
+\begin{thm}
+	设$\varphi\colon S\to S'$是幺半群同态，$S$上的同余关系$\sim$满足$a\sim b$蕴含$\varphi(a)=\varphi(b)$，则存在唯一同态$\psi$使下图交换：
+	\[
+		\xymatrix{
+			S\ar[r]^(0.4)\pi\ar[rd]_\varphi&S/\sim\ar@{.>}[d]^(0.45)\psi\\
+			&S
+		}
+	\]
+\end{thm}
+\begin{proof}
+	定义$\psi\colon \bar a\mapsto\varphi(a)$.
+\end{proof}
+
+最后，对任意非空集$X$，都可将其中元素作为字符生成字符串，从而在字符串的串联操作下生成幺半群.确切地说，任意$X$中元素组成的有限长序列称作{\heiti 字}（允许{\heiti 空字} $\Lambda$）.全体字以串联操作作为自然的乘法成为幺半群，称为由$X$生成的{\heiti 自由幺半群} $\widetilde{X}$.
+\begin{prop}
+	对任意从非空集$X$到幺半群$S$的映射$f\colon X\to S$，存在唯一幺半群同态$\varphi\colon\widetilde{X}\to S$使得$\varphi|_X=f$.\qed
+\end{prop}
+\section{群的重要实例}
+\subsection{循环群}
+对一个代数对象，找其“基”然后将任何元素都视为基的组合是经典的想法.
+
+对群$G$的非空子集$S\subseteq G$，包含它的最小子群称为$S${\heiti 生成的子群}，记为$\langle S\rangle$.不难发现
+\[
+	\langle S\rangle=\left\{\prod_{i=1}^rs_i^{n_i}\mid s_i\in S,n_i\in\mathbb{Z}\right\}.
+\]
+
+若存在有限子集$S\subseteq G$并且$G=\langle S\rangle$，就称$G$是{\heiti 有限生成的}.有限生成是比有限群更宽松些的条件，有更多奇妙的性质\footnote{例如，有限生成群的子群未必有限生成，必须要求是\emph{指数有限}的子群.反例是二元自由群的子群$\langle y^nxy^{-n}\rangle$.}，但我们将主要在模论中讨论它.
+
+特别地，由一个元素生成的子群$\langle a\rangle$称为{\heiti 循环群}，可以认为这是最简单的一类群.定义群$G$中元素的{\heiti 阶}为$|a|:=|\langle a\rangle|$，则循环群的研究自然转变为元素阶的研究.
+
+类似于有限群，我们重点来看有限阶元素，但要注意一些奇异性质\footnote{例如，有限阶元素的乘积可能是无限阶元素，考虑矩阵群.}.
+
+容易发现，元素$a$的阶就是使得$a^n=e$成立的最小正整数$n$（若存在，否则为无限阶）.一个常用结论是$a^n=e$蕴含$|a|\mid n$.同时，根据Lagrange定理，$\langle a\rangle \le G$给出$|a|\mid|G|$，即$a^{|G|}=e$.这能推出一些数论结果.
+\begin{prop}
+	\begin{enumerate}
+		\item 若$a$有限阶，则$|a^k|=\dfrac{|a|}{(|a|,k)},\,k\in\mathbb{N}$.
+		\item 若$a,b$有限阶、可交换并且$\big(|a|,|b|\big)=1$，则$|ab|=|a||b|$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\hspace*{5.4pt}(1)记$|a|=n,|a^k|=s$，则$n\mid ks$，进而$\frac{n}{(n,k)}\mid s$.反之显然$\frac{n}{(k,n)}\mid s$.
+
+	(2)显然$|ab|\mid|a||b|$.注意$b^{|ab||a|}=(ab)^{|ab||a|}=e$，所以$|b|\mid |ab||a|$，即$|b|\mid|ab|$.同理$|a|\mid|ab|$，从而$|a||b|\mid|ab|$.
+\end{proof}
+\begin{cor}
+	$n$阶循环群中$d$阶元（若存在）数量为$\varphi(d)$.
+\end{cor}
+\begin{proof}
+	设$|a|=n$，则$|a^k|=d$当且仅当$k=\frac{k'n}{d}$，其中$(k',d)=1$.
+\end{proof}
+
+现在，有限循环群的子群结构可以完全确定：任意$s\mid|G|$对应一个循环子群.
+\begin{thm}
+	设$G=\langle a\rangle$是$n$阶循环群.
+	\begin{itemize}
+		\item $G$的任何子群都是循环群$\langle a^d\rangle$.
+		\item 对任意$s\mid n$存在唯一的$s$阶循环子群.
+	\end{itemize}
+\end{thm}
+\begin{proof}
+	设$H\le G$是非平凡子群，取其中最小正幂指数元$a^d$，则$\langle a^d\rangle\le G$，其中$d\ne 0$.对任意$a^k\in H$，设$k=ld+r$，其中$0\le r<d$，则$a^r\in H$，故$r=0$即$a^k=(a^d)^l\in\langle a^d\rangle $，于是$H=\langle a^d\rangle $.反之，对$s\mid n$设$n=ds$，则$|a^d|=s$，从而$s$阶循环子群$\langle a^d\rangle \le G$.
+\end{proof}
+
+循环群的结构如此简单，以至于群的阶数成了唯一的同构不变量.
+\begin{thm}[(循环群结构)]
+	\begin{itemize}
+		\item 无限循环群都同构于整数加群$(\mathbb{Z},+)$.
+		\item 有限循环群根据阶数分别同构于模$n$整数加群$(\mathbb{Z}_n,+)$\footnotemark.
+	\end{itemize}
+\end{thm}
+\begin{proof}
+	作同态$\mathbb{Z}\to\langle a\rangle ,n\mapsto a^n$.
+\end{proof}
+\footnotetext{模$n$整数环的另一个写法是$\mathbb{Z}/n\mathbb{Z}$，但在不涉及$\mathbb{Z}_p$的另一个含义时我们情愿用后者省些笔墨.}
+
+考虑到通常在群论里我们都谈论乘法而非加法，用$Z_n$记乘法下的$n$阶循环群.
+
+下面我们来寻找如何判别一个有限群是否是循环群.首先由Lagrange定理得到
+\begin{thm}
+	素数阶群$G$都是循环群$Z_p$.\qed
+\end{thm}
+
+有限循环群总是Abel群，反之还需要添加什么条件？
+\begin{lemma*}
+	有限Abel群$G$中存在一个元素，它的阶是所有其他元素的阶的倍数.
+\end{lemma*}
+\begin{proof}
+	设$a\in G$是阶最大的元素$|a|=n$.若存在$m$阶元素$b\in G$使得$m\nmid n$，则存在素数$p$使得$p^r\mid m$但$p^r\nmid n$.因此可设
+	\[
+		m=p^rl,\,n=p^sk,\,(k,p)=1,\,0\le s<r.
+	\]
+	于是$|b^l|=p^r,|a^{p^s}|=k$，进而$|b^la^{p^s}|=p^rk>p^sk=n$矛盾.
+\end{proof}
+\begin{thm}
+	有限Abel群$G$是循环群$\Leftrightarrow$对任意正整数，$x^m=e$在$G$中至多$m$个解.
+\end{thm}
+\begin{proof}
+	\hspace*{5.4pt}($\Leftarrow$)取最大阶元素$a\in G$，则$|G|\ge n$.但由上述引理，$G$是$x^n=e$的解集，因此$|G|\le n$，即$|G|=n,G=\langle a\rangle $是循环群.
+
+	($\Rightarrow$)记$H=\left\{a\in G\mid a^m=e\right\}$.显然$H\le G$，从而设$H=\langle a^d\rangle $，其中$d\mid n$以及$|H|:=s=n/d$.注意$(a^d)^m=e$得到$s\mid m$即$s=|H|\le m$.
+\end{proof}
+\begin{cor}
+	域$F$的乘法群$F^*$的任意有限子群循环.特别地，$\mathbb{Z}_p^*$是循环群.
+\end{cor}
+\begin{proof}
+	因为域上的$n$次多项式至多$n$个根.
+\end{proof}
+
+由此推论可知$\mathbb{C}^*$的子群$\mu_n=\left\{z\in\mathbb{C}\mid z^n=1\right\}\cong Z_n$，称为$n$ {\heiti 次单位根群}.
+
+最后我们来看有限循环群的直积.
+\begin{prop}
+	$Z_{m_1}\times Z_{m_2}$是循环群$\Leftrightarrow(m_1,m_2)=1$.
+\end{prop}
+\begin{proof}
+	这是环论中的显然结论.
+\end{proof}
+
+一个常用的循环群直积是{\heiti \textbf{Klein}四群} $K_4=Z_2\times Z_2$.后面我们会看到，四阶群只有$Z_4,K_4$两个同构类.章末有更多小阶群分类.
+%//TODO:小阶群分类
+
+循环群实际上还有不少可供讨论的话题，例如它的自同构群可以被完全计算出来（这一般很难做到），而这需要讨论一般的$\mathbb{Z}_n^*$的结构.
+%//TODO:循环群自同构
+
+\subsection{对称群}
+对非空集合$\Omega$，它到自身的全体双射按照复合构成$\Omega$上的{\heiti 变换群} $S_\Omega$.
+
+特别地，在$|\Omega|=n$有限时，$S_\Omega$都同构于$\Omega=\{1,\cdots,n\}$时的变换群，称为$n$ {\heiti 元对称群} $S_n$.它的子群称为{\heiti 置换群}.
+
+显然$|S_n|=n!$.对称群$S_n$只保留了$n$个元素最基本的顺序关系，可以认为它也是最基本的一类群（见Cayley定理）.%//TODO:Cayley定理
+
+类似于对称群，非空集$X$到自身的全体映射按复合构成幺半群$M(X)$，它的子幺半群称为{\heiti 变换幺半群}.类似于群和变换群的关系，我们有
+\begin{lemma}
+	任意幺半群$S$都与$S$上的一个变换幺半群同构.\qed
+\end{lemma}
+
+回到群范畴.为除去平凡情形，\emph{未经特别说明本节以下均假设$n\ge 3$}.
+
+将$n$元排列自然地对应$S_n$中的置换，那么逆序数也能在$S_n$上定义.确切地说，定义
+\[
+	\operatorname*{sgn}(\sigma):=\prod_{1\le i<j\le n}\frac{\sigma(i)-\sigma(j)}{i-j},\quad\forall\sigma\in S_n.
+\]
+\vspace*{-8pt}
+\begin{lemma}
+	设$n\ge 2$，则$\mathrm{sgn}\colon S_n\to\mu_2$是满同态.
+\end{lemma}
+\begin{proof}
+	任意对换的符号都是$-1$（见下文）.同态是显然的.
+\end{proof}
+\begin{cor*}
+	若置换群$G\le S_n$包含奇置换，则它有指数$2$子群.\qed
+\end{cor*}
+
+根据这个符号映射，符号$1$的称为{\heiti 偶置换}，符号$-1$的称为{\heiti 奇置换}.全体$n$阶偶置换称为$n$ {\heiti 元交错群} $A_n$.根据符号同态得到$A_n\nsg S_n$以及$|A_n|=n!/2$，即$S_n$中奇偶置换各一半.
+
+对称群$S_n$内的置换$\sigma$若满足$\sigma(i_k)=i_{k+1},\sigma(i_r)=i_1$，其中$1\le k<r$，并且保持其余元素不动，则记$\sigma=(i_1\cdots i_r)$为一个$r${\heiti -轮换}.特别地称$(ij)$为{\heiti 对换}.而$(1)$是单位元，记为$1$.
+
+显然，$r$-轮换是$r$阶元，对换是$2$阶元.轮换的阶和奇偶置换相反.
+
+注意$(1i)(1j)=(1ji)\ne(1j)(1i)=(1ij)$，即$S_n$不是交换群.但是
+\begin{lemma*}
+	不交的轮换乘积可交换.\qed
+\end{lemma*}
+
+\begin{prop}
+	任意置换$\sigma\in S_n$可唯一地写为不交轮换的乘积.
+\end{prop}
+\begin{proof}
+	记$A_0=\{1,\cdots,n\}$.若$\langle \sigma\rangle (1)=A_0$，设$\sigma^n(1)=1$且$n$最小，则$\sigma=(1,\sigma(1),\cdots,\sigma^n(1))$.若不然，从$A_1=A-\langle \sigma\rangle (1)$中选取最小元$i_1$，再考虑$\langle \sigma\rangle (i_1)$得到
+	\[
+		\sigma=(1,\sigma(1),\cdots,\sigma^n(1))(i_1,\sigma(i_1),\cdots,\sigma^m(i_2)),
+	\]
+	并且这两个轮换\footnotemark 不交（否则与$i_1$的选取矛盾）.如是递推.最后必能穷尽$A_0$得到$\sigma$的不交轮换表示.
+
+	设$\sigma=\sigma_1\cdots\sigma_t=\tau_1\cdots\tau_s$是两个$\sigma$的不交轮换表示.对轮换个数归纳.奠基平凡.假设$\sigma\ne 1$，从而存在$i$使得$\sigma(i)\ne i$，则在$\sigma_1,\cdots,\sigma_t$中存在唯一的一个$\sigma_l$使得$\sigma_l(i)\ne i$.同理$\tau_k(i)\ne i$，并且$\sigma_l(i)=\tau_k(i)$.由轮换的定义，显见$\sigma_l=\tau_k$，从而归纳假设可用.
+\end{proof}
+\footnotetext{这里我们将1-轮换，即单位元也包含在内，但在最后的不交轮换表示里隐去它们不写.}
+\begin{cor*}
+	任意置换$\sigma\in S_n$可写为对换的乘积，并且对换个数的奇偶性由其符号$\operatorname*{sgn}(\sigma)$决定.
+\end{cor*}
+\begin{proof}
+	显然$(i_1\cdots i_r)=(i_1i_r)\cdots(i_1i_2)$.后者由符号同态显然.
+\end{proof}
+\begin{lemma*}[(共轭)]
+	$\forall\tau\in S_n,\,\tau(i_1\cdots i_r)\tau^{-1}=(\tau(i_1)\cdots\tau(i_r))$.\qed\hypertarget{ConjugationInSymmetry}{}
+\end{lemma*}
+\begin{cor*}
+	$S_n$由对换生成，$A_n$由3-轮换生成.进一步
+	\begin{itemize}
+		\item $S_n=\langle (12),(13),\cdots,(1n)\rangle $.
+		\item $A_n=\langle (123),(124),\cdots,(12n)\rangle $.
+	\end{itemize}
+\end{cor*}
+\begin{proof}
+	偶置换的对换为偶数个，其中相交的两两成对形成3-轮换$(ik)(ij)=(ijk)$.
+
+	注意$(ij)=(1i)(1j)(1i)$以及
+	\begin{align*}
+		(ijk) & =\big[(1i)(2j)\big](12k)\big[(1i)(2j)\big]^{-1}                 \\
+		      & =\big[(1i)(12)(21)(2j)\big](12k)\big[(1i)(12)(21)(2j)\big]^{-1} \\
+		      & =(12i)(12j)(12k)(12j)^{-1}(12i)^{-1}.
+	\end{align*}
+\end{proof}
+
+这样就把对称群$S_n$和交错群$A_n$里的置换完全弄清楚了：设$n=l_1+\cdots+l_t$是$n\ge 3$的一个{\heiti 分拆}，其中$l_1\ge\cdots\ge l_t\ge 1$，记为$(l_1,\cdots,l_t)$.任意置换$\sigma\in S_n$的轮换分解（计1-轮换）中各轮换的阶数都给出了一个$n$的分拆，称为置换$\sigma$的{\heiti 型}.置换的型在此后讨论共轭关系时还有很大作用.
+\subsection{自由群}
+
+
+
+\subsection{杂例}
+
+\section{有限Abel群}
+
+\section{群列}
+
+\section{群作用}
+
+
+
+
+%根据\hyperlink{ConjugationInSymmetry}{引理4}，
+
+
+
+\section{专题讨论}
+\subsection{子群格}
+
+\subsection{小阶群分类}
+
+\subsection{低阶单群}
+
+\subsection{自同构群}
+
+\subsection{特征子群}

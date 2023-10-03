@@ -1,0 +1,838 @@
+\section{线性空间与线性变换}
+\subsection{线性空间的基本概念}
+\begin{prob}[9]
+	求数域 $K$ 上全体 $n$ 阶对称矩阵关于矩阵加法、数乘所成的 $K$ 上线性空间的维数和一组基.
+\end{prob}
+\begin{sol}
+	注意到 $E_{ij}+E_{ji}\,(1\le i,j\le n)$ 是一组基，维数为 $\frac{n(n+1)}{2}$ .
+\end{sol}
+\begin{prob}[10]
+	求数域 $K$ 上全体 $n$ 阶反对称矩阵关于矩阵加法、数乘所成的 $K$ 上线性空间的维数和一组基.
+\end{prob}
+\begin{sol}
+	注意到 $E_{ij}-E_{ji}\,(1\le i,j\le n,\,i\ne j)$ 是一组基，维数为 $\frac{n(n-1)}{2}$ .
+\end{sol}
+\begin{prob}[14]
+	给定数域 $K$ 上的一个 $n$ 阶方阵 $A\ne0$ .设
+	\[
+		f(x)=a_0\lambda^m+a_1\lambda^{m-1}+\cdots+a_m\quad(a_0\ne0,\,a_i\in K)
+	\]
+	是使 $f(A)=0$ 的最低次多项式.设 $V$ 是由系数在 $K$ 内的 $A$ 的多项式全体关于矩阵加法、数乘形成的 $K$ 上的线性空间，证明：
+	\[
+		E,A,A^2,\cdots,A^{m-1}
+	\]
+	是 $V$ 的一组基，从而 $\dim V=m$ .求 $V$ 中向量
+	\[
+		(A-aE)^k\quad(a\in K,\,0\le k\le m)
+	\]
+	在这组基下的坐标.
+\end{prob}
+\begin{proof}
+	由于 $m$ 是使 $f(A)=0$ 的最低次多项式，因此不可能有不全为零的数 $k_1,\cdots,k_m$ 使得
+	\[
+		k_1E+k_2A+k_3A^2+\cdots+k_mA^{m-1}=0,
+	\]
+	即 $E,A,A^2,\cdots,A^{m-1}$ 线性无关.
+
+	另一方面，任取 $B\in V$ ，要证 $B$ 能被 $E,A,A^2,\cdots,A^{m-1}$ 线性表示，只需说明对任意 $l\ge m$ ， $A^l$ 能被 $E,A,A^2,\cdots,A^{m-1}$ 线性表示即可.对 $A^m$ ，由 $f(A)=0$ 且 $a_0\ne0$ 立得.假设命题对 $A^l$ 成立，则 $A^{l+1}=A^lA=\gamma_mA^m+\cdots$ ，于是命题对 $A^{l+1}$ 也成立.于是 $E,A,A^2,\cdots,A^{m-1}$ 是 $V$ 的一组基.
+
+	当 $k<m$ 时，直接得到其坐标为 $(a^k,ka^{k-1},\cdots,ka,1,0,\cdots,0)'$ .
+	当 $k=m$ 时，注意到
+	\[
+		A^m=-\frac{1}{a_0}(a_1A^{m-1}+\cdots+a_mE),
+	\]
+	所以易得
+	\begin{align*}
+		(A-aE)^m & =A^m+\sum_{i=0}^{m-1}\mathrm{C}_m^ia^{m-i}A^i                                                                              \\
+		         & =\biggl(a^m-\frac{a_m}{a_0}\biggr)E+\biggl(ma^m-\frac{a_{m-1}}{a_0}\biggr)A+\cdots+\biggl(a-\frac{a_1}{a_0}\biggr)A^{m-1}.
+	\end{align*}
+	坐标为 $\biggl(a^m-\dfrac{a_m}{a_0},ma^m-\dfrac{a_{m-1}}{a_0},\cdots,a-\dfrac{a_1}{a_0}\biggr)'$ .
+\end{proof}
+\begin{prob}[15]
+	接上题.证明：
+	\[
+		(A-aE)^k\quad(k=0,1,2,\cdots,m-1)
+	\]
+	也是 $V$ 的一组基.求两组基之间的过渡矩阵 $T$ ：
+	\[
+		(E,A-aE,\cdots,(A-aE)^{m-1})=(E,A,\cdots,A^{m-1})T.
+	\]
+\end{prob}
+\begin{proof}
+	考虑到 $(A-aE)^k=\displaystyle \sum_{i=0}^{k}(-1)^{k-i}a^{k-i}A^i$ ，直接给出
+	\[
+		T=\begin{bmatrix}
+			1      & -a     & \cdots & (-1)^ka^k          \\
+			0      & 1      & \cdots & (-1)^{k-1}ka^{k-1} \\
+			\vdots & \vdots &        & \vdots             \\
+			0      & 0      & \cdots & 1
+		\end{bmatrix}.
+	\]
+	显然 $|T|=1$ ，因此 $(A-aE)^k\,(k=0,1,2,\cdots,m-1)$ 也是一组基.
+\end{proof}
+\begin{prob}[18]
+	考察数域 $K$ 上线性空间 $K[x]_n$ .给定 $K$ 上 $n$ 个两两不等的数 $a_1,a_2,\cdots,a_n$ ，令
+	\[
+		f_i(x)=(x-a_1)\cdots\widehat{(x-a_i)}\cdots(x-a_n)\quad(1\le i\le n)
+	\]
+	（记号 $\widehat{}$ 表示去掉该项）.证明 $f_1(x),f_2(x),\cdots,f_n(x)$ 为 $K[x]_n$ 的一组基.
+\end{prob}
+\begin{proof}
+	只需证 $f_1(x),f_2(x),\cdots,f_n(x)$ 线性无关.假设
+	\[
+		k_1f_1(x)+\cdots+k_nf_n(x)=0,
+	\]
+	依次取 $x=a_i\,(1\le i\le n)$ 可得 $k_if_i(a_i)=0$ ，从而 $k_i=0$ .即证.
+\end{proof}
+\begin{note}
+	事实上，这些函数差不多就是下题中的Lagrange基函数 $\ell_i(x)$ .
+\end{note}
+\begin{prob}[19]
+	给定数域 $K$ 上 $n$ 个互不相同的数 $a_1,a_2,\cdots,a_n$ .又设 $b_1,b_2,\cdots,b_n$ 是 $K$ 内任意 $n$ 个数.构造 $K$ 上次数小于 $n$ 的多项式 $f(x)$ ，使得
+	\[
+		f(a_i)=b_i\quad(1\le i\le n).
+	\]
+\end{prob}
+\begin{sol}
+	取Lagrange基函数为
+	\[
+		\ell_i(x)=\prod_{j=1}^{n}\frac{x-a_j}{a_i-a_j}\quad(1\le i\le n).
+	\]
+	不难发现
+	\[
+		L(x)=\prod_{i=1}^{n}b_i\ell_i(x)
+	\]
+	即为所求，它被称为Lagrange插值多项式.
+\end{sol}
+\begin{prob}[20]
+	设 $A$ 是数域 $K$ 上的 $n$ 阶方阵.证明存在 $K$ 上次数不大于 $n^2$ 的非零多项式 $f(x)$ 使得 $f(A)=0$ .
+\end{prob}
+\begin{proof}
+	注意到 $\dim M_n(K)=n^2$ ，因此 $E,A,A^2,\cdots,A^{n^2}$ 线性相关，即证.
+\end{proof}
+\begin{prob}[23]
+	证明线性空间定义中的八条公理，其中向量加法的交换律可由其余公理推导得到.
+\end{prob}
+\begin{proof}
+	只需要两个与向量加法交换律无关的引理.
+
+	引理1：若 $\alpha+\beta=0$ ，则 $\beta+\alpha=0$ ，即逆元可交换.
+
+	引理2：任意 $\alpha\in V$ 都有 $0+\alpha=0$ ，即零元可交换.
+
+	这些证明是显然的.
+\end{proof}
+\begin{prob}[24]
+	举例说明：线性空间中的八条公理并非任何一条都能由其余七条推导得到.
+\end{prob}
+\begin{proof}
+	记 $\mathbb{R}_\infty=\mathbb{R}\cup\{\infty,-\infty\}$ .对其中涉及无穷的计算作如下规定
+	\[
+		\infty+a=\infty,\,-\infty-a=-\infty,\,\infty-\infty=0\quad(a\in \mathbb{R}\cup\{\infty\}),
+	\]
+	则 $\mathbb{R}_\infty$ 满足除了向量加法结合律以外的七条公理.但是
+	\begin{gather*}
+		(\infty-\infty)-\infty=0-\infty=-\infty,\\
+		\infty+(-\infty-\infty)=\infty-\infty=0,
+	\end{gather*}
+	因此不满足结合律.
+\end{proof}
+\subsection{子空间与商空间}
+\begin{prob}[7]
+	证明 $K^n$ 的任一子空间 $M$ 都是数域 $K$ 上某个齐次线性方程组的解空间.
+\end{prob}
+\begin{proof}
+	若 $M=\{0\}$ ，则 $M$ 是方程 $EX=0$ 的解空间.
+
+	若 $M\ne\{0\}$ ，取 $M$ 的一组基 $\varepsilon_1,\cdots,\varepsilon_r$ .根据2.4节\hyperlink{EquationForCertainVectors}{题目13}，存在方程 $AX=0$ 使得 $\varepsilon_1,\cdots,\varepsilon_r$ 是其基础解系，即 $M$ 为其解空间.
+\end{proof}
+\begin{prob}[8]
+	\hypertarget{FiniteSubspace}{设} $M$ 是数域 $K$ 上线性空间 $V$ 的子空间，如果 $M\ne V$ ，则 $M$ 称为 $V$ 的{\heiti 真子空间}.证明 $V$ 不能表示为有限个真子空间的并.
+\end{prob}
+\begin{proof}
+	对真子空间的个数 $k$ 作归纳.当 $k=1$ 时，显然 $M_1\subset V$ .
+
+	假设命题对 $k$ 成立，对于 $k+1$ 个真子空间 $M_1,\cdots,M_k,M_{k+1}$ .由于 $k$ 个真子空间的并不能填满 $V$ ，可取
+	\[
+		\alpha\in V\setminus\bigcup_{i=1}^{k}M_i,\quad \beta\in V\setminus\bigcup_{i=2}^{k+1}M_i.
+	\]
+	不妨设 $\alpha\in M_{k+1},\beta\in M_1$ (否则命题已经成立)，往证存在 $\lambda\in K$ 使得 $\alpha+\lambda\beta\notin\displaystyle \bigcup_{i=1}^{k+1}M_i$ .
+
+	首先注意到 $\alpha+\lambda\beta\notin M_1,M_{k+1}$ .假设 $\alpha+\lambda_i\beta,\alpha+\lambda_i'\beta\in M_i$ ，则 $(\lambda_i-\lambda_i')\beta\in M_i$ ，从而 $\lambda_i=\lambda_i'$ ，因此一个 $M_i$ 只能对应至多一个 $\lambda_i$ .但是 $\lambda\in K$ 可以有无限个，因此必定存在 $\lambda$ 使得 $\alpha+\lambda\beta\notin\displaystyle \bigcup_{i=1}^{k+1}M_i$ ，即证.
+\end{proof}
+\begin{note}
+	从证明可以看出命题只在无限域上成立.
+\end{note}
+\begin{prob}[16]
+	设 $M$ 是线性空间 $M_n(K)$ 内全体对称矩阵所成的子空间， $N$ 是由全体反对称矩阵所成的子空间，证明： $M_n(K)=M\oplus N$ .
+\end{prob}
+\begin{proof}
+	因为 $A=\frac{1}{2}(A+A')+\frac{1}{2}(A-A')$ ，所以 $M_n(K)=M+N$ .又 $M\cap N=\{0\}$ ，故 $M+N$ 是直和.
+\end{proof}
+\begin{prob}[20]
+	设 $A$ 是数域 $K$ 上满秩的 $n$ 阶方阵.取 $A$ 的前 $k$ 行组成 $k\times n$ 矩阵 $B$ ，其后 $n-k$ 行组成 $(n-k)\times n$ 矩阵 $C$ ，令 $X$ 为未知量 $x_1,x_2,\cdots,x_n$ 排成的 $n\times 1$ 矩阵.设齐次线性方程组 $BX=0$ 和 $CX=0$ 的解空间分别是 $M$ 和 $N$ ，证明 $K^n=M\oplus N$ .
+\end{prob}
+\begin{proof}
+	由于 $A$ 满秩，因此 $AX=0$ 的解空间为零空间，即 $M\cap N=\{0\}$ .因此
+	\[
+		\dim(M+N)=\dim M+\dim N=(n-k)+k=n,
+	\]
+	而 $M\oplus N\subseteq K^n$ ，所以 $K^n=M\oplus N$ .
+\end{proof}
+\begin{prob}[21]
+	设 $M,N$ 是数域 $K$ 上线性空间 $V$ 的两个子空间且 $M\subseteq N$ .设 $M$ 的一个补空间为 $L$ ，即 $V=M\oplus L$ ，证明 $N=M\oplus(N\cap L)$ .
+\end{prob}
+\begin{proof}
+	取 $x\in N\subseteq V$ ，则有 $x=y+z$ ，其中 $y\in M,z\in L$ .但同时 $z=x-y\in N$ ，因此 $z\in N\cap L$ .由此可知 $N=M+(N\cap L)$ .显然 $M\cap N\cap L=\{0\}$ ，即证.
+\end{proof}
+\begin{prob}[23]
+	设 $M_1,M_2,\cdots,M_k$ 为数域 $K$ 上线性空间 $V$ 的子空间.证明 $\displaystyle \sum_{i=1}^{k}M_i$ 为直和的充分必要条件是
+	\[
+		M_i\cap\biggl(\sum_{j=1}^{i-1}M_j\biggr)=\{0\}\quad(i=2,3,\cdots,k).
+	\]
+\end{prob}
+\begin{proof}
+	对 $k$ 作归纳. $k=2$ 时是已证明的结论.假设结论对 $k$ 成立，则对 $M_1,\cdots,M_k,M_{k+1}$ ，有 $\displaystyle \sum_{i=1}^{k}M_i:=M$ 为直和.此时 $M_{k+1}\cap M=\{0\}$ ，因此 $M_{k+1}+M$ 为直和，即证.
+\end{proof}
+\begin{prob}[27]
+	设 $M$ 为线性空间 $V$ 的一个子空间.在 $M$ 内取定一组基 $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_r$ ，用两种方式扩充为 $V$ 的基
+	\begin{gather*}
+		\varepsilon_1,\cdots,\varepsilon_r,\varepsilon_{r+1},\cdots,\varepsilon_n;\\
+		\varepsilon_1,\cdots,\varepsilon_r,\eta_{r+1},\cdots,\eta_n.
+	\end{gather*}
+	这两组基之间的过渡矩阵为
+	\[
+		T=\begin{bmatrix}
+			E_r & A   \\
+			O   & T_0
+		\end{bmatrix}.
+	\]
+	证明： $V/M$ 内两组基
+	\begin{gather*}
+		\overline{\varepsilon}_{r+1}=\varepsilon_{r+1}+M,\cdots,\overline{\varepsilon}_n=\varepsilon_n+M;\\
+		\overline{\eta}_{r+1}=\eta_{r+1}+M,\cdots,\overline{\eta}_n=\eta_n+M
+	\end{gather*}
+	之间的过渡矩阵为 $T_0$ .
+\end{prob}
+\begin{proof}
+	不难发现
+	\[
+		(\eta_{r+1},\cdots,\eta_n)-(\varepsilon_{r+1},\cdots,\varepsilon_n)T_0=(\varepsilon_{r+1},\cdots,\varepsilon_r)A\in M,
+	\]
+	因此 $(\overline{\eta}_{r+1},\cdots,\overline{\eta}_n)=(\overline{\varepsilon}_{r+1},\cdots,\overline{\varepsilon}_n	)T_0$ .
+\end{proof}
+\begin{prob}[28]
+	将 $M_n(K)$ 上全体列线性函数所成的集合记作 $P(K)$ .在 $P(K)$ 内定义加法及与数域 $K$ 内的数乘运算.
+	\begin{mylist}
+		\item 证明 $P(K)$ 关于上述加法，数乘成为 $K$ 上的线性空间.
+		\item 令$\varepsilon_1,\cdots,\varepsilon_n$为$K^n$的标准基，证明 $f\in P(K)$ 由下列函数值唯一决定：
+		\[
+			f(\varepsilon_{i_1},\varepsilon_{i_2},\cdots,\varepsilon_{i_n})\quad(1\le i_1,i_2,\cdots,i_n\le n).
+		\]
+		\item 任给 $K$ 内 $n^n$ 个数 $b_{i_1i_2\cdots i_n}$ ，证明存在唯一的 $f\in P(K)$ 满足
+		\[
+			f(\varepsilon_{i_1},\varepsilon_{i_2},\cdots,\varepsilon_{i_n})=b_{i_1i_2\cdots i_n}.
+		\]
+		\item 求线性空间 $P(K)$ 的维数和一组基.
+		\item 将 $M_n(K)$ 上全体反对称列线性函数所成的集合记作 $SP(K)$ ，其中 $n\ge 2$ .证明 $SP(K)$ 是 $P(K)$ 的子空间.求 $SP(K)$ 的维数和一组基.
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)显然.
+
+	(2)设 $A=(a_{ij})$ ，只需注意到
+	\[
+		f(A)=\sum_{i_1=1}^{n}\cdots\sum_{i_n=1}^{n}a_{i_11}\cdots a_{i_nn}f(\varepsilon_{i_1},\varepsilon_{i_2},\cdots,\varepsilon_{i_n})\quad(1\le i_1,i_2,\cdots,i_n\le n).
+	\]
+
+	(3)由(2)知这样的函数若存在必定唯一.命
+	\[
+		f(A)=\sum_{i_1=1}^{n}\cdots\sum_{i_n=1}^{n}a_{i_11}\cdots a_{i_nn}b_{i_1\cdots i_n},
+	\]
+	则 $f$ 就是这样的函数.
+
+	(4)定义 $n^n$ 个函数
+	\[
+		f_{j_1\cdots j_n}(\varepsilon_{i_1},\varepsilon_{i_2},\cdots,\varepsilon_{i_n})=\delta_{i_1j_1}\cdots\delta_{i_nj_n}\quad(1\le j_1,\cdots,j_n\le n),
+	\]
+	其中 $\delta_{ij}$ 是Knonecker记号，易知它们线性无关.显然
+	\[
+		f=\sum_{1\le i_1,\cdots,i_n\le n}f(\varepsilon_{i_1},\varepsilon_{i_2},\cdots,\varepsilon_{i_n})f_{i_1\cdots i_n},
+	\]
+	因此这些函数就是一组基， $\dim P(K)=n^n$ .
+
+	(5)由于 $SP(K)=\{k\det \mid k\in K\}$ ，因此 $SP(K)$ 的基为 $\det$ ，维数为 $1$ .
+\end{proof}
+\begin{note}
+	此题给出了多重线性映射的一些最基本的结论.和此前的注释一样，(5)题一般地应为多重交错线性映射空间.
+\end{note}
+\begin{prob}[30]
+	将全体定义在 $M_n(K)$ 上的数量函数（即 $M_n(K)\to K$ 的映射）所成的集合记作 $F(K)$ .在 $F(K)$ 内定义加法及与 $K$ 中数的数乘.
+	\begin{mylist}
+		\item 证明 $F(K)$ 关于上述加法，数乘成为 $K$ 上的线性空间.
+		\item 证明 $M_n(K)$ 上全体列线性函数组成的集合 $P(K)$ 及全体行线性函数组成的集合 $Q(K)$ 都是 $F(K)$ 的子空间.
+		\item 求 $P(K)\cap Q(K)$ 的维数和一组基.
+		\item 求 $P(K)+Q(K)$ 的维数和一组基.
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)(2)显然.
+
+	(3)在上题中取 $j_1,\cdots,j_n$ 为 $1,\cdots,n$ 的排列，则不难发现 $f_{j_1\cdots j_n}$ 既行线性又列线性，且彼此线性无关.如果有两指标 $j_k,j_l$ 相等，则 $f_{j_1\cdots j_n}$ 不满足列线性，从而 $f$ 的展开式中不含此项，因此 $f$ 可被 $f_{j_1\cdots j_n}$ 线性表示.于是 $\dim P(K)=n!$ ，基为各 $f_{j_1\cdots j_n}$ .
+
+	(4) $\dim(P(K)+Q(K))=2n^n-n!$ ，基为至少两指标相同的各 $f_{j_1\cdots j_n}$ .
+\end{proof}
+\subsection{线性映射与线性变换}
+\begin{prob}[2]
+	设 $A,B$ 是数域 $K$ 上的 $m\times n$ 矩阵，且 $\rank A=\rank B$ .设齐次线性方程组 $AX=0$ 和 $BX=0$ 的解空间分别是 $U,V$ .证明存在 $K$ 上可逆 $n$ 阶方阵，使得 $f(Y)=TY\,(\forall Y\in U)$ 是 $U$ 到 $V$ 的同构映射.
+\end{prob}
+\begin{proof}
+	由于 $A,B$ 相抵，存在可逆 $s$ 级矩阵 $P$ 和可逆 $n$ 级矩阵 $Q$ 使得 $B=PAQ$ .不难发现
+	\begin{align*}
+		     & {}Y\in U\iff AY=0      \\
+		\iff & {}PAY=0\iff BQ^{-1}Y=0 \\
+		\iff & {}Q^{-1}Y\in V.
+	\end{align*}
+	因此记 $f(Y)=Q^{-1}Y$ ，则 $f$ 是同构.
+\end{proof}
+\begin{prob}[14]
+	设 $\bm A$ 与 $\bm B$ 是两个线性变换，且 $\bm{AB}-\bm{BA}=\bm E$ .证明：对任意正整数 $k$ 有
+	\[
+		\bm A^k\bm B-\bm B\bm A^k=k\bm A^{k-1}.
+	\]
+\end{prob}
+\begin{proof}
+	归纳.当 $k=2$ 时 $\bm A^2\bm B-\bm B\bm A^2=\bm A(\bm{BA}+\bm E)-(\bm{AB}-\bm E)\bm A=2\bm A$ 成立.
+
+	假设命题对 $k$ 成立，则
+	\begin{align*}
+		  & {}\bm A^{k+1}\bm B-\bm B\bm A^{k+1}                              \\
+		= & {}\bm A(\bm{BA}^k+k\bm A^{k-1})-(\bm A^k\bm B-k\bm A^{k-1})\bm A \\
+		= & {}\bm{ABA}^k-\bm A^k\bm{BA}+2k\bm A^k                            \\
+		= & {}\bm A(\bm{BA}^{k-1}-\bm A^{k-1}\bm B)\bm A+2k\bm A^k           \\
+		= & {}-(k-1)\bm A^k+2k\bm A^k=(k+1)\bm A^k,
+	\end{align*}
+	因此命题对 $k+1$ 也成立.
+\end{proof}
+\begin{prob}[15]
+	设线性空间 $V$ 分解为子空间 $M,N$ 的直和： $V=M\oplus N$ .令 $\bm P$ 为关于此直和分解式的 $V$ 对 $M$ 的投影变换，证明：
+	\begin{mylist}
+		\item  $\bm P^2=\bm P$ ；
+		\item 若 $M\ne V$ ，证明 $\bm P$ 不可逆；
+		\item 命 $\bm P_1$ 表示 $V$ 关于上述直和分解对子空间 $N$ 的投影变换，证明 $\bm{PP}_1=\bm P_1\bm P=\bm 0$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[16]
+	设 $\bm A$ 是线性空间中的一个线性变换，且 $\bm A^2=\bm A$ .证明：
+	\begin{mylist}
+		\item  $V$ 中任一向量 $\alpha$ 可分解为\[\alpha=\alpha_1+\alpha_2,\]其中 $\bm A\alpha_1=\alpha_1,\bm A\alpha_2=0$ ，且这种分解是唯一的；
+		\item 若 $\bm A\alpha=-\alpha$ ，则 $\alpha=0$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)取 $\alpha_1=\bm A\alpha,\,\alpha_2=\alpha-\alpha_1$ 即可.
+
+	(2)设 $\alpha=\alpha_1+\alpha_2$ ，则 $\bm A\alpha=-\alpha$ 等价于 $\alpha=-\alpha_1$ .此时 $\bm A(-\alpha_1)=-\alpha_1=\alpha_1$ ，从而 $\alpha=\alpha_1=0$ .
+\end{proof}
+\begin{prob}[17]
+	设 $\bm A$ 与 $\bm B$ 是两个线性变换，满足 $\bm A^2=\bm A,\,\bm B^2=\bm B$ .证明：若 $(\bm A+\bm B)^2=\bm A+\bm B$ ，则 $\bm{AB}=\bm 0$ .
+\end{prob}
+\begin{proof}
+	显然 $\bm{AB}+\bm{BA}=\bm 0$ ，于是 $\bm{AB}+\bm{ABA}=\bm{ABA}+\bm{BA}=\bm 0$ ，所以有
+	\[
+		\bm{AB}=\bm{AB}+\bm{ABA}+\bm{BA}=\bm{BA},
+	\]
+	即 $\bm{AB}=\bm 0$ .
+\end{proof}
+\begin{prob}[18]
+	设 $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$ 是线性空间 $V$ 的一组基，证明：线性变换 $\bm A$ 可逆，当且仅当 $\bm A\varepsilon_1,\bm A\varepsilon_2,\cdots,\bm A\varepsilon_n$ 线性无关.
+\end{prob}
+\begin{proof}
+	$\bm A$ 可逆显然可得 $\bm A\varepsilon_1,\bm A\varepsilon_2,\cdots,\bm A\varepsilon_n$ 线性无关.下证其逆.假设 $\bm A\varepsilon_1,\bm A\varepsilon_2,\cdots,\bm A\varepsilon_n$ 线性无关，即其为 $V$ 的一组基.任取 $y_1=\sum k_i\bm A\varepsilon_i$ ，则 $y_1=\bm A(\sum k_i\varepsilon_i)$ ，故 $\bm A$ 是满射.再取 $y_2=\sum \eta_i\bm A\varepsilon_i$ ，则 $y_1=y_2$ 等价于 $k_i=\eta_i$ ，即 $\sum k_i\varepsilon_i=\sum\eta_i\varepsilon_i$ ，故 $\bm A$ 是单射，从而 $\bm A$ 可逆.
+\end{proof}
+\begin{prob}[19]
+	设 $V$ 为数域 $K$ 上的线性空间. $\bm A_1,\bm A_2,\cdots,\bm A_k$ 是 $V$ 内 $k$ 个两两不同的线性变换.证明 $V$ 内存在向量 $\alpha$ ，使得 $\bm A_1\alpha,\bm A_2\alpha,\cdots,\bm A_k\alpha$ 两两不同.
+\end{prob}
+\begin{proof}
+	由于 $\bm A_i\ne\bm A_j$ ， $\ker(\bm A_i-\bm A_j)$ 是 $V$ 的真子空间.根据4.2节\hyperlink{FiniteSubspace}{题目8}，存在
+	\[
+		\alpha\in V\setminus\bigcup_{1\le j<i\le n}\ker(\bm A_i-\bm A_j),
+	\]
+	即证.
+\end{proof}
+\begin{note}
+	由于4.2节题目8依赖于无限域的假设，此命题也只在无限域中成立.
+\end{note}
+\begin{prob}[24]
+	设 $\bm A$ 是线性空间 $V$ 内的线性变换.如果 $\bm A^{k-1}\xi\ne0$ ，但 $\bm A^k\xi=0$ .证明： $\xi,\bm \xi,\cdots,\bm A^{k-1}\xi\,(k>0)$ 线性无关.
+\end{prob}
+\begin{proof}
+	归纳.当 $k=1$ 时成立.设对 $k$ 命题成立，则对 $k+1$ 情况，假设
+	\[
+		\lambda_0\xi+\lambda_1\bm A\xi+\cdots+\lambda_{k-1}\bm A^{k-1}\xi+\lambda_k\bm A^k\xi=0,
+	\]
+	再用 $\bm A$ 作用后可得
+	\[
+		\lambda_0\bm A\xi+\lambda_1\bm A^2\xi+\cdots+\lambda_{k-1}\bm A^k\xi=0.
+	\]
+	此时根据 $\bm A^{k-1}(\bm A\xi)\ne0,\,\bm A^k(\bm A\xi)=0$ 应用归纳假设可得 $\bm A\xi,\bm A^2\xi,\cdots,\bm A^k\xi$ 线性无关，因此 $\lambda_0=\lambda_1=\cdots=\lambda_{k-1}=0$ ，从而 $\lambda_k\bm A^k\xi=0$ ，即 $\lambda_k=0$ ，因此 $\xi,\bm \xi,\cdots,\bm A^{k-1}\xi,\bm A^k\xi$ 线性无关.
+\end{proof}
+\begin{prob}[25]
+	在 $n$ 维线性空间中，设有线性变换 $\bm A$ 与向量 $\xi$ 使得 $\bm A^{n-1}\xi\ne0$ ，但 $\bm A^n\xi=0$ .证明： $\bm A$ 在某一组基下的矩阵是
+	\[
+		\begin{bmatrix}
+			0 & 1 &        &   \\
+			  & 0 & \ddots &   \\
+			  &   & \ddots & 1 \\
+			  &   &        & 0
+		\end{bmatrix}.
+	\]
+\end{prob}
+\begin{proof}
+	由上题可知 $\xi,\bm \xi,\cdots,\bm A^{k-1}\xi$ 是线性空间的一组基，则 $\bm A$ 在基 $\bm A^{n-1}\xi,\cdots,\bm A\xi,\xi$ 下的矩阵如题.
+\end{proof}
+\begin{prob}[30]
+	若 $A$ 可逆，证明 $AB$ 与 $BA$ 相似.
+\end{prob}
+\begin{proof}
+	$AB=A(BA)A^{-1}$.
+\end{proof}
+\begin{prob}[32]
+	设 $V$ 是数域 $K$ 上的 $n$ 维线性空间，证明：
+	\begin{mylist}
+		\item  $V$ 内全体线性变换所成的 $K$ 上线性空间 $\operatorname*{End}(V)$ 的维数等于 $n^2$ ；
+		\item 对 $V$ 内任一线性变换 $\bm A$ ，存在一个次数不大于 $n^2$ 的多项式 $f(\lambda)$ （系数在 $K$ 内），使得 $f(\bm A)=\bm 0$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)显然.
+
+	(2) $\bm E,\bm A,\cdots,\bm A^{n^2}$ 线性相关.
+\end{proof}
+\begin{prob}[33]
+	设 $A,B$ 是数域 $K$ 上的两个 $n$ 阶方阵，且 $A$ 与 $B$ 相似.如果 $f(\lambda)$ 是 $K$ 上一个多项式，证明 $f(A)$ 与 $f(B)$ 相似.
+\end{prob}
+\begin{proof}
+	$B=T^{-1}AT\implies B^k=T^{-1}A^kT$ .
+\end{proof}
+\begin{prob}[34]
+	给定数域 $K$ 上的 $n$ 阶方阵
+	\[
+		J=\begin{bmatrix}
+			\lambda_0 & 1         &        &        &           \\
+			          & \lambda_0 & 1      &        &           \\
+			          &           & \ddots & \ddots &           \\
+			          &           &        & \ddots & 1         \\
+			          &           &        &        & \lambda_0
+		\end{bmatrix},
+	\]
+	证明 $J$ 与 $J'$ 相似.
+\end{prob}
+\begin{proof}
+	记 $J=\lambda_0E+M$ ，则 $J$ 与 $J'$ 相似等价于 $M$ 与 $M'$ 相似.
+\end{proof}
+\begin{prob}[35]
+	设 $\bm A$ 是数域 $K$ 上 $n$ 维线性空间 $V$ 内的线性变换.证明下面的命题互相等价：
+	\begin{mylist}
+		\item  $\bm A$ 是可逆变换；
+		\item 对 $V$ 内任意非零向量 $\alpha$ ， $\bm A\alpha\ne0$ ；
+		\item 若 $\varepsilon_1,\cdots,\varepsilon_n$ 是 $V$ 的一组基，则 $\bm A\varepsilon_1,\cdots,\bm A\varepsilon_n$ 也是 $V$ 的一组基；
+		\item 如果 $V$ 分解为子空间 $M,N$ 的直和： $V=M\oplus N$ ，那么有 $V=\bm A(M)\oplus\bm A(N)$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[36]
+	设 $V,U$ 是数域 $K$ 上的线性空间.从 $V$ 到 $U$ 的一个映射 $f$ 若满足 $f(\alpha+\beta)=f(\alpha)+f(\beta)\,(\forall\alpha,\beta\in V)$ ，则称 $f$ 为 $V$ 到 $U$ 的一个{\heiti 半线性映射}.从 $V$ 到 $U$ 的所有半线性映射组成的集合记为 $Q(V,U)$ .对任意 $f,g\in Q(V,U),\,k\in K$ ，定义
+	\[
+		(f+g)(\alpha)=f(\alpha)+g(\alpha),\,(kf)(\alpha)=kf(\alpha).
+	\]
+	\begin{mylist}
+		\item 证明 $f+g\in Q(V,U),kf\in Q(V,U)$ .
+		\item 证明 $Q(V,U)$ 关于上面定义的加法、数乘运算成为 $K$ 上的线性空间.
+		\item 若 $U,V$ 是有理数域 $\mathbb{Q}$ 上的线性空间，证明 $Q(V,U)=\hom(V,U)$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)(2)显然.
+
+	(3)取 $\alpha\in V,k=\frac{p}{q}\in \mathbb{Q}$ 和 $f\in Q(V,U)$ ，由 $pqf(\frac{\alpha}{q})=pqf(\frac{\alpha}{q})$ 即得 $f(k\alpha)=kf(\alpha)$ .
+\end{proof}
+\begin{prob}[37]
+	设 $V$ 是复数域 $\mathbb{C}$ 上的 $n$ 维线性空间， $\bm A\in\operatorname*{End}(V)$ .
+	\begin{mylist}
+		\item 证明：关于 $V$ 内向量加法及实数与 $V$ 内向量的数乘， $V$ 成为实数域 $\mathbb{R}$ 上的线性空间，维数为 $2n$ ，记作 $V_{\mathbb{R}}$ .此时 $\bm A$ 也是 $V_{\mathbb{R}}$ 上的线性变换.
+		\item 设 $\bm A$ 在 $V$ 的一组基下的矩阵为 $n$ 阶复方阵 $A_{\mathbb{C}}$ ， $\bm A$ 在 $V_{\mathbb{R}}$ 的一组基下的矩阵为 $2n$ 阶实方阵 $A_{\mathbb{R}}$ .证明 $\det A_{\mathbb{R}}=|\det A_{\mathbb{C}}|^2$ .
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)显然 $V_{\mathbb{R}}$ 是线性空间.取 $V$ 的一组基 $\varepsilon_1,\cdots,\varepsilon_n$ ，则对任意 $\alpha\in V$ ，存在唯一表示
+	\[
+		\alpha=k_1\varepsilon_1+\cdots+k_n\varepsilon_n,
+	\]
+	其中 $k_1,\cdots,k_n\in\mathbb{C}$ .记 $k_i=a_i+\mathrm{i}b_i\,(i=1,\cdots,n)$ ，则 $\alpha$ 有唯一表示
+	\[
+		\alpha=a_i\varepsilon_1+\cdots+a_n\varepsilon_n+b_1\mathrm{i}\varepsilon_1+\cdots+b_n\mathrm{i}b_n,
+	\]
+	其中 $a_i,b_i\in\mathbb{R}$ .因此 $V_{\mathbb{R}}$ 有一组基 $\varepsilon_1,\cdots,\varepsilon_n,\mathrm{i}\varepsilon_1,\cdots,\mathrm{i}\varepsilon_n$ ，同时 $\dim V_{\mathbb{R}}=2n$ .
+
+	(2)设 $A_{\mathbb{C}}=A+\mathrm{i}B$ ，则有
+	\[
+		\bm A(\varepsilon_1,\cdots,\varepsilon_n)=(\varepsilon_1,\cdots,\varepsilon_n)A+(\mathrm{i}\varepsilon_1,\cdots,\mathrm{i}\varepsilon_n)B.
+	\]
+	考虑到此时
+	\[
+		\bm A(\varepsilon_1,\cdots,\varepsilon_n,\mathrm{i}\varepsilon_1,\cdots,\mathrm{i}\varepsilon_n)=(\varepsilon_1,\cdots,\varepsilon_n,\mathrm{i}\varepsilon_1,\cdots,\mathrm{i}\varepsilon_n)A_{\mathbb{R}},
+	\]
+	所以不难得到
+	\[
+		A_{\mathbb{R}}=\begin{bmatrix}
+			A & -B \\
+			B & A
+		\end{bmatrix}.
+	\]
+	以下分情况讨论：
+
+	(i) $\det A\ne0$ ，此时 $A$ 可逆，易得
+	\[
+		\det A_{\mathbb{R}}=|A||BA^{-1}B+A|.
+	\]
+	另一方面又有
+	\begin{align*}
+		|\det A_{\mathbb{C}}|^2 & =\det A_{\mathbb{C}}\cdot\overline{\det A_{\mathbb{C}}}=|A+\mathrm{i}B||A-\mathrm{i}B| \\
+		                        & =|A|^2|E+\mathrm{i}A^{-1}B||E-\mathrm{i}A^{-1}B|                                       \\
+		                        & =|A||BA^{-1}B+A|,
+	\end{align*}
+	于是 $\det A_{\mathbb{R}}=|\det A_{\mathbb{C}}|^2$ .
+
+	(ii) $\det A_{\mathbb{R}}=0$ .此时设 $A(t)=A+tE$ ，其中 $t\in\mathbb{R}$ .注意到 $\det A(t)=|A+tE|$ 为多项式，且 $\det A(0)=0$ ，存在 $\delta>0$ 使得对任意 $x\in(-\delta,\delta)$ 都有 $\det A(t)\ne0$ .于是利用(i)中结论及行列式函数连续性可知
+	\begin{align*}
+		\det A_{\mathbb{R}} & =\lim_{t\to0}\det\begin{bmatrix}
+			A(t) & -B   \\
+			B    & A(t)
+		\end{bmatrix}=\lim_{t\to0}|A(t)+\mathrm{i}B||A(t)-\mathrm{i}B| \\
+		                    & =|A+\mathrm{i}B||A-\mathrm{i}B|=|\det A_{\mathbb{C}}|^2.
+	\end{align*}
+	所以总有 $\det A_{\mathbb{R}}=|\det A_{\mathbb{C}}|^2$ .
+\end{proof}
+\subsection{线性变换的特征值与特征向量}
+\begin{prob}[2]
+	设$\bm A,\bm B$是线性空间$V$内的两个线性变换，且$\bm{AB}=\bm{BA}$.证明：若$\bm A\alpha=\lambda_0\alpha$，则$\bm B\alpha\in V_{\lambda_0}$，其中$V_{\lambda_0}$为$\bm A$的特征值$\lambda_0$的特征子空间.
+\end{prob}
+\begin{proof}
+	$\bm{AB}\alpha=\bm{BA}\alpha=\lambda_0\bm B\alpha$，所以$\bm B\alpha\in V_{\lambda_0}$.
+\end{proof}
+\begin{prob}[3]
+	设$\bm A$是$n$维线性空间$V$内的一个线性变换，在基$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$下的矩阵为
+	\[
+		A=\begin{bmatrix}
+			0 & 1 &        &            \\
+			  & 0 & 1      &        &   \\
+			  &   & \ddots & \ddots &   \\
+			  &   &        & 0      & 1 \\
+			  &   &        &        & 0
+		\end{bmatrix}.
+	\]
+	证明：$\bm A$只有唯一的特征值$\lambda_0=0$，且$V_{\lambda_0}=L(\varepsilon_1)$.
+\end{prob}
+\begin{proof}
+	易得$|\lambda E-A|=\lambda^n$，因此$\bm A$只有唯一特征值$\lambda_0=0$.注意到$V_{\lambda_0}=\ker\bm A$，有$\dim V_{\lambda_0}=n-\rank A=1$.同时$\bm A\varepsilon_1=0$，即$0\ne\varepsilon_1\in V_{\varepsilon_1}$，故$V_{\lambda_0}=L(\varepsilon_1)$.
+\end{proof}
+\begin{prob}[4]
+	设$\bm A$是$n$维线性空间$V$内的一个线性变换.如果存在一组基$\varepsilon_1,\cdots,\varepsilon_r,\varepsilon_{r+1},\cdots,\varepsilon_n$，使$\bm A$在这组基下的矩阵为如下准对角形
+	\[
+		A=\begin{bmatrix}
+			J_1 & 0   \\
+			0   & J_2
+		\end{bmatrix},
+	\]
+	其中$J_1,J_2$分别为$r$阶与$n-r$阶方阵，且
+	\[
+		J_1=\begin{bmatrix}
+			0 & 1 &        &   \\
+			  & 0 & \ddots &   \\
+			  &   & \ddots & 1 \\
+			  &   &        & 0
+		\end{bmatrix},\enspace J_2=\begin{bmatrix}
+			0 & 1 &        &   \\
+			  & 0 & \ddots &   \\
+			  &   & \ddots & 1 \\
+			  &   &        & 0
+		\end{bmatrix}.
+	\]
+	证明：$\bm A$只有一个特征值$\lambda_0=0$，且$V_{\lambda_0}=L(\varepsilon_1,\varepsilon_{r+1})$.
+\end{prob}
+\begin{proof}
+	仍有$|\lambda E-A|=\lambda^n$，因此$\bm A$只有一个特征值$\lambda_0=0$.与上题同理有
+	\[
+		\dim V_{\lambda_0}=\dim\ker\bm A=n-\rank A=n-(\rank J_1+\rank J_2)=2,
+	\]
+	注意到$\bm A\varepsilon_1=\bm A\varepsilon_{r+1}=0$且$\varepsilon_1,\varepsilon_{r+1}$线性无关，有$V_{\lambda_0}=L(\varepsilon_1,\varepsilon_{r+1})$.
+\end{proof}
+\begin{prob}[7]
+	设$\bm A$是线性空间$V$内的一个线性变换，存在正整数$k$使得$\bm A^k=\bm 0$.证明：$\bm A$只有唯一的特征值$\lambda_0=0$.
+\end{prob}
+\begin{proof}
+	不妨设$k$为使得$\bm A^k=\bm 0$的最小正整数，则对$\alpha\ne0$有$\alpha,\bm A\alpha,\cdots,\bm A^{k-1}\alpha$线性无关，从而$\bm A^{k-1}\alpha\ne0$.但是$\bm A^k\alpha=0$，因此$\bm A$有特征值$\lambda_0=0$.
+
+	假设$\bm A$有其它特征值$\lambda$，则$\bm A\alpha=\lambda\alpha$，其中$\alpha$是特征值$\lambda$对应的特征向量.于是$\bm A^k\alpha=\lambda^k\alpha=0$，即$\lambda^k=0$，所以$\lambda=0$.
+\end{proof}
+\begin{prob}[9]
+	证明：如果线性空间$V$的线性变换$\bm A$以$V$的每个非零向量作为特征向量，则$\bm A$是数乘变换.
+\end{prob}
+\begin{proof}
+	假设$\xi_1,\xi_2$是特征值$\lambda_1,\lambda_2$对应的特征向量，则$\xi_1+\xi_2$也是一个特征向量，从而$\bm A(\xi_1+\xi_2)=\lambda_1\xi_1+\lambda_2\xi_2=\lambda(\xi_1+\xi_2)$，因此$\lambda_1=\lambda_2=\lambda$，从而$\bm A=\lambda\bm E$.
+\end{proof}
+\begin{prob}[10]
+	设$\bm A$是线性空间$V$内的可逆线性变换.
+	\begin{mylist}
+		\item 证明：$\bm A$的特征值都不为零；
+		\item 证明：若$\lambda$是$\bm A$的一个特征值，则$1/\lambda$是$\bm A^{-1}$的一个特征值.
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)$\bm A$可逆，$\ker\bm A=\{0\}$.
+
+	(2)设$\lambda\ne0,\ \bm A\alpha=\lambda\alpha$，则$\bm A^{-1}\alpha=\dfrac{1}{\lambda}\alpha$.
+\end{proof}
+\begin{prob}[11]
+	给定复数域上的$n$阶循环矩阵
+	\[
+		A=\begin{bmatrix}
+			a_1     & a_2    & a_3    & \cdots & a_n     \\
+			a_n     & a_1    & a_2    & \cdots & a_{n-1} \\
+			a_{n-1} & a_n    & a_1    & \cdots & a_{n-2} \\
+			\vdots  & \vdots & \vdots &        & \vdots  \\
+			a_2     & a_3    & a_4    & \cdots & a_1
+		\end{bmatrix},
+	\]
+	证明存在复数域上$n$阶可逆矩阵$T$，使对任意上述循环矩阵$A$，$T^{-1}AT$都是对角矩阵.
+\end{prob}
+\begin{proof}
+	记$g(x)=\lambda-f(x)=\lambda-(a_1+a_2x+\cdots+a_nx^{n-1})$，$\varepsilon_k$为$n$次单位根，则$\bm A$的特征多项式为
+	\[
+		|\lambda E-A|=g(\varepsilon_1)\cdots g(\varepsilon_n),
+	\]
+	从而$\bm A$的全部特征值为$f(\varepsilon_1),\cdots,f(\varepsilon_n)$.取向量$\alpha_k=(1,\varepsilon_k,\cdots.\varepsilon_k^{n-1})'$，则$\bm A\alpha_k=f(\varepsilon_k)\alpha_k$，从而$\bm A$有$n$个线性无关的特征向量$\alpha_1,\cdots,\alpha_n$，所以$A$可对角化.
+\end{proof}
+\begin{prob}[12]
+	复数域上$n\,(n\ge 2)$维线性空间$V$内的线性变换$\bm A$在基$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$下的矩阵为
+	\[
+		A=\begin{bmatrix}
+			0      & -1     & 0      & 0      & \cdots & 0      \\
+			1      & 0      & -1     & 0      &        & \vdots \\
+			0      & 1      & 0      & -1     & \ddots & \vdots \\
+			\vdots & \ddots & \ddots & \ddots & \ddots & 0      \\
+			\vdots &        & \ddots & \ddots & \ddots & -1     \\
+			0      & \cdots & \cdots & 0      & 1      & 0
+		\end{bmatrix},
+	\]
+	求$\bm A$的全部特征值，并判断$\bm A$的矩阵能否对角化.
+\end{prob}
+\begin{proof}
+	$\bm A$的特征多项式为
+	\[
+		|\lambda E-A|=(-1)^n(x^n+x^{n-1}y+\cdots+xy^{n-1}+y^n)=(-1)^n\frac{x^{n+1}-y^{n+1}}{x-y},
+	\]
+	其中$x,y$是方程$z^2+\lambda z-1=0$的两个根.因此$\bm A$的特征值满足$x=y\epsilon_k\ (k=1,\cdots,n)$，其中$\epsilon_k$是$n+1$次单位根.因此$\bm A$有$n$个不同的特征值
+	\[
+		\lambda_k=-2\mathrm{i}\cos\frac{k\pi}{n+1},\enspace k=1,2,\cdots,n,
+	\]
+	所以$A$可对角化.
+\end{proof}
+\begin{prob}[14]
+	\hypertarget{ConditionOfDiagonalized}{设}$\bm A$是数域$K$上$n$维线性空间$V$内的一个线性变换.证明$\bm A$的矩阵可对角化的充分必要条件是存在$K$内互不相同的数$\lambda_1,\lambda_2,\cdots,\lambda_k$，使
+	\[
+		(\lambda_1\bm E-\bm A)(\lambda_2\bm E-\bm A)\cdots(\lambda_k\bm E-\bm A)=\bm 0.
+	\]
+\end{prob}
+\begin{proof}
+	(必要性)$\bm A$的矩阵可对角化，因此$V=\displaystyle\bigoplus_{i=1}^kV_{\lambda_i}$，其中$V_{\lambda_i}$为$\bm A$的特征子空间.所以任取$\alpha\in V$，有
+	\[
+		\alpha\in\bigoplus_{i=1}^k\ker(\lambda_i\bm E-\bm A)=\bigoplus_{i=1}^kV_{\lambda_i},
+	\]
+	从而$(\lambda_1\bm E-\bm A)(\lambda_2\bm E-\bm A)\cdots(\lambda_k\bm E-\bm A)\alpha=0$.
+
+	(充分性)注意到$\displaystyle\sum_{i=1}^k\dim V_{\lambda_i}=\dim\sum_{i=1}^{k}V_{\lambda_i}\le\dim V=n$，同时由
+	\[
+		\sum_{i=1}^{k}\rank(\lambda_iE-A)\le (k-1)n,
+	\]
+	又有
+	\[
+		\displaystyle\sum_{i=1}^k\dim V_{\lambda_i}=kn-\sum_{i=1}^{k}\rank(\lambda_iE-A)\ge n,
+	\]
+	所以$V=\displaystyle\bigoplus_{i=1}^kV_{\lambda_i}$，即$\bm A$的矩阵可对角化.
+\end{proof}
+\begin{note}
+	本题可以理解为“可对角化$\Leftrightarrow$最小多项式无重根(即半单)”的显然推论.
+\end{note}
+\begin{prob}[15]
+	设$\bm A$是线性空间$V$内的一个线性变换，$M,N$是$\bm A$的两个不变子空间，则$M+N$与$M\cap N$都是$\bm A$的不变子空间.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[16]
+	设$\bm A$是数域$K$上$n$维线性空间$V$内的一个线性变换，在$V$的一组基下其矩阵为
+	\[
+		\begin{bmatrix}
+			\lambda_0 & 1         &        &        &           \\
+			          & \lambda_0 & 1      &        &           \\
+			          &           & \ddots & \ddots &           \\
+			          &           &        & \ddots & 1         \\
+			          &           &        &        & \lambda_0
+		\end{bmatrix},
+	\]
+	证明：当$n>1$时，对$\bm A$的任一非平凡不变子空间$M$，都不存在$\bm A$的不变子空间$N$使得$V=M\oplus N$.
+\end{prob}
+\begin{proof}
+	设$\alpha\in M$，并且$\alpha=a_1\varepsilon_1+\cdots+a_k\varepsilon_k\ (a_k\ne0)$，记$\beta=a_2\varepsilon_1+\cdots+a_k\varepsilon_{k-1}$，则
+	\[
+		\bm A\alpha=\lambda_0\alpha+\beta\in M,
+	\]
+	从而$\beta\in M$.如是类推，有$\varepsilon_1\in M$.因此$V$的任何非平凡不变子空间都含有$\varepsilon_1$，故不可能有$V=M\oplus N$.
+\end{proof}
+\begin{note}
+	本题实际上说明了Jordan块的不可分解性.
+\end{note}
+\begin{prob}[19]
+	设$V$是实数域上的一个$n$维线性空间，$\bm A$是$V$内的一个线性变换.证明$\bm A$必有一个一维或二维的不变子空间.
+\end{prob}
+\begin{proof}
+	设$\bm A$的特征多项式为$f(\lambda)$.若$f(\lambda)$有实根，则$\bm A$有特征子空间.若$f(a+b\mathrm{i})=0\ (b\ne0)$，则有$A(P+Q\mathrm{i})=(a+b\mathrm{i})(P+Q\mathrm{i})$.假设$\alpha,\beta$为$P,Q$作为坐标对应的$V$中的向量，则$\bm A(k_1\alpha+k_2\beta)\in L(\alpha,\beta)$，所以$L(\alpha,\beta)$是$\bm A$的一个二维不变子空间.
+\end{proof}
+\begin{prob}[20]
+	设$\bm A,\bm B$是$n$维线性空间$V$内两个线性变换，且$\bm{AB}=\bm{BA}$.$\lambda$是$\bm A$的一个特征值，$V_\lambda$是属于特征值$\lambda$的特征子空间.证明$V_\lambda$是$\bm B$的不变子空间.
+\end{prob}
+\begin{proof}
+	设$\alpha\in V_\lambda$，则$\bm A(\bm B\alpha)=\bm{BA}\alpha=\lambda\bm B\alpha$，即$\bm B\alpha\in V_\lambda$.
+\end{proof}
+\begin{prob}[21]
+	设$V$是数域$K$上的线性空间，$\bm A,\bm B$是$V$内两个线性变换，且$\bm{AB}=\bm{BA}$.如果$\bm A,\bm B$的矩阵都可对角化，证明$V$内存在一组基，使$\bm A,\bm B$在此基下的矩阵同时成对角形.
+\end{prob}
+\begin{proof}
+	$A$的矩阵可对角化，设$V=\displaystyle\bigoplus_{i=1}^kV_{\lambda_i}$，其中$V_{\lambda_i}$为$\bm A$的特征子空间.由于$\bm A,\bm B$可交换，$V_{\lambda_i}$也是$\bm B$的不变子空间，从而$\bm B$的矩阵在各$V_{\lambda_i}$的基组合下成对角形$\diag{B_1,B_2,\cdots,B_k}$.
+\end{proof}
+\begin{prob}[22]
+	设$\bm A$是数域$K$上$n$维线性空间$V$内的线性变换.如果$\bm A$矩阵可对角化，证明对$\bm A$的任意不变子空间$M$，存在$\bm A$的不变子空间$N$，使得$V=M\oplus N$.
+\end{prob}
+\begin{proof}
+	设$V=\displaystyle\bigoplus_{i=1}^kV_{\lambda_i}$，记$M_i=M\cap V_{\lambda_i}$，则有$M=\displaystyle\bigoplus_{i=1}^kM_i$.又设有$V_{\lambda_i}=M_i\oplus N_i$，并记$N=\sum_{i=1}^{k}N_i$.注意到$\dim M+\sum\dim N_i=n$，所以$V=M\oplus N$.
+\end{proof}
+\begin{prob}[23]
+	设$\bm A$是复数域上$n$维线性空间$V$上的线性变换.如果对$\bm A$的任意不变子空间$M$，存在$\bm A$的不变子空间$N$，使$V=M\oplus N$.证明$\bm A$的矩阵可对角化.
+\end{prob}
+\begin{proof}
+	对$V$的维数作归纳.当$n=1$时显然.假设命题不大于$n-1$时都成立，$\bm A$的特征多项式在$\mathbb{C}$上有根$\lambda_1$，即$\bm A$存在特征子空间$V_{\lambda_1}$.于是存在$\bm A$的不变子空间$N$使得$V=V_{\lambda_1}\oplus N$.注意到$\dim N\le n-1$，由归纳假设，$N=\displaystyle\bigoplus_{i=2}^kV_{\lambda_i}$，从而$V=\displaystyle\bigoplus_{i=1}^kV_{\lambda_i}$，即$\bm A$可对角化.
+\end{proof}
+\begin{prob}[24]
+	设$\bm A$是数域$K$上$n$维线性空间$V$内的线性变换.$\alpha\in V,\ \alpha\ne0$.证明存在正整数$k$，使得$\alpha,\bm A\alpha,\bm A^2\alpha,\cdots,\bm A^{k-1}\alpha$线性无关，而
+	\[
+		\bm A^k\alpha=a_0\alpha+a_1\bm A\alpha+\cdots+a_{k-1}\bm A^{k-1}\alpha.
+	\]
+	如令$M=L(\alpha,\bm A\alpha,\cdots,\bm A^{k-1}\alpha)$，证明$M$是$\bm A$的不变子空间，并进一步证明$\bm A|_M$的特征多项式为
+	\[
+		f(\lambda)=\lambda^k-a_{k-1}\lambda^{k-1}-a_{k-2}\lambda^{k-1}-\cdots-a_1\lambda-a_0.
+	\]
+\end{prob}
+\begin{proof}
+	若不然，对任意正整数$k$，$\alpha,\bm A\alpha,\cdots,\bm A^{k-1}\alpha$线性相关，但$\alpha\ne0$本身就线性无关.现设$k$是相应正整数中最小的，则$\alpha,\bm A\alpha,\cdots,\bm A^{k-1}\alpha,\bm A^k\alpha$线性相关，即$\bm A^k\alpha\in M$.显然$M$是$\bm A$的不变子空间，因为$\bm A\bm A^i\alpha\in M\ (i=0,1,\cdots,n-1)$.
+
+	同时，$\lambda$是$\bm A|_M$的特征值等价于存在$\beta\in M,\ \beta\ne0$使得$\bm A\beta=\lambda\beta$.于是
+	\[
+		\lambda^k\beta=\bm A^k\beta=(a_0+a_1\lambda+\cdots+a_{k-1}\lambda^{k-1})\beta,
+	\]
+	即$\lambda^k-a_{k-1}\lambda^{k-1}-\cdots-a_1\lambda-a_0=0$.注意到这就是$\bm A|_M$的最小多项式，并且恰好为$k$次，所以它就是$\bm A|_M$的特征多项式$f(\lambda)$.
+\end{proof}
+\begin{prob}[25]
+	\hypertarget{Hamilton-Cayley}{证明Hamilton--Cayley定理}：如果数域$K$上$n$维线性空间$V$内线性变换$\bm A$的特征多项式为$f(\lambda)$，则$f(\bm A)=\bm 0$.
+\end{prob}
+\begin{proof}
+	据上题，设$\bm A|_M$的特征多项式为$g(\lambda)$，则$g(\bm A)=\bm 0$.另一方面，设$\bm A$在$V/M$上的诱导变换的特征多项式为$h(\lambda)$，则$f(\lambda)=g(\lambda)h(\lambda)$，于是$f(\bm A)=h(\bm A)g(\bm A)=\bm 0$.
+\end{proof}
+\begin{prob}[26]
+	设$\bm A$是数域$K$上的$n$维线性空间$V$内的一个线性变换.如果存在$V$中非零向量$\alpha$使得$\bm A\alpha=0$，令$M=L(\alpha)$.如果$\bm A$在$V/M$内的诱导变换可逆，且其矩阵(在$V/M$内)可对角化.证明$\bm A$在$V$内其矩阵也可对角化.
+\end{prob}
+\begin{proof}
+	$\bm A$在$V/M$内的诱导变换可逆，进而$0$不在其特征值$\lambda_i$中，即$\bm A\alpha_i=\lambda_i\alpha_i\in V_{\lambda_i}$，于是$\bm A$的矩阵在基$\alpha,\alpha_1,\cdots,\alpha_{n-1}$下成对角形$\diag{0,\lambda_1,\cdots,\lambda_{n-1}}$.
+\end{proof}
+\begin{prob}[27]
+	设$V$是数域$K$上的$n$维线性空间，$\bm A$是$V$内的一个线性变换，$\lambda_0$是$\bm A$的一个特征值.如果$\lambda_0$是$\bm A$的特征多项式的$e$重根，证明$\dim V_{\lambda_0}\le e$.
+\end{prob}
+\begin{proof}
+	注意到$\bm A|_{V_{\lambda_0}}$的特征多项式为$(\lambda-\lambda_0)^{\dim V_{\lambda_0}}$，并且它是$\bm A$的特征多项式的因式，所以$\dim V_{\lambda_0}\le e$.
+\end{proof}
+\begin{note}
+	本题即证几何重数$\le$代数重数.从Jordan标准形的角度看是显然的，本题的证明给出了一般域上的相同结论.
+\end{note}
+\begin{prob}[29]
+	\hypertarget{EigenPolynomial}{设}$A$是数域$K$上的$n$阶方阵.试用$A$的各阶子式表示出$A$的特征多项式$f(\lambda)=|\lambda E-A|$的所有系数.
+\end{prob}
+\begin{proof}
+	对$|A-\lambda E|$，将行列式的每列按$(a_{1i},\cdots,a_{ni})'$和$(0,\cdots,-\lambda,\cdots,0)'$拆开，则$|A-\lambda E|$中$(-\lambda)^{n-k}$的系数即为$A$的所有$k$阶主子式之和$S_k$，所以$f(\lambda)=(-1)^n|A-\lambda E|=\displaystyle\sum_{k=0}^{n}(-1)^kS_k\lambda^{n-k}$.
+\end{proof}
+\begin{prob}[30]
+	给定数域$K$上$m$阶方阵$A_i\,(i=1,2,\cdots,2k)$，令
+	\[
+		M=\begin{bmatrix}
+			       &         &     & A_1 \\
+			       &         & A_2 &     \\
+			       & \iddots &     &     \\
+			A_{2k} &         &     &
+		\end{bmatrix}.
+	\]
+	证明$M$在$K$内相似于对角矩阵的充分必要条件是下列方阵
+	\[
+		M_i=\begin{bmatrix}
+			0          & A_i \\
+			A_{2k-i+1} & 0
+		\end{bmatrix}\enspace(i=1,2,\cdots,k)
+	\]
+	在$K$内相似于对角矩阵.
+\end{prob}
+\begin{proof}
+	设$\bm A$在基$\varepsilon_1^1,\cdots,\varepsilon_m^1,\cdots,\varepsilon_1^{2k},\cdots,\varepsilon_m^{2k}$下的矩阵为$M$.注意到
+	\[
+		V_i=L(\varepsilon_1^i,\cdots,\varepsilon_m^i,\varepsilon_1^{2k-i+1},\cdots,\varepsilon_m^{2k-i+1})\enspace(i=1,2,\cdots,k)
+	\]
+	是$\bm A$的不变子空间，且$V=\displaystyle\bigoplus_{i=1}^kV_i$.于是$M$可化为准对角形，且各小矩阵即为$M_i$.因此，$M$可对角化等价于各$M_i$可对角化.
+\end{proof}
+\begin{prob}[31]
+	给定前$n$个自然数$1,2,\cdots,n$的一个排列$i_1i_2\cdots i_n$.在复数域上线性空间$M_n(\mathbb{C})$内定义一个线性变换$\bm P$如下：
+	\[
+		\bm P\begin{bmatrix}
+			a_{11} & a_{12} & \cdots & a_{1n} \\
+			a_{21} & a_{22} & \cdots & a_{2n} \\
+			\vdots & \vdots &        & \vdots \\
+			a_{n1} & a_{n2} & \cdots & a_{nn}
+		\end{bmatrix}=\begin{bmatrix}
+			a_{1i_1} & a_{1i_2} & \cdots & a_{1i_n} \\
+			a_{2i_1} & a_{2i_2} & \cdots & a_{2i_n} \\
+			\vdots   & \vdots   &        & \vdots   \\
+			a_{ni_1} & a_{ni_2} & \cdots & a_{ni_n}
+		\end{bmatrix}.
+	\]
+	\begin{mylist}
+		\item 找出$\bm P$的$n$个线性无关的特征向量；
+		\item 若$\lambda_0$是$\bm P$的一个特征值，证明存在正整数$k$使得$\lambda_0^k=1$;
+		\item 若上述排列取为$234\cdots n1$，证明$\bm P$的矩阵可对角化.
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)第$i$行全为$1$的矩阵$\displaystyle\sum_{j=1}^{n}E_{ij}$都是$\bm P$属于特征值$1$的线性无关的特征向量.
+
+	(2)不妨设$\lambda_0\ne0,1$，则若命题不成立，$1,\lambda_0,\lambda_0^2,\cdots$是$\bm P$的互不相同的特征值，但$\bm P\in\operatorname*{End}(M_n(\mathbb{C}))$至多有有限个特征值，矛盾.
+
+	(3)注意到$\bm P^n=\bm E$，记$\varepsilon_k$为$n$次单位根，则有
+	\[
+		(\varepsilon_1\bm E-\bm P)\cdots(\varepsilon_n\bm E-\bm P)=\bm 0.
+	\]
+	根据本节\hyperlink{ConditionOfDiagonalized}{题目14}，$\bm P$的矩阵可对角化.
+\end{proof}
+\begin{note}
+	一般地，无论取何排列$\sigma\in S_n$，考虑到$\sigma$是有限阶元素，必然有$\sigma^k=e$.于是$\bm P^k=\bm E$，进而$\bm P$可对角化.因此，线性变换$\bm P$总可对角化.
+\end{note}

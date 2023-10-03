@@ -1,0 +1,42 @@
+\section{有理整数环}
+\subsection{有理整数环的基本概念}
+\subsection{同余式}
+\begin{prob}[8]
+    设$m_1,m_2,\cdots,m_k$是两两互素的正整数，又设$a_1,a_2,\cdots,a_k\in\mathbb{Z}$.若$x,y\in\mathbb{Z}$满足
+    \[
+        x\equiv a_i \pmod{m_i},\quad y\equiv a_i \pmod{m_i},\quad,i=1,2,\cdots,k,
+    \]
+    则$x\equiv y\pmod{m_1m_2\cdots m_k}$.
+\end{prob}
+\begin{proof}
+    $x-a_i\in(m_i),\,y-a_i\in(m_i)$，所以$x_i-y_i\in(m_i)$，即
+    \begin{gather*}
+        x_i-y_i\in(m_1)\cap(m_2)\cap\cdots\cap(m_k).
+        \shortintertext{$(m_i)$互素，所以$(m_1)\cap\cdots\cap(m_k)=(m_1\cdots m_k)$，进而}
+        x_i-y_i\in(m_1m_2\cdots m_k),
+    \end{gather*}
+    即$x_i\equiv y_i \pmod{m_1m_2\cdots m_k}$.
+\end{proof}
+\begin{prob}[9]
+    给定整系数多项式$f(x)=a_0x^n+a_1x^{n-1}+\cdots+a_n$，$m$是正整数，在$0,1,2,\cdots,m-1$中满足同余式
+    \[
+        f(a)\equiv 0\pmod m
+    \]
+    的数$a$的数目记为$F(m)$.如果$m_1,m_2$为互素正整数，证明
+    \[
+        F(m_1m_2)=F(m_1)(m_2).
+    \]
+\end{prob}
+\begin{proof}
+    设$a_1,a_2$是$f$在$\mathbb{Z}/m_1\mathbb{Z}$和$\mathbb{Z}/m_2\mathbb{Z}$上的根.根据中国剩余定理，存在唯一$a\in\mathbb{Z}/m_1m_2\mathbb{Z}$使得$a$与$a_1,a_2$同余，$f(a)\equiv 0\pmod{m_1m_2}$.反之亦然，所以$F(m_1m_2)=F(m_1)F(m_2)$.
+\end{proof}
+\begin{prob}[11]
+    证明Wilson定理：设$p$是素数，则
+    \[
+        (p-1)!\equiv -1\pmod p.
+    \]
+\end{prob}
+\begin{proof}
+    设$p>3$，在同余意义下存在唯一$\ell$使得$k\ell\equiv 1\pmod p$，其中$k\in\{1,\cdots,p-1\}$.限制$\ell\in\{1,\cdots,p-1\}$，则$k=\ell\Leftrightarrow k=1,p-1$.不考虑这两项，成对累乘$k,\ell$得到$(p-2)!\equiv 1\pmod p$，因此$(p-1)!\equiv -1\pmod p$.
+\end{proof}
+\subsection{膜$m$的剩余类环}

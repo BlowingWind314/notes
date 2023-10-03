@@ -1,0 +1,583 @@
+\section{双线性函数与二次型}
+\subsection{双线性函数}
+\begin{prob}[1]
+	设$V$是数域$K$上的$n$维线性空间，$\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$是$V$的一组基，$a_1,a_2,\cdots,a_n$为$K$内的$n$个数.证明：在$V$内存在唯一的线性函数$f(\alpha)$，满足
+	\[
+		f(\varepsilon_i)=a_i\quad(i=1,2,\cdots,n).
+	\]
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[9]
+	设$V$是数域$K$上的$n$维线性空间，$f(\alpha,\beta)$是$V$上的一个双线性函数.证明：$f(\alpha,\beta)$满秩的充分必要条件是：当对一切$\beta\in V$有$f(\alpha,\beta)=0$时，必定有$\alpha=0$.
+\end{prob}
+\begin{proof}
+	取$V$的一组基，设$\alpha,\beta$在基下的坐标为$X,Y$，$f(\alpha,\beta)$在基下的矩阵为$A$，则$f(\alpha,\beta)=X'AY$.
+
+	假设$A$满秩.若对任意$\beta\in V$有$f(\alpha,\beta)=0$，即$X'AY=0$的解空间为$V$，有$X'A=0$.而$A$满秩，故$X'=0$，即$\alpha=0$.
+
+	反之，注意到$\forall Y\in K^n(X'AY=0)\iff X'A=0$，因此$A'X=0$只有唯一解$X=0$，从而$A$满秩.
+\end{proof}
+\begin{prob}[13]
+	证明：
+	\[
+		\begin{bmatrix}
+			\lambda_1 &           &        &           \\
+			          & \lambda_2 &        &           \\
+			          &           & \ddots &           \\
+			          &           &        & \lambda_n
+		\end{bmatrix},\quad\begin{bmatrix}
+			\lambda_{i_1} &               &        &               \\
+			              & \lambda_{i_2} &        &               \\
+			              &               & \ddots &               \\
+			              &               &        & \lambda_{i_n}
+		\end{bmatrix}
+	\]
+	合同，其中$i_1,i_2,\cdots,i_n$是$1,2,\cdots,n$的一个排列.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{prob}[14]
+	设$A$是一个$n$阶方阵，证明：
+	\begin{mylist}
+		\item $A$反对称当且仅当对任一$n$维列向量$X$，有$X'AX=0$；
+		\item 若$A$对称，且对任一$n$维列向量$X$有$X'AX=0$，则$A=0$.
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)显然.
+
+	(2)$Q_f(\alpha)=f(\alpha,\alpha)\equiv0$，所以$f(\alpha,\beta)=X'AY\equiv0$，即$A=0$.
+\end{proof}
+\begin{prob}[16]
+	设$V$是数域$K$上的$n$维线性空间，$f(\alpha,\beta)$为$V$内的双线性函数.如果对任意$\alpha,\beta\in V$都有$f(\alpha,\beta)=-f(\beta,\alpha)$，则称$f(\alpha,\beta)$为$V$内{\heiti 反对称双线性函数}.证明反对称双线性函数在$V$的任意一组基下的矩阵都是反对称矩阵.
+\end{prob}
+\begin{proof}
+	显然.
+\end{proof}
+\begin{note}
+	在特征2的域上，这些反对称的定义都要加上对角元为零或$f(\alpha,\alpha)=0$.
+\end{note}
+\begin{prob}[17]
+	设$V$是数域$K$上的$n$维线性空间，$f(\alpha,\beta)$为$V$内反对称双线性函数.证明$V$内存在一组基，使$f(\alpha,\beta)$在此组基下的矩阵成如下准对角形：
+	\[
+		A=\begin{bmatrix}
+			S &        &   &   &        &   \\
+			  & \ddots &   &   &        &   \\
+			  &        & S &   &        &   \\
+			  &        &   & 0 &        &   \\
+			  &        &   &   & \ddots &   \\
+			  &        &   &   &        & 0
+		\end{bmatrix},\quad S=\begin{bmatrix}
+			0  & 1 \\
+			-1 & 0
+		\end{bmatrix}.
+	\]
+\end{prob}
+\begin{proof}
+	归纳证明.$n=1,2$时显然.下设命题对小于$n$的数成立.取$V$内的一组基$\varepsilon_1,\cdots,\varepsilon_n$，必要时重排基的顺序，设$f(\varepsilon_1,\varepsilon_2)=d\ne0$.取
+	\[
+		\eta_1=\frac{1}{d}\varepsilon_1,\enspace\eta_2=\varepsilon_2,\enspace\eta_i'=\varepsilon_i+\frac{f(\varepsilon_2,\varepsilon_i)}{d}\varepsilon_1-\frac{f(\varepsilon_1,\varepsilon_i)}{d}\varepsilon_2,\quad(3\le i\le n)
+	\]
+	则$f(\eta_1,\eta_2)=1,\ f(\eta_1,\eta_i)=0,\ f(\eta_2,\eta_i)=0\ (3\le i\le n)$.显然$\eta_1,\eta_2,\eta_3',\cdots,\eta_n'$也是$V$的一组基，在此组基下$f(\alpha,\beta)$的矩阵具有准对角形式：
+	\[
+		\begin{bmatrix}
+			S & 0 \\
+			0 & B
+		\end{bmatrix},\enspace B\in M_{n-2}(K).
+	\]
+	命$M=L(\eta_3',\cdots,\eta_n')$，将$f(\alpha,\beta)$限制在$M$上，则由归纳假设知，在$M$中可取一组基$\eta_3,\cdots,\eta_n$使得$f(\alpha,\beta)$在$M$上的限制在这组基下的矩阵为
+	\[
+		B^*=\diag{S,\cdots,S,0,\cdots,0},
+	\]
+	且$B$与$B^*$合同.注意到$\forall \alpha\in M\,(f(\alpha,\eta_1)=f(\alpha,\eta_2)=0)$.特别地，$f(\eta_1,\eta_i)=f(\eta_2,\eta_i)=0\ (3\le i\le n)$，所以$f(\alpha,\beta)$在基$\eta_1,\cdots,\eta_n$下的矩阵成准对角形
+	\[
+		A=\diag{S,\cdots,S,0,\cdots,0}.
+	\]
+	证毕.
+\end{proof}
+\begin{prob}[18]
+	设$V$是数域$K$上的$n$维线性空间，$f(\alpha,\beta)$是$V$内的双线性函数.对$V$的子空间$M$，定义
+	\begin{gather*}
+		L(M)=\{\alpha\in V\mid f(\alpha,\beta)=0,\,\forall \beta\in M\},\\
+		R(M)=\{\alpha\in V\mid f(\beta,\alpha)=0,\,\forall \beta\in M\}.
+	\end{gather*}
+	证明$L(M),R(M)$为$V$的子空间.如果$f(\alpha,\beta)$为$V$内满秩双线性函数，证明
+	\[
+		\dim L(M)=\dim R(M)=n-\dim M,
+	\]
+	同时又有$R(L(M))=L(R(M))=M$.
+\end{prob}
+\begin{proof}
+	显然$L(M),R(M)$是子空间.取$M$的一组基$\varepsilon_1,\cdots,\varepsilon_r$，将其扩充为$V$的一组基$\varepsilon_1,\varepsilon_n$.设$\varepsilon_1,\cdots,\varepsilon_r$在基下的坐标为$B_1,\cdots,B_r$，$f(\alpha,\beta)$在基下的矩阵为$A$.注意到对任意$\alpha\in L(M)$，
+	\[
+		f(\alpha,\varepsilon_i)=0\quad(1\le i\le r),
+	\]
+	若记$B=(B_1,\cdots,B_r)$，则上式意味着$X'AB=0$.由于$\rank B=r,\rank A=n$，有
+	\[
+		\dim L(M)=n-\rank(AB)=n-r=n-\dim M.
+	\]
+	同理$\dim R(M)=n-\dim M$.
+
+	显然$R(L(M))\subseteq M$.考虑到$\dim R(L(M))=n-\dim L(M)=r$，对$L(R(M))$类似，因此$R(L(M))=L(R(M))=M$.
+\end{proof}
+\begin{prob}[19]
+	设$V$是数域$K$上的$n$维线性空间，$M,N$是$V$的两个子空间，$f(\alpha,\beta)$为$V$内双线性函数，使用上题记号.证明$L(M+N)=L(M)\cap L(N),\ R(M+N)=R(M)\cap R(N)$，如果$f(\alpha,\beta)$满秩，则
+	\[
+		L(M\cap N)=L(M)+L(N),\enspace R(M\cap N)=R(M)+R(N).
+	\]
+\end{prob}
+\begin{proof}
+	显然$L(M)\cap L(N)\subseteq L(M+N)$.设$\alpha\in L(M+N)$，则对任意$\beta_1\in M,\ \beta_2\in N$有$f(\alpha,\beta_1+\beta_2)=0$.取$\beta_2=0$可得$\alpha\in L(M)$，同理$\alpha\in L(N)$，因此$\alpha\in L(M)\cap L(N)$，即$L(M+N)=L(M)\cap L(N)$.对$R(M+N)$是类似的.
+
+	注意到$L(M)+L(N)\subseteq L(M\cap N)$，并且由上题有
+	\begin{align*}
+		\dim L(M\cap N) & =n-\dim(M\cap N)=n+\dim(M+N)-\dim M-\dim N \\
+		                & =\dim L(M)+\dim L(N)-\dim L(M+N)           \\
+		                & =\dim L(M)+\dim L(N)-\dim (L(M)\cap L(N))  \\
+		                & =\dim(L(M)+L(N)),
+	\end{align*}
+	因此$L(M)+L(N)=L(M\cap N)$.对$R(M\cap N)$同理.
+\end{proof}
+\begin{prob}[20]
+	设$V$是数域$K$上的线性空间，$f(\alpha),g(\alpha)$是$V$内两个线性函数，且$f(\alpha)g(\alpha)\equiv 0$.证明$f(\alpha)\equiv 0$或$g(\alpha)\equiv 0$.
+\end{prob}
+\begin{proof}
+	若不然，不妨设
+	\[
+		f(\varepsilon_i)\ne0,\,f(\varepsilon_j)=0;\,g(\varepsilon_i)=0,\,g(\varepsilon_j)\ne0,
+	\]
+	于是$f(\varepsilon_i+\varepsilon_j)g(\varepsilon_i+\varepsilon_j)=f(\varepsilon_i)g(\varepsilon_j)\ne0$，矛盾.
+\end{proof}
+\begin{prob}[21]
+	设$f(\alpha,\beta)$是数域$K$上线性空间$V$内的对称双线性函数.如果$f(\alpha,\beta)=g(\alpha)h(\beta)$，其中$g,h$为$V$内两个线性函数.证明存在$V$内线性函数$l(a)$及$K$内非零数$\lambda$，使得
+	\[
+		f(\alpha,\beta)=\lambda l(\alpha)l(\beta).
+	\]
+\end{prob}
+\begin{proof}
+	若$f(\alpha,\beta)\equiv 0$，则$Q_f(\alpha)=g(\alpha)h(\alpha)\equiv 0$.由上题，不妨设$g(\alpha)\equiv 0$，则$f(\alpha,\beta)=g(\alpha)g(\beta)\equiv 0$.
+
+	若$f(\alpha_0,\beta_0)\ne0$，即$g(\alpha_0)h(\beta_0)=g(\beta_0)h(\alpha_0)\ne0$，于是
+	\[
+		f(\alpha,\beta)=\frac{1}{g(\alpha_0)}g(\alpha)f(\alpha_0,\beta)=\frac{1}{g(\alpha_0)}g(\alpha)f(\beta,\alpha_0)=\frac{h(\alpha_0)}{g(\alpha_0)}g(\alpha)g(\beta).
+	\]
+	证毕.
+\end{proof}
+\subsection{二次型}
+\begin{prob}[5]
+	用可逆线性变数替换化下列二次型为标准形：
+	\begin{mylist}
+		\item $\displaystyle\sum_{i=1}^{n}x_i^2+\displaystyle\sum_{1\le i<j\le n}x_ix_j$;
+		\item $\displaystyle\sum_{i=1}^{n}(x_i-\bar{x})^2$，其中$\bar{x}=\dfrac{x_1+x_2+\cdots+x_n}{n}$.
+	\end{mylist}
+\end{prob}
+\begin{sol}[法一]
+	(1)按通用的消去交叉项方法，命
+	\begin{gather*}
+		y_1=x_1+\frac{1}{2}\sum_{i=2}^{n}x_i,\enspace y_2=x_2+\frac{1}{3}\sum_{i=3}^{n}x_i,\\
+		\cdots,\enspace y_{n-1}=x_{n-1}+\frac{1}{n}x_n,\enspace y_n=x_n,
+	\end{gather*}
+	即从坐标$X$到坐标$Y$的关系$X=TY$中的过渡矩阵$T$为
+	\[
+		\begin{bmatrix}
+			1 & -\frac{1}{2} & -\frac{1}{3} & \cdots & -\frac{1}{n} \\
+			  & 1            & -\frac{1}{3} & \cdots & -\frac{1}{n} \\
+			  &              & \ddots       &        & \vdots       \\
+			  &              &              & 1      & -\frac{1}{n} \\
+			  &              &              &        & 1
+		\end{bmatrix},
+	\]
+	二次型化为标准形$y_1^2+\dfrac{3}{4}y_2^2+\dfrac{4}{6}y_3^2+\cdots+\dfrac{n+1}{2n}y_n^2$.
+\end{sol}
+\begin{sol}[法二]
+	(1)作如下变数替换
+	\[
+		\left\{
+		\begin{array}{rrrrrr}
+			x_1=   & \dfrac{1}{\sqrt{n}}y_1 & -\dfrac{1}{\sqrt{2}}y_2 & -\dfrac{1}{\sqrt{6}}y_3 & -\cdots & -\dfrac{1}{\sqrt{n(n-1)}}y_n,   \\
+			x_2=   & \dfrac{1}{\sqrt{n}}y_1 & +\dfrac{1}{\sqrt{2}}y_2 & -\dfrac{1}{\sqrt{6}}y_3 & -\cdots & -\dfrac{1}{\sqrt{n(n-1)}}y_n,   \\
+			x_3=   & \dfrac{1}{\sqrt{n}}y_1 &                         & +\dfrac{2}{\sqrt{6}}y_3 & -\cdots & -\dfrac{1}{\sqrt{n(n-1)}}y_n,   \\
+			\vdots &                        &                         &                         &         &                                 \\
+			x_n=   & \dfrac{1}{\sqrt{n}}y_1 &                         &                         &         & +\dfrac{n-1}{\sqrt{n(n-1)}}y_n,
+		\end{array}
+		\right.
+	\]
+	则二次型即可化为标准形$\dfrac{n+1}{2}y_1^2+\dfrac{1}{2}y_2^2+\cdots+\dfrac{1}{2}y_n^2$.
+\end{sol}
+\begin{sol}
+	(2)作如下变数替换
+	\[
+		y_1=x_1-\bar{x},\ \cdots,\ y_{n-1}=x_{n-1}-\bar{x},\ y_n=x_n,
+	\]
+	则易得
+	\[
+		\sum_{i=1}^{n}(x_i-\bar{x})^2=\sum_{i=1}^{n-1}y_i^2+\biggl(\sum_{i=1}^{n-1}y_i\biggr)^2=2\biggl(\sum_{i=1}^{n-1}y_i^2+\sum_{1\le i<j\le n-1}y_iy_j\biggr).
+	\]
+	再按(1)解法一将$y_i$替换成$z_i$可得
+	\[
+		\sum_{i=1}^{n}(x_i-\bar{x})^2=2z_1^2+\frac{3}{2}z_2^2+\cdots+\frac{n}{n-1}z_{n-1}^2,
+	\]
+	即二次型可化为标准形$2z_1^2+\dfrac{3}{2}z_2^2+\cdots+\dfrac{n}{n-1}z_{n-1}^2$.
+\end{sol}
+\begin{prob}[6]
+	证明：秩等于$r$的对称矩阵可以表成$r$个秩等于$1$的对称矩阵之和.
+\end{prob}
+\begin{proof}
+	秩$r$的对称矩阵$A$与$B=\diag{E_r,0}=\displaystyle\sum_{i=1}^rE_{ii}$合同，即存在可逆矩阵$T$使得$B=T'AT$.设$A_i=(T^{-1})'E_{ii}T^{-1}\ (1\le i\le r)$，则$A=\displaystyle\sum_{i=1}^nA_i$.
+\end{proof}
+\begin{prob}[7]
+	\hypertarget{RankOfOneDegreeHomogeneousQuadraticForm}{给定二次型}
+	\[
+		f=\sum_{i=1}^{s}(a_{i1}x_1+a_{i2}x_2+\cdots+a_{in}x_n)^2,
+	\]
+	其中$A=(a_{ij})$是一个实矩阵.证明$f$的秩等于$\rank A$.
+\end{prob}
+\begin{proof}
+	注意到$f=(AX)'(AX)=X'(A'A)X$，因此只需证$\rank(A'A)=\rank A$，即$A'AX=0$与$AX=0$同解.显然$AX=0\Rightarrow A'AX=0$.而$A'AX=0$蕴含$f=X'A'AX=(AX)'AX=0$，即$AX=0$.证毕.
+\end{proof}
+\begin{note}
+	从证明可以看出命题只对$\mathbb{R}$成立.
+\end{note}
+\begin{prob}[8]
+	给定数域$K$上的$n$元二次型$f=X'AX$.对它作可逆线性变数替换$X=TY$，其中$T$为主对角线上元素全为$1$的上三角矩阵，$f$经此变换化为二次型$g=Y'BY$.证明$A$与$B$的$n$个顺序主子式对应相等.此类线性变数替换$X=TY$称为{\heiti 三角形变换}.
+\end{prob}
+\begin{proof}
+	设$A,B,T$的左上角$r$阶矩阵块分别为$A_r,B_r,T_r$，则由$B=T'AT$可得$B_r=T_r'A_rT_r$，从而$\abs{B_r}=\abs{T_r'}\abs{A_r}\abs{T_r}=\abs{A_r	}$.
+\end{proof}
+\begin{prob}[9]
+	\hypertarget{TriangleTransformation}{给定}数域$K$上的二次型$f=X'AX$.设$f$的秩为$r$.
+	\begin{mylist}
+		\item 证明$f$可用三角形变换化为
+		\[
+			g=\lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ry_r^2\,(\lambda_i\ne0,i=1,2,\cdots,r)
+		\]
+		的充分必要条件是$A$的前$r$个顺序主子式$D_k\ne0$而后$n-r$个$D_k=0$.
+		\item 证明上题中的标准形$g$的系数满足
+		\[
+			\lambda_k=\frac{D_k}{D_{k-1}}\enspace(k=1,2,\cdots,r;\,D_0=1).
+		\]
+	\end{mylist}
+\end{prob}
+\begin{proof}
+	(1)必要性由上题立得.归纳证明充分性，设$r>0$.当$n=1$时显然.设命题对$n$成立，由于$D_1=a_{11}\ne0$，作三角形变换$X=TY$，其中
+	\[
+		T=\begin{bmatrix}
+			1      & -\dfrac{a_{12}}{a_{11}} & \cdots & -\dfrac{a_{1,n+1}}{a_{11}} \\
+			0      & 1                       & \cdots & 0                          \\
+			\vdots & \vdots                  &        & \vdots                     \\
+			0      & 0                       & \cdots & 1
+		\end{bmatrix},
+	\]
+	$f$经此变换化为
+	\[
+		\tilde{f}=a_{11}y_1^2+\sum_{2\le i,j\le n+1}y_iy_j,\quad(b_{ij}=b_{ji}).
+	\]
+	按归纳假设，存在三角形变换$Z=SY$使得$\tilde{f}$化为标准形$g$，而$Z=(ST)X$为三角形变换.命题对$n+1$也成立.
+
+	(2)$\lambda_1=D_1$.设公式对所有$i\leq k$都成立，有
+	\[
+		D_{k+1}=\lambda_1\cdots\lambda_k\lambda_{k+1}=D_1\frac{D_2}{D_1}\cdots\frac{D_k}{D_{k-1}}\lambda_{k+1}=D_k\lambda_{k+1},
+	\]
+	即$\lambda_{k+1}=\dfrac{D_{k+1}}{D_k}$成立.
+\end{proof}
+\subsection{实与复二次型的分类}
+\begin{prob}[3]
+	证明：一个实二次型可以分解为两个实系数的一次齐次多项式的乘积的充分必要条件是：它的秩等于$2$，而符号差为零，或其秩为$1$.
+\end{prob}
+\begin{proof}
+	充分性根据规范形显然.下证必要性.设$Q_f=PQ$，其中$P,Q$是多元多项式$P,Q\in\mathbb{R}[x_1,\cdots,x_n]$.我们称两个多项式\emph{相伴}，如果它们只相差一个非零常数倍.
+
+	若$P,Q$相伴，调整系数不妨设$P=Q$.假设$P$中出现的$x_i$中下标最小的为$x_k$，命$v_k=P,\,v_i=x_i\,(i\ne k)$，则不难发现这是可逆线性变数替换，因而$Q_f$变为$v_k^2$.此时秩为$1$.
+
+	若$P,Q$不相伴，必然有$x_k,x_l$分别在$P+Q,P-Q$中出现且$k\ne l$.命
+	\[
+		v_k=\frac{1}{2}(P+Q),\,v_l=\frac{1}{2}(P-Q),\,v_i=x_i\,(i\ne k,l),
+	\]
+	这也是可逆的，因而$Q_f$变为$(v_k+v_l)(v_k-v_l)=v_k^2-v_l^2$.此时秩为$2$而符号差为$0$.
+\end{proof}
+\begin{prob}[5]
+	\hypertarget{QuadraticFormOfDegreeOneLinearForm}{设}
+	\[
+		f=l_1^2+l_2^2+\cdots+l_p^2-l_{p+1}^2-\cdots-l_{p+q}^2,
+	\]
+	其中$l_i\,(i=1,2,\cdots,p+q)$是$x_1,x_2,\cdots,x_n$的实系数的一次齐次函数，即$l_i=a_{i1}x_1+a_{i2}x_2+\cdots+a_{in}x_n$.证明$f$的正惯性系数$\le p$，负惯性系数$\le q$.
+\end{prob}
+\begin{proof}[法一]
+	若不然，设$f$经过$Y=TX,\,T=(t_{ij})$化为规范形
+	\[
+		y_1^2+\cdots+y_u^2-y_{u+1}^2-\cdots-y_{u+v}^2,
+	\]
+	其中正惯性系数$u>p$.考虑齐次线性方程组
+	\[
+		\left\{\!\!\begin{array}{rll}
+			l_1(x_1,\cdots,x_n)=     & a_{11}x_1+\cdots+a_{1n}x_n       & =0, \\
+			                         &                                  &     \\
+			l_p(x_1,\cdots,x_n)=     & a_{p1}x_p+\cdots+a_{pn}x_n       & =0, \\
+			y_{u+1}(x_1,\cdots,x_n)= & t_{u+1,1}x_1+\cdots+t_{u+1,n}x_n & =0, \\
+			                         &                                  &     \\
+			y_{n}(x_1,\cdots,x_n)=   & t_{n1}x_1+\cdots+t_{nn}x_n       & =0,
+		\end{array}\right.
+	\]
+	方程个数$p+n-u=n-(u-p)<n=$未知量个数，存在非零解$k_1,\cdots,k_n$使得
+	\[
+		f(k_1,\cdots,k_n)=-l_{p+1}^2-\cdots-l_{p+q}^2=y_1^2+\cdots+y_u^2,
+	\]
+	即$y_i(k_1,\cdots,k_n)=0\,(1\le i\le n)$.但是
+	\[
+		\begin{bmatrix}
+			k_1    \\
+			\vdots \\
+			k_n
+		\end{bmatrix}=T^{-1}\begin{bmatrix}
+			y_1(k_1,\cdots,k_n) \\
+			\vdots              \\
+			y_n(k_1,\cdots,k_n)
+		\end{bmatrix}=0
+	\]
+	矛盾，因此正惯性系数$u\le p$.考虑$-f$可知负惯性系数$v\le q$.
+\end{proof}
+\begin{proof}[法二]
+	假设二次型$f$是$\mathbb{R}^n$中二次型函数$Q_f(\alpha)$在基$\varepsilon_1,\cdots,\varepsilon_n$下的解析表达式.记$\alpha_i=(a_{i1},\cdots,a_{in})\,(1\le i\le p)$，以及$\alpha_1,\cdots,\alpha_p$的一个极大线性无关部分组为$\alpha_{i_1},\cdots,\alpha_{i_r}$，其中$r\le p$.将它扩充为$\mathbb{R}^n$的一组基
+	\[
+		\alpha_{i_1},\cdots,\alpha_{i_r},\beta_1,\cdots,\beta_{n-r}.
+	\]
+	以它们为行向量排成可逆方阵$T$并令$Y=TX$.记$(\eta_1,\cdots,\eta_n)=(\varepsilon_1,\cdots,\varepsilon_n)T^{-1}$，则$Q_f(\alpha)$在基$\eta_1,\cdots,\eta_n$下的表达式为
+	\[
+		y_1^2+\cdots+y_r^2+\bar{l}_{r+1}^2+\cdots+\bar{l}_p^2-\bar{l}_{p+1}^2-\cdots-\bar{l}_{p+q}^2,
+	\]
+	其中$\bar{l}_{r+1},\cdots\bar{l}_p$都是$y_1,\cdots,y_r$的一次齐次函数.令$M=L(\eta_{r+1},\cdots,\eta_n)$，则对任意$\alpha=y_{r+1}\eta_{r+1}+\cdots+y_n\eta_n\in M$，有
+	\[
+		Q_f(\alpha)=-\bar{l}_{p+1}^2-\cdots-\bar{l}_{p+q}^2\le 0.
+	\]
+	另一方面，设在基$\omega_1,\cdots,\omega_n$下$Q_f(\alpha)$成规范形
+	\[
+		z_1^2+\cdots+z_u^2-z_{u+1}^2-\cdots-z_{u+v}^2,
+	\]
+	$u$为$f$的正惯性系数.令$N=L(\omega_1,\cdots,\omega_u)$，则对任意非零向量$\beta=z_1\omega_1+\cdots+z_u\omega_u\in N$有
+	\[
+		Q_f(\beta)=z_1^2+\cdots+z_u^2>0,
+	\]
+	因此$M\cap N=\{0\}$.于是
+	\[
+		n-r+u=\dim M+\dim N=\dim(M+N)\le n,
+	\]
+	即$u\le r\le p$.考虑$-f$可知$v\le q$.
+\end{proof}
+\begin{proof}[法三]
+	根据5.2节\hyperlink{RankOfOneDegreeHomogeneousQuadraticForm}{题目7}~立得.
+\end{proof}
+\begin{prob}[6]
+	\hypertarget{KernelOfBilinearFunction}{设}$V$是实数域上的$n$维线性空间，$f(\alpha,\beta)$是$V$内一个对称双线性函数，$A$为$f(\alpha,\beta)$在基$\varepsilon_1,\varepsilon_2,\varepsilon_n$下的矩阵.若实二次型$X'AX$的负惯性系数$q=0$，证明
+	\[
+		M=\{\alpha\in V\mid f(\alpha,\alpha)=0\}
+	\]
+	是$V$的一个子空间，并求$\dim M$.
+\end{prob}
+\begin{proof}
+	$0\in M$.对任意$\alpha,\beta\in M,\ k,l\in\mathbb{R}$，由于
+	\begin{gather*}
+		Q_f(\alpha)=x_1^2+\cdots+x_p^2=0,\\
+		Q_f(\beta)=y_1^2+\cdots+y_p^2=0,
+	\end{gather*}
+	可知$x_1=\cdots=x_p=y_1=\cdots=y_p=0$.因此$Q_f(k\alpha+l\beta)=0$，即$k\alpha+l\beta\in M$，所以$M$是子空间.不难发现$M$与$\mathbb{R}^{n-p}$同构，有$\dim M=n-p$.
+\end{proof}
+\begin{prob}[7]
+	设$V$是实数域上的$n$维线性空间，$f(\alpha,\beta)$是$V$内一个对称双线性函数.如果$\alpha\in V$使得$Q_f(\alpha)=0$，则$\alpha$称为一个{\heiti 迷向向量}.证明：如果存在$\alpha_0,\beta_0\in V$使得$Q_f(\alpha_0)>0$而$Q_f(\beta_0)<0$，则在$V$内存在一组基$\varepsilon_1,\cdots,\varepsilon_n$使其中每个$\varepsilon_i$均为迷向向量.
+\end{prob}
+\begin{proof}
+	设$Q_f(\alpha)$在基$\eta_1,\cdots,\eta_n$下成规范形
+	\[
+		Q_f(\alpha)=x_1^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_{p+q}^2,
+	\]
+	$Q_f(\alpha)$不定，因此$p,q\ne 0$.取
+	\[
+		\alpha_{ij}=\eta_i+\eta_{p+j},\enspace \beta_{ij}=\eta_i-\eta_{p+j}\,(1\le i\le p;1\le j\le q),
+	\]
+	则$\alpha_{ij},\beta_{ij}$均为迷向向量.注意到$\eta_k\,(p+q<k\le n)$也是迷向向量，而$\alpha_{ij},\beta_{ij}$全体与$\eta_1,\cdots,\eta_{p+q}$等价，所以从$\alpha_{ij},\beta_{ij},\eta_k$中即可挑出$V$的一组基.
+\end{proof}
+\begin{note}
+	本题说明不定双线性函数可以诱导出一组迷向向量组成的基.这在辛空间中有些用处.
+\end{note}
+\begin{prob}[8]
+	设$V$是实数域上的$n$维线性空间，$f(\alpha,\beta)$是$V$内一个对称双线性函数.令
+	\[
+		N(f)=\left\{\alpha\in V\mid Q_f(\alpha)=0\right\}.
+	\]
+	证明$N(f)$是$V$的子空间的充分必要条件是：对所有$\alpha\in V$，$Q_f(\alpha)\ge 0$或$Q_f(\alpha)\le 0$.
+\end{prob}
+\begin{proof}
+	充分性由\hyperlink{KernelOfBilinearFunction}{题目6}可得.下证必要性.若不然，$Q_f(\alpha)$不定，由上题知$N(f)$中可挑出$V$的一组基，即$V=N(f)$，进而$Q_f(\alpha)\equiv 0$，与$Q_f(\alpha)$不定矛盾.
+\end{proof}
+\begin{note}
+	本题说明只有半定的双线性函数才能有(非平凡的)迷向子空间.
+\end{note}
+\begin{prob}[9]
+	设$V$是实数域上的$n$维线性空间，$f(\alpha,\beta)$是$V$内一个对称双线性函数，$N(f)$定义如上题.在$V$内取定一组基$\varepsilon_1,\cdots,\varepsilon_n$后$Q_f(\alpha)$对应于实二次型$X'AX$.如果此二次型正惯性系数为$p$，负惯性系数为$q$.证明包含在$N(f)$内的子空间的最大维数是
+	\[
+		n-\max\{p,q\}=\min\{p,q\}+n-r,
+	\]
+	其中$r$为二次型$X'AX$的秩.
+\end{prob}
+\begin{proof}
+	不妨设$Q_f(\alpha)$在基$\varepsilon_1,\cdots,\varepsilon_n$下成规范形并且$p\ge q$(否则考虑$-Q_f(\alpha)$).设$M\subseteq N(f)$是$V$的子空间，$N=L(\varepsilon_1,\cdots,\varepsilon_p)$，则有$M\cap N=\{0\}$，于是$\dim M=\dim(M+N)-\dim N\le n-p$.而当$N(f)$自己就是一个子空间时，由上题得$p=0$，$N(f)$恰达到最大维数$n-p$.
+\end{proof}
+\begin{prob}[10]
+	给定$n$元实二次型$f=X'AX$.如果$A$的所有顺序主子式均大于零，利用5.2节\hyperlink{TriangleTransformation}{题目9}~证明：$f$对应的二次型函数正定.
+\end{prob}
+\begin{proof}
+	由5.2节\hyperlink{TriangleTransformation}{题目9}~知$f$可由三角形变换化为标准形，且系数$\dfrac{D_k}{D_{k-1}}>0$，所以$f$正定.
+\end{proof}
+\subsection{正定二次型}
+\begin{prob}[3]
+	\hypertarget{PositiveDefiniteMinor}{证明}：如果$A$是正定矩阵，则$A$的主子式全大于零.
+\end{prob}
+\begin{proof}
+	设$A$为正定二次型$f$在基$\varepsilon_1,\cdots,\varepsilon_n$下的矩阵.对任意$1\le i_1<\cdots<i_r\le n$，设$M=L(\varepsilon_{i_1},\cdots,\varepsilon_{i_r})$，$f\mid_M$在基$\varepsilon_{i_1},\cdots,\varepsilon_{i_r}$下的矩阵也正定，因此$i_1,\cdots,i_r$对应的主子式大于零.
+\end{proof}
+\begin{prob}[4]
+	设$A$是实对称矩阵，证明：当$t\in\mathbb{R}$充分大时，$tE+A$是正定矩阵.
+\end{prob}
+\begin{proof}
+	$\abs{tE+A}=t^n+O(t^{n-1})\to+\infty\,(t\to+\infty)$，这一结果对$tE+A$的任何顺序主子式也成立，因此当$t$充分大时，$tE+A$的顺序主子式全为正，因而$tE+A$正定.
+\end{proof}
+\begin{prob}[5]
+	证明：如果$A$是正定矩阵，则$A^{-1}$也是正定矩阵.
+\end{prob}
+\begin{proof}
+	$A=T'T\Rightarrow A^{-1}=(T^{-1})'T^{-1}$.
+\end{proof}
+\begin{prob}[7]
+	设$A$为$n$阶实对称矩阵，$|A|<0$.证明：存在实$n$维向量$X$使得$X'AX<0$.
+\end{prob}
+\begin{proof}
+	设$A$与$B=\diag{I_p,-I_q}$合同，即$B=T'AT$.命$Y_0$为第$p+1$个分量为$1$而其余为零的$n$维向量，$X_0=TY_0$，则$X_0'AX_0=Y_0'BY_0=-1<0$.
+\end{proof}
+\begin{prob}[8]
+	如果$A,B$都是正定矩阵，则$A+B$也是正定矩阵.
+\end{prob}
+\begin{proof}
+	$X'(A+B)X=X'AX+X'BX>0$.
+\end{proof}
+\begin{prob}[9]
+	证明：$n\displaystyle\sum_{i=1}^{n}x_i^2-\biggl[\sum_{i=1}^{n}x_i\biggr]^2$是半正定的.
+\end{prob}
+\begin{proof}
+	显然(考虑平方平均和算术平均的不等式).
+\end{proof}
+\begin{prob}[10]
+	证明：
+
+	(1)如果$f=\displaystyle\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j\,(a_{ij}=a_{ji})$是正定二次型，则
+	\[
+		g(y_1,y_2,\cdots,y_n)=\begin{vmatrix}
+			a_{11} & a_{12} & \cdots & a_{1n} & y_1    \\
+			a_{21} & a_{22} & \cdots & a_{2n} & y_2    \\
+			\vdots & \vdots &        & \vdots & \vdots \\
+			a_{n1} & a_{n2} & \cdots & a_{nn} & y_n    \\
+			y_1    & y_2    & \cdots & y_n    & 0
+		\end{vmatrix}
+	\]
+	是负定二次型.
+
+	(2)如果$A$是正定矩阵，那么
+	\[
+		|A|\le a_{nn}\cdot P_{n-1},
+	\]
+	其中$P_{n-1}$是$A$的$n-1$阶顺序主子式.
+
+	(3)如果$A$是正定矩阵，那么
+	\[
+		|A|\le a_{11}a_{22}\cdots a_{nn}.
+	\]
+
+	(4)如果$T=(t_{ij})$是$n$阶实可逆矩阵，那么\footnotemark
+	\[
+		|T|^2\le\prod_{i=1}^n(t_{1i}^2+t_{2i}^2+\cdots+t_{ni}^2).
+	\]
+\end{prob}
+\footnotetext{这被称为\textbf{Hadamard不等式}}
+\begin{proof}
+	(1)(法一)对$n$作归纳.$n=1$时$g(y_1)=-y_1^2$显然.设命题对$n-1$成立.由于$A=(a_{ij})$正定，存在$n$阶可逆矩阵$T$使得$T'AT=E_n$，于是
+	\[
+		\begin{bmatrix}
+			T' & 0 \\
+			0  & 1
+		\end{bmatrix}\begin{bmatrix}
+			A & Y' \\
+			Y & 0
+		\end{bmatrix}\begin{bmatrix}
+			T & 0 \\
+			0 & 1
+		\end{bmatrix}=\begin{bmatrix}
+			E_n & Z' \\
+			Z   & 0
+		\end{bmatrix}:=B,
+	\]
+	其中$Y=(y_1,\cdots,y_n),\,Z=(z_1,\cdots,z_n),\,Z=TY$.记$B$的$k$顺序主子式为$D_k$，不难发现$|T|^2g(Y)=D_n$.由归纳假设，对$Z\ne0$有$D_{n-1}<0$.而计算得
+	\[
+		D_n=D_{n-1}-z_n^2<0\quad(Z\ne 0),
+	\]
+	因此$g$负定，命题对$n$也成立.
+
+	(1)(法二)利用\hyperlink{DeterminantWithAddedRowAndColumn}{加边行列式}命题容易得到$g=-Y'A^*Y<0$，其中$A=(a_{ij})$而$A^*$是其伴随.由于$A$正定，$A^*=|A|^{-1}A^{-1}$也正定，所以$g=-Y'A^*Y$负定.
+
+	(2)设$A$的左上角$n-1$阶矩阵块为$A_{n-1}$，记$\alpha=(a_{n1},\cdots,a_{n,n-1})$，由(1)注意到
+	\[
+		|A|=\begin{vmatrix}
+			A_{n-1} & \alpha' \\
+			\alpha  & a_{nn}
+		\end{vmatrix}=a_{nn}P_{n-1}+\begin{vmatrix}
+			A_{n-1} & \alpha' \\
+			\alpha  & 0
+		\end{vmatrix}\le a_{nn}P_{n-1}.
+	\]
+
+	(3)不断利用(2)即可.
+
+	(4)$X'(T'T)X=(TX)'TX>0\,(X\ne 0)$，即$T'T$正定，因此由(3)得
+	\[
+		|T|^2=|T'T|\le\prod_{i=1}^{n}(t_{1i}^2+t_{2i}^2+\cdots+t_{ni}^2),
+	\]
+	即证.
+\end{proof}
+\begin{note}
+	(4)中的结论可写为$\det(v_1\cdots v_n)\le|v_1|\cdots|v_n|$.这就是Hadamard不等式的几何意义：平行六面体体积不大于各边垂直时矩体体积.由此不难看出当且仅当$v_1,\cdots,v_n$正交时取等.
+\end{note}
+\begin{prob}[11]
+	给定实二次型$f=X'AX\,(A=A')$.证明$f$半正定的充分必要条件是$A$的所有主子式都为非负实数.举例说明：如果仅有$A$的所有顺序主子式非负，$f$未必是半负定的.
+\end{prob}
+\begin{proof}
+	(必要性)不难发现对任意$X$有$X'AX\ge 0$蕴含$|A|\ge0$.与\hyperlink{PositiveDefiniteMinor}{题目3}同理可得$A$的主子式都非负.
+
+	(充分性)对任意$t>0$，由4.4节\hyperlink{EigenPolynomial}{题目29}可得(设$A\ne0$)
+	\[
+		|tE+A|=\sum_{k=0}^{n}S_kt^{n-k}>0,
+	\]
+	其中$S_k>0$为$A$的所有$k$阶主子式之和.上述推理对$tE+A$的任何顺序主子式都成立，所以$tE+A$正定.命$t\to 0$可得$A$半正定.
+
+	反例:$f(x_1,x_2)=-x_2^2$.
+\end{proof}
+\begin{prob}[12]
+	给定两个$n$元实二次型$f=X'AX,\,g=X'BX$.
+
+	(1)举例说明$f$与$g$均非正定二次型时，$f+g=X'(A+B)X$仍有可能为正定二次型.
+
+	(2)如果$f$和$g$的正惯性系数都小于$\dfrac{n}{2}$，证明$f+g$必为非正定二次型.
+\end{prob}
+\begin{proof}
+	(1)$f=2x_1^2-x_2^2,\,g=-x_1^2+2x_2^2$.
+
+	(2)设$Q_f(\alpha),Q_g(\beta)$分别在基$\varepsilon_1,\cdots,\varepsilon_n$和$\eta_1,\cdots,\eta_n$下成规范形
+	\begin{gather*}
+		Q_f(\alpha)=x_1^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_{p+q}^2,\\
+		Q_g(\beta)=y_1^2+\cdots+y_r^2-y_{r+1}^2-\cdots-y_{r+s}^2,
+	\end{gather*}
+	其中$p,r<n/2$.取$M=L(\varepsilon_{p+1},\cdots,\varepsilon_n),\ N=L(\eta_{r+1},\cdots,\eta_n)$，则$\dim M+\dim N=2n-(p+r)>n$，因此$M\cap N\ne\{0\}$.取非零向量$\alpha_0\in M\cap N$，则有
+	\[
+		Q_{f+g}(\alpha_0)=Q_f(\alpha_0)+Q_g(\alpha_0)\le 0,
+	\]
+	所以$f+g$非正定.
+\end{proof}
