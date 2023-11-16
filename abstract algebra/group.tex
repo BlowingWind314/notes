@@ -13,7 +13,7 @@
 
 群的一个基本分类是有限群和无限群，群的基数称为群的{\heiti 阶}.我们主要讨论有限群.一个群的{\heiti 子群} $H\subseteq G$记为$H\le G$.例如
 \begin{itemize}
-	\item $\{e\},G$ 是 $G$ 的平凡子群.
+	\item $\{e\}=:1,G$ 是 $G$ 的平凡子群.
 	\item 群 $G$ 的{\heiti 中心} $Z(G)=\{g\in G\mid \forall a\in G,\,ag=ga\}$ 是 $G$ 的子群.
 	\item 非空子集 $S\subseteq G$ 的{\heiti 中心化子} $\mathrm C_G(S)=\{g\in G\mid \forall a\in S,\,aga^{-1}=g\}$ 是 $G$ 的子群.
 	\item 非空子集 $S\subseteq G$ 的{\heiti 正规化子} $\mathrm N_G(S)=\{g\in G\mid \forall a\in S,\,aSa^{-1}=S\}$ 是 $G$ 的子群.
@@ -44,12 +44,12 @@
 
 对子群 $H\le G$，任取 $g\in G$，则
 \[
-	gHg^{-1}:=\{ghg^{-1}\mid h\in H\},\quad\forall g\in G,
+	H^g:=gHg^{-1}=\{ghg^{-1}\mid h\in H\},\quad\forall g\in G,
 \]
 也是 $G$ 的子群，称为 $H$ 的一个{\heiti 共轭子群}.
 如果子群 $H$ 共轭子群唯一(即只有 $H$ 自己)，则称 $H$ 是{\heiti 正规子群}，记作 $H\nsg G$.例如
 \begin{itemize}
-	\item $\{e\},G$ 是 $G$ 的平凡正规子群.
+	\item $1,\,G$ 是 $G$ 的平凡正规子群.
 	\item 非空子集 $S\subseteq G$ 的中心化子是正规化子的正规子群 $\mathrm{C}_G(S)\nsg\mathrm{N}_G(S)$.
 	\item 子群 $H\le G$ 是它正规化子的正规子群 $H\nsg\mathrm{N}_G(H)$.
 \end{itemize}
@@ -356,8 +356,7 @@
 	这是环论中的显然结论.直接证明也不难.
 \end{proof}
 
-一个常用的循环群直积是{\heiti \textbf{Klein}四群} $K_4=Z_2\times Z_2$.后面我们会看到，四阶群只有$Z_4,K_4$两个同构类.章末有更多小阶群分类.
-%//TODO:小阶群分类
+一个常用的循环群直积是{\heiti \textbf{Klein}四群} $K_4=Z_2\times Z_2$.后面我们会看到，四阶群只有$Z_4,K_4$两个同构类.章末有更多\hyperref[subsec:ClassificationSmallOrder]{小阶群分类}.
 
 \begin{remark}
 	循环群实际上还有不少可供讨论的话题，例如它的\hyperlink{prop:CyclicAuto}{自同构群}可以被完全计算出来(这一般很难做到)，而这需要讨论一般的$\mathbb{Z}_n^*$的结构.
@@ -588,9 +587,7 @@
 	\item 二面体群$D_{2n}$的中心$Z(D_{2n})=1$\,($n$奇)或$\langle r^{n/2}\rangle \cong Z_2$\,($n$偶).
 \end{itemize}
 
-下面从另一个角度来衡量群$G$的交换性.
-
-对群$G$中的元素$x,y$定义{\heiti 换位子} $[x,y]=x^{-1}y^{-1}xy$，则$x,y$可换当且仅当$[x,y]=e$.这一简单的发现提示我们定义子群$H,K\le G$的{\heiti 换位子}
+对群$G$中的元素$x,y$定义{\heiti 换位子}\footnote{有时换位子也被定义为$x^{-1}y^{-1}xy$，这在处理某些问题时更方便.我们采取何种定义将由上下文确定.} $[x,y]=xyx^{-1}y^{-1}$，则$x,y$可换当且仅当$[x,y]=1$.这一简单的发现提示我们定义子群$H,K\le G$的{\heiti 换位子}
 \[
 	[H,K]:=\langle \left\{[h,k]\mid h\in H,\,k\in K\right\}\rangle .
 \]
@@ -662,8 +659,7 @@
 	这个结构定理非常有用，例如计算同调群时算出来的都是Abel群，其秩可以作为实用的拓扑不变量，称为Betti数.
 \end{remark}
 
-利用上述结构定理，容易给出Abel群的完全分类.但需要注意的是非Abel群的分类就异常复杂.简单的小阶群分类还可以做到.%//TODO:小阶群分类
-
+利用上述结构定理，容易给出Abel群的完全分类.但需要注意的是非Abel群的分类就异常复杂.简单的\hyperref[subsec:ClassificationSmallOrder]{小阶群分类}还可以做到.
 
 \section{群列}
 \subsection{群扩张}\label{subsec:GroupExtension}
@@ -690,7 +686,7 @@
 	\[
 		G=\langle a,b\mid a^n=1,\,b^m=a^t,\,b^{-1}ab=a^r\rangle ,
 	\]
-	其中参数$t,r$满足
+	其中参数$t,r$满足\hypertarget{thm:Metacyclic}{}
 	\[
 		r^m\equiv 1\pmod{n},\quad t(r-1)\equiv 0\pmod{n}.
 	\]
@@ -749,21 +745,21 @@
 	\[
 		1=G_0\nsg G_1\nsg\cdots\nsg G_{n-1}\nsg G_n=G
 	\]
-	称为{\heiti 正规列}.商群$G_{k+1}/G_k$称为{\heiti 子商}.若正规列的子商都是单群，则称为{\heiti 合成群列}.
+	称为{\heiti 次正规列}.商群$G_{k+1}/G_k$称为{\heiti 子商}.若次正规列的子商都是单群，则称为{\heiti 合成群列}.
 \end{definition}
 
-不难看出，正规列实际上就是$G$的一种群扩张构造方式.而合成群列就对应于都用单群作群扩张.首当其冲的自然是合成群列的存在性.
+不难看出，次正规列实际上就是$G$的一种群扩张构造方式.而合成群列就对应于都用单群作群扩张.首当其冲的自然是合成群列的存在性.
 \begin{lemma*}
 	有限群$G$总有合成群列.
 \end{lemma*}
 \begin{proof}
-	考虑$G$的{\heiti 极大正规子群}(即满足$N\pnsg G$的包含关系极大元).若极大正规子群$N$非平凡，则$G/N$是单群，$G$是单群$G/N$关于$N$的扩张.注意$|N|<|G|$，故当$G$有限时，这一步骤最后终止，即有限群$G$总是若干单群的扩张.
+	考虑$G$的极大正规子群(即满足$N\pnsg G$的包含关系极大元).若极大正规子群$N$非平凡，则$G/N$是单群，$G$是单群$G/N$关于$N$的扩张.注意$|N|<|G|$，故当$G$有限时，这一步骤最后终止，即有限群$G$总是若干单群的扩张.
 \end{proof}
 \begin{remark}
 	无限群不一定有合成群列(哪怕有限生成).例如整数加群$\mathbb{Z}$，它的正规列每一项都只能形如$p_1\cdots p_r\mathbb{Z}$，无法得到平凡群.
 \end{remark}
 
-下面说明群$G$的合成群列具有唯一性.确切地说，它的全体合成因子(计重数)是唯一的.若群$G$的两个正规列长度相等并且商群(不计顺序、计重数)能对应同构，就称两正规列{\heiti 等价}.
+下面说明群$G$的合成群列具有唯一性.确切地说，它的全体合成因子(计重数)唯一.若群$G$的两个次正规列长度相等并且商群(不计顺序、计重数)对应同构，称次正规列{\heiti 等价}.
 
 \begin{lemma*}[(Zassenhaus)]
 	设群$G$有子群$\tilde{U},\tilde{V}$.若$U\nsg\tilde{U},V\nsg\tilde{V}$，则有如下商群同构
@@ -789,7 +785,7 @@
 	\end{equation*}
 \end{proof}
 \begin{thm}[(Schreier加细)]
-	设$G$有两个正规列
+	设$G$有两个次正规列
 	\begin{align*}
 		G & =G_0\trianglerighteq G_1\trianglerighteq\cdots\trianglerighteq G_r=1, \\
 		G & =H_0\trianglerighteq H_1\trianglerighteq\cdots\trianglerighteq H_s=1,
@@ -816,9 +812,8 @@
 
 这说明群$G$合成群列的子商与其选取无关，定义为群$G$的{\heiti 合成因子}.群$G$的全体合成因子记为Jordan--H\"older因子集(计重数) $\mathrm{JH}(G)$.
 \begin{remark}
-	注意$\mathrm{JH}(G)$虽然是同构不变量，但是用单群搭建群$G$的方式依然重要.例如$Z_4$和$K_4$就有相同的合成因子$Z_2,Z_2$.此后会提及一种特殊情况：Schur--Zassenhaus定理.
+	注意$\mathrm{JH}(G)$虽然是同构不变量，但是用单群搭建群$G$的方式依然重要.例如$Z_4$和$K_4$就有相同的合成因子$Z_2,Z_2$.此后会提及一种特殊情况：\hyperlink{thm:SchurZassenhaus}{Schur--Zassenhaus定理}.
 \end{remark}
-%//TODO:Schur-Zassenhaus
 
 最后，若群$G$是$N$关于$Q$的扩张并且$N,Q$有合成群列，则$G$有合成群列并且$\mathrm{JH}(G)=\mathrm{JH}(N)\cup\mathrm{JH}(Q)$，其中取并集计重数.这推出
 \begin{prop}
@@ -832,7 +827,7 @@
 \end{remark}
 \subsection{可解群与幂零群}
 \begin{definition}
-	群$G$的正规列$1=G_0\nsg G_1\nsg\cdots\nsg G_n=G$若满足
+	群$G$的次正规列$1=G_0\nsg G_1\nsg\cdots\nsg G_n=G$若满足
 	
 	\begin{enumerate*}
 		\item $G_i\nsg G$,\phantom{\qquad}
@@ -943,7 +938,7 @@
 	$p^aq^b$阶群是可解的.\qed
 \end{thm}
 \begin{remark}
-	Burnside定理是群表示论的典型应用.它的一个推广是Hall定理.%//TODO:Hall
+	Burnside定理是群表示论的典型应用.它的一个推广是~\hyperlink{thm:Hall}{Hall定理}的逆.
 \end{remark}
 
 幂零群的另一等价描述是递归定义如下正规列
@@ -987,9 +982,10 @@
 
 试举两最重要的群作用例子，将在下节单独讨论它们.
 \begin{itemize}
-	\item 群$G$在自身上的{\heiti 左作用} $g\mapsto g\bullet$.
-	\item 群$G$在自身上的{\heiti 共轭作用} $g\mapsto g\bullet g^{-1}$.
+	\item {\heiti 左作用} $g\mapsto g\bullet$.
+	\item {\heiti 共轭作用} $g\mapsto g\bullet g^{-1}$.
 \end{itemize}
+
 亦有几何上更具体的群作用例子，例如图形的对称群对几何图形的作用、拓扑群对拓扑空间的作用等.
 
 假设有群作用$\psi\colon G\to S_\Omega$，为方便起见简记$\psi(g)(x):=gx$.可以引入等价关系$\sim$为
@@ -1008,7 +1004,7 @@
 	若群$G$自由且传递地作用在$X$上，称$X$是群$G$的{\heiti 主齐性空间}或$G${\heiti -旋子}.
 \end{remark}
 \begin{prop}
-	群$G$在轨道$\mathcal{O}_x$上的作用等价于在商集\footnotemark $G/G_x$上的左作用.
+	群$G$在轨道$\mathcal{O}_x$上的作用等价于在商集\footnotemark $G/G_x$上的左作用.\hypertarget{prop:GrpActionEquiv}{}
 \end{prop}
 \footnotetext{今后不作特别声明时均取$G/H$为左商集$(G/H)_l$.}
 \begin{proof}
@@ -1030,7 +1026,7 @@
 
 用两种方法计算之.设$\Omega=\bigcup_i G(x_i)$，则
 \[
-	\sum_{g\in G}|F(g)|=|S|=\sum_{x\in\Omega}|G_x|=\sum_i|G(x_i)||G_{x_i}|=|\Omega/G||G|.
+	\sum_{g\in G}|F(g)|=|S|=\sum_{x\in\Omega}|G_x|=\sum_i|\mathcal{O}_{x_i}||G_{x_i}|=|\Omega/G||G|.
 \]
 \begin{thm}[(Burnside引理)]
 	$\displaystyle|\Omega/G|=\frac{1}{|G|}\sum_{g\in G}|F(g)|$.\qed
@@ -1049,7 +1045,7 @@
 	\item 二面体群$D_{2n}\cong Z_n\rtimes Z_2$.\phantom{\qquad}
 	\item 对称群$S_n\cong A_n\rtimes Z_2$.
 \end{itemize*}\par
-\medskip 半直积在构造群时很有用，但是需要注意作外半直积时不具有唯一性，需要明确不同的群作用.不作特别声明时取最常见的共轭作用.
+\medskip 半直积在构造群时很有用，但是需要注意作外半直积时不具有唯一性，需要明确不同的群作用.不作特别声明时取典范的非平凡作用.
 
 \subsection{左作用与共轭作用}
 群$G$在自身上有自然的左作用$G\to S_G$.显然这是忠实的作用.用$A\lesssim B$表示$A$同构于$B$的子群，则有
@@ -1069,9 +1065,8 @@
 	指数有限真子群包含一个指数有限的真正规子群.\qed
 \end{cor*}
 
-注意$G$在商集$G/H$上的左作用的核是$\displaystyle\bigcap_{g\in G}gHg^{-1}\nsg G$，它是含于$H$的极大正规子群，称为$H$在$G$中的{\heiti 核} $H_G$，即全体共轭子群的交是正规的.利用核不难证明如下命题.
+群到对称群的同态称为群的{\heiti 置换表示}.注意$G$在商集$G/H$上左作用的核$\displaystyle\bigcap_{g\in G}gHg^{-1}$是在$H$中极大的正规子群，称为$H$在$G$中的{\heiti 核} $H_G$.
 
-对群的{\heiti 置换表示}（即群到置换群的同态），若此作用传递则称为{\heiti 传递置换表示}\footnote{实际上此前说明的商集左作用给出了所有传递置换表示.}.
 \begin{thm}[(Poincar\'e)]
 	设$H$是有限群$G$的指数$n$子群，则$|G/H_G|$整除$(n!,|G|)$.
 \end{thm}
@@ -1085,6 +1080,7 @@
 	若$p$是$|G|$的最小素因子，则指数$p$的子群若存在必正规.\qed
 \end{cor}
 
+更多相关内容见附录\hyperref[subsec:PermutationRepresentation]{置换表示}.
 \begin{prop}
 	$2^nm$阶群若有$2^n$阶元，则有唯一的$m$阶正规子群，其中$m$为奇数.
 \end{prop}
@@ -1095,7 +1091,7 @@
 \end{proof}
 \begin{remark}
 	这是Burnside正规补的推论.%//TODO:Burnside正规补
-	它也是Hall定理的一个实例.%//TODO:Hall定理
+	它也是~\hyperlink{thm:Hall}{Hall定理}的一个实例.
 \end{remark}
 \begin{cor*}
 	$4n+2$阶群必有指数2子群.\qed
@@ -1164,10 +1160,10 @@
 	若型中有偶数，设$\sigma_1$是奇置换，则$\tau=\sigma_1\in\mathrm{C}_{S_n}(\sigma)$是奇置换.若型中有相等奇数，设$\pi_1=(i_1\cdots i_s)$和$\pi_2=(j_1\cdots j_s)$是偶置换，则$\tau=(i_1j_1)\cdots(i_s)(j_s)\in\mathrm{C}_{S_n}(\sigma)$是奇置换.
 \end{proof}
 \begin{remark}
-	在附录中讨论单群判别时，我们会计算$S_n$和$A_n$中置换的正规化子.%//TODO:单群判别
+	在附录中讨论单群判别时，我们会计算置换在$S_n$和$A_n$中的正规化子.%//TODO:单群判别
 \end{remark}
 \subsection{Sylow定理}
-本节讨论Lagrange定理的逆问题，给定$n\mid |G|$何时能有$n$阶子群？这当然不是必然成立的，例如对单群就必然没有指数2子群.但是
+本节讨论Lagrange定理的逆问题，给定$n\mid |G|$何时能有$n$阶子群？对有限Abel群这是对的.但这当然不是必然成立的，例如$A_4$就没有指数2子群.但是
 \begin{thm}[(Cauchy)]
 	若素数$p\mid|G|$，则$G$中存在$p$阶元.\hypertarget{thm:Cauchy}{}
 \end{thm}
@@ -1225,7 +1221,7 @@
 	由Sylow $p$-子群共轭知$n_p=[G:\mathrm{N}_G(P)]$.令$P$共轭作用在$\mathrm{Syl}_p(G)$上.断言$P$是唯一不动点，从而$n_p\equiv 1\pmod{p}$.因若$Q\in\mathrm{Syl}_p(G)$是不动点，则$P\subseteq\mathrm{N}_G(Q)$，即$P=Q$.
 \end{proof}
 
-Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类和低阶单群.%%//TODO:附录
+Sylow定理在探究有限群结构时非常好用，参见附录\hyperref[subsec:ClassificationSmallOrder]{小阶群分类}和\hyperref[subsec:SimpleGrpLowOrder]{低阶单群}.
 \begin{prop}[(Frattini)]
 	设$G$作用在$\Omega$上，$G$的子群$N$传递作用在$\Omega$上，则
 	\[
@@ -1239,7 +1235,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	设$N\nsg G$且$P\in\mathrm{Syl}_p(N)$，则$G=N\mathrm{N}_G(P)$.
 \end{cor*}
 \begin{proof}
-	考虑$G$在$\mathrm{Syl}_p(G)$上的传递共轭作用，由$N$正规知$gPg^{-1}\le H$，即$N$也传递作用在$\mathrm{Syl}_p(G)=\mathrm{Syl}_p(H)$上.
+	考虑$G$在$\mathrm{Syl}_p(N)$上的共轭作用.
 \end{proof}
 \begin{remark}
 	一般地说这也是此前提到的传递置换表示的应用.
@@ -1248,12 +1244,12 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	设$P\in\mathrm{Syl}_p(G)$且$\mathrm{N}_G(P)\le H\le G$，则$\mathrm{N}_G(H)=H$.特别地$\mathrm{N}_G(\mathrm{N}_G(P))=\mathrm{N}_G(P)$.
 \end{cor*}
 \begin{proof}
-	$P\in\mathrm{Syl}_P(H)$且$H\nsg\mathrm{N}_G(H)$，于是$\mathrm{N}_G(H)=H\mathrm{N}_{\mathrm{N_G(H)}}(P)\subseteq H$，因为$\mathrm{N}_{\mathrm{N_G(H)}}(P)=\mathrm{N}_G(H)\cap\mathrm{N}_G(P)\subseteq H$.
+	$P\in\mathrm{Syl}_p(H)$且$H\nsg\mathrm{N}_G(H)$，于是$\mathrm{N}_G(H)=H\mathrm{N}_{\mathrm{N_G(H)}}(P)\subseteq H$，因为$\mathrm{N}_{\mathrm{N_G(H)}}(P)=\mathrm{N}_G(H)\cap\mathrm{N}_G(P)\subseteq H$.
 \end{proof}
 
 有限子群$H\le G$若满足$(|H|,[G:H])=1$，则称$H$是{\heiti Hall子群}.
 
-作为Sylow子群概念的推广，Sylow定理的结论可以一定程度上推广到Hall子群上，见附录.%//TODO:Hall子群
+作为Sylow子群概念的推广，Sylow定理的结论可以一定程度上推广到Hall子群上，见附录~\hyperlink{thm:Hall}{Hall定理}.
 \subsection{自同构}
 群$G$的全体自同构构成群$\operatorname*{Aut}(G)$.考虑$G$共轭作用在自身上，则有同态$G\to\operatorname*{Aut}(G)$，即全体共轭(称为{\heiti 内自同构})构成{\heiti 内自同构群} $\operatorname*{Inn(G)}$.不难得到
 \begin{prop}
@@ -1277,7 +1273,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	\end{itemize}
 \end{definition}
 
-特征子群是比正规子群更强的条件.作为例子，有平凡特征子群$1,G$.此前定义的$G^{(n)},G^n$也都是特征子群.
+可见，特征子群是比正规子群更强的条件.作为例子，有平凡特征子群$1,G$.此前定义的$G^{(n)},\,G^n,\,Z_n(G)$也都是特征子群.
 \begin{prop}
 	特征子群具有传递性.
 	\begin{itemize}
@@ -1305,10 +1301,10 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 
 根据此推论可以轻松解决群直积的自同构群的计算问题.一般地$\operatorname*{Aut}(G)\times\operatorname*{Aut}(H)\le\operatorname*{Aut}(G\times H)$，但特别地有
 \begin{prop}
-	若$(|H|,|K|)=1$，则$\operatorname*{Aut}(G)\times\operatorname*{Aut}(H)\cong\operatorname*{Aut}(G\times H)$.
+	若$(|H|,|K|)=1$，则$\operatorname*{Aut}(H)\times\operatorname*{Aut}(K)\cong\operatorname*{Aut}(H\times K)$.
 \end{prop}
 \begin{proof}
-	$G,H$是$G\times H$的正规Hall子群，从而是特征子群.
+	$H,K$是$H\times K$的正规Hall子群，从而是特征子群.
 \end{proof}
 \begin{remark}
 	一般地有如下定理：若$H,K$没有公共直积因子\footnote{“直积因子”参见附录直积分解一节.} ，则
@@ -1340,7 +1336,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 \begin{prop}
 	循环群自同构$\operatorname*{Aut}(\mathbb{Z}_n)\cong\mathbb{Z}_n^*$.进一步有
 	\begin{itemize}
-		\item $\mathbb{Z}_{2^r}^*\cong\mathbb{Z}_{2^{r-1}}\oplus\mathbb{Z}_2$，其中$r\ge 3$.特别有$\mathbb{Z}_4^*\cong\mathbb{Z}_2$.
+		\item $\mathbb{Z}_{2^r}^*\cong\mathbb{Z}_{2^{r-2}}\oplus\mathbb{Z}_2$，其中$r\ge 3$.特别有$\mathbb{Z}_4^*\cong\mathbb{Z}_2$.
 		\item $\mathbb{Z}_{p^r}^*\cong\mathbb{Z}_{\varphi(p^r)}=\mathbb{Z}_{p^{r-1}}\oplus\mathbb{Z}_{p-1}$，其中$p$是奇素数.
 	\end{itemize}
 	因此$\operatorname*{Aut}(\mathbb{Z}_n)$循环当且仅当$n=2,4,p^r,2p^r$，其中$p$为奇素数.\hypertarget{prop:CyclicAuto}{}
@@ -1353,10 +1349,16 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	设$p$奇素数，则$|\mathbb{Z}_{p^r}^*|=p^{r-1}(p-1)$.注意$1+p$是$p^{r-1}$阶元，因此$\mathbb{Z}_{p^r}^*\cong\mathbb{Z}_{p^{r-1}}\oplus\mathbb{Z}_{p-1}$.
 \end{proof}
 \begin{prop}
-	Klein四群、四元数群自同构$\operatorname*{Aut}(K_4)\cong\operatorname*{Aut}(Q_8)\cong S_3\cong D_6$.\qed
+	Klein四群自同构$\operatorname*{Aut}(K_4)\cong S_3\cong D_6$.\qed
 \end{prop}
 \begin{prop}
-	二面体群自同构$\operatorname*{Aut}(D_{2n})\cong\mathbb{Z}_n\rtimes_\alpha\mathbb{Z}_n^*$，半直积$\alpha\colon a\mapsto(g\mapsto ag)$.
+	四元数群自同构$\operatorname*{Aut}(Q_8)\cong S_4$.
+\end{prop}
+\begin{proof}
+	易知自同构将$\mi,\mathrm{j}$变为$\pm \mi,\pm\mathrm{j},\pm\mathrm{k}$中不互逆两个元素并由此唯一确定，即$|\mathrm{Aut}(Q_8)|=24$.考虑自同构$\alpha$为$\mi\mapsto\mathrm{j},\,\mathrm{j}\mapsto-\mi$，$\beta$为互换$\mi,\mathrm{j}$，$\gamma$为$\mi\mapsto\mathrm{j},\,\mathrm{j}\mapsto\mi\mathrm{j}$，则$\langle \alpha,\beta\rangle\cong D_8$和$\langle \gamma\rangle\cong Z_3$是Sylow $2$-子群和Sylow $3$-子群.验证它们都不正规，从而由附录\hyperlink{prop:24OrderGroup}{命题13}得证.
+\end{proof}
+\begin{prop}
+	二面体群自同构$\operatorname*{Aut}(D_{2n})\cong\mathbb{Z}_n\rtimes\mathbb{Z}_n^*$，半直积$\alpha\colon a\mapsto(g\mapsto ag)$.
 \end{prop}
 \begin{proof}
 	定义$\sigma_{ij}\in\operatorname*{Aut}(D_{2n})$为$r\mapsto r^j,\,s\mapsto r^is$，则不难发现
@@ -1369,8 +1371,6 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	\]
 \end{proof}
 
-对称群$S_n$和交错群$A_n$的自同构群参见附录中完全群一节.%//TODO:完全群
-
 要计算有限交换群的自同构群只需计算$p$群的自同构群.其中初等交换$p$群的自同构结构是经典的.
 \begin{prop}
 	初等$p$群自同构$\operatorname*{Aut}(\mathbb{Z}_p^n)\cong\operatorname*{GL}(n,\mathbb{F}_p)$.\qed
@@ -1378,6 +1378,8 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 \begin{remark}
 	附录里列举了一些矩阵群的性质.
 \end{remark}
+
+对称群$S_n$和交错群$A_n$的自同构群参见附录中完全群一节，它们有更奇怪的特性.%//TODO:完全群
 
 \section{附录}
 \subsection{\texorpdfstring{$p$群分类}{p群分类}}
@@ -1401,7 +1403,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	$p$群中心非平凡，无论$Z(G)=G$还是$G/Z(G)\cong Z_p$都导出$G$交换.
 \end{proof}
 
-下面考虑$p^3$阶群.只考虑$p$为奇素数，$8$阶群情形见下节小阶群分类.%//TODO:小阶群分类
+下面考虑$p^3$阶群.只考虑$p$为奇素数，$8$阶群情形见下节\hyperref[subsec:ClassificationSmallOrder]{小阶群分类}.
 
 首先引入一个特殊的$p^3$阶群$\mathrm{UT}(3,p)$，即$\mathbb{F}_3$上的$3$阶严格上三角矩阵群.记$x=I+E_{12},y=I+E_{23},z=I+E_{13}$，则它有展示
 \[
@@ -1452,7 +1454,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	无论哪种情况都有$z:=a^{2^{n-1}}\in Z(G)$是$2$阶元.不难发现$Z(G)\cap\langle b\rangle =1$并且$a^k\in Z(G)$当且仅当$ba^kb=a^k$.因此计算得到$Z(D_{2^{n+1}})=Z(SD_{2^{n+1}})=\langle z\rangle $，第三个群的中心为$\langle a^2\rangle $.于是只需区分$D_{2^{n+1}}$与$SD_{2^{n+1}}$.这是容易的，因为$D_{2^{n+1}}\setminus\langle a\rangle $中只有$2$阶元，但$SD_{2^{n+1}}\setminus\langle a\rangle $中的$ab$是$4$阶元.
 \end{proof}
 
-接着考虑一般扩张的情况，即循环极大子群没有补\footnote{见附录正规补一节.}.对$p$群$G$定义$\Omega(G):=\{g\in G\mid g^p=1\}$.需要下述技术性引理：%//TODO:补
+接着考虑一般扩张的情况，即循环极大子群没有{\heiti 补}\footnote{$H\le G$的\emph{补}是$K\le G$满足$G=HK$且$H\cap K=1$.}.对$p$群$G$定义$\Omega(G):=\{g\in G\mid g^p=1\}$.需要下述技术性引理：
 \begin{lemma}
 	设$G$是$p$群.若$[x,y]\in\Omega(Z(G))$，则
 	\begin{enumerate}
@@ -1521,7 +1523,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 
 这些结论可以应用到下节的小阶群分类中.
 
-\subsection{小阶群分类}
+\subsection{小阶群分类}\label{subsec:ClassificationSmallOrder}
 首先根据目前各种结果可以得到一般性的结论如下.
 \begin{prop}
 	设$p>q$，则$pq$阶群至多只有$Z_p\times Z_q$和$Z_p\rtimes Z_q$两个同构类.
@@ -1569,8 +1571,8 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 \end{itemize}
 \begin{remark}
 	后文会提到定理：若$(n,\varphi(n))=1$则$n$阶群循环.%//TODO:循环群判定
-	还有定理：阶无平方的群是亚循环群.%//TODO:无平方
-	对未提到的情况利用此定理和$2p$阶非Abel群($p$奇素数)只有二面体群、$p^3$阶群只有$\mathrm{UT}(3,p)$和$Z_{p^2}\rtimes Z_p$可以完全判定$<32$阶群的结构.
+	实际上还有定理：阶无平方因子的群是亚循环群.%//TODO:无平方
+	对未提到的情况利用本节和上节定理可以完全判定$<32$阶群的结构.
 \end{remark}
 \begin{remark}
 	$16$阶非Abel群中出现了{\heiti Pauli群}\footnote{Pauli群实际上构成$\mathrm{GL}(2,\mathbb{C})$的子Lie代数，注意生成关系$\sigma_1\sigma_2\sigma_3=\mi$.} $\mathcal{P}_1=\langle \sigma_1,\sigma_2,\sigma_3\rangle $，其中
@@ -1633,7 +1635,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	$12$阶非Abel群只有$D_{12},\,Q_{12},\,A_4$.
 \end{prop}
 \begin{proof}
-	$12$阶群$G$有$3$阶子群$H$，从而有同态$\psi\colon G\to S_4$且同态核$H_G\subseteq H$.若$H_G=1$，则$G$作为$S_4$的指数$2$子群只能是$A_4$.若$Z_3\nsg G$是正规Hall子群，则与\hyperlink{prop:4pGroupStruc}{命题4} 证明同理可得$Z_3\rtimes K_4\cong D_{12}$和$Z_3\rtimes Z_4\cong Q_{12}$.
+	$12$阶群$G$有$3$阶子群$H$，从而有同态$\psi\colon G\to S_4$且同态核$H_G\subseteq H$.若$H_G=1$，则$G$作为$S_4$的指数$2$子群只能是$A_4$.若$H\neg G$正规，由N/C定理$G/\mathrm{C}_G(H)\lesssim\operatorname*{Aut}(H)\cong Z_2$.由$G$非交换只能$G/\mathrm{C}_G(H)\cong Z_2$，此时$|\mathrm{C}_G(H)|=6$只能是$Z_6$.因此$G$是$Z_6$关于$Z_2$的扩张，根据亚循环群的~\hyperlink{thm:Metacyclic}{H\"older定理}只有$D_{12},Q_{12}$.
 \end{proof}
 \begin{prop}
 	$18$阶非Abel群只有$D_{18},\,D_6\times Z_3,\,(Z_3\times Z_3)\rtimes Z_2$.
@@ -1660,7 +1662,7 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	\begin{itemize}
 		\item $\mathcal{P}_1=\langle i,x,y\mid i^4=x^2=y^2=1,\,yx=i^2xy\rangle$
 		\item $(Z_4\times Z_2)\rtimes Z_2=\langle a,b,c\mid a^4=b^2=c^2=1,\,ab=ba,\,bc=cb,\,cac=ab\rangle $
-		\item $Z_4\rtimes Z_4\langle a,b\mid a^4=b^4=1,\,bab^{-1}=a^{-1}\rangle $.
+		\item $Z_4\rtimes Z_4=\langle a,b\mid a^4=b^4=1,\,bab^{-1}=a^{-1}\rangle $.
 	\end{itemize}
 \end{prop}
 \begin{proof}
@@ -1761,7 +1763,306 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 	有限群论的初等做法是如此繁琐.
 \end{remark}
 
-\subsection{低阶单群}
+最后对于$24$阶群，只给出如下简单结果.
+\begin{prop}
+	$24$阶群若Sylow $2$-子群和Sylow $3$-子群都不正规，则只能是$S_4$.\hypertarget{prop:24OrderGroup}{}
+\end{prop}
+\begin{proof}
+	显然$n_2=3,\,n_3=4$.设Sylow $3$-子群$P$的正规化子为$N$，则$N$给出了传递置换表示$G\to S_4$并且$|N_G|\le 6$.若$|N_G|=6$，则$N=N_G$正规.由正规Sylow子群是特征子群得$P\nsg G$矛盾.若$|N_G|=3$，则$N_G\in\mathrm{Syl}_3(G)$正规，矛盾.若$|N_G|=2$，则$\psi(G)\cong A_4$.但$A_4$的$4$阶子群正规，与$G$的Sylow $2$-子群不正规矛盾.因此$G\cong S_4$.
+\end{proof}
+\begin{remark}
+	换言之，$24$阶群除$S_4$外都是$3$阶群和$8$阶群的半直积.
+\end{remark}
+\subsection{置换表示}\label{subsec:PermutationRepresentation}
+群$G$到对称群的同态$G\to S_n$称为置换表示.注意这意味着$G$在$n$元集上的作用，若作用传递，则称为{\heiti 传递置换表示}.陪集左作用事实上给出了全部传递置换表示.
+\begin{lemma}
+	群$G$在$\Omega$上的传递作用等价于$G$在$G/G_x$上的左作用，其中$x\in\Omega$.\qed
+\end{lemma}
+
+这只不过是群作用里\hyperlink{prop:GrpActionEquiv}{命题1}的重述.
+
+若对任意$x,y\in\Omega$存在唯一$g\in G$使得$gx=y$，则称$G$在$\Omega$上的作用{\heiti 正则}.因此，Cayley定理给出的置换表示称作是{\heiti 左正则表示}.显然正则作用等价于自由传递作用.
+
+\begin{prop}
+	设$G$作用在$\Omega$上且$N\nsg G$的作用正则，则$G_x$在$\Omega\setminus\{x\}$上的作用等价于$G_x$在$N\setminus 1$上的共轭作用.
+\end{prop}
+\begin{proof}
+	记$n_{y}\in N$满足$n_{y}x=y$，则对$g\in G_x$有$gy=gn_yx=(gn_yg^{-1})x$.
+\end{proof}
+
+设$G$作用在$\Omega$上.设$\Delta\subseteq\Omega$是非空子集，若
+\[
+	\forall g\in G,\quad g\Delta\ne\Delta\implies g\Delta\cap\Delta=\varnothing,
+\]
+则称$\Delta$是{\heiti 非本原集}或{\heiti 块}.显然一元集和$\Omega$自身是平凡块.
+
+不难发现，若$G_x\le H\le G$，则$Hx$是块.
+
+下设$G$传递作用在$\Omega$上，则反之也成立.即若$x\in\Delta$是块，则$\Delta=G_\Delta x$，其中$G_\Delta=\left\{g\in G\mid g\Delta=\Delta\right\}$是包含$G_x$的子群.于是\emph{块$\Leftrightarrow$包含$G_x$的子群}.
+
+设$G$传递作用有块$\Delta$，则给出$\Omega$的块划分$\Omega=\bigcup g\Delta$.因此$G$在$\Omega$上的传递作用可被视为$G$在$\{g\Delta\}$上的传递作用复合$G_\Delta$在$\Delta$上的传递作用.
+
+因此，若传递作用有非平凡块，它就可以分解为两个传递作用的复合.若$G$在$\Omega$上的传递作用没有非平凡块，就称为{\heiti 本原}作用.
+
+\begin{lemma}
+	$G$在$\Omega$上的传递作用本原当且仅当稳定子群$G_x$极大.\qed
+\end{lemma}
+\begin{prop}
+	设$G$本原作用在$\Omega$上，则它的非平凡正规子群$N$也传递作用在$\Omega$上.特别若$N$正则作用，则$N$是极小正规子群.
+\end{prop}
+\begin{proof}
+	若$N\le G_x$，则$N$在$\Omega$上作用平凡，与$N\ne 1$矛盾.因此$G_x<NG_x=G$，即$\Omega=Gx=Nx$.若$N$正则，对任意$1\ne M\le N$且$M\nsg G$有$M$正则，于是$|\Omega|=|Mx|=|Nx|$，即$|M|=|N|$.
+\end{proof}
+
+对任意$n\le|\Omega|$定义
+\[
+	\Omega^{(n)}=\left\{(x_1,\cdots,x_n)\in\Omega^n\mid x_i\ne x_j\right\},
+\]
+则$G$在$\Omega^{(n)}$上有自然的作用.若$G$在$\Omega^{(n)}$上的作用传递，则称$G$在$\Omega$上的作用$n$-{\heiti 传递}.
+
+显然，若$G$的作用$(n-1)$-传递，则作用$n$-传递当且仅当对任意$(x_1,\cdots,x_{n-1})\in\Omega^{(n-1)}$有稳定子群$G_{(x_1,\cdots,x_{n-1})}=\bigcap G_{x_i}$在$\Omega\setminus\{x_1,\cdots,x_{n-1}\}$上传递作用.
+
+尤其重要的情形是$2$-传递，有
+\begin{lemma*}
+	$G$在$\Omega$上的传递作用$2$-传递当且仅当对$g\in G\setminus G_x$有$G=G_x\sqcup G_xgG_x$.\footnotemark
+\end{lemma*}
+\footnotetext{这是少见的\emph{双陪集}的一个应用.}
+\begin{proof}
+	传递作用等价于商集$G/G_x$左作用，因此$2$-传递与$G_xgG_x=G\setminus G_x$等价.
+\end{proof}
+\begin{prop}
+	$2$-传递作用是本原的.
+\end{prop}
+\begin{proof}
+	设$G_x<H$，取$g\in H\setminus G_x$得$G_xgG_x\subseteq H$，于是$G=H$.
+\end{proof}
+
+作为例子，$S_n$是$n$-传递的，$A_n$是$(n-2)$-传递的.值得一提的是，当$n\ge 6$时不存在其它的$n$-传递置换群\footnote{这一结论依赖于有限单群分类.}.显然$n$元集上的$n$-传递置换群只有$S_n$.
+
+$n$-传递的判定与正则作用的结论相似，由此可以得到一些简单的$n$-传递作用.
+\begin{prop}
+	设$G$在$\Omega$上$n$-传递作用且$|\Omega|\ge 3$.若存在$N\nsg G$的作用正则，则$n\le 4$并且
+	\begin{itemize}
+		\item $n=2$.\quad $N$是初等Abel $p$群.
+		\item $n=3$.\quad $N$是初等Abel $2$群或$N\cong Z_3,\,G\cong S_3$.
+		\item $n=4$.\quad $N\cong K_4,\,G\cong S_4$.
+	\end{itemize}
+\end{prop}
+\begin{proof}
+	设$n\ge 2$，则$G$在$N\setminus 1$上的共轭作用$(n-1)$-传递.由于$N$中非单位元都共轭，它们有相同的阶，从而$N$是$p$群.由$1\ne Z(N)$正规可知$N$是初等Abel $p$群.
+
+	设$n\ge 3$，则$|\Omega|=|N|\ge 3$.若$|N|=3$则$G\cong S_3$.设$|N|\ge 4$，取$n_1,n_2,n_3\in N$是互异的非单位元，由$G_{x}$在$N\setminus 1$上$2$-传递，存在$g\in G$使得$gn_1g^{-1}=n_1,\,gn_2g^{-1}=n_3$.若$p\ge 3$可取$n_2=n_1^{-2}\ne n_1$从而$gn_2g^{-1}=n_2$矛盾.因此$N$是初等Abel $2$群.
+
+	设$n\ge 4$，则$K_4\cong\langle n_1\rangle\times\langle n_2\rangle\le N$.若$\langle n_1\rangle\times\langle n_2\rangle <N$，取$n_3=n_1n_2$和$n_4\in N\setminus\langle n_1\rangle\langle n_2\rangle $，则存在$g\in G$满足$gn_1g^{-1}=n_1,\,gn_2g^{-1}=n_2,\,gn_3g^{-1}=n_4$.然而$n_4=gn_3g^{-1}=n_1n_2$矛盾.因此$N\cong K_4$，即$n=4$且$G\cong S_4$.
+\end{proof}
+\begin{remark}
+	有关置换表示还有Frobenius群、非本原作用、wreath product等内容.
+\end{remark}
+\subsection{Hall子群}
+设$G$是有限群，此前已经定义了{\heiti Hall子群}为阶与指数互素的子群.进一步，设$\pi$是$|G|$中某些素因子的非空集，定义~{\heiti $\pi$-群} $H$为$|H|$是$\pi$中素数积的子群，则Hall $\pi$-子群是Sylow $p$-子群的自然推广.自然地也就有Sylow定理的推广如下：
+\begin{thm}[(Hall)]
+	有限可解群总有Hall $\pi$-子群，并且任何$\pi$-子群都含于某个Hall $\pi$-子群.特别地，Hall $\pi$-子群两两共轭.\hypertarget{thm:Hall}{}
+\end{thm}
+\begin{proof}
+	对$|G|$归纳.取$G$的极小正规子群$N$，则$N$特征单，从而必为初等Abel $p$群.存在包含$A$的子群$H$使得$H/N$是$G/N$的Hall $\pi$-子群.若$p\in\pi$，则$H$就是$G$的Hall $\pi$-子群.若$p\notin \pi$，根据Schur--Zassenhaus定理$N$在$H$中的补就是$G$的Hall $\pi$-子群.
+
+	设$U\le G$是$\pi$-子群，则$UN/N\le H/N$，其中$H/N$是$G/N$的某个Hall $\pi$-子群.若$p\in\pi$，则$U\le H$.若$p\notin\pi$，记$N$在$H$中的补为$\tilde H$，注意$N\cap U=1$即得$U\cong NU/N\le \tilde H$.
+\end{proof}
+\begin{remark}
+	可解群的假设是必要的.例如$A_5$中就没有$15$或$20$阶群.
+\end{remark}
+
+此前使用Sylow定理时就发现，若有正规Sylow子群似乎总能构造出一个子群同构于Sylow子群的商群.一般地，设$H\le G$，若存在$K\le G$满足$G=HK$且$H\cap K=1$，则称$H$在$G$中有{\heiti 补} $K$.
+
+正规Hall子群总有补，即我们可以得出下述定理.
+\begin{thm}[(Schur--Zassenhaus)]
+	\par 若有限群$G$有正规Hall子群$H$，则$G$是$H$关于$G/H$的分裂扩张.\hypertarget{thm:SchurZassenhaus}{}
+\end{thm}
+\begin{proof}
+	通过对$|G|$归纳，我们首先断言只需对$H$是Abel群的情形作证明.
+
+	设$p\mid|H|$，取$P\in\mathrm{Syl}_p(H)$.若$U:=\mathrm{N}_G(P)<G$，不难得到$U\cap H$是$U$的正规Hall子群.设$U\cap H$在$U$中有补$K$，则Frattini论断给出$G=HU=H(U\cap H)K=HK$，并且显然$H\cap K=1$.若$\mathrm{N}_G(P)=G$，即$P\nsg G$.取$Z(P)\ne 1$，则$Z(P)\nsg G$，因为$P\operatorname*{char} G$.考虑商群$\overline{G}=G/Z(P)$，则$\overline{H}$是$\overline{G}$的正规Hall子群.设$\overline{H}$在$\overline{G}$中有补$\overline{L}$，则$Z(P)\le L\le G$，$L\cap H=Z(P)$且$G=HL$.注意$Z(P)$在$L$中的补也是$H$在$G$中的补(设$L=Z(P)M$，则$G=HZ(P)M=HM$并且$Z(P)M\cap H=Z(P)$蕴含$M\cap H=1$).不难得到$Z(P)$是$L$的正规Hall子群.若$L<G$归纳即证.若$L=G$则$\overline{H}=1$，即$H=Z(P)$是Abel群.
+
+	下设$H$是$G$的正规交换Hall子群.设$R,S$是$H$在$G$中的左右陪集代表系，定义
+	\[
+		R|S:=\prod_{\substack{(r,s)\in R\times S\\ Nr=Ns}}rs^{-1}\in H.
+	\]
+	注意$gR|S=x(R|S)$和$gR|gS=x(R|S)x^{-1}$，其中$x=g^{|G:H|}$.
+
+	由于$H$是Hall子群，定义$\alpha\colon h\mapsto h^{|G:H|}$，则$\alpha\in\operatorname*{Aut}(H)$.设$\mathcal{S}$为$H$在$G$中的全体左右陪集代表系，则$R|S=1$给出了$\mathcal{S}$上的等价关系(两个左(右)陪集代表系总等价).群$G$在$\mathcal{S}/\sim$上有自然的左作用，因为$R|S=1$蕴含$gR|gS=1$.
+
+	注意对任意$R,S$取$g=(\alpha^{-1}(R|S))^{-1}$就有$gR|S=1$，即$H$传递作用.设有$R|S=1$和$hR|S=1$，则$\alpha(h)=1$，即$h=1$.这说明稳定化子$H_R=1$.由Frattini论断得到$G=HG_R$，而$H\cap G_R=H_R=1$，即$H$在$G$中有补$G_R$.
+\end{proof}
+\begin{remark}
+	实际上还有进一步的结论：{\heiti $H$的补在$G$中两两共轭}.这是在$H$和$G/H$中至少一个可解的假设下证明的，但Feit--Thompson定理已经说明了奇数阶群可解.
+\end{remark}
+
+正规Hall子群的要求有点强，得到的补也不正规.更一般地可见Burnside正规补定理.%//TODO:正规补
+\subsection{低阶单群}\label{subsec:SimpleGrpLowOrder}
+在本节我们将判定阶$\le 660$的非Abel单群.下述有限群不单：
+\begin{itemize}
+	\item 非Abel $p$群.
+	\item $pq$阶群.
+	\item $p^2q$阶群.
+	\item $pqr$阶群.
+	\item $2n$阶群，其中$n$是奇数.
+	\item $p^rn$阶群，其中$(p,n)=1$且$n<p^2,\,r\ge 2$.
+	\item[{\color{red}\textbullet}] $4p$阶群.(\hyperlink{prop:4pGroupStruc}{前文定理})
+	\item[{\color{red}\textbullet}] $p^nq$阶群.(后文定理)%//TODO:p^nq可解
+	\item[{\color{red}\textbullet}] $p^aq^b$阶群.(Burnside定理)
+	\item[{\color{red}\textbullet}] 阶无平方因子的群.%//TODO:无平方
+\end{itemize}
+\begin{remark}
+	我们不会利用其中标红结论，虽然它们确实很好用.
+\end{remark}
+\begin{lemma}
+	$p^2q$阶群不单.
+\end{lemma}
+\begin{proof}
+	设其单.若$p>q$，则Sylow $p$-子群正规.若$p<q$，则$n_q=p^2$，即$q$阶元$p^2(q-1)$个，故只能$n_p=1$，即Sylow $p$-子群正规.
+\end{proof}
+\begin{lemma}
+	$pqr$阶群不单.
+\end{lemma}
+\begin{proof}
+	设$p<q<r$且$G$单，则$n_p\ge q,\,n_q\ge r,\,n_r=pq$.但$pq(r-1)+r(q-1)+q(p-1)>pqr$矛盾.
+\end{proof}
+\begin{lemma}
+	$2n$阶群不单，其中$n$为奇数.
+\end{lemma}
+\begin{proof}
+	设$G\lesssim S_{2n}$，则$G$中的$2$阶元是$n$个对换之积.由$G$中有奇置换知有指数$2$子群.
+\end{proof}
+\begin{lemma*}
+	$p^rn$阶群不单，其中$(p,n)=1$且$n<p^2,\,r\ge 2$.\hypertarget{lemma:p^rnNSimple}{}
+\end{lemma*}
+\begin{proof}
+	设$G$单，则$n_p\ge 1+p$.断言$n_p$唯一.若不然，设$kp+1,lp+1$可行，则$(kp+1,lp+1)=(kp+1,k-l)\le k-l$，但是$[kp+1,lp+1]\ge(kp+1)(lp+1)/(k-l)>p^2$，与$n_p\mid n$矛盾.
+
+	取$P_1,P_2\in\mathrm{Syl}_p(G)$并记$H=P_1\cap P_2$.由$P_1P_2\subseteq G$得$|H|=p^{r-1}$，从而$H\nsg P_1,P_2$，即$P_1,P_2\subseteq\mathrm{N}_G(H)$.注意$\mathrm{Syl}_p(\mathrm{N}_G(H))\subseteq\mathrm{Syl}_p(G)$并且$\mathrm{N}_G(H)$的阶也有和$G$的阶类似的性质，故由上述$n_p$唯一性，$\mathrm{N}_G(H)$包含全体$G$的Sylow $p$-子群.
+
+	注意$P\le\mathrm{N}_G(H)$蕴含$H\nsg P$(设$P=nP_1n^{-1}$，则$H\le nP_1n^{-1}=P$)，因此$H\subseteq\bigcap P\subseteq P_1\cap P_2=H$，即$H=P_G\nsg G$，矛盾.
+\end{proof}
+
+直接应用上述结论已经可以排除$1-660$阶群中的$602$个.
+
+(1)考虑传递置换表示.对单群$G$将有$G\lesssim A_n$.因此$|G|\nmid |A_n|$时必有$G$不单.特别地要嵌入$A_n$至少要$|G|\le n!/2$.例如下述阶数的群不单：
+\[
+	36,\,48,\,72,\,80,\,96,\,108,\,112,\,160,\,192,\,216,\,224,\,300,\,320,\,324,\,384,\,392,\,448,\,600,\,640,\,648.
+\]
+
+(2)若Sylow $p$-子群是$p$阶的，则它们两两交平凡.通过计数$p$阶元超出群$G$阶数证明$G$不单.例如下述阶数的群不单：
+\[
+	56,\,105,\,132,\,351,\,380,\,495,\,520,\,552,\,595,\,616.
+\]
+
+(3)若$p^2\mid|G|$，考虑$P$在$\mathrm{Syl}_p(G)$上的共轭作用，则稳定子群$\mathrm{N}_P(P_1)=P\cap\mathrm{N}_G(P_1)=P\cap P_1$(注意阶数)，因此$n_p=\sum|P|/|P\cap P_i|$.若$n_p\not\equiv 1\pmod{p^2}$，则必有某个$H=P\cap P_i\ne 1$.同时根据$n_p\equiv 1\pmod p$知$[P:H]=p$，于是$P,P_i\subseteq\mathrm{N}_G(H)$.由$PP_i\subseteq\mathrm{N}_G(H)$进一步得到$[G:N_G(H)]$范围，结合传递置换表示判定$G$不单.例如下述阶数的群不单：
+\[
+	144,\,240,\,315,\,400,\,432,\,480,\,525.
+\]
+
+(4)上述(1)中的置换表示判定比较粗糙，进一步还可以通过$G$的子群也是$A_n$的子群判定.特别地，若$P$同时是$G$和$A_n$的Sylow $p$-子群，则$|\mathrm{N}_G(P)|\mid|\mathrm{N}_{A_n}(P)|$.
+
+这一情形在$n=p,p+1$时成立.此时$S_n$的Sylow $p$-子群由$p$-轮换生成，而$S_n$的共轭类完全由型决定，故不难算出此时$|\mathrm{N}_{S_n}(P)|=p(p-1)$.
+
+为了进一步加强结论，我们先给出如下一般性引理.
+\begin{lemma*}
+	若$P\in\mathrm{Syl}_p(S_n)$($p\ne 2$)，则$P\in\mathrm{Syl}_p(A_n)$且$|\mathrm{N}_{A_n}(P)|=\frac{1}{2}|\mathrm{N}_{S_n}(P)|$.
+\end{lemma*}
+\begin{proof}
+	由Frattini论断得$S_n=\mathrm{N}_{S_n}(P)A_n$，所以$[\mathrm{N}_{S_n}(P):\mathrm{N}_{A_n}(P)]=2$.
+\end{proof}
+
+因此在$n=p,p+1$时$A_n$中Sylow $p$-子群的正规化子阶为$p(p-1)/2$.若$|\mathrm{N}_G(P)|\nmid p(p-1)/2$则必有$G$不单.例如下述阶数的群不单：
+\[
+	264,\,280,\,336,\,396,\,528,\,560.
+\]
+
+(5)剩下有$13$个群的阶值得单独一提：
+\[
+	{\color{IndianRed}60},\,120,\,{\color{IndianRed}168},\,180,\,252,\,288,\,{\color{IndianRed}360},\,420,\,{\color{IndianRed}504},\,540,\,576,\,{\color{DeepSkyBlue}612},\,{\color{IndianRed}660}.
+\]
+其中标红的阶数是存在单群的.进一步，它们还是唯一的.
+\begin{prop}
+	$60$阶单群只有$A_5$.
+\end{prop}
+\begin{proof}
+	易得$n_2=5,15$和$n_3\ge 10,\,n_5=6$.若$n_2=5$，则$G\cong A_5$.若$n_2=15$，则Sylow $2$-子群不能两两交平凡，否则$15(2^2-1)+10(3-1)+6(5-1)>60$.设$H=P_1\cap P_2\ne 1$，则$|H|=2$且$|\mathrm{N}_G(H)|\ge 12$，因为$P_1,P_2\le\mathrm{N}_G(H)$.传递置换表示断定$G$没有指数$\le 4$的子群，故$\mathrm{N}_G(H)$是指数$5$子群，即$G\cong A_5$.
+\end{proof}
+\begin{lemma}
+	不存在$120$阶单群.
+\end{lemma}
+\begin{proof}
+	由于$n_5=6$，即$G\hookrightarrow A_6$.但$A_6$单，没有指数$3$子群.
+\end{proof}
+\begin{lemma}
+	不存在$180$阶单群.
+\end{lemma}
+\begin{proof}
+	显然$n_5=6,36$.若$n_5=6$，则$G\hookrightarrow A_6$是指数$2$子群，但$A_6$单.若$n_5=36$，则$n_3=10$个Sylow $3$-子群不能两两交平凡，否则$36(5-1)+10(3^2-1)>180$.因此存在$P_1,P_2\in\mathrm{Syl}_3(G)$满足$H=P_1\cap P_1\ne 1$，易得$|\mathrm{N}_G(H)|\ge 36$.但此时$\mathrm{N}_G(H)$的指数$\le 5$.
+\end{proof}
+\begin{lemma}
+	不存在$252$阶单群.
+\end{lemma}
+\begin{proof}
+	显然$n_3\ge 7,\,n_7=36$.除去$216$个$7$阶元剩下$36$个元素，可知必有两Sylow $3$-子群相交，交的正规化子$N$阶恰为$36$，因此$G$只有一个$36$阶子群$N$，即$N$正规.
+\end{proof}
+\begin{lemma}
+	不存在$288$阶单群.
+\end{lemma}
+\begin{proof}
+	显然$n_3=16$，于是由上述(3)存在Sylow $3$-子群相交，交的正规化子$N$的阶为$36$.对子群$N$，注意$n_3'=4$，设$P\in\mathrm{Syl}_3(N)$，则$P=\mathrm{N}_G(P)$并且$P_N\ne 1$，即$4$个Sylow $3$-子群交于$3$阶子群$P_N$.注意$P$交换，因此$|\mathrm{C}_N(P_N)|\ge 27$，即$\mathrm{C}_N(P_N)=N$.我们有$n_2'=1,3,9$.若$n_2'\ge 3$，则$N$中至少有$3$个$2$阶或$4$阶元，进而至少有$6$个$6$阶或$12$阶元，结合Sylow $3$-子群共计$27$个元素，只能$n_2'\le 2$，矛盾.因此$N$有$4$阶正规子群$H$.注意$H$真包含于$H$在$G$的Sylow $2$-子群中的正规化子(因为$p$群幂零，见后文命题)，故$|\mathrm{N}_G(H)|\ge 72$，即$\mathrm{N}_G(H)$指数$\le 4$.
+\end{proof}
+\begin{lemma}
+	不存在$420$阶单群.
+\end{lemma}
+\begin{proof}
+	显然$n_7=15$，即有$G\hookrightarrow A_{15}$.设$P\in\mathrm{Syl}_7(G)$，则$|\mathrm{N}_G(P)|=28$.由N/C定理$\mathrm{N}_G(P)/\mathrm{C}_G(P)\lesssim Z_6$，于是$\mathrm{C}_G(P)$有$2$阶元，故$\mathrm{N}_G(P)$中有$14$阶元$g$并且$g^2\in P$.注意Sylow $7$-子群两两交平凡，故$P$在$\mathrm{Syl}_p(G)$上共轭作用的轨道长为$1,7,7$，即$g^2$只有一个不动点.但是$A_{15}$中的$14$阶偶置换型为$(7,2,2,2,2)$或$(7,2,2)$，它们的平方都不只一个不动点，矛盾.
+\end{proof}
+\begin{lemma}
+	不存在$540$阶单群.
+\end{lemma}
+\begin{proof}
+	显然$n_5=36$，即$|\mathrm{N}_G(P)|=15$.由N/C定理易得$\mathrm{N}_G(P)=\mathrm{C}_G(P)$，因此$\mathrm{N}_G(P)$中有$15$阶元$g$并且$g^3\in P$.由$G\hookrightarrow A_{36}$和Sylow $5$-子群两两交平凡(于是$g^3$仅一个不动点)，$g$对应的$15$阶偶置换型为$(15,5,5,5,5)$或$(15,5,5)$.注意$\langle g^5\rangle $至少有$6$个不动点，因此至少有$6$个Sylow $5$-子群的正规化子$\mathrm{N}_G(P_i)$，它们的交为$3$阶子群$H=\langle g^5\rangle $.在$15$阶群$\mathrm{N}_G(P_i)$中有$H\nsg\mathrm{N}_G(P_i)$，故$|\mathrm{N}_G(H)|\ge 3+6(15-3)=75$，即$\mathrm{N}_G(H)$指数$\le 6$.
+\end{proof}
+\begin{lemma}
+	不存在$576$阶单群.
+\end{lemma}
+\begin{proof}
+	显然$n_2=9$，于是Sylow $2$-子群$P=\mathrm{N}_G(P)$并且$G\hookrightarrow A_9$.由于$A_9$中$2^6\parallel|A_9|$，故$P\in\mathrm{Syl}_2(A_9)$.考虑$P$在$\mathrm{Syl}_2(G)$上的共轭作用，则$P=\mathrm{N}_G(P)$是$P$的稳定子群，从而可认为$P\in\mathrm{Syl}_2(A_8)$.直接写出$S_8$的一个Sylow $2$-子群如下
+	\[
+		\langle (15)(26)(37)(48),(13)(24),(57)(68),(12),(34),(56),(78)\rangle,
+	\]
+	可验证它的偶置换子群也是传递的，因此$P$在$\mathrm{Syl}_2(G)\setminus\{P\}$上传递，必有$P\cap P_1$是$8$阶子群.根据上述$A_8$的Sylow $2$-子群找出$A_9$稳定两点$8,9$的$8$阶子群为
+	\[
+		\{1,(12)(34),(12)(56),(34)(56),(13)(24),(14)(23),(1423)(56),(1324)(56)\},
+	\]
+	因此$P\cap P_1\cong D_8$，取中心$U\nsg P\cap P_1$为$2$阶子群.注意$D_8\times D_8\lesssim S_9$，于是$|\mathrm{N}_{S_9}(U)|\ge 64$，进而$|\mathrm{N}_{A_9}(U)|\ge 32$.由Sylow第二定理即得$|\mathrm{N}_P(U)|\ge 32$.不难验证$\mathrm{N}_G(P\cap P_1)\le\mathrm{N}_G(U)$并且$3\mid|\mathrm{N}_G(P\cap P_1)|$\,(在$\mathrm{N}_G(P\cap P_1)$中至少两个Sylow $2$-子群)，所以$|\mathrm{N}_G(U)|\ge 96$，即$\mathrm{N}_G(U)$指数$\le 6$.
+\end{proof}
+\begin{remark}
+	证明中直接写出了$S_8$的Sylow $2$-子群.一般地，$S_{2^k}$的Sylow $2$-子群同构于$k$层完全二叉树的自同构群(注意$2^k$个叶结点).
+\end{remark}
+\begin{remark}
+	剩下的$6$个阶数${\color{IndianRed}60},\,{\color{IndianRed}168},\,{\color{IndianRed}360},\,{\color{IndianRed}504},\,{\color{DeepSkyBlue}612},\,{\color{IndianRed}660}$不能简单地得出结论.
+	
+	在(4)中我们只给出了正规化子的阶数.实际上，$S_{p+1}$中$p$阶子群的正规化子同构于$\mathbb{F}_p$上的可逆线性变换$x\mapsto ax+b$(其中$a\ne 0$)，$A_{p+1}$中$p$阶群的正规化子同构于$\mathbb{F}_p$上的$x\mapsto a^2x+b$(其中$a\ne 0$).
+
+	经过一些讨论，可以验证$60,168,360,504,612,660$阶单群都可以通过Sylow子群共轭嵌入$A_6,A_8,A_{10},A_9,A_{18},A_{12}$.同时，这些阶数的单群作为置换群满足
+	\begin{itemize}
+		\item $2$-传递.
+		\item $G_x\cap G_y\cap G_z=1$.
+	\end{itemize}
+
+	特殊射影线性群$\mathrm{PSL}_2(\mathbb{F}_p)$是$\frac{p^3-p}{2}$阶单群.作为$\overline{\mathbb{F}_p}$上的分式线性变换群(或称M\"obius变换群)，$\mathrm{PSL}_2(\mathbb{F}_p)$满足$2$-传递和仅单位元同时稳定$3$个元素.事实上，按$p$模$4$讨论可以得到
+	\begin{itemize}
+		\item $60$阶单群只有$\mathrm{PSL}_2(\mathbb{F}_4)\cong\mathrm{PSL}_2(\mathbb{F}_5)\cong A_5$.
+		\item $168$阶单群只有$\mathrm{PSL}_2(\mathbb{F}_7)\cong\mathrm{SL}_3(\mathbb{F}_2)$.
+		\item $360$阶单群$\mathrm{PSL}_2(\mathbb{F}_9)\cong A_9$.
+		\item $504$阶单群只有$\mathrm{PSL}_2(\mathbb{F}_8)$.
+		\item $612$阶单群不存在.
+		\item $660$阶单群只有$\mathrm{PSL}_2(\mathbb{F}_{11})$.
+	\end{itemize}
+\end{remark}
 
 \subsection{直积分解}
 
@@ -1770,8 +2071,6 @@ Sylow定理在探究有限群结构时非常好用，参见附录小阶群分类
 \subsection{完全群}
 
 \subsection{幂零群与可解群}
-
-\subsection{Hall子群}
 
 \subsection{正规补}
 
