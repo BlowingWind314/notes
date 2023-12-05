@@ -3,6 +3,14 @@
 \ctexset{today=old}
 \ctexset{chapter={format+={\raggedright\huge},beforeskip=-2cm,afterskip=3em}}
 
+\DeclareFontFamily{U}{rsfs}{\skewchar\font127 }
+\DeclareFontShape{U}{rsfs}{m}{n}{%
+   <-6> rsfs5
+   <6-8> rsfs7
+   <8-> rsfs10
+}{}
+%去警告Font shape `U/rsfs/m/n' in size <22.08249> not available
+
 \usepackage[svgnames]{xcolor}
 
 \usepackage[all]{xy}
