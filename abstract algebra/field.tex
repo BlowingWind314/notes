@@ -1,0 +1,928 @@
+\chapter{域}
+\section{域扩张}
+\subsection{基本性质}
+此前已经证明整环的特征是$0$或素数$p$，特别对域也是如此，并且进一步地有
+\begin{prop}
+    若$\operatorname*{char}F=0$，则$F$有子域同构于$\mathbb{Q}$.若$\operatorname*{char}F=p$，则$F$有子域同构于$\mathbb{Z}/p\mathbb{Z}$.\qed
+\end{prop}
+
+记$\mathbb{F}_p:=\mathbb{Z}/(p)$，则$\mathbb{Q}$和$\mathbb{F}_p$称为{\heiti 素域}.它们是域的最小子域，并且只有恒等自同构.
+
+在特征$p$时不难验证{\heiti Frobenius自同态} $x\mapsto x^p$.
+
+\begin{remark}
+    注意域是单环，因此非零域同态必是单同态，即域嵌入.
+\end{remark}
+
+\begin{definition}
+    若域$K$有子域$F$，称$K$是$F$的{\heiti 扩张}并且$F$是$K$的{\heiti 基域}，并记域扩张为$K/F$.任何包含$F$的$K$的子域称为$K/F$的{\heiti 中间域}.
+
+    设$K/F$是域扩张，则$K$是$F$-线性空间，定义域扩张$K/F$的{\heiti 次数}为$[K:F]:=\dim_FK$.由此可以定义{\heiti 有限扩张}为$[K:F]<\infty$.
+
+    设$K/F$是域扩张.若$K$中任何元素都是$F$上的代数元，则称$K/F$为{\heiti 代数扩张}.
+\end{definition}
+\begin{prop}
+    有限扩张是代数扩张.
+\end{prop}
+\begin{proof}
+    设$[K:F]=n$，对任意$\beta\in K$有$1,\beta,\cdots,\beta^n$线性相关，存在$0\ne f\in F[x]$使得$f(\beta)=0$，即$\beta$是$F$上的代数元.
+\end{proof}
+
+在域扩张$K/F$中，设$S\subseteq K$非空，$K$中全体包含$F\cup S$的子域的交$F(S)$称为$S$在$F$上{\heiti 生成}的子域.易知$F(S)$是$F[S]$的分式域，并且在有限情形下有
+\[
+    F(\alpha_1,\cdots,\alpha_r,\beta_1,\cdots,\beta_s)=F(\alpha_1,\cdots,\alpha_r)(\beta_1,\cdots,\beta_s).
+\]
+
+\begin{definition}
+    若存在$\alpha\in K$满足$K=F(\alpha)$，则称$K/F$是{\heiti 单扩张}，$\alpha$是$K/F$的{\heiti 本原元素}.
+\end{definition}
+
+自然分出$\alpha$是$F$上的代数元和超越元，即{\heiti 单代数扩张}和{\heiti 单超越扩张}两种情形.
+\begin{prop}
+    设$K=F(\alpha)$是单扩张.
+    \begin{enumerate}
+        \item 若$\alpha$是代数元，则$F(\alpha)\cong F[x]/(m_\alpha(x))$并且$[F(\alpha):F]=\deg m_\alpha$，其中$m_\alpha\in F[x]$是$\alpha$的极小多项式.
+        \item 若$\alpha$是超越元，则$F(\alpha)\cong F(x)$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    考虑代入同态$F[x]\to F[\alpha]$即证.
+\end{proof}
+\begin{remark}
+    $\alpha$极小多项式$m_\alpha$的次数称为代数元$\alpha$的{\heiti 次数}.
+\end{remark}
+
+单代数扩张不能区分$f$的不同根.若域嵌入$\sigma$满足$\sigma|_F=\mathrm{id}$，则称$\sigma$为$F$-{\heiti 嵌入}.
+\begin{prop}
+    设$f\in F[x]$不可约，$\alpha_1,\alpha_2$是$f$的根，则存在$F$-同构$\eta\colon F(\alpha_1)\to F(\alpha_2)$满足$\eta(\alpha_1)=\alpha_2$.
+\end{prop}
+\begin{proof}
+    注意$F(\alpha_1)\cong F[x]/(f(x))\cong F(\alpha_2)$.
+\end{proof}
+
+下面讨论域扩张的次数问题.
+\begin{prop}
+    设$F\subseteq K\subseteq L$，则$[L:F]=[L:K][K:F]$.
+\end{prop}
+\begin{proof}
+    假设$[L:K]=m,\,[K:F]=n$有限，取基${\alpha_i}$和$\{\beta_j\}$，则$\{\alpha_i\beta_j\}$生成$L$.假设$\sum\lambda_{ij}a_ib_j=0$，其中$\lambda_{ij}\in F$，则$\sum\lambda_{ij}a_i=0$，即$\lambda_{ij}=0$，所以$\{\alpha_i\beta_j\}$是基.
+\end{proof}
+\begin{remark}
+    显然还有结果$[K_1K_2:F]\le[K_1:F][K_2:F]$.
+\end{remark}
+\begin{prop}
+    $K/F$是有限扩张当且仅当$K=F(\alpha_1,\cdots,\alpha_r)$，其中$\alpha_i$是$F$上的代数元.
+\end{prop}
+\begin{proof}
+    取$K/F$的基$\{\alpha_i\}$，则$[F(\alpha_i):F]\mid[K:F]$有限，即$\alpha_i$是代数元.
+\end{proof}
+\begin{prop}
+    有限扩张$K/F$是单扩张$\iff K/F$只有有限个中间域.
+\end{prop}
+\begin{proof}
+    若$K=F(\theta)$，$E$是$K/F$中间域.设$\theta$在$F$上极小多项式为$f$，在$E$上极小多项式为$g$，则在$E[x]$上$g\mid f$.记$E'$为$F$上由$g$系数生成的子域，则$E'\subseteq E$并且$\theta$在$E'$上的极小多项式也为$g$，于是$[K:E]=[K:E']=\deg g$，即$E=E'$.因此中间域$E$与$f$的首一不可约因子一一对应，从而只有有限个.
+
+    若$K/F$只有有限个中间域，不妨设$K=F(\alpha,\beta)$.若$F$是有限域，则循环群$K^*$的生成元就是本原元素.设$F$无限，考虑中间域$F(\alpha+c\beta)$，其中$c\in F$，则存在$c\ne c'$满足$F(\alpha+c\beta)=F(\alpha+c'\beta)$.于是$\beta\in F(\alpha+c\beta)$，进而$F\alpha,\beta\in F(\alpha+c\beta)$，即$F(\alpha,\beta)=F(\alpha+c\beta)$是单扩张.
+\end{proof}
+\begin{prop}
+    设$F\subseteq K\subseteq L$，则$L/F$是代数扩张$\iff L/K,\,K/F$都是代数扩张.
+\end{prop}
+\begin{proof}
+    设$L/K,K/F$代数.对任意$\alpha\in L$，设$\alpha$满足$\sum a_i\alpha^i=0$，其中$a_i\in K$，则$F(a_0,\cdots,a_n)/F$有限并且$\alpha$在$F(a_0,\cdots,a_n)$上代数.因此$[F(\alpha,a_0,\cdots,a_n)]$有限，$\alpha$在$F$上代数.
+\end{proof}
+
+特别地，对代数元$\alpha,\beta$其四则运算结果也是代数元，因为$F(\alpha,\beta)/F$有限.对域扩张$K/F$，全体$F$上的代数元构成一个中间域，称为$F$在$K$中的{\heiti 代数闭包}.
+
+若域$F$满足任何$f\in F[x]$都有根，则称$F$是{\heiti 代数闭域}.代数闭域等价于说不存在非平凡代数扩张.例如$\mathbb{C}$是代数闭域.
+
+若域扩张$\overline{F}/F$满足$\overline{F}/F$是代数扩张并且$\overline{F}$是代数闭域，则称$\overline{F}$是$F$的{\heiti 代数闭包}.
+
+\begin{lemma*}
+    设$K/F$是代数扩张，$\alpha$是$K$上的代数元，$F\subseteq L$，则$F$-嵌入$\sigma\colon K\to L$延拓为$F$-嵌入$K(\alpha)\to L$的方式个数等于$m_\alpha^\sigma$在$L$中互异零点个数.
+\end{lemma*}
+\begin{proof}
+    构造$f(\alpha)\mapsto f^\sigma(\beta)$，其中$m_\alpha^\sigma(\beta)=0$且$\beta\in L$.
+\end{proof}
+\begin{thm}
+    域$F$存在同构唯一的代数闭包$\overline{F}$.
+\end{thm}
+\begin{proof}
+    设$K/F$是代数扩张，则$|K|\le\max\{|F|,\aleph_0\}$.取包含$F$的集合$S$满足$|S|>\max\{|F|,\aleph_0\}$，考虑含于$S$的全体代数扩张.由Zorn引理取极大元$M$，往证$M$代数闭.设有代数扩张$L/M$，则$|L|\le\max\{|M|,\aleph_0\}\le\max\{|F|,\aleph_0\}<S$，因此存在映射$f\colon L\to S$满足$f|_M=\mathrm{id}$.在$f(L)$上自然定义域结构使$f$成为到$f(L)$的域同构.由$M$极大只能$f(L)=M$，因此$M$代数闭.
+
+    对唯一性，设$L,L'$都是代数闭包，考虑
+    \[
+        \left\{(K,\sigma)\mid F\subseteq K\subseteq L,\,\sigma\colon K\to L'\enspace\text{is $F$-homomorphism}\right\}.
+    \]
+    建立偏序$(K_1,\sigma_1)\prec(K_2,\sigma_2)$为$K_1\subseteq K_2$且$\sigma_2|_{K_1}=\sigma_1$.由Zorn引理取极大元$(E,\sigma)$，往证$E=L$且$\sigma$满.若$E\ne L$，取$\alpha\in L\setminus E$，则$\sigma$延拓为$F$-嵌入$E(\alpha)\to L'$，与$(E,\sigma)$极大矛盾.注意$L^\sigma$代数闭且$L'/L^\sigma$代数扩张即知$L'=L^\sigma$.
+\end{proof}
+
+\subsection{分裂域和正规扩张}
+\begin{definition}
+    设次数$>0$的多项式$f\in F[x]$，若域扩张$K/F$满足
+    \begin{itemize}
+        \item $f$在$K[x]$中完全分裂为一次因式之积.
+        \item $f$在任何$K/F$的中间域中不能完全分裂.
+    \end{itemize}
+    则称$K/F$是$f$的{\heiti 分裂域}.
+\end{definition}
+\begin{remark}
+    设$f(x)=c\prod(x-\alpha_i)$，则第二条等价于说$K=F(\alpha_1,\cdots,\alpha_n)$加入了$f$的所有根.
+\end{remark}
+\begin{thm}
+    多项式$f\in F[x]$的分裂域$K/F$存在.
+\end{thm}
+\begin{proof}
+    对$\deg f$归纳.若$\deg f=1$，取$K=L$.若$\deg f=n$，取不可约因式$p$，则存在单代数扩张$F(\alpha)/F$使得$p(\alpha)=0$，即$f(x)=(x-\alpha)f_1$.取$f_1$的分裂域$E/F(\alpha)$，则$f$在$E/F$上完全分裂.令$K$是$E/F$包含$f$所有根的中间域之交，则$K/F$就是$f$的分裂域.
+\end{proof}
+\begin{remark}
+    由证明可知分裂域是有限扩张，并且若$\deg f=n$则分裂域次数$\le n!$.
+\end{remark}
+\begin{lemma*}
+    设$\sigma\colon F\to F'$是域同构，$E/F,\,E'/F'$是$f,f^\sigma$的分裂域，其中$f\in F[x]$，则$\sigma$延拓为同构$E\to E'$的方式个数等于$f^\sigma$在$E'$中互异零点个数.
+\end{lemma*}
+\begin{proof}
+    对$\deg f$归纳.当$\deg f=1$时显然.若$\deg f=n$，取次数$>1$的不可约因式$p$，则$\sigma$可以延拓为同构$\sigma\colon F(\alpha)\to F'(\beta)$，其中$p(\alpha)=0,\,p^\sigma(\beta)=0$.现在$f(x)=(x-\alpha)f_1(x)$，则$E/F(\alpha),E'/F'(\beta)$是$f_1,f_1^\sigma$的分裂域，继续延拓即证.
+\end{proof}
+\begin{cor*}
+    多项式$f\in F[x]$的分裂域$K/F$在同构意义下唯一.\qed
+\end{cor*}
+\begin{cor*}
+    若$K/F$的中间域$E$是$F$上的分裂域，则$K$上的$F$-自同构$\eta$在$E$上的限制$\eta|_E$也是$F$-自同构.\qed
+\end{cor*}
+\begin{definition}
+    若代数扩张$K/F$满足任何在$K$内有根的不可约多项式$f\in F[x]$在$K[x]$内完全分解，则称$K/F$是{\heiti 正规扩张}.
+\end{definition}
+
+例如，二次扩张都是正规扩张，代数闭包$\overline{F}/F$是正规扩张.
+\begin{prop}
+    $K/F$是有限正规扩张$\iff K$是$F[x]$中多项式的分裂域.
+\end{prop}
+\begin{proof}
+    若$K/F$是有限正规扩张，设$K=F(\alpha_1,\cdots,\alpha_r)$，其中$\alpha_i$是代数元.取$f=\prod m_{\alpha_i}$，则$f$在$K[x]$中完全分解.设$f(x)=(x-\beta_1)\cdots(x-\beta_n)$，则$\beta_j\in K$并且$K=F(\beta_1,\cdots,\beta_n)$，即$K/F$是$f$的分裂域.
+
+    反之，设$K/F$是$f\in F[x]$的分裂域，设$p\in F[x]$不可约并且在$K$内有根$\alpha$.设$E/K$是$p$在$K$上的分裂域，则$E/F$是$fp$在$F$上的分裂域.设$\beta$是$p$在$E$内的任意根，存在$F$-同构$\tau\colon F(\alpha)\to F(\beta)$，它又可以延拓为$E$的一个$F$-自同构$\sigma$.由于$K/F$是$f$的分裂域，$\sigma|_K$也是$F$-自同构，即$\beta=\tau(\alpha)\in K$，所以$p$在$K[x]$中完全分解.
+\end{proof}
+\begin{prop}
+    设$F\subseteq L\subseteq E$.若$E/F$是正规扩张，则$E/L$也是正规扩张.
+\end{prop}
+\begin{proof}
+    注意在$E$中有根的多项式等价于说$E$中代数元的极小多项式.对任意$\alpha\in E$有$m_{\alpha,L}\mid m_{\alpha,F}$.由$E/F$正规，$m_{\alpha,F}$在$E[x]$中完全分解，进而$m_{\alpha,L}$亦然.
+\end{proof}
+
+设$K/F$是有限扩张，若代数扩张$E/K$满足$E/F$是正规扩张且$E$极小，则称$E/F$是$K/F$的{\heiti 正规闭包}.
+\begin{remark}
+    这暗示正规扩张不能限制扩域.例如$\mathbb{Q}(\sqrt[4]{2})/\mathbb{Q}$的正规闭包是$\mathbb{Q}(\sqrt[4]{2},\mi)/\mathbb{Q}$.
+
+    正规扩张也不能复合.例如$\mathbb{Q}(\sqrt[4]{2})/\mathbb{Q}(\sqrt2),\,\mathbb{Q}(\sqrt2)/\mathbb{Q}$是二次扩张，但$\mathbb{Q}(\sqrt[4]{2})/\mathbb{Q}$不正规.
+\end{remark}
+
+实际上，正规扩张定义中的分裂性质可以加强为
+\begin{prop}
+    代数扩张$K/F$正规$\iff$任意不可约$f\in F[x]$在$K[x]$中不可约因子次数相等.
+\end{prop}
+\begin{proof}
+    充分性显然.设在$K[x]$中$p_1,p_2\mid f$，它们分别是$\alpha,\beta\in\overline{F}$在$K$上的极小多项式.对任意$\overline{F}$的$F$-自同构$\sigma\colon\alpha\mapsto\beta$，可知$\sigma|_K$也是$F$-自同构，于是$p_1^\sigma\in K[x]$且$p_1^\sigma(\beta)=0$，故$p_2\mid p_1^\sigma$.而$p_1^\sigma$不可约，故$p_1^\sigma=p_2$，特别地$\deg p_1=\deg p_2$.
+\end{proof}
+\begin{remark}
+    用此后Galois理论的语言即$\mathrm{Gal}(K/F)$是$f$的全体不可约因子的传递置换群当且仅当$K/F$是正规扩张.在$K/F$有限Galois时可以具体算出这些不可约因子的次数.
+\end{remark}
+
+\subsection{可分扩张}
+本节内容与域的特征相关.
+
+\medskip 域$F$上的多项式$f$在分裂域$K$中可以唯一分解为$f=c\sum(x-\alpha_i)^{e_i}$，其中$\alpha_i\in K$两两不同.这个分解与分裂域的选取无关，因此可定义$e_i$为根$\alpha_i$的{\heiti 重数}.
+
+\begin{lemma*}
+    设$f\in F[x]$且$\alpha$是$f$在分裂域$K$中的一个$k$重根.
+    \begin{itemize}
+        \item 若$\operatorname*{char}F\nmid k$，则$\alpha$是$f'$的$k-1$重根.
+        \item 若$\operatorname*{char}F\mid  k$，则$\alpha$至少是$f'$的$k$重根.
+    \end{itemize}
+\end{lemma*}
+\begin{proof}
+    对$f(x)=(x-\alpha)^kg(x)$求导，其中$g(\alpha)\ne 0$.
+\end{proof}
+\begin{prop}
+    $f\in F[x]$在分裂域$K$中无重根当且仅当$(f,f')=1$.
+\end{prop}
+\begin{proof}
+    若$f$在$K$中无重根，则$\operatorname*{char}F\nmid 1$，即$\alpha$不是$f'$的根，所以$(f,f')=1$.若$f$在$K$中有$k$重根$\alpha$，则$\alpha$至少是$f'$的$k-1$重根，于是$\alpha$是$(f,f')$的根，即$(f,f')\ne 1$.
+\end{proof}
+\begin{cor*}
+    不可约多项式$p\in F[x]$在分裂域内有重根当且仅当$p'=0$.
+\end{cor*}
+\begin{proof}
+    只能$(p,p')\sim p$，即$p\mid p'$.但$p'$次数更低，因此$p'=0$.
+\end{proof}
+
+由此可知，在特征零时不可约多项式在分裂域中总是无重根的.但在特征$p$时就需要引入相关的性质来刻画.
+
+\begin{definition}
+    若不可约多项式$p\in F[x]$在分裂域中无重根，称$p$是{\heiti 可分多项式}.若正次数多项式$f$的任何不可约因式可分，称$f$是{\heiti 可分多项式}.
+
+    设$K/F$是代数扩张.若$\alpha\in K$的极小多项式$m_\alpha$在$F$上可分，称$\alpha$是$F$上的{\heiti 可分元}.
+
+    若代数扩张$K/F$满足任何$K$的元素都在$F$上可分，则称$K/F$为{\heiti 可分扩张}.
+\end{definition}
+
+在特征零时任何代数扩张都可分.在特征$p$时有
+\begin{prop}
+    设$\operatorname*{char}F=p$.若$p\in F[x]$是不可约多项式，则存在唯一整数$k$和不可约可分多项式$p_s\in F[x]$满足$p(x)=p_s(x^{p^k})$.
+\end{prop}
+\begin{proof}
+    若$p$不可分，$p'=0$蕴含$p(x)=p_1(x^p)$.注意一次多项式可分，不断进行即证.
+\end{proof}
+\begin{cor*}
+    若有限扩张$K/F$不可分，则$\operatorname*{char}F\mid[K:F]$.
+\end{cor*}
+\begin{proof}
+    存在$\alpha\in K$的极小多项式$m$不可分，于是$p\mid [F(\alpha):F]=\deg m$，其中$\operatorname*{char}F=p$.
+\end{proof}
+
+\begin{definition}
+    若$F[x]$中任何不可约多项式都可分，称$F$是{\heiti 完全域}.
+\end{definition}
+
+很明显，以完全域为基域的代数扩张都可分.
+\begin{lemma*}
+    设$\operatorname*{char}F=p$且$a\in F$.
+    \begin{itemize}
+        \item 若$a$不能开$p$次方，则$x^p-a$在$F$上不可约.
+        \item 若$a$能开$p$次方，则$x^p-a=(x-\sqrt[p]{a})^p$.
+    \end{itemize}
+\end{lemma*}
+\begin{proof}
+    后者显然.若$a$不能开$p$次方，设$x^p-a=f(x)g(x)$，其中$f$的次数$1\le r<p$.在$x^p-a$的分裂域$K$中考虑此分解，记$\alpha$为$x^p-a$的一个根，则$x^p-a=(x-\alpha)^p=f(x)g(x)$，从而$f(x)=(x-\alpha)^r$，于是$a^r\in F$.但是$\alpha^p=a\in F$且$(r,p)=1$，设$ur+vp=1$，则$\alpha=\alpha^{ur+vp}=(\alpha^r)^ua^v\in F$矛盾.
+\end{proof}
+\begin{prop}
+    特征$p$的域$F$完全当且仅当$F=F^p$.
+\end{prop}
+\begin{proof}
+    若$F^p\ne F$，存在$a\in F$不能开$p$次方，于是$x^p-a$不可约，但$x^p-a$不可分，故$F$不完全.若$F^p=F$，设有不可分的不可约多项式$f$，则$f(x)=g(x^p)$.然而$F$中$g$的系数都能开$p$次方，因此$f(x)=g(x^p)=h(x)^p$，与$f$不可约矛盾.
+\end{proof}
+\begin{cor*}
+    完全域的代数扩张完全.
+\end{cor*}
+\begin{proof}
+    设$K/F$是代数扩张且$\operatorname*{char}F=p$.对任意$\alpha\in K$考虑中间域$E=F(\alpha)$，往证$E^p=E$.注意$E$有Frobenius自同态$\sigma$，$E^\sigma=F^\sigma(\alpha^\sigma)$.由$F$完全可知$F^p=F$和$[E^p:F]=[E:F]$，故$E=E^p$.
+\end{proof}
+
+    注意$(x^{p^n}-x)'=-1$，因此$x^{p^n}-x$在$\mathbb{F}_p$上的分裂域就是唯一的$q=p^n$元{\heiti 有限域}，记作$\mathbb{F}_q$或$\mathrm{GF}(p^n)$.此时有Frobenius自同构$\mathbb{F}_q^p=\mathbb{F}_q$，于是有限域是完全的.
+\begin{remark}
+    作为非完全域的例子，$\mathbb{F}_p(t)$中存在不可分不可约多项式$x^p-t$.
+
+    只需$t$不能开$p$次方.若不然$t=(h(t)/g(t))^p=h(t^p)/g(t^p)$，即$tg(t^p)=h(t^p)\ne 0$.
+\end{remark}
+
+\begin{prop}
+    设$K/F$有限，则$F$-嵌入$K\to\overline{F}$个数$\le[K:F]$.等号成立当且仅当$K/F$可分.
+\end{prop}
+\begin{proof}
+    设$K=F(\alpha_1,\cdots,\alpha_r)$并记$K_i=F(\alpha_1,\cdots,\alpha_i)$，$F$-嵌入$K_i\to\overline{F}$的个数为$n_i$.断言$n_i\le[K_i:F]$并且等号成立当且仅当$\alpha_1,\cdots,\alpha_i$都是$F$上可分元.
+
+    对$i$归纳.若$i=1$，$K_1=F(\alpha_1)$的$F$-嵌入个数等于$m_1$在$\overline{F}$中互异零点个数，因此$n_1\le[K_1:F]$并且等号成立当且仅当$\alpha_1$可分.一般地，任何$F$-嵌入$\sigma\colon K_{i-1}\to\overline{F}$延拓为$K_i\to\overline{F}$的个数对应$m_i$在$\overline{F}$中互异零点个数，其中$m_i$是$\alpha_i$在$K_{i-1}$上的极小多项式，注意将$m_i$换成$m_i^\sigma$也成立，即$n_i\le[K_{i-1}:F][K_i:K_{i-1}]$.等号成立当且仅当$\alpha_1,\cdots,\alpha_i$全为可分元.
+\end{proof}
+\begin{remark}
+    显然$\overline{F}/F$可以换成任何包含$K$的正规扩张.
+\end{remark}
+\begin{cor*}
+    若$K=F(\alpha_1,\cdots,\alpha_r)$，则$K/F$可分当且仅当$\alpha_i$都是可分元.\qed
+\end{cor*}
+\begin{remark}
+    注意若$\alpha,\beta$是可分元，则$F(\alpha,\beta)/F$可分.因此，域扩张$K/F$中$F$上全体可分元构成中间域，称为$F$在$K$中的{\heiti 可分闭包} $K_s$.
+\end{remark}
+\begin{prop}
+    设$F\subseteq L\subseteq K$代数扩张，则$K/F$是可分扩张当且仅当$K/L,L/F$都是可分扩张.
+\end{prop}
+\begin{proof}
+    若$K/F$可分，显然$L/F$可分.注意对$\alpha\in K$有$m_{\alpha,L}\mid m_{\alpha,F}$，而$m_{\alpha,F}$可分，故$m_{\alpha,L}$可分，即$\alpha$在$L$上可分.
+
+    若$K/L,L/F$可分，设$\alpha\in K$在$L$上的极小多项式$f(x)=\sum a_ix^i$，则$a_i$在$F$上可分.记$L_1=F(\alpha_0,\cdots,\alpha_n),\,K_1=L_1(\alpha)$，则$K_1/L_1,L_1/F_1$有限可分.注意$F$-嵌入$K_1\to\overline{L}$都由$F$-嵌入$L_1\to\overline{F}$延拓$K_1\to\overline{F}$得到，因此$F$-嵌入$K_1\to\overline{F}$个数$=[L_1:F][K_1:L_1]=[K_1:F]$，即$K_1/F$可分，或者说$\alpha$在$F$上可分.
+\end{proof}
+
+\begin{thm}[(单扩张定理)]
+    有限可分扩张是单扩张.
+\end{thm}
+\begin{proof}
+    设$K/F$有限可分.若$F$有限，则$K$有限，特别地$K^*$循环.取$K^*$生成元$\alpha$就有$K=F(\alpha)$.下设$F$无限.
+
+    设$\alpha,\beta$可分，断言$F(\alpha,\beta)/F$是单扩张即证.设$\alpha,\beta$在$F$上的极小多项式为$f,g$，它们在$\overline{F}$中的互异零点分别为$\alpha=\alpha_1,\cdots,\alpha_m$和$\beta=\beta_1,\cdots,\beta_n$.考虑方程
+    \[
+        \alpha_1+x\beta_1=\alpha_i+x\beta_j,\quad 1\le i\le m;\,1<j\le n.
+    \]
+    由于$F$无限，有限个真子空间不能填满全空间，存在$c\in F$不是其中任何方程的解.令$\gamma=\alpha_1+c\beta_1$，则$f(\gamma-cx)$与$g(x)$仅一个公共零点$\beta_1$.注意$f,g$可分，$x-\beta_1$是最大公因式，存在$u,v\in F(\gamma)[x]$满足
+    \[
+        u(x)f(\gamma-cx)+v(x)g(x)=x-\beta_1,
+    \]
+    因此$\beta\in F(\gamma)$.又有$\alpha=\gamma-c\beta\in F(\gamma)$，故$F(\alpha,\beta)\subseteq F(\gamma)$.
+\end{proof}
+\begin{remark}
+    用Galois理论可以给出一个简单的证明：取Galois闭包$L$，则$K/F$的中间域对应了有限群$\mathrm{Gal}(L/F)$的子群.而中间域个数有限当且仅当单扩张.
+\end{remark}
+
+\subsection{分圆域}
+设$F$是素域，讨论$x^n-1$的分裂域$E/F$.当$F=\mathbb{F}_p$时不妨设$(n,p)=1$.
+
+注意$(x^n-1)'=nx^{n-1}\ne 0$与$x^n-1$互素，可知$E/F$是有限可分正规扩张(即有限Galois扩张).多项式$x^n-1$在$E$中的根生成$n$阶循环群$\mu_n$，生成元称为$n$次{\heiti 本原单位根}.特别地，由此可知$E/F$是单扩张$E=F(\zeta)$，其中$\zeta$是本原单位根.
+
+\medskip 当$F=\mathbb{F}_p$时情形是简单的.设$[E:\mathbb{F}_p]=r$，断言$r$是$p\pmod n$的指数\footnote{即$p\in(\mathbb{Z}/n\mathbb{Z})^*$作为乘法群元素的次数.}.这只需注意到此时$|E|=p^r$是有限域$\mathrm{GF}(p^r)$，它的乘法群循环即可.
+
+设$m$是$\zeta$在$\mathbb{F}_p$上的极小多项式，则由Frobenius自同构可知$\zeta,\zeta^p,\cdots,\zeta^{p^{r-1}}$就是$m$的全部根，即
+\[
+    m(x)=\prod_{0\le k<r}(x-\zeta^{p^k})\in\mathbb{F}_p[x].
+\]
+
+\begin{definition}
+    域$\mathbb{Q}$上多项式$x^n-1$的分裂域$\mathbb{Q}(\zeta)$称为$n$次{\heiti 分圆域}，其中$\zeta$是$n$次本原单位根，$\zeta$在$\mathbb{Q}$上的极小多项式$\Phi_n$称为$n$次{\heiti 分圆多项式}.
+\end{definition}
+
+\begin{prop}
+    分圆多项式
+    \[
+        \displaystyle\Phi_n(x)=\prod_{\substack{1\le\nu<n\\(\nu,n)=1}}(x-\zeta^\nu)\in\mathbb{Z}[x].
+    \]\vspace*{-10pt}
+\end{prop}
+\begin{proof}
+    用$\Phi_n$记上述多项式，往证它整系数且不可约.先证明$\Phi_n\in\mathbb{Z}[x]$.对$n$归纳，当$n=1$时$\Phi_1(x)=x-1$.一般地注意
+    \[
+        x^n-1=\prod_{d\mid n}\Phi_d(x)
+    \]
+    即知$\Phi_n\in\mathbb{Z}[x]$.下证$\Phi_n$不可约.由Gauss引理，设$\Phi_n=fg$，其中$f,g\in\mathbb{Z}[x]$首一，并且$f(\zeta)=0$.断言对素数$p\nmid n$有$f(\zeta^p)=0$.
+
+    若不然，注意$\zeta^p$是$\Phi_n$零点，有$g(\zeta^p)=0$，即$f(x)$与$g(x^p)$有公共零点$\zeta$.考虑模$p$投影$\mathbb{Z}[x]\to\mathbb{F}_p[x]$，则$\bar f(x)$与$\bar g(x^p)=\bar g(x)^p$有公共零点，即$\bar f$与$\bar g$有公共零点，于是$\bar\Phi_n$有重因式.但$p\nmid n$说明$x^n-1$可分，矛盾.
+
+    现在反复利用此断言即知对任意$1\le\nu<n,\,(\nu,n)=1$有$\zeta^\nu$是$\Phi_n$的零点.
+\end{proof}
+
+易知$\deg\Phi_n=\varphi(n)$，因此分圆域扩张$[\mathbb{Q}(\zeta):\mathbb{Q}]=\varphi(n)$.当$n=p$是素数时，$\Phi_p(x)=1+x+\cdots+x^{p-1}$是熟知的不可约多项式.
+\begin{remark}
+    利用M\"obius反演可得
+    \[
+        \Phi_n(x)=\prod_{d\mid n}(x^d-1)^{\mu(\frac{n}{d})},
+    \]
+    其中M\"obius函数
+    \[
+        \mu(n):=\begin{cases}
+            (-1)^{\#\{\text{prime factors of }n\}},&n\text{ has no square factors},\\
+            0,&\text{otherwise}.
+            \end{cases}
+    \]
+    特别地定义$\mu(1)=1$.
+
+    由此可得$\Phi_{p^r}(x)=(x^{p^r}-1)(x^{p^{r-1}}-1)^{-1}=\Phi_p(x^{p^{r-1}})$.
+\end{remark}
+
+\subsection{迹与范数}
+设$K/F$是有限扩张，将$K$视作$F$-线性空间除了维数外可以引入更多线性代数.
+
+对任意$\alpha\in K$，它自然地诱导了一个左乘变换$x\mapsto\alpha x$.这是线性空间$K$上的一个线性变换，从而可以定义$\alpha$的特征多项式\footnote{这可以机械地求一些特别复杂元素的极小多项式.}.特别地，这个左乘变换的迹与行列式称为$\alpha$的{\heiti 迹} $\tr_{K/F}(\alpha)$与{\heiti 范数} $\operatorname*{N}_{K/F}(\alpha)$.
+
+显然$\tr(0)=0,\,\operatorname*{N}(1)=1$，并且有如下简单性质成立.
+\begin{itemize}
+    \item $\tr(a\alpha+b\beta)=a\tr(\alpha)+b\tr(\beta),\quad a,b\in F$.
+    \item $\operatorname*{N}(\alpha\beta)=\operatorname*{N}(\alpha)\operatorname*{N}(\beta)$.
+    \item $\operatorname*{N}(a\alpha)=a^n\operatorname*{N}(\alpha),\quad a\in F^*$.
+\end{itemize}
+即$\tr_{K/F}\colon K\to F,\,\operatorname*{N}_{K/F}\colon K^*\to K^*$都是群同态.
+
+对$\alpha\in K$，设$[K:F(\alpha)]=r$，实际上完全只需在$F(\alpha)/F$上计算，因为容易发现特征多项式有如下关系$p_{K}(\lambda)=p_{F(\alpha)}(\lambda)^r$，于是
+\[
+    \tr_{K/F}(\alpha)=r\tr_{F(\alpha)/F}(\alpha),\quad\operatorname{N}_{K/F}(\alpha)=\operatorname{N}_{F(\alpha)/F}(\alpha)^r.
+\]
+
+具体来说，可以如下计算迹和范数：
+\begin{lemma*}
+    设$K/F$是单代数扩张，$f\in F[x]$是本原元素$\theta$的极小多项式，在分裂域$E/F$中$f(x)=\prod(x-\theta_i)$.记$\sigma_i\colon K\to E$是由$\theta\mapsto\theta_i$决定的$F$-嵌入，则对任意$\alpha\in K$有
+    \[
+        \tr_{K/F}(\alpha)=\sum\sigma_i(\alpha),\quad\operatorname{N}_{K/F}(\alpha)=\prod\sigma_i(\alpha).
+    \]\vspace*{-15pt}
+\end{lemma*}
+\begin{proof}
+    先证明当$\alpha=\theta$时引理成立.取$K/F$的基$1,\theta,\cdots,\theta^{n-1}$，则$\theta$对应的矩阵恰为$f$对应的有理块，即$f$恰为$\theta$的特征多项式，由Vi\`eta公式即证.
+
+    下设任意$\alpha\in K$.记$F_1=F(\alpha)$且$f_1$是$\alpha$的极小多项式.注意$f_1(\alpha)=0$，故$f_1$在$E$中分裂为$f_1(x)=\prod(x-\alpha_j)$.记$\tau_j\colon F_1\to E$是由$\alpha\mapsto\alpha_j$决定的$F$-嵌入，则已证明有
+    \[
+        \tr_{F_1/F}(\alpha)=\sum\tau_j(\alpha),\quad\operatorname{N}_{F_1/F}(\alpha)=\prod\tau_j(\alpha)
+    \]
+    成立.由于每个$\sigma_i$都是某个$\tau_j$的延拓，$\sigma_i(\alpha)$是$f_1$的根.令$g(x)=\prod(x-\sigma_i(\alpha))\in F[x]$，则只能$g=f_1^{[K:F_1]}$.因此
+    \[
+        \tr_{K/F}(\alpha)=[K:F_1]\tr_{F_1/F}(\alpha)=\sum\sigma_i(\alpha),\quad\operatorname{N}_{K/F}=\operatorname{N}_{F_1/F}(\alpha)^{[K:F_1]}=\prod\sigma_i(\alpha).
+    \]
+\end{proof}
+\begin{remark}
+    特别对于有限Galois扩张$E/F$，本原元素$\theta$的极小多项式在$E$中已经分裂，引理可以更简洁地写为
+    \[
+        \tr_{E/F}(\alpha)=\sum_{\sigma\in\operatorname*{Gal}(E/F)}\sigma(\alpha),\qquad\operatorname{N}_{E/F}(\alpha)=\prod_{\sigma\in\operatorname*{Gal}(E/F)}\sigma(\alpha).
+    \]
+\end{remark}
+
+注意迹$\tr_{K/F}$只能是零同态或满同态，实际上这完全刻画了可分性.
+\begin{lemma*}
+    设$K/F$是不可分单代数扩张，$\theta$是本原元素，则$\tr_{K/F}(\theta)=0$.
+\end{lemma*}
+\begin{proof}
+    设$f\in F[x]$是$\theta$的极小多项式，在分裂域$E$中$f(x)=\prod(x-\theta_i)$，记$F$-嵌入$\sigma_i\colon K\to E$满足$\theta\mapsto\theta_i$.
+    
+    若$K/F$不可分，即$\theta$在$F$上不可分并且$\operatorname*{char}F=p$.设$f(x)=g(x^{p^e})$，其中$g\in F[x]$是$r$次可分多项式，则$f$只有$r$个互异根$\theta_1',\cdots,\theta_r'$，重数均为$p^e$.由上述引理
+    \[
+        \tr_{K/F}(\theta)=\sum\sigma_i(\theta)=p^e(\theta_1'+\cdots+\theta_r')=0.
+    \]
+\end{proof}
+\begin{thm}
+    设$K/F$有限，则$K/F$可分$\iff\tr_{K/F}$是满同态.
+\end{thm}
+\begin{proof}
+    若$K/F$可分，则$K/F$是单扩张.设$\theta$是本原元素，$f\in F[x]$是$\theta$的极小多项式.由$f$可分，它的根$\theta_i$两两不同.断言$\tr_{K/F}(\theta^k)$不全为零，从而$\tr_{K/F}\ne 0$是满同态.若不然，注意$\tr_{K/F}(\theta^k)=s_k$是$\theta_i$的$k$次幂和，Newton公式将给出$f(x)=x^n$，即$\theta_i$全为零，矛盾.
+
+    若$K/F$不可分，对$a\in F$已经$\tr_{K/F}(a)=[K:F]a=0$，因为$p\mid[K:F]$.对于$\alpha\in K\setminus F$令$F_1=F(\alpha)$则$\tr_{K/F}(\alpha)=[K:F_1]\tr_{F_1/F}(\alpha)$.由于$K/F$不可分，假如$F_1/F$不可分，已证$\tr_{F_1/F}(\alpha)=0$；假如$K/F_1$不可分，此时$p\mid[K:F_1]$，仍有$\tr_{K/F}(\alpha)=0$.因此$\tr_{K/F}=0$.
+\end{proof}
+
+\emph{以下内容将涉及到下节的Galois理论.}
+
+\medskip 已经知道对有限扩张$K/F$的本原元素$\theta$有$\tr(\theta),\operatorname*{N}(\theta)\in F$.事实上一般地也有
+\begin{prop}
+    设$E/F$有限Galois，则对任意$\alpha\in E$有
+    \[
+        \tr_{E/F}(\alpha)\in F,\quad\operatorname{N}_{E/F}(\alpha)\in F.
+    \]\vspace*{-18pt}
+\end{prop}
+\begin{proof}
+    注意$G=\mathrm{Gal}(E/F)$在$\alpha$极小多项式$f$在$E$中的根集$\Omega=\{\alpha_i\}$上传递作用，因此
+    \[
+        |G_{\alpha_i}|=\frac{|G|}{|\Omega|}=\frac{[E:F]}{[F(\alpha):F]}
+    \]
+    就是有重集$\Omega^G$中每个根$\alpha_i$重复的次数.任何$\sigma\in G_{\alpha_i}$都是满足$\alpha\mapsto\alpha_i$的$\tau\in\mathrm{Gal}(F(\alpha)/F)$的延拓，而$|\mathrm{Gal}(F(\alpha)/F|=[F(\alpha):F]$，故反之亦然.于是
+    \[
+        \tr_{E/F}(\alpha)=|G_\alpha|\sum_{\tau\in\mathrm{Gal}(F(\alpha)/F)}\tau(\alpha)=|G_\alpha|\tr_{F(\alpha)/F}(\alpha)\in F,
+    \]
+    同理$\operatorname{N}_{E/F}(\alpha)\in F$.
+\end{proof}
+
+上述命题允许我们对两次域扩张复合取迹/范数的操作.
+\begin{prop}[(传递公式)]
+    设$E/K/F$有限Galois，则对任意$\alpha\in E$有
+    \[
+        \tr_{E/F}(\alpha)=\tr_{K/F}(\tr_{E/K}(\alpha)),\quad\operatorname{N}_{E/F}(\alpha)=\operatorname{N}_{K/F}(\operatorname{N}_{E/K}(\alpha)).
+    \]
+\end{prop}
+\begin{proof}
+    记$G=\mathrm{E/F},\,H=\mathrm{E/K}$.由$K/F$正规知$H\nsg G$并且$G/H\cong\mathrm{Gal}(K/F)$.实际上$G\to\mathrm{Gal}(K/F),\,\sigma\mapsto\sigma|_K$就是所需要的同态，因此
+    \[
+        \tr_{E/F}(\alpha)=\sum_{\sigma\in G}\sigma(\alpha)=\sum_{\sigma|_K\in\mathrm{Gal}(K/F)}\sum_{\tau\in H}\sigma|_K\tau(\alpha)=\tr_{K/F}(\tau_{E/K}(\alpha)).
+    \]
+    对范数同理即证.
+\end{proof}
+\newpage
+
+\section{Galois理论}
+\subsection{Galois基本定理}
+\begin{definition}
+    域扩张$K/F$中$K$的全体$F$-自同构组成群，称为$K/F$的{\heiti Galois群} $\mathrm{Gal}(K/F)$.
+
+    设$G\le\operatorname*{Aut}(K)$，$G$的全体不动元素称为$G$的{\heiti 不动域} $\mathrm{Inv}(G)$.
+\end{definition}
+
+易知$\sigma\in\mathrm{Gal}(K/F)$置换不可约多项式的根.因此有限扩张的Galois群有限.
+
+实际上，考虑单代数扩张并归纳可得
+\begin{lemma*}
+    若$K/F$是有限扩张，则$|\mathrm{Gal}(K/F)|\le[K:F]$.\qed
+\end{lemma*}
+\begin{lemma*}[(Artin)]
+    设$G\le\operatorname*{Aut}(K)$有限，则$[K:\mathrm{Inv}(G)]\le|G|$.
+\end{lemma*}
+\begin{proof}
+    设$G=\{\sigma_1=1,\cdots,\sigma_n\}$，对$K$的任意非零元$\alpha_1,\cdots,\alpha_{n+1}$考虑矩阵
+    \[
+        \begin{bmatrix}
+            \sigma_1(\alpha_1)&\sigma_1(\alpha_2)&\cdots&\sigma_1(\alpha_{n+1})\\
+            \vdots&\vdots&&\vdots\\
+            \sigma_n(\alpha_1)&\sigma_n(\alpha_2)&\cdots&\sigma_n(\alpha_{n+1})\\
+        \end{bmatrix}=(\beta_1,\cdots,\beta_{n+1}),
+    \]
+    则$\beta_1,\cdots,\beta_{n+1}$线性相关.设$r\le n$为其秩，不妨设$\beta_1,\cdots,\beta_r$线性无关并且$\beta_{r+1}=\sum\lambda_i\beta_i$，其中$\lambda_i\in K$.对分量有$\sigma_i(\alpha_{r+1})=\sum_j\lambda_j\sigma_i(\alpha_j)$，对任意$\sigma\in G$注意$G=\{\sigma\sigma_1,\cdots,\sigma\sigma_n\}$，适当换序后就有$\beta_{r+1}=\sum_j\sigma(\lambda_j)\beta_j$.因此$\sigma(\lambda_j)=\lambda_j$，即$\alpha_j\in\mathrm{Inv}(G)$，因此$\alpha_1,\cdots,\alpha_{r+1}$在$\mathrm{Inv}(G)$上线性相关，所以$[K:\mathrm{Inv}(G)]\le|G|$.
+\end{proof}
+
+在域$L$上取值的群$G$的(线性){\heiti 特征标}是指群同态$\chi\colon G\to L^*$.
+\begin{prop}
+    群$G$的不同特征标$\chi_1,\cdots,\chi_n$在$L$上线性无关.
+\end{prop}
+\begin{proof}
+    假设非零系数是前$r>1$个且$r$极小，即$\lambda_1\chi_1+\cdots+\lambda_r\chi_r=0$.取$g_0\in G$使得$\chi_1(g_0)\ne\chi_r(g_0)$，则
+    \begin{gather*}
+        \lambda_1\chi_1(g)+\cdots+\lambda_r\chi_r(g)=0,\\
+        \lambda_1\chi_1(g_0)\chi_1(g)+\cdots+\lambda_r\chi_r(g_0)\chi_r(g)=0,
+    \end{gather*}
+    乘上$\chi_r(g_0)$相减，与$r$极小矛盾.
+\end{proof}
+\begin{cor*}
+    设$\sigma_1,\cdots,\sigma_n$是不同的嵌入$K\to L$，则它们在$L$上线性无关.\qed
+\end{cor*}
+\begin{cor*}
+    设$G\le\operatorname*{Aut}(K)$有限，则$|G|\le[K:\mathrm{Inv}(G)]$.
+\end{cor*}
+\begin{proof}
+    取基$\{u_j\}$，则矩阵$(\sigma_i(u_j))$秩$|G|\le[K:\mathrm{Inv}(G)]$.
+\end{proof}
+\begin{remark}
+    从有限正规扩张$K/F$的$F$-自同构数$\le[K:F]$亦见.总之，$[K:\mathrm{Inv}(G)]=|G|$恒成立.
+\end{remark}
+
+对域扩张$K/F$的中间域格和$\operatorname*{Aut}(K)$的子群格定义
+\[
+    \mathrm{Gal}\colon L\mapsto\mathrm{Gal}(K/L),\quad\mathrm{Inv}\colon H\mapsto\mathrm{Inv}(H).
+\]
+有如下格的反同态和伪逆关系.
+\begin{prop}
+    设$K/F$是域扩张.
+    \begin{enumerate}
+        \item $L_1\subseteq L_2\implies\mathrm{Gal}(K/L_1)\supseteq\mathrm{Gal}(K/L_2)$.
+        \item $H_1\le H_2\implies\mathrm{Inv}(H_1)\supseteq\mathrm{Inv}(H_2)$.
+        \item $\mathrm{Gal}\circ\mathrm{Inv}\circ\mathrm{Gal}=\mathrm{Gal},\enspace\mathrm{Inv}\circ\mathrm{Gal}\circ\mathrm{Inv}=\mathrm{Inv}$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    (1)(2)显然.注意$L\subseteq\mathrm{Inv}(\mathrm{Gal}(K/L))$和$H\subseteq\mathrm{Gal}(K/\mathrm{Inv}(H))$，用(1)(2)并令$H=\mathrm{Gal}(K/L)$得到$\mathrm{Gal}(K/L)=\mathrm{Gal}(K/\mathrm{Inv}(\mathrm{Gal}(K/L)))$.另一式子同理.
+\end{proof}
+
+试图优化(3)中的伪逆关系为真正的可逆就得到了Galois扩张.
+\begin{definition}
+    若域扩张$E/F$满足$\mathrm{Inv}(\mathrm{Gal}(E/F))=F$，则称$E/F$为{\heiti Galois扩张}.
+\end{definition}
+
+\begin{prop}
+    \begin{enumerate}
+        \item 若$K/F$有限Galois，则$|\mathrm{Gal}(K/F)|=[K:F]$.
+        \item 若$G\le\operatorname*{Aut}(K)$有限，则$K/\mathrm{Inv}(G)$有限Galois且$G=\mathrm{Gal}(K/\mathrm{Inv}(G))$.
+        \item 若存在$F$-自同构群满足$|G|=[K:F]$，则$K/F$有限Galois且$G=\mathrm{Gal}(K/F)$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    \hspace*{5.2pt}(1)取$G=\mathrm{Gal}(K/F)$用Artin引理.
+    
+    (2)记$F=\mathrm{Inv}(G)$，则$\mathrm{Inv}(\mathrm{Gal}(K/F))=\mathrm{Inv}(G)=F$.因此$K/F$有限Galois并且$|G|=[K:F]$.由(1)知$|G|=|\mathrm{Gal}(K/F)|$，于是$G=\mathrm{Gal}(K/F)$.
+
+    (3)记$\mathrm{Inv}(G)=F_1$，往证$F_1=F$.由(2)知$K/F_1$有限Galois并且$G=\mathrm{Gal}(K/F_1)$.由(1)知$|G|=[K:F_1]=[K:F]$而$F\subseteq F_1$，故$F_1=F$.
+\end{proof}
+\begin{remark}
+    由此可知有限Galois扩张的另一等价定义：$|\mathrm{Gal}(E/F)|=[E:F]$.
+\end{remark}
+\begin{thm}[(Galois基本定理)]
+    设$E/F$有限Galois.
+    \begin{enumerate}
+        \item $\mathrm{Gal},\,\mathrm{Inv}$给出$E/F$中间域格和$\mathrm{Gal}(E/F)$子群格之间的一对反同构.
+        \item $[E:\mathrm{Inv}(H)]=|H|,\enspace[\mathrm{Inv}(H):F]=[\mathrm{Gal}(E/F):H]$.
+        \item $H$的共轭子群$\sigma H\sigma^{-1}$对应$K$的共轭子域$K^\sigma$，其中$\sigma\in\mathrm{Gal}(E/F)$.
+        \item $\mathrm{Gal}(E/K)$正规当且仅当$K/F$正规，此时$\mathrm{Gal}(K/F)\cong \mathrm{Gal}(E/F)/\mathrm{Gal}(E/K)$.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \hspace*{5.2pt}(1)(2)上一命题已证.
+    
+    (3)设$K^\sigma$对应$H'$，往证$H'=\sigma H\sigma^{-1}$.对任意$\tau\in H$和$\alpha'=\sigma(\alpha)\in K^\sigma$，则
+    \[
+        (\sigma\tau\sigma^{-1})\alpha'=\sigma(\alpha)=\alpha',
+    \]
+    即$\sigma\tau\sigma^{-1}\in H'$，于是$\sigma H\sigma^{-1}\subseteq H'$.反向同理.
+
+    (4)设$H=\mathrm{Gal}(E/K)$对应$K$并记$G=\mathrm{Gal}(E/F)$.
+    
+    若$H\nsg G$正规，对任意$\sigma\in G$有$H^\sigma=H$，即$K^\sigma=K$，因此$\sigma\mapsto\sigma|_K$诱导单同态$G/H\to\mathrm{Gal}(K/F)$.而$|\mathrm{Gal}(K/F)|\le[K:F]=[G:H]$，故$G/H\cong\mathrm{Gal}(K/F)$.特别地，$[K:F]=|\mathrm{Gal}(K/F)|$说明$K/F$是Galois扩张.
+
+    若$K/F$正规，则任意$\sigma\in G$满足$K^\sigma=K$，由(3)即$H^\sigma=H$，故$H\nsg G$.
+\end{proof}
+\begin{lemma*}
+    设$E/F$有限Galois，$f$是$\alpha$的极小多项式，则$\mathrm{Gal}(E/F)$在$f$的根集上传递作用.
+\end{lemma*}
+\begin{proof}
+    设可分多项式$f$的全体根为$\Omega=\{\alpha_i\}$，存在$F$-同构$F(\alpha_i)\to F(\alpha_j)$.注意现在$E$也是$f$在$F(\alpha_i)$上的分裂域，故上述$F$-同构可延拓为$E$的$F$-自同构，满足$\alpha_i\mapsto\alpha_j$.
+\end{proof}
+\begin{prop}
+    有限扩张$E/F$是Galois扩张当且仅当$E/F$是有限可分正规扩张，即可分多项式的分裂域.
+\end{prop}
+\begin{proof}
+    若$E/F$有限Galois，由上述引理知$E/F$正规，由$|\mathrm{Gal}(E/F)|=[E:F]$知$E/F$可分.若$E/F$有限正规可分，记$G=\mathrm{Gal}(E/F)$，往证$\mathrm{Inv}(G)=F$.设$f\in F[x]$是$\alpha\in E\setminus F$的极小多项式，则$f$在$E[x]$中完全分裂$f(x)=\prod(x-\alpha_i)$，其中$\alpha_i\ne\alpha_j$.于是存在$F$-同构$F(\alpha)\to F(\alpha_i)$满足$\alpha\mapsto\alpha_i$.由$E/F$正规，上述$F$-同构可延拓为$\sigma\in G$并且$\sigma(\alpha)=\alpha_i\ne\alpha$，即$\alpha\notin\mathrm{Inv}(G)$.因此$\mathrm{Inv}(G)=F$，即$E/F$是Galois扩张.
+\end{proof}
+
+第一群同构给出$HK/K\cong H/H\cap K$.，试图将其推广到Galois群.首先需要复合域.
+
+设$E/F,K/F,L/F$都是代数扩张，并且有$F$-嵌入$\sigma\colon E\to L$和$\tau\colon K\to L$，则在$L$中可定义{\heiti 复合域} $E^\sigma K^\tau$.但是结果或许和$F$-嵌入$\sigma,\tau$的选取有关.然而在$E/F$有限正规时，复合域被唯一确定.
+\begin{lemma*}
+    若$E/F$是$f\in F[x]$的分裂域，$K/F$是任意扩张，则复合域$EK/K$与$f$在$K$上的分裂域同构.
+\end{lemma*}
+\begin{proof}
+    设$E^\sigma=F(\alpha_1,\cdots,\alpha_n)$并且在$E^\sigma$中$f(x)=\prod(x-\alpha_i)$，则$E^\sigma\subseteq K^\tau(\alpha_1,\cdots,\alpha_n)\subseteq E^\sigma K^\tau$.而$K^\tau\subseteq K^\tau(\alpha_1,\cdots,\alpha_n)$，故$E^\sigma K^\tau\subseteq K^\tau(\alpha_1,\cdots,\alpha_n)$.因此$E^\sigma K^\tau=K^\tau(\alpha_1,\cdots,\alpha_n)$是$f$在$K^\tau$上的分裂域，因此$EK$在同构意义下唯一.
+\end{proof}
+\begin{thm}
+    设$E/F$有限Galois，$K/F$任意域扩张，则复合域$EK/K$有限Galois并且
+    \[
+        \mathrm{Gal}(EK/K)\cong\mathrm{Gal}(E/E\cap K)
+    \]
+    同构于$\mathrm{Gal}(E/F)$的子群，其中同构可由$\sigma\mapsto\sigma|_E$给出.
+\end{thm}
+\begin{proof}
+    因为$E/F$是可分多项式$f$的分裂域，故$EK/K$作为$f$在$K$上的分裂域也是有限Galois扩张.对$\sigma\in\mathrm{Gal}(EK/K)$，注意它在$f$的根集上传递作用，因而保持$E$不变，于是$\sigma\mapsto\sigma|_E$给出群同态$\mathrm{Gal}(EK/K)\to\mathrm{Gal}(E/E\cap K)$.易证它是单的，因若$\sigma|_E=1$，则$\sigma$既保持$f$的根又保持$K$的元素，于是$\sigma$保持$f$在$K$上的分裂域$EK$的任意元素，即$\sigma=1$.
+
+    下证同态满.记同态像为$H$并且$L=\mathrm{Inv}(H)$.注意$\mathrm{Gal}(EK/K)$总固定$LK$，故$LK=K$就是不动域，即$L\subseteq K$或者说$L\subseteq E\cap K$.而$H$固定$E$，即$E\cap K\subseteq L$.于是$L=E\cap K$，即$H=\mathrm{Gal}(E/E\cap K)$.
+\end{proof}
+\begin{cor*}
+    设$E/F$有限Galois，$K/F$有限，则$[EK:F][E\cap K:F]=[E:F][K:F]$.\qed
+\end{cor*}
+\begin{remark}
+    若没有Galois扩张一般地只能得到$[EK:F]\le[E:F][K:F]$.
+    
+    例如考虑$\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q}$和$\mathbb{Q}(\omega\sqrt[3]{2})/\mathbb{Q}$，其中$\omega^3=1$.
+\end{remark}
+
+\begin{prop}
+    设$K_1/F,K_2/F$有限Galois，则
+    \begin{enumerate}
+        \item $K_1\cap K_2/F$有限Galois.
+        \item $K_1K_2/F$有限Galois，并且$\mathrm{Gal}(K_1K_2/F)$同构于$\mathrm{Gal}(K_1/F)\times\mathrm{Gal}(K_2/F)$的如下子群$H=\{(\sigma,\tau)\mid\sigma|_{K_1\cap K_2}=\tau|_{K_1\cap K_2}\}$.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    \hspace*{5.2pt}(1)只需$K_1\cap K_2/F$正规.注意若$p\in F[x]$不可约且在$K_1\cap K_2$中有根，则它所有根都在$K_1,K_2$中，进而都在$K_1\cap K_2$中.
+
+    (2)设$K_1/F,K_2/F$分别是可分多项式$f_1,f_2$在$F$上的分裂域，则$K_1K_2/F$是$f_1f_2$去重后的分裂域，进而$K_1K_2/F$是Galois扩张.考虑单同态
+    \[
+        \mathrm{Gal}(K_1K_2/F)\to\mathrm{Gal}(K_1/F)\times\mathrm{Gal}(K_2/F),\quad\sigma\mapsto(\sigma|_{K_1},\sigma|_{K_2}).
+    \]
+    显然$H$包含同态像，现在计算阶数.注意对任意$\sigma\in\mathrm{Gal}(K_1/F)$恰有$|\mathrm{Gal}(K_2/K_1\cap K_2)|$个$\tau\in\mathrm{Gal}(K_2/F)$是$\sigma|_{K_1\cap K_2}$的延拓，因此
+    \[
+        |H|=|\mathrm{Gal}(K_1/F)||\mathrm{Gal}(K_2/K_1\cap K_2)|=\frac{[K_1:F][K_2:F]}{[K_1\cap K_2:F]}.
+    \]
+    而$|\mathrm{Gal}(K_1K_2/F)|=[K_1K_2:F]$.由上述推论即证.
+\end{proof}
+\begin{cor*}
+    若$K_1/F,K_2/F$有限Galois并且$K_1\cap K_2=F$，则
+    \[
+        \mathrm{Gal}(K_1K_2/F)\cong\mathrm{Gal}(K_1/F)\times\mathrm{Gal}(K_2/F).
+    \]
+    反之，若$K/F$有限Galois并且$\mathrm{Gal}(K/F)=G_1\times G_2$，则存在$K_1/F,K_2/F$有限Galois并且$K=K_1K_2,\,K_1\cap K_2=F$.
+\end{cor*}
+\begin{proof}
+    注意$K_1=\mathrm{Inv}(G_1),\,K_2=\mathrm{Inv}(G_2)$并利用Galois基本定理.
+\end{proof}
+\begin{cor*}
+    设$E/F$有限可分，则存在包含$E$的有限Galois扩张$K/F$是全体含于$\overline{K}$且包含$E$的有限Galois扩张的最小元.
+\end{cor*}
+\begin{proof}
+    包含$E$的有限Galois扩张存在，例如$E/F$的一组基的全体极小多项式分裂域的复合域.全体包含$E$的有限Galois扩张的交即为$K$.
+\end{proof}
+\begin{remark}
+    上述有限Galois扩张$K/F$称为有限可分扩张$E/F$的{\heiti Galois闭包}.
+\end{remark}
+
+作为例子，容易计算得到
+\begin{itemize}
+    \item 有限域$\mathbb{F}_q/\mathbb{F}_p$的Galois群$\mathrm{Gal}(\mathbb{F}_q/\mathbb{F}_p)\cong Z_n$由Frobenius自同构生成.
+    \item 分圆域$\mathbb{Q}(\zeta_n)/\mathbb{Q}$的Galois群$\mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong(\mathbb{Z}/n\mathbb{Z})^*$由$\zeta_n\mapsto\zeta_n^k$给出.
+\end{itemize}
+\begin{remark}
+    当$n=p$时，分圆域$\mathbb{Q}(\zeta_p)$对应于Galois群的子群$H$的中间域可以如下计算：注意Galois群的元素只是在置换全体$p$次本原单位根，因为此时$\zeta_p,\cdots,\zeta_p^{p-1}$是一组基.因此令
+    \[
+        \alpha=\sum_{\sigma\in H}\sigma(\zeta_p),
+    \]
+    断言$\mathbb{Q}(\alpha)=\mathrm{Inv}(H)$即为所求.若$\tau\in H$，显然$\tau(\alpha)=\alpha$.若$\tau\notin H$但是$\tau(\alpha)=\alpha$，由于$\alpha$是一组基的和，必然存在$\tau(\zeta_p)=\sigma(\zeta_p)$对某个$\sigma\in H$成立，这说明$\tau=\sigma\in H$矛盾.
+\end{remark}
+
+设$n=p_1^{a_1}\cdots p_k^{a_k}$，注意$\mathbb{Q}(\zeta_{p_i^{a_i}})\subseteq\mathbb{Q}(\zeta_n)$.考虑扩张次数$\varphi(n)$即知$\mathbb{Q}(\zeta_n)$是全体$\mathbb{Q}(\zeta_{p_i^{a_i}})$的复合域.易知它们的交为$\mathbb{Q}$，于是
+\[
+    \mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong\bigtimes_{i=1}^k\mathrm{Gal}(\mathbb{Q}(\zeta_{p_i^{a_i}})/\mathbb{Q}).
+\]
+这实际上就是中国剩余定理.
+
+\begin{definition}
+    若Galois扩张$K/F$满足$\mathrm{Gal}(K/F)$是Abel群，则称$K/F$为{\heiti Abel扩张}.类似地若$\mathrm{Gal}(K/F)$是循环群，则称$K/F$为{\heiti 循环扩张}.
+\end{definition}
+
+由Galois基本定理可知Abel扩张的复合域也是Abel扩张.
+
+已经计算得到分圆域都是有限Abel扩张.实际上对任意有限Abel群$G$都有
+\begin{prop}
+    设$G$有限Abel，则存在分圆域的子域$K$满足$\mathrm{Gal}(K/\mathbb{Q})\cong G$.
+\end{prop}
+\begin{proof}
+    注意若$n=p_1\cdots p_k$无平方因子，则
+    \[
+        \mathrm{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})\cong\bigtimes_{i=1}^k(\mathbb{Z}/p_i\mathbb{Z})^*\cong\bigtimes_{i=1}^kZ_{p_i-1}.
+    \]
+    设$G\cong Z_{n_1}\times\cdots\times Z_{n_k}$，存在素数$p_i\equiv 1\pmod{n_i}$.取$n=p_1\cdots p_k$，则$Z_{p_i-1}$有$n_i$阶子群$H_i$，从而$H_1\times\cdots\times H_k\cong G$对应的中间域$K$即为所求.
+\end{proof}
+\begin{remark}
+    (Dirichlet定理的特殊情形)对任意$m$存在无限多个素数$p\equiv 1\pmod m$.
+
+    (1)首一非常数$f\in\mathbb{Z}[x]$满足$f(\mathbb{Z})$中有无限多素因子.若不然，设$f(N)=a\ne 0$并考虑$g(x)=a^{-1}f(N+p_1\cdots p_kx)\in\mathbb{Z}[x]$，则$g\equiv 1\pmod{p_1\cdots p_k}$.
+
+    (2)设奇素数$p\nmid m$，则在$\mathbb{Z}/p\mathbb{Z}$中若$\Phi_m(a)=0$则$a\ne 0$并且$a\in(\mathbb{Z}/p\mathbb{Z})^*$次数为$m$.注意若$a$次数$d$则$\Phi_d(a)=0$，但$x^m-1$可分即可.于是$m\mid p-1$，即$p\equiv 1\pmod m$.
+
+    结合(1)(2)即证.
+\end{remark}
+
+实际上，任何有限Abel扩张都由上述过程生成.
+\begin{thm}[(Kronecker--Weber)]
+    若$K/\mathbb{Q}$是有限Abel扩张，则$K$是分圆域的子域.\qed
+\end{thm}
+
+证明是代数数论的课题.由此可知$\mathbb{Q}$的最大Abel扩张$\mathbb{Q}^{\text{ab}}$就是$\mathbb{Q}$加入所有单位根.
+
+一般地若要对有限扩张$K/\mathbb{Q}$找出$K$的Abel扩张需要\emph{类域论}.
+
+\subsection{多项式的Galois群}
+设$f\in F[x]$是可分多项式，则分裂域$E/F$是Galois扩张.记$f$在$E$中的根集为$\Omega$，则$\mathrm{Gal}(E/F)$同构于$\Omega$上的一个置换群$G_f$，称为$f$在$F$上的{\heiti Galois群}.
+
+\begin{remark}
+    易知$G_f$在$\Omega$上传递当且仅当$f$在$F$上不可约，即$G_f$在每个不可约因子内部置换根.
+\end{remark}
+
+著名的Galois反问题是为任意有限群找到$\mathbb{Q}$上多项式使其成为Galois群.先前已经对Abel群解决了这一问题.现在首先为$S_n$找最一般的多项式.
+
+以下记$s_1,\cdots,s_n$是$x_1,\cdots,x_n$对应的初等对称多项式.显然$S_n$通过置换$x_1,\cdots,x_n$作用在$F(x_1,\cdots,x_n)$上.我们有
+\begin{prop}
+    $S_n$作用在$F(x_1,\cdots,x_n)$上的不动域为$F(s_1,\cdots,s_n)$.
+\end{prop}
+\begin{proof}
+    显然$F(s_1,\cdots,s_n)\subseteq\mathrm{Inv}(S_n)$.注意$\mathrm{Inv}(S_n)$次数恰好$n!$，而$F(x_1,\cdots,x_n)$作为$x^n-s_1x^{n-1}+\cdots+(-1)^ns_n$在$F(s_1,\cdots,s_n)$上的分裂域满足$[F(x_1,\cdots,x_n):F(s_1,\cdots,s_n)]\le n!$，因此$\mathrm{Inv}(S_n)=F(x_1,\cdots,x_n)$.
+\end{proof}
+\begin{remark}
+    注意$\mathrm{Inv}(S_n)$是对称有理分式，上述命题其实就是对称多项式基本定理.
+\end{remark}
+\begin{thm}
+    一般多项式
+    \[
+        x^n-s_1x^{n-1}+s_2x^{n-2}+\cdots+(-1)^ns_n
+    \]
+    在域$F(s_1,\cdots,s_n)$上可分并且Galois群为$S_n$.
+\end{thm}
+\begin{proof}
+    设它在分裂域中的根为$x_1,\cdots,x_n$，断言这些根代数无关.若不然，设$p\in F[t_1,\cdots,t_n]$满足$p(x_1,\cdots,x_n)=0$，取$\tilde p=\prod_{\sigma\in S_n}p^\sigma$，则$\tilde p$是$F$上的非零对称多项式并且$\tilde p(x_1,\cdots,x_n)=0$，与$s_1,\cdots,s_n$代数无关矛盾.因此分裂域即为$F(x_1,\cdots,x_n)$并且Galois群为$S_n$.
+\end{proof}
+\begin{remark}
+    有理分式域同构于添加代数无关元.在有限域上Galois扩张总是循环扩张，一般多项式不能存在.但是在$\mathbb{Q}$上“大多数”多项式都有$S_n$作为Galois群.
+\end{remark}
+
+当$n\ge 5$时$S_n$只有一个正规子群$A_n$，从而对应唯一的二次Galois扩张.
+
+为$x_1,\cdots,x_n$定义{\heiti 判别式}
+\[
+    D=\prod_{i<j}(x_i-x_j)^2.
+\]
+注意$D$关于$x_1,\cdots,x_n$对称，因此$D\in K:=F(s_1,\cdots,s_n)$.
+
+\begin{lemma*}
+    设$\operatorname*{char}F\ne 2$且$\sigma\in S_n$，则$\sigma\in A_n\iff\sigma$固定$\sqrt D$.\qed
+\end{lemma*}
+
+因此当$\operatorname*{char}F\ne 2$时$K(\sqrt D)$就是唯一的二次Galois扩张.
+\begin{cor*}
+    设$\operatorname*{char}F\ne 2$且$f\in F[x]$，则$G_f\le A_n$当且仅当$D\in F$是平方元，即$\sqrt D\in F$.\qed
+\end{cor*}
+
+设$\operatorname*{char}F\ne2,3$.下面具体算出$n\le 4$时的低次多项式Galois群.
+
+$n=1,2,3$时情形是简单的，直接考察$\sqrt D$即可，Galois群只有$S_n,A_n$两种情形.下面考察$n=4$情形，设四次多项式$f$不可约，否则按不可约因子化归.由于$S_4$的传递子群$S_4,A_4,D_8,Z_4$不只$A_4$一种，需要引入新的判别法.
+
+设四次多项式$f\in F[x]$为$f(x)=x^4+ax^3+bx^2+cx+d$.首先作$x=y-a/4$消去三次项为$g(y)=y^4+py^2+qy+r$.
+
+设$\alpha_1,\alpha_2,\alpha_3,\alpha_4$是$g$在分裂域$E$中的根，在$E$中取
+\begin{align*}
+    \theta_1&=(\alpha_1+\alpha_2)(\alpha_3+\alpha_4),\\
+    \theta_2&=(\alpha_1+\alpha_3)(\alpha_2+\alpha_4),\\
+    \theta_3&=(\alpha_1+\alpha_4)(\alpha_2+\alpha_3),
+\end{align*}
+它们在$S_4$中的稳定化子恰好就是三个共轭的$D_8$，同时稳定三者的就是$D_8$们的交$K_4$.
+
+作如下四次多项式的{\heiti 预解式}
+\[
+    h(x)=(x-\theta_1)(x-\theta_2)(x-\theta_3)=x^3-2px^2+(p^2-4r)x+q^2.
+\]
+注意$g,h$有相同的判别式$D$，实际上只需发现
+\begin{align*}
+    \theta_1-\theta_2&=-(\alpha_1-\alpha_4)(\alpha_2-\alpha_3),\\
+    \theta_1-\theta_3&=-(\alpha_1-\alpha_3)(\alpha_2-\alpha_4),\\
+    \theta_2-\theta_3&=-(\alpha_1-\alpha_2)(\alpha_3-\alpha_4).
+\end{align*}
+于是预解式$h$的分裂域对应了Galois群$G_f\cap K_4$.总结得到如下情形
+\begin{itemize}
+    \item 若预解式不可约且判别式非平方元，则$G_f\cong S_4$.
+    \item 若预解式不可约且判别式为平方元，则$G_f\cong A_4$.
+    \item 若预解式有二次不可约因式，则$G_f\cong Z_4$.
+    \item 若预解式完全分裂，则$G_f\cong K_4$.
+\end{itemize}
+
+对于更高次的多项式没有一般的方法，需要手动去找$G_f$的群元.
+\begin{prop}
+    若$f\in\mathbb{Q}[x]$是$p$次不可约多项式，并且恰有一对共轭复根，则$G_f\cong S_p$.
+\end{prop}
+\begin{proof}
+    取共轭是$G_f$中的对换，而$p\mid|G_f|$，故$G_f\cong S_p$.
+\end{proof}
+\begin{remark}
+    一般地对换和$n$-轮换不能生成$S_n$，例如$\langle (13),(1234)\rangle=D_8$.不过，同时包含对换和$(n-1)$-轮换的$n$元传递置换群只有$S_n$.
+\end{remark}
+
+在不解出多项式$f\in\mathbb{Q}[x]$的根时，也可以用模$p$约化的方法.
+\begin{thm}[(Dedekind)]
+    设$f\in\mathbb{Z}[x]$可分，素数$p$不整除$f$的判别式和首项系数，$\bar f\in\mathbb{F}_p[x]$是$f$的模$p$约化.若$\bar f$可分且$\deg\bar f=\deg f$，则$G_{\bar f}\lesssim G_f$.\qed
+\end{thm}
+\begin{remark}
+    证明也是代数数论的工作.一个实用的推论是若$\bar f$的不可约因式次数$n_1,\cdots,n_k$，则$G_f$中存在型为$(n_1,\cdots,n_k)$的置换.
+\end{remark}
+\begin{remark}
+    如下两个传递子群的定理是实用的：设$G\le S_n$是传递子群，素数$n/2<p\le n$\footnote{由Bertrand假设这样的素数存在.}，则
+    \begin{itemize}
+        \item $G=S_n$当且仅当$G$包含对换和$p$-轮换.($n\ge 2$)
+        \item $G=A_n$或$S_n$当且仅当$G$包含$3$-轮换和$p$-轮换.($n\ge 3$)
+    \end{itemize}
+    易证还有：$G=S_n$当且仅当$G$包含对换和$(n-1)$-轮换.
+\end{remark}
+
+最后，利用如下两条事实来证明代数基本定理.
+\begin{itemize}
+    \item $\mathbb{R}$没有非平凡奇数次扩张.
+    \item $\mathbb{C}$没有二次扩张.
+\end{itemize}
+证明都是容易的，因为奇数次实系数多项式必有根，复系数二次多项式必有根.
+\begin{thm}[(代数基本定理)]
+    $\mathbb{C}$是代数闭域.
+\end{thm}
+\begin{proof}
+    设$f\in\mathbb{R}[x]$的分裂域为$K/\mathbb{R}$，则$K(\mi)/\mathbb{R}$是有限Galois扩张，记$G=\mathrm{Gal}(K(\mi)/\mathbb{R})$.存在$P\in\mathrm{Syl}_2(G)$，注意$\mathrm{Inv}(P)$是$\mathbb{R}$的奇数次扩张，从而平凡，即$G$是$2$群.若$f$在$\mathbb{C}$中没有根，则$\mathrm{Gal}(K(\mi)/\mathbb{C})$也是$2$群.但是$2$群的指数$2$子群对应了$\mathbb{C}$的二次扩张，矛盾.
+\end{proof}
+
+\subsection{方程的根式解}
+\begin{definition}
+    设$K=F(\alpha)$是单扩张.若存在$n\in\mathbb{N}$满足$\alpha^n\in F$，则称$K/F$为{\heiti 单根式扩张}.或等价地说，若$K=F(\sqrt[n]{a})$，其中$a\in F$.
+
+    若域扩张$K/F$可表示为有限单根式扩张升链(简称{\heiti 根式升链})，则称$K/F$为{\heiti 根式扩张}.若$f\in F[x]$的分裂域$E/F$含于某根式扩张，则称$f$在$F$上{\heiti 根式可解}.
+\end{definition}
+\begin{remark}
+    对单根式扩张$K=F(\alpha),\,\alpha^n=a\in F$，若$n=rs$插入中间域$L=F(\alpha^r)$得到根式升链$K/L/F$并且$[K:L]=s,\,[L:F]=r$.因此不妨设根式升链都是素数次扩张.
+\end{remark}
+
+素数次扩张的根式升链结合Galois基本定理，与可解群的联系呼之欲出.于是下面讨论循环扩张和根式扩张的关系.
+\begin{remark}
+    单根式扩张直接联系到$x^n-a$.特别地$x^n-1$在$\mathbb{Q}$上对应熟知的分圆域.若$K/F$是$x^n-1$的分裂域且$\operatorname*{char}F=0$，则$K=\mathbb{Q}(\zeta_n)F$，于是$\mathrm{Gal}(K/F)\lesssim(\mathbb{Z}/n\mathbb{Z})^*$是Abel扩张.
+\end{remark}
+
+记$\mu_n$为$n$次单位根群.为使单根式扩张Galois，需要$n$个互异$n$次单位根，即
+\begin{prop}
+    若$\mu_n\le F^*$，则单根式扩张$K/F$是循环扩张并且$[K:F]\mid n$.
+\end{prop}
+\begin{proof}
+    此时$K=F(\sqrt[n]{a})$是可分多项式$x^n-a$的分裂域，即$K/F$有限Galois.容易验证
+    \[
+        \mathrm{Gal}(K/F)\to\mu_n,\quad\sigma\mapsto\sigma(\sqrt[n]{a})/\sqrt[n]{a}
+    \]
+    是单同态，因此$K/F$是循环扩张且$[K:F]\mid n$.
+\end{proof}
+\begin{prop}
+    若$\mu_n\le F^*$，则$n$次循环扩张$K/F$是单根式扩张$K=F(\sqrt[n]{a})$.
+\end{prop}
+\begin{proof}
+    设$\mathrm{Gal}(K/F)=\langle \sigma\rangle $.对任意$\alpha\in K,\,\zeta\in\mu_n$定义{\heiti Lagrange预解式}
+    \[
+        (\alpha,\zeta):=\sum_{0\le k<n}\zeta^k\sigma^k(\alpha).
+    \]
+    注意$\sigma(\alpha,\zeta)=\zeta^{-1}(\alpha,\zeta)$，则$(\alpha,\zeta)^n$在$\sigma$下不动，即$(\alpha,\zeta)^n\in F$.
+
+    现在取$\zeta$为本原单位根，由$1,\sigma,\cdots,\sigma^{n-1}$线性无关知存在$\alpha\in K$使得$(\alpha,\zeta)\ne 0$，此时当$i<n$时$(\alpha,\zeta)$不能在任何$\sigma^i$下不动，即只能$K=F((\alpha,\zeta))$.记$a=(\alpha,\zeta)^n\in F$，则$K=F(\sqrt[n]{a})$是单根式扩张.
+\end{proof}
+\begin{remark}
+    设域$F$满足$\mu_n\le F^*$.取$a_1,\cdots,a_k\in F^*$则$F(\sqrt[n]{a_1},\cdots,\sqrt[n]{a_k})$是Abel扩张并且Galois群指数$n$.反之任何Galois群指数$n$的Abel扩张都形如上述，称为{\heiti Kummer扩张}.
+\end{remark}
+
+条件$\mu_n\le F^*$即$F$中包含$n$个互异的$n$次单位根.这需要$x^n-1$可分，即$\operatorname*{char}F\nmid n$.下面为简单起见讨论特征零的情形.
+
+\begin{lemma*}
+    设$K/F$是可分根式扩张，$\operatorname*{char}F$与单根式扩张次数都互素，则存在包含$K$的Galois根式扩张使得根式升链都是循环扩张.
+\end{lemma*}
+\begin{proof}
+    设$L$是$K/F$的Galois闭包.对任意$\sigma\in\mathrm{Gal}(L/F)$有根式扩张$K^\sigma/F$.显然根式扩张的复合域也是根式扩张，故全体共轭域$K^\sigma$的复合$L$是根式扩张.
+
+    向$F$中加入所有需要的$n_i$次单位根得到Galois根式扩张$F'$，则$F'L/F$是Galois根式扩张.注意$F'/F$是Abel扩张，因此可以拆为有限个循环根式扩张.而$F'K_{i+1}/F'K_i$是有所需单位根的单根式扩张，因此是循环扩张.
+\end{proof}
+\begin{thm}[(Galois)]
+    设$\operatorname*{char}F=0$，则$f\in F[x]$根式可解当且仅当Galois群$G_f$可解.
+\end{thm}
+\begin{proof}
+    若$f$根式可解，则$f$的根都含于Galois根式扩张$L/F$，其中根式升链$K_{i+1}/K_i$都循环.记中间域$K_i$对应Galois群$G_i$，则$\mathrm{Gal}(K_{i+1}/K_i)=G_i/G_{i+1}$素数阶循环，于是$\mathrm{Gal}(L/F)$可解，进而$G_f$作为$\mathrm{Gal}(L/F)$的商群可解.
+
+    若$f$的Galois群$G_f=\mathrm{Gal}(K/F)$可解，取可解群$G_f$群列对应的中间域得到循环扩张升链$K_{i+1}/K_i$.记$F'$为全体所需$n_i$次分圆域$\mathbb{Q}(\zeta_{n_i})$的复合并令$K_i'=F'K_i$，则$\mathrm{Gal}(K'_{i+1}/K_i')\cong\mathrm{Gal}(K_{i+1}/F'K_i\cap K_{i+1})$蕴含$K_{i+1}'/K_i'$是次数整除$n_i$的循环扩张，从而是单根式扩张.于是$F'K/F$是根式扩张，即$f$根式可解.
+\end{proof}
+\begin{remark}
+    在特征$p$时条件就没有这么简洁了，设$f\in F[x]$可分并且$E/F$是其分裂域.
+    \begin{itemize}
+        \item 若$[E:F]$的素因子都小于\footnote{因为分圆域扩张$[F(\zeta_n):F]=\varphi(n)<p$才能保证循环扩张是单根式扩张.}$p$，则$\mathrm{Gal}(E/F)$可解$\implies f$根式可解.
+        \item 若单根式扩张次数都与$p$互素，则$f$根式可解$\implies\mathrm{Gal}(E/F)$可解.
+    \end{itemize}
+\end{remark}
+\begin{cor*}[(Abel--Ruffini)]
+    在域特征$0$时，$n$次一般多项式根式可解当且仅当$n\le 4$.
+\end{cor*}
+\begin{proof}
+    因为当且仅当$n\le 4$时$S_n$可解.
+\end{proof}
+
+实际上，加入单位根并利用Lagrange预解式就是根式求解低次一般方程的方法.

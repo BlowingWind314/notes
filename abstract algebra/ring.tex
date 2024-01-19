@@ -1,0 +1,582 @@
+\chapter{环}
+\section{基本性质}
+\subsection{环与环同态}
+\begin{definition}
+    若非空集$R$上有两个代数运算$+,\,\cdotp$满足
+    \begin{itemize}
+        \item $(R,+)$构成交换群，
+        \item $(R,\cdotp)$构成半群，
+        \item 分配律$a(b+c)=ab+ac,\,(a+b)c=ac+bc$，
+    \end{itemize}
+    则称$(R,+,\cdotp)$是{\heiti 环}，简称$R$是环.若$0=1$，则$R=0$称为{\heiti 零环}.
+    \begin{itemize}
+        \item 若$(R,\cdotp)$构成幺半群，则称$R$是{\heiti 幺环}\footnote{为了叙述方便，我们规定零环不是幺环.}.
+        \item 若$(R,\cdotp)$构成交换半群，则称$R$是{\heiti 交换环}.
+    \end{itemize}
+    
+    若环$R$中$a,b\ne 0$但$ab=0$，则称$a,b$分别为{\heiti 左右零因子}，统称{\heiti 零因子}.若幺环$R$中元素$a\in R$存在$b\in R$满足$ab=ba=1$，则称$a$是{\heiti 可逆元}或{\heiti 单位}.全体可逆元构成乘法群，称为幺环$R$的{\heiti 单位群} $R^*$.而乘法群$R\setminus\{0\}$记作$R^{\times}$.
+    \begin{itemize}
+        \item 无零因子的交换幺环称为{\heiti 整环}.
+        \item 任何非零元都可逆的幺环称为{\heiti 除环}或{\heiti 体}.
+        \item 交换除环称为{\heiti 域}.
+    \end{itemize}
+\end{definition}
+
+下面考虑环的子结构和商结构.显然有{\heiti 子环}的概念，注意幺环的子环可能不是幺环.
+
+为了商结构，若子环$I\subseteq R$满足$RI=R$，则称$I$是$R$的{\heiti 左理想}，类似地有{\heiti 右理想}.既是左理想又是右理想的子环称为{\heiti 双边理想}，简称{\heiti 理想}，有时强调记作哥特体$\mathfrak{m}$.
+
+显然$0,R$是{\heiti 平凡理想}.只有平凡理想的环称为{\heiti 单环}.
+
+若$I\subseteq R$是理想，则$R/I$自然成为环，称为{\heiti 商环}.
+
+\begin{definition}
+    设$R,R'$是环，若映射$\sigma\colon R\to R'$同时是加法群同态和乘法半群同态，称$\sigma$是{\heiti 环同态}.若$R,R'$都是幺环，还要求$\sigma(1)=1$保幺元.
+
+    若环同态$\sigma\colon R\to R'$是双射，则称$\sigma$是{\heiti 环同构} $R\cong R'$.
+\end{definition}
+
+与群类似，环同态的核$\ker\sigma$是理想，像$\operatorname*{Im}\sigma$是子环，并且
+\begin{thm}[(环同态基本定理)]
+    设$\sigma\in\operatorname*{Hom}(R,R')$，则$R/\ker\sigma\cong\operatorname*{Im}\sigma$.\qed
+\end{thm}
+
+自然同态$R\to R/I$也说明任何理想都是同态核.不难验证环同态也有如下同构定理.
+\begin{thm}[(第一环同构)]
+    设$I\subseteq R$是理想，$H\subseteq R$是子环，则$(H+I)/I\cong H/H\cap I$.\qed
+\end{thm}
+\begin{thm}[(第二环同构)]
+    设$I\subseteq J\subseteq R$都是理想，则$(R/I)/(J/I)\cong R/J$.\qed
+\end{thm}
+
+商环的子环和理想也有与商群类似的对应定理.
+
+下面举一些初步的例子：
+\begin{itemize}
+    \item 群$G$的{\heiti 自同态环} $\operatorname*{End}(G)$.
+    \item 环$R$上的$n$阶{\heiti 全矩阵环} $M_n(R)$.
+    \item 整数环$\mathbb{Z}$和模$n$整数环$\mathbb{Z}/n\mathbb{Z}$\footnote{从本章开始都记作$\mathbb{Z}/n\mathbb{Z}$或$\mathbb{Z}/(n)$.避免与$p$-进整数环$\mathbb{Z}_p$混淆.}.
+    \item {\heiti 四元数体} $\mathbb{H}$.
+\end{itemize}
+
+可以定义若干环的{\heiti 外直积} $\prod R_i$和{\heiti 外直和} $\bigoplus R_i$.它们的区别在于后者要求其中的元素至多有限项非零，从而二者在有限情形相同.对内直和有
+\begin{prop}
+    设$I_1,I_2\subseteq R$是理想且$R=I_1+I_2$，则$R\cong I_1\oplus I_2$当且仅当$I_1\cap I_2=0$.\qed
+\end{prop}
+
+与有限群内容丰富不同，我们不太关注有限环.这是因为
+\begin{thm}[(Wedderburn)]
+    有限除环是域.
+\end{thm}
+\begin{proof}
+    设$D$是有限除环并对阶数$|D|$归纳.显然$Z(D)$也是有限除环，从而是域，因此$D$是$Z(D)$上的$n$维线性空间.记$q:=|Z(D)|>1$，则$|D|=q^n$，往证$n=1$.
+
+    若不然，取$x\in D\setminus Z(D)$，则$x$的中心化子$Z_x$也是有限除环，所以是域.类似地得到$|Z_x|=q^d$.现在将$D$视作$Z_x$上的线性空间可知$d\mid n$.对乘法群$Z(D)^*,Z_x^*,D^*$用类方程得到
+    \[
+        q^n-1=q-1+\sum\frac{q^n-1}{q^d-1}.
+    \]
+
+    利用下述恒等式
+    \[
+        x^m-1=\prod_{k\mid m}\Phi_k(x),
+    \]
+    其中$\Phi_k(x)$是分圆多项式.取$x=q$可得$\Phi_n(q)\mid q-1$，即$|\Phi_n(q)|\le q-1$.
+
+    然而$\Phi_n(x)=\prod(x-\zeta)$，其中求和遍历$n$次本原单位根$\zeta$，所以$n>1$时$|q-\zeta|>|q-1|$，所以$|\Phi_n(q)|>q-1$，矛盾.
+\end{proof}
+\begin{remark}
+    由此可知对有限环来说：整环$\Leftrightarrow$除环$\Leftrightarrow$域，其中易证有限整环是域.
+\end{remark}
+\begin{remark}
+    作为常见结论，若$D$是除环，则$M_n(D)$是单环.
+\end{remark}
+
+\begin{prop}
+    交换幺环是域当且仅当它是单环.
+\end{prop}
+\begin{proof}
+    设$F$是域而理想$I\ne(0)$，则$1=aa^{-1}\in I$，即$I=F$.反之，任取$a\in R$非零，则$(a)=R$，即存在$b\in R$满足$ab=ba=1$，即$a$可逆.
+\end{proof}
+
+\subsection{理想的运算}
+设$I,J\subseteq R$是理想，记$IJ$为全体$I,J$元素乘积的有限和，则显然$I+J,\,IJ,\,I\cap J$也是理想，它们满足
+\[
+    IJ\subseteq I\cap J\subseteq I+J,
+\]
+并且有分配律.若$I+J=R$，则称理想$I,J$ {\heiti 互素}.
+
+\begin{prop}
+    在幺环$R$中若$I,J$都与$K$互素，则$IJ$也与$K$互素.
+\end{prop}
+\begin{proof}
+    设$I+K=J+K=R$，注意$1\in\mathfrak{m}\Leftrightarrow\mathfrak{m}=R$，存在$a+c_1=b+c_2=1$，于是$ab+(ac_2+c_1b+c_1c_2)=1$，即$IJ+K=R$.
+\end{proof}
+\begin{prop}
+    在交换幺环$R$中若$I,J$互素，则$IJ=I\cap J$.
+\end{prop}
+\begin{proof}
+    任取$x\in I\cap J$.由$I+J=R$设$a+b=1$，则$x=ax+xb\in IJ$，即$I\cap J\subseteq IJ$.
+\end{proof}
+\begin{thm}[(中国剩余定理)]
+    设幺环$R$的理想$I_1,\cdots,I_r$两两互素，则
+    \[
+        R/I_1\cap\cdots\cap I_r\cong R/I_1\oplus\cdots\oplus R/I_r.
+    \]
+\end{thm}
+\begin{proof}
+    考虑自然同态$\sigma\colon R\to R/I_1\oplus\cdots\oplus R/I_r$，显然$\ker\sigma=I_1\cap\cdots\cap I_r$.往证$\sigma$满，即证明对任意$b_j\in I_j$存在$a\in R$满足同余方程
+    \[
+        \forall j,\quad a\equiv b_j\pmod{I_j}.
+    \]
+
+    简记$\hat I_j:=I_1\cdots\hat{I}_j\cdots I_r$，则$I_j+\hat I_j=R$，即存在$e_j\in I_j,\,d_j\in\hat I_j$满足$e_j+d_j=1$.注意基元$e_j$满足$e_j\equiv \delta_{jk}\pmod{I_k}$,所以取$a=\sum b_je_j$即证.
+\end{proof}
+
+由于理想的任意交是理想，设$S\subseteq R$非空，则包含$S$的全体理想的交称为由$S$ {\heiti 生成}的理想$(S)$.于是可以定义理想是否{\heiti 有限生成}.特别地，由单个元素$a\in R$生成的理想$(a)$称为{\heiti 主理想}.显然在交换幺环中$(a)=Ra=aR$.
+
+如果任何理想都是主理想，则称环$R$是{\heiti 主理想环}.容易验证主理想环的商环也是主理想环.但主理想环的子环不一定是主理想环，例如$\mathbb{Z}[x]\subseteq\mathbb{Q}[x]$.
+
+容易证明$\mathbb{Z}$是主理想环.因此对任意幺环$R$考虑环同态
+\[
+    \sigma\colon \mathbb{Z}\to R,\quad n\mapsto n\cdot 1,
+\]
+则$\ker\sigma=(m)$，其中$m\ge 0$.非负整数$m$称为幺环$R$的{\heiti 特征} $\operatorname*{char} R$.
+\begin{prop}
+    整环$R$的特征$\operatorname*{char} R=0$或素数$p$.\qed
+\end{prop}
+
+\subsection{素理想和极大理想}
+{\heiti 本节及后续两节总假设$R$是交换幺环}.
+\begin{definition}
+    环$R$的真理想$P$若满足$ab\in P$蕴含$a\in P$或$b\in P$，则称$P$是{\heiti 素理想}.若$M$是环$R$全体真理想的包含关系极大元，则称$M$是{\heiti 极大理想}.
+\end{definition}
+
+注意现在$R$是整环当且仅当$(0)$是素理想，同时$R$是域当且仅当$R$是单环，即$(0)$是极大理想.而$R=R/(0)$，实际上
+\begin{prop}
+    设$R$是交换幺环.
+    \begin{enumerate}
+        \item 真理想$P\subseteq R$是素理想当且仅当$R/P$是整环.
+        \item 真理想$M\subseteq R$是极大理想当且仅当$R/M$是域.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    \hspace*{5.2pt}(1)设$ab+P=P$，则$ab\in P$，从而$a+P=P$或$b+P=P$，即$R/P$是整环.
+
+    (2)注意商环对应下保持极大理想.
+\end{proof}
+\begin{remark}
+    命题说明商环的对应同时保持素理想和极大理想，并且极大理想是素的.反之不然，例如$\mathbb{Z}[x]$中$(2)$是素理想，但$(2)\subset(2,x)$非极大.易证在主理想整环中非零素理想极大.
+
+    容易证明，若$P\subseteq R$是素理想而$R_1\subseteq R$是含幺子环，则$P\cap R_1$也是素理想.因此素理想的原像总是素理想.
+\end{remark}
+
+环$R$是否总有极大理想以使商环是域？这与选择公理等价.
+\begin{lemma*}
+    设$a\in R$非幂零，则存在$R$的素理想$P$与$\{a^n\mid n\in\mathbb{N}\}$不交.
+\end{lemma*}
+\begin{proof}
+    取$\mathcal{S}$为$R$中与$\{a^n\mid n\in\mathbb{N}\}$不交的全体理想，则$(0)\in\mathcal{S}\ne\varnothing$.设$\{I_\alpha\}\subseteq\mathcal{S}$是全序子集，令$I=\bigcup I_\alpha$，不难验证$I\in\mathcal{S}$.因此根据Zorn引理取$\mathcal{S}$极大元$P$.往证$P$素.
+
+    若不然，设$bc\in P$但$b,c\notin P$.由$P$极大，理想$(a)+P,(b)+P\notin\mathcal{S}$，即存在$a^r\in (a)+P$和$a^s\in (b)+P$.因此$a^{r+s}\in((a)+P)((b)+P)\subseteq P$矛盾.
+\end{proof}
+\begin{remark}
+    此引理也可由下述定理利用局部化$R_a$的素理想拉回得到.
+\end{remark}
+\begin{thm}
+    交换幺环存在极大理想.\qed
+\end{thm}
+
+极大理想是素的，环$R$总有素理想.全体素理想的交$N(R)$称为环$R$的{\heiti 幂零根}.
+\begin{prop}
+    $N(R)$由全体幂零元组成.
+\end{prop}
+\begin{proof}
+    设$a\in R$幂零.对任意素理想$P$由$a^n=0\in P$，从而$a\in P$或$a^{n-1}\in P$，总有$a\in P$.设$a\in R$不幂零，则上述引理给出了素理想不含$\{a^n\mid n\in\mathbb{N}\}$，即$a\notin J(R)$.
+\end{proof}
+
+全体极大理想的交$J(R)$称为{\heiti Jacobson根}.显然$N(R)\subseteq J(R)$.
+
+若$r\in R$满足$\forall x\in R,\,1-rx$可逆，称$r$是{\heiti 拟正则元}.不难证明$J(R)$由全体拟正则元组成.具体写出幂零元和可逆元可知多项式环中$N(R[x])=J(R[x])$.
+
+\subsection{分式环}
+设$S\subseteq R$非空，若$S$对乘法封闭，则称$S$是$R$的{\heiti 乘性子集}.不难验证
+\[
+    N:=\left\{r\in R\mid \exists s\in S,\,rs=0\right\}
+\]
+是$R$的理想，并且若$0\in S$则$N=R$；若$0\notin S$则$N\cap S=\varnothing$.
+
+设$S$是$R$的乘性子集且$0\notin S$，在$R\times S$上定义等价关系$(r,s)\sim(r',s')$为$rs'-r's\in N$.记等价类$\overline{(r,s)}=:r/s$，得到商集
+\[
+    S^{-1}R:=\left\{\frac{r}{s}\,\middle|\, r\in R,\,s\in S\right\}.
+\]
+在$S^{-1}R$自然地定义运算得到交换幺环.称$S^{-1}R$为$R$关于乘性子集$S$的{\heiti 分式环}或{\heiti 局部化}.
+
+考虑环同态$\sigma\colon R\to S^{-1}R,\,r\mapsto r/1$，显然$\ker\sigma=N$.
+
+注意若$S$不含零因子，则$\ker\sigma=N=0$，即$R$可以嵌入.特别地，若$R$是整环，则分式环$S^{-1}R$也是整环，且$R\hookrightarrow S^{-1}R$是嵌入.
+
+作为例子，考虑
+\begin{itemize}
+    \item 若$R$是整环，取$S=R\setminus\{0\}$得到{\heiti 分式域}.
+    \item 若$\mathfrak{p}$是素理想，取$S=R\setminus\mathfrak{p}$，记为$R_{\mathfrak{p}}$.
+    \item 若$a\in R$不幂零，取$S=\{a^n\mid n\in\mathbb{N}\}$，记为$R_a$.
+\end{itemize}
+
+\begin{prop}
+    设$R,R'$是交换幺环，环同态$\eta\colon R\to R'$.若$S\subseteq R$是乘性子集且对任意$s\in S$有$\eta(s)$可逆，则存在唯一环同态$\tilde{\eta}\colon S^{-1}R\to R'$满足
+    \[
+        \xymatrix{
+        R\ar[r]^(0.4)\sigma\ar[rd]_\eta&S^{-1}R\ar@{.>}[d]^(0.45){\tilde{\eta}}\\
+        &R'
+        }
+    \]
+\end{prop}
+\begin{proof}
+    构造$\tilde{\eta}\colon r/s\mapsto \eta(r)\eta(s)^{-1}$.
+\end{proof}
+\begin{cor*}
+    分式环$S^{-1}R$唯一.特别地，整环$R$的分式域$F$唯一.\qed
+\end{cor*}
+
+例如，对整环$\mathbb{Z}$作分式化得到唯一的有理数域$\mathbb{Q}$.
+
+分式环的理想结构是简单的.
+\begin{prop}
+    对分式环$S^{-1}R$的任意理想$J$存在$R$的理想$I$满足$J=S^{-1}I$.
+\end{prop}
+\begin{proof}
+    显然$J$收缩到$R$上得到$R$的理想$I$且$S^{-1}I\subseteq J$.反之，若$r/s\in J$，则$r=r/s\cdot s/1\in J$，即$r\in I$或$r/s\in S^{-1}I$，因此$S^{-1}I=J$.
+\end{proof}
+
+特别地，主理想环的分式环是主理想环.
+
+\subsection{多项式环}
+若$R$是$R'$的子环，称$R'$是$R$的{\heiti 扩环}.先找最一般的扩环.
+
+设$R$是交换幺环.记$R[[x]]:=\prod R$是可数无限次直积，逐分量运算给出$R[[x]]$是交换幺环，称为$R$上的{\heiti 一元形式幂级数环}.类似地，可数无限次直和$R[x]:=\bigoplus R$也是交换幺环，称为$R$上的{\heiti 一元多项式环}.
+
+\begin{prop}
+    设$S$是幺环而$\sigma\colon R\to S$是环同态.对任意$s\in S$存在唯一环同态$\sigma_s\colon R[x]\to S$满足$\sigma_s(x)=s$并且$\sigma_s|_R=\sigma$.\qed
+\end{prop}
+\begin{cor*}
+    设$I\subseteq R$是理想，则$R[x]/I[x]\cong(R/I)[y]$.\qed
+\end{cor*}
+\begin{remark}
+    结合下面$R$是整环$\Rightarrow R[x]$是整环可知若$I$是素理想，则$I[x]$是$R[x]$素理想.
+\end{remark}
+\begin{cor*}
+    设幺环$S$是$R$的扩环，则对任意$s\in S$存在理想$I\subseteq R[x]$满足$R[s]\cong R[x]/I$且$I\cap R=0$.\qed
+\end{cor*}
+
+可见，理想$I$是元素$s\in S$在$R$上的全体代数关系.若$I=(0)$，则称$s$在$R$上是{\heiti 超越元}.否则，存在$f\in R[x]$非零且$f(s)=0$，称$s$在$R$上是{\heiti 代数元}.
+
+很容易将上概念和结论推广到{\heiti 多元多项式环} $R[x_1,\cdots,x_n]$.特别地，扩环$R[s_1,\cdots,s_n]$称为$R$上的{\heiti 有限生成环}，有$R[s_1,\cdots,s_n]\cong R[x_1,\cdots,x_n]/I$.此时$I=(0)$与否决定了元素$s_1,\cdots,s_n$是否在$R$上{\heiti 代数无关}.
+
+若$R[x_1,\cdots,x_n]$的理想有限生成，$s_1,\cdots,s_n$就有基本的代数关系.
+
+\medskip 以下讨论多项式环$R[x]$的基本性质.主要围绕$R$上的代数元，即多项式的根.
+\begin{lemma*}
+    若$R$是整环，则$R[x]$也是整环，并且$R[x]^*=R^*$.
+\end{lemma*}
+\begin{proof}
+    $fg=1$蕴含$\deg f+\deg g=0$，即$f,g\in R^*$.
+\end{proof}
+\begin{prop}
+    若$f,g\in R[x]$且$g\ne 0$的首项系数可逆，则存在唯一$q,r\in R[x]$满足
+    \[
+        f=qg+r,\quad\deg r<\deg g.
+    \]
+\end{prop}
+\begin{proof}
+    对$\deg f$归纳.唯一性注意$\deg q=\deg f-\deg g$并归纳.
+\end{proof}
+\begin{cor*}
+    设$f\in R[x],\,c\in R$，则$f(x)=q(x)(x-c)+f(c)$.\qed
+\end{cor*}
+\begin{prop}
+    设$R$是整环，则$n$次多项式$f\in R[x]$至多有$n$个根.
+\end{prop}
+\begin{proof}
+    整环$R$有唯一分式域$F$，于是$f\in F[x]$在$F$中至多$n$个根.
+\end{proof}
+\begin{prop}
+    设$F$是域，则$F[x]$是主理想整环.
+\end{prop}
+\begin{proof}
+    这是Euclid整环是主理想整环的特例，见下节.
+\end{proof}
+\begin{remark}
+    实际上这是充要命题.设$R$是交换幺环，则$R$是域当且仅当$R[x]$是主理想整环.证明只需考虑满同态$R[x]\to R[x]/(x)\cong R$，由下节易证整环$R$是单环.
+\end{remark}
+
+现在特别考虑域$F$上的多项式环$F[x]$.设幺环$S$是其扩环而$u\in S$是代数元，则$F[u]\cong F[x]/(f(x))$，其中$f\ne 0$且$(f(x))\cap F=0$，即$\deg f\ge 1$.不妨设$f$首一，则$f$称为代数元$u$在$F$上的{\heiti 极小多项式}.
+\begin{prop}
+    设$F$是域.若$f\in F[x]$且$\deg f\ge 1$，则$f$不可约当且仅当$(f(x))$极大.
+\end{prop}
+\begin{proof}
+    若$f$不可约，设$(f(x))\subseteq (g(x))$，则$g\mid f$，只能$g=\lambda f$或$g=\lambda$，其中$\lambda\in F^*$，即$(g(x))=(f(x))$或$(g(x))=F[x]$.若$f=gh$可约，则由次数知$g,h\notin (f(x))$，从而$(f(x))$不是极大理想，否则它是素理想与$gh\in(f(x))$矛盾.
+\end{proof}
+
+\section{整环的整除性}
+\subsection{基本概念}
+{\heiti 本节及下节总设$R$是整环}.
+
+设$a,b\in R$.若存在$c\in R$满足$b=ac$，则称$a$是$b$的{\heiti 因子}并且有{\heiti 整除} $a\mid b$.整除有若干熟知性质，不一一列举.可以定义{\heiti 公因子}和{\heiti 最大公因子}(不一定存在).
+
+若$a\mid b$且$b\mid a$，称$a\sim b$ {\heiti 相伴}.显然相伴是等价关系，并且$a,b$相伴当且仅当它们相差一个可逆元因子.若$a\mid b$且$a\nsim b$，则称$a$是$b$的{\heiti 真因子}.
+
+若非零不可逆元$a$没有真因子，称$a$是{\heiti 不可约元}.若非零不可逆元$a$满足$a\mid bc$蕴含$a\mid b$或$a\mid c$，称$a$是{\heiti 素元}.不难证明素元都是不可约元.
+
+现在主理想的包含关系与元素的整除关系对应，有$(b)\subseteq (a)\Leftrightarrow a\mid b$.
+
+\begin{lemma*}
+    $a$是素元当且仅当$(a)$是非零素理想.\qed
+\end{lemma*}
+
+注意对不可约元不一定成立，不过在主理想整环(简称PID)上有
+\begin{prop}
+    在PID上$a$是不可约元当且仅当$(a)$是极大理想.
+\end{prop}
+\begin{proof}
+    显然$(a)$极大蕴含$a$不可约.若$a$不可约且$(a)\subseteq (b)$，则$b\mid a$，只能$b\sim a$或$b\sim 1$，即$(b)=(a)$或$(b)=R$，于是$(a)$极大.
+\end{proof}
+\begin{remark}
+    一般地，这些概念的关系见下图：
+    \[
+        \xymatrix{
+        \text{非零素主理想}\ar@<1.5pt>@^{.>}[r]^{\text{PID}}\ar@<-1.5pt>@_{<-}[r]\ar@2{<->}[d]&\text{极大主理想}\ar@<1.5pt>@^{->}[d]\ar@<-1.5pt>@_{<.}[d]_{\text{PID}}\\
+        \text{素元}\ar@<1.5pt>@^{->}[r]\ar@<-1.5pt>@_{<.}[r]_{\text{PID}}&\text{不可约元}
+    }
+    \]
+    \begin{itemize}
+        \item 非零素主理想不一定极大.例如$\mathbb{Z}[x]$中$(x)$素但是$(x)\subset(2,x)$.
+        \item 不可约元不一定是素元.例如$\mathbb{Q}[x]/(x^2-y^3)$中$y$不可约但$y\mid x^2,\,y\nmid x$.
+        \item 不可约元生成的主理想不一定极大.例如$\mathbb{Z}[x]$中$x$不可约但$(x)\subset(2,x)$.
+    \end{itemize}
+\end{remark}
+
+最大公因子若存在，则在相伴意义下唯一，记作$(a,b)$.
+\begin{prop}
+    若$(a)+(b)=(d)$，则$d=(a,b)$是一个最大公因子.
+\end{prop}
+\begin{proof}
+    注意$(a),(b)\subseteq(d)$，即$d\mid a$且$d\mid b$.若$d'\mid a,\,d'\mid b$，则$(a)+(b)\subseteq(d')$，即$d'\mid d$.
+\end{proof}
+\begin{cor*}
+    在PID上总存在最大公因子，且$((a,b))=(a)+(b)$.\qed
+\end{cor*}
+
+下面引入一种新的整环.
+\begin{definition}
+    在整环$R$上若存在$d\colon R^\times\to\mathbb{N}$满足对任意$a,b\in R,\,b\ne 0$存在$q,r\in R$使得$a=qb+r$，并且$r=0$或$d(r)<d(b)$，则称$R$是{\heiti Euclid整环}(简称ED).
+\end{definition}
+
+例如，$\mathbb{Z}$和$F[x]$是ED，其中$F$是域.
+
+在Euclid整环中最大公因子不仅存在，而且可以利用辗转相除求出.
+\begin{thm}
+    Euclid整环是主理想整环.
+\end{thm}
+\begin{proof}
+    设$I\subseteq R$是非零理想，可取非零元$a\in I$且$d(a)$最小，从而对任意$b\in I$只能$b=qa$，即$b\in(a)$，于是$I=(a)$是主理想.
+\end{proof}
+
+设$m\in\mathbb{Z}$无平方因子，则$\sqrt{m}$是$\mathbb{Q}$上的代数元，即有{\heiti 二次数域} $\mathbb{Q}(\sqrt{m})$.若$\alpha\in\mathbb{Q}(\sqrt{m})$的极小多项式$f\in\mathbb{Z}[x]$，则称$\alpha$是{\heiti 代数整数}.在$\mathbb{Q}(\sqrt{m})$上可以定义{\heiti 范数} $N(\alpha)=\alpha\bar\alpha$，其中$\alpha=a+b\sqrt{m},\,\bar\alpha=a-b\sqrt{m}$.显然$N(\alpha\beta)=N(\alpha)N(\beta)$.
+
+$\mathbb{Q}(\sqrt{m})$上的全体代数整数记为$R_m$或$\mathcal{O}_{\mathbb{Q}(\sqrt{m})}$.不难证明
+\begin{itemize}
+    \item $R_m=\mathbb{Z}[\sqrt{m}]$，若$m\equiv 2,3\pmod{4}$.
+    \item $R_m=\mathbb{Z}[\frac{1+\sqrt{m}}{2}]$，若$m\equiv 1\pmod{4}$.
+\end{itemize}
+因此$R_m\subseteq\mathbb{Q}(\sqrt{m})$是子环，称为{\heiti 代数整数环}.取$d(\alpha)=|N(\alpha)|$可以证明
+\begin{itemize}
+    \item $R_{-1},R_{2},R_{-2},R_3,R_{-3},R_5,R_7,R_{-7},R_{11},R_{-11},R_{13}$等是Euclid整环.
+\end{itemize}
+其中$R_{-1}=\mathbb{Z}[\sqrt{-1}]$称为{\heiti Gauss整数环}.
+
+\begin{remark}
+    关于Gauss整数环可以得出不少结论.例如，易知$\mathbb{Z}[\mi]$的可逆元只有$\pm 1,\pm\mi$.
+\end{remark}
+\begin{remark}
+    (二平方和定理)若素数$p\equiv 1\pmod4$，则存在$a,b\in\mathbb{Z}$满足$p=a^2+b^2$.
+
+    断言$p\in\mathbb{Z}[\mi]$不是素元.注意在$(\mathbb{Z}/p\mathbb{Z})^*\cong Z_{p-1}$中$x$是平方元当且仅当$x^{\frac{p-1}{2}}=1$.而$p\equiv 1\pmod4$时$(-1)^{\frac{p-1}{2}}=1$，因此存在$x\in\mathbb{Z}$满足$x^2\equiv-1\pmod p$，即$p\mid x^2+1$，因此$p\mid x+\mi$或$p\mid x-\mi$，矛盾.于是$p$有真因子$a+b\mi$，从而$N(a+b\mi)\mid N(p)$，即$a^2+b^2\mid p^2$.但是$a^2+b^2=1$不可能，此时$a+b\mi$是可逆元，所以$a^2+b^2=p$.
+\end{remark}
+\begin{remark}
+    可求出$\mathbb{Z}[\mi]$中全体素元(相伴意义下唯一)
+
+    \begin{itemize*}
+        \item $1+\mi$.
+        \item $a+b\mi$，其中$a^2+b^2$是素数$p\equiv 1\pmod 4$.
+        \item $p\equiv 3\pmod 4$.
+    \end{itemize*}
+
+    断言如下引理：$a+b\mi\in\mathbb{Z}[\mi]$是素元当且仅当$N(a+b\mi)$是素数，其中$ab\ne 0$.
+
+    若$a+b\mi$素，由分解$a^2+b^2=(a+b\mi)(a-b\mi)$可知$a^2+b^2$在$\mathbb{Z}$中至多两个素因子.假如$a^2+b^2$非素数，只能$a+b\mi\in\mathbb{Z}$，与$ab\ne 0$矛盾.若$a+b\mi$不素，设$a+b\mi=rs$，则$N(a+b\mi)=N(r)N(s)$不素，因为$N(\alpha)=1$的只有可逆元.
+
+    现在先讨论素数$p$，再讨论素数$N(a+b\mi)$，模$4$分类即可.
+    \begin{itemize}
+        \item 当$p=2$时，$2=(1+\mi)(1-\mi)$非素元，但$1+\mi$是素元.
+        \item 当$p\equiv 1\pmod 4$时，$p=(a+b\mi)(a-b\mi)$非素元，但$a+b\mi$是素元.
+        \item 当$p\equiv 3\pmod 4$时，若$p=a^2+b^2$，注意平方元模$4$余$0,1$，有$p\equiv 0,1,2\pmod 4$矛盾，故$p$素元且$a+b\mi$非素元.
+    \end{itemize}
+\end{remark}
+
+\subsection{唯一因式分解整环}
+\begin{definition}
+    若整环$R$满足
+    \begin{itemize}
+        \item 任何非零不可逆元$a\in R$是有限个不可约元的乘积\footnote{只满足这一条的称为\emph{分解整环}(atomic domain).}.
+        \item 上述因式分解在相伴意义下唯一\footnote{在整环中的“唯一性”都是在相伴意义下的，以后就略去相伴意义不写.}，
+    \end{itemize}
+    则称$R$是{\heiti 唯一因式分解整环}或{\heiti Gauss整环}，简称UFD.
+\end{definition}
+
+\begin{lemma*}
+    若整环$R$的任何主理想升链有限，则$R$是分解整环.
+\end{lemma*}
+\begin{proof}
+    设$a\in R$非零不可逆且可约，考虑$a$的真因子$\cdots\mid a_2\mid a_1$，则此因子降链有限，即$a=p_1b_1$，其中$p_1$不可约.对$b_1$同理有$b_1=p_2b_2$，如是得到因子降链$\cdots\mid b_2\mid b_1$，因此最后必有$b_n=p_n$不可约，即$a=p_1\cdots p_n$.
+\end{proof}
+\begin{thm}
+    设$R$是整环，则$R$是UFD当且仅当
+    \begin{itemize}
+        \item 任何主理想升链有限.
+        \item 不可约元都是素元.
+    \end{itemize}
+\end{thm}
+\begin{proof}
+    唯一性对不可约元个数归纳.逆命题由标准分解即证.
+\end{proof}
+\begin{prop}
+    若整环$R$中任一对元素存在最大公因子，则不可约元都是素元.
+\end{prop}
+\begin{proof}
+    设$p\mid ab$不可约.取$d=(p,a)$.若$d\sim p$，则$p\mid a$.若$d=1$，则$b=(bp,ab)$，即$p\mid b$.
+\end{proof}
+
+显然UFD中最大公因子总存在，因此上述定理中第二条可以换成最大公因子总存在.
+\begin{cor*}
+    主理想整环是UFD.\qed
+\end{cor*}
+
+\begin{prop}
+    设$R$是UFD.下述命题等价：
+    \begin{enumerate}
+        \item $R$是主理想整环.
+        \item 若$d=(a,b)$，则$(d)=(a)+(b)$.
+        \item 不可约元生成的主理想是极大理想.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    \hspace*{5.2pt}(2)$\Rightarrow$(1)设$I\subseteq R$是非零理想，取非零元$a_1\in I$.若已取$a_k$，取$b_k\in I\setminus(a_k)$和$a_{k+1}=(a_k,b_k)$，则$(a_k)\subset(a_{k+1})$.这条主理想升链有限，即最后只能$I=(a_n)$是主理想.
+
+    (3)$\Rightarrow$(2)设$a,b\in R$不可约.不妨设$a,b$不相伴，于是$(a),(b)$是不同的极大理想，进而互素.取$d=(a,b)$，则$a=da_1,\,b=db_1$且$a_1,b_1$的不可约因子不相伴，归纳地有$(a_1),(b_1)$互素.因此$(a)+(b)=(d)((a_1)+(b_1))=(d)$.
+\end{proof}
+
+作为例子，分解整环$R_{-5}=\mathbb{Z}[\sqrt{-5}]$不是UFD，因为$9=3^2=(2+\sqrt{-5})(2-\sqrt{-5})$.这也可以说明UFD的子环不一定是UFD.或者考虑不含一次项的多项式环，则$x^6=x^3\cdot x^3=x^2\cdot x^2\cdot x^2$.它给出了分解出不可约元长度不同的例子.
+\begin{remark}
+    UFD的局部化是UFD.考虑不可约元是否整除$S$中的某个元素.若是，则它在$S^{-1}R$中可逆，否则它在$S^{-1}R$中仍不可约.唯一性是显然的.
+\end{remark}
+
+下面讨论多项式扩张.确切地说，将证明UFD上的多项式环也是UFD.证明依赖Gauss引理，是比较古典的证明.在进一步学习交换代数后可以给出现代风味的简洁证法.
+
+\medskip 设$R$是UFD.对$f=\sum a_ix^i\in R[x]$，若$(a_0,\cdots,a_n)\sim 1$，则称$f$是{\heiti 本原多项式}.容易发现$R[x]$的不可约元就是$R$的不可约元加上全体不可约本原多项式.
+
+不难证明任何$0\ne f\in R[x]$唯一表示为$f=df_1$，其中$d\in R^\times$且$f_1\in R[x]$本原.而如果$d$不可逆，已经可以在$R$中唯一分解$d$.因此问题变成如何唯一分解本原多项式.
+\begin{lemma*}[(Gauss)]
+    设$R$是UFD，则$R$上本原多项式的乘积也是本原多项式.
+\end{lemma*}
+\begin{proof}
+    若不然，存在不可约元$p\in R$满足$p\nmid f,g$但是$p\mid fg$，其中$f,g\in R[x]$本原.由于不可约元$p$是素元，$(p)$是$R$的素理想，可知$R/(p)$是整环.注意在整环$R[x]/(p)=(R/(p))[x]$上就有$f,g\ne 0$但$fg=0$，矛盾.
+\end{proof}
+
+下面通过$R$的分式域$F$作为中介得到本原多项式的分解.
+
+首先，本原多项式$f,g\in R[x]$在$R[x]$中相伴当且仅当在$F[x]$中相伴，从而可以不指明$F$还是$R$谈论相伴意义下的唯一性.
+
+其次，任意$0\ne f\in F[x]$可唯一表示为$f=\dfrac{c}{d}g$，其中$c,d\in R^\times$且$g\in R[x]$本原.
+
+\begin{lemma*}
+    设$R$是UFD，$F$是$R$的分式域，$g\in R[x]$本原，则$g$在$F[x]$中可约当且仅当$g$能分解为两个次数更低的本原多项式的乘积.
+\end{lemma*}
+\begin{proof}
+    设$g=g_1g_2$可约，其中$g_1,g_2\in F[x]$且次数更低.设$g_i=\alpha_i h_i$，其中$\alpha_i\in F^*$且$h_i\in R[x]$本原，则$g=\alpha_1\alpha_2 h_1h_2$.由$\alpha_1\alpha_2\ne 0$可得$g\sim h_1h_2$，即$g=ah_1h_2$，其中$a$可逆，故$ah_1,h_2$本原且次数更低.
+\end{proof}
+\begin{cor*}
+    设$R$是UFD，$F$是$R$的分式域，$g\in R[x]$本原，则$g$在$F[x]$中不可约当且仅当$g$在$R[x]$中不可约.\qed
+\end{cor*}
+\begin{thm}
+    若$R$是UFD，则$R[x]$也是UFD.
+\end{thm}
+\begin{proof}
+    在分式域中分解本原多项式.\qed
+\end{proof}
+
+如是进行下去，可知多元多项式环$R[x_1,\cdots,x_n]$也是UFD.
+\begin{prop}[(Eisenstein)]
+    设$R$是UFD，$F$是$R$的分式域.设
+    \[
+        f(x)=\sum_{i=0}^na_ix^i\in R[x],\quad a_n\ne 0,\,n>1.
+    \]
+    若存在素元$p\in R$满足
+    \begin{enumerate*}
+        \item $p\mid a_i,\,0\le i<n$.
+        \item $p\nmid a_n$且$p^2\nmid a_0$,
+    \end{enumerate*}
+    则$f$在$F[x]$上不可约.
+\end{prop}
+\begin{proof}
+    若$f$在$F[x]$上可约，设$f=f_1f_2$，其中$f_1,f_2\in R[x]$且
+    \[
+        f_1(x)=\sum_{i=0}^kb_ix^i,\quad f_2(x)=\sum_{j=0}^\ell c_jx^j,
+    \]
+    其中$k,\ell>0$.由$a_n=b_kc_\ell$和$a_0=b_0c_0$可得$p\nmid b_k,c_\ell$，不妨设$p\mid b_0$.
+
+    设$0<m\le k$满足$p\nmid b_m$极小，则由$p\mid a_m$得$p\mid b_mc_0$，即$p\mid c_0$，与$p^2\nmid a_0$矛盾.
+\end{proof}
+\begin{remark}
+    若$R$是PID，则$R/(p)$是域，即$R/(p)[x]$是UFD.在$R/(p)[x]$上$f(x)=a_nx^n$，于是$f_1(x)=b_kx^k,\,f_2(x)=c_\ell x^\ell$，即$p\mid b_0,c_0$，与$p^2\nmid a_0$矛盾.
+\end{remark}
+
+\subsection{Noether环}
+\begin{definition}
+    设$R$是交换环，若环$R$的任何理想升链有限，则称$R$是{\heiti Noether环}.
+\end{definition}
+
+例如，PID是Noether环.
+\begin{prop}
+    设$R$是交换环，则$R$是Noether环当且仅当$R$的任何理想都有限生成.
+\end{prop}
+\begin{proof}
+    若$R$是Noether环但理想$I$非有限生成，则可取$\{a_n\}\subseteq I$满足
+    \[
+        (a_1)\subset(a_1,a_2)\subset(a_1,a_2,a_3)\subset\cdots
+    \]
+    是无限升链，矛盾.反之，任取理想升链$\{I_n\}$，易知$I=\bigcup I_n$是理想，设$I=(a_1,\cdots,a_r)$，则存在$n$使得$a_1,\cdots,a_r\in I_n$，于是升链有限.
+\end{proof}
+
+注意商环$R/I$的理想形如$J/I$，分式环$S^{-1}R$的理想形如$S^{-1}I$，由上述命题可知Noether环的商环和局部化也是Noether环.
+
+与UFD类似，Noether环的多项式扩张也是Noether环.
+\begin{thm}[(Hilbert基定理)]
+    若$R$是Noether幺环，则$R[x]$也是Noether环.
+\end{thm}
+\begin{proof}
+    设$\mathfrak{a}\subseteq R[x]$非有限生成，则存在多项式序列$\{f_i\}$满足$\mathfrak{b}_n=(f_1,\cdots,f_n)$且$f_{n+1}\in\mathfrak{a}\setminus\mathfrak{b}_n$次数极小，于是$\{\deg f_i\}$不减.记$f_n$首项系数为$a_n$，则$\mathfrak{b}:=(a_1,a_2,\cdots)=(a_1,\cdots,a_r)$.特别地，设$a_{r+1}=\sum_{i\le r}\lambda_ia_i$.取
+    \[
+        g(x)=\sum_{i=1}^r\lambda_ix^{\deg f_{r+1}-\deg f_i}f_i(x),
+    \]
+    则$g$首项系数为$a_{r+1}$.注意$g\in\mathfrak{b}_r,\,f_r\notin\mathfrak{b}_r$，故$f_{r+1}-g\in\mathfrak{a}\setminus\mathfrak{b}_r$，与$f_{r+1}$次数极小矛盾.
+\end{proof}
+\begin{remark}
+    需要注意的是，UFD不一定是Noether环.例如允许无限元的多项式环$k[x_1,\cdots]$是UFD，但它显然有无限的理想升链$(x_1)\subset(x_1,x_2)\subset\cdots$.
+
+    另一方面，Noether环当然也不一定是UFD.例如$Z[x]$是Noether环，它的商环$\mathbb{Z}[\sqrt{-5}]$就是非UFD的Noether环.
+\end{remark}
+\begin{remark}
+    Noether环的子环不一定是Noether环.例如$k[x,y]$的由$\{xy^k\mid k\ge 0\}$生成的子环$R$.
+
+    断言$R$自己就不是有限生成的.若不然，设$f_1,\cdots,f_r$生成$R$，注意$\deg_x(f_if_j)>1$，任何$x$次数$1$的多项式形如$\sum\lambda_if_i$.因此商环$R/(x^2)$作为$k$-线性空间至多$r$维，然而有线性同构$R/(x^2)\cong k[y]$，矛盾.
+\end{remark}
