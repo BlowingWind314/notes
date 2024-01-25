@@ -1,0 +1,445 @@
+\chapter{模}
+\section{基本性质}
+\subsection{模与模同态}
+\begin{definition}
+    若幺环$R$在Abel加群$M$上有环同态$R\to\operatorname*{End}(M)$作为左乘作用，则称$M$是环$R$上的{\heiti 左模}，简称{\heiti 左$R$-模}.类似地有右$R$-模.
+\end{definition}
+\begin{remark}
+    通过取环的反同构，右模和左模是等价的.不需要特别区分时简称为模.
+\end{remark}
+
+自然地有{\heiti 子模}的概念，即子群构成模.显然有平凡子模$0,M$.
+
+作为线性空间的推广，类似地子模$N_1\cap N_1$的交是子模，子模的和(即全体线性组合) $N_1+N_2$是子模.可定义由非空子集$S\subseteq M$生成的子模$\langle S\rangle $为全体有限个生成元的线性组合，因此可定义{\heiti 有限生成模}.对任意子模$N$都有自然的{\heiti 商模} $M/N$.
+
+作为例子，我们有
+\begin{itemize}
+    \item $F$-线性空间$V$是域$F$-模.子模是线性子空间.
+    \item Abel群$G$是$\mathbb{Z}$-模.子模是子群.
+    \item 幺环$R$是左$R$-模.子模是子幺环.
+    \item $F$-线性空间$V$也是$F[x]$-模，其中$f\mapsto f(\bm A),\,\bm A\in\operatorname*{End}(V)$.子模是$\bm A$-不变子空间.
+\end{itemize}
+
+\begin{definition}
+    若$R$-模之间的群同态$\eta\colon M\to M'$与$R$左乘可换，则称$\eta$是{\heiti 模同态}.进一步有{\heiti 模同构}.
+\end{definition}
+
+\begin{thm}[(模同态基本定理)]
+    设$\eta\colon M\to M'$是模同态，则$\ker\eta,\,\eta(M)$都是子模，并且有自然的模同构$M/\ker\eta\cong\eta(M)$.\qed
+\end{thm}
+\begin{cor*}
+    商模$M/N$的子模格与$M$包含$N$的子模格同构.\qed
+\end{cor*}
+\begin{cor*}
+    模同构$M/H\cong(M/N)/(H/N),\,H+N/N\cong H/H\cap N$.\qed
+\end{cor*}
+
+若$R$-模$M$可由单元素$x\in M$生成，则称$M$为{\heiti 循环$R$-模}.例如，循环群是循环$\mathbb{Z}$-模，幺环$R$是循环左$R$-模.为强调环$R$也记$\langle x\rangle=Rx$.
+
+设$x\in M$，试图在$R$中刻画$x$.注意有模同态
+\[
+    R\to\langle x\rangle,\quad r\mapsto rx,
+\]
+它的核称为$x\in M$的{\heiti 零化子} $\operatorname*{ann}(x)$.于是$\langle x\rangle\cong R/\operatorname*{ann}(x)$，左理想$\operatorname*{ann}(x)$也称$x$的{\heiti 阶理想}.
+
+进一步定义模$M$的{\heiti 零化子}
+\[
+    \operatorname*{ann}(M):=\bigcap_{x\in M}\operatorname*{ann}(x)=\left\{r\in R\mid \forall x\in M,\,rx=0\right\}.
+\]
+显然它是左乘作用的核，故除零模外$1\notin\operatorname*{ann}(M)$.任何$R$-模可视为$R/\operatorname*{ann}(M)$-模.特别地，循环$R$-模$M$就同构于商模$R/\operatorname*{ann}(M)$.
+\begin{remark}
+    例如，设$\bm A\in\operatorname*{End}(V)$，则$F$-线性空间$V$可视为$F[x]$-模.对任意$v\in M$有零化子$\operatorname*{ann}(x)=(m_v(x))$，其中$m_v\in F[x]$首一不可约，称为$v$关于$\bm A$的{\heiti 极小多项式}.此时$\operatorname*{ann}(V)=(m(x))$，则$m$就是$\bm A$的{\heiti 极小多项式}.
+\end{remark}
+
+对$R$-模$M$也可以定义{\heiti 自同态环} $\operatorname*{End}_RM$.例如
+\begin{itemize}
+    \item 线性空间$V$的自同态环就是全体线性变换$\operatorname*{End}(V)$.
+    \item Abel群$G$作为$\mathbb{Z}$-模的自同态环就是群自同态环$\operatorname*{End}(G)$.
+    \item 线性空间$V$作为$F[x]$-模的自同态环是全体与$\bm A$可换的线性变换.
+\end{itemize}
+
+设$M_1,M_2$都是$R$-模，则$M_1\times M_2$上有自然的模结构，称为$M_1,M_2$的{\heiti 直和} $M_1\oplus M_2$.显然$M=N_1+N_2$是{\heiti 内直和} $M=N_1\oplus N_2$当且仅当$N_1\cap N_2=0$.
+
+\subsection{自由模}
+与线性空间类似，对$R$-模的非空子集$S\subseteq M$可定义是否 {\heiti $R$-线性无关}.
+
+\begin{definition}
+    若$R$-模$M$有线性无关的生成元集$S$，则称$M$为{\heiti 自由$R$-模}，$S$称为$M$的{\heiti 基}.
+\end{definition}
+\begin{remark}
+    与线性空间类似，由Zorn引理可证自由模总有基.
+\end{remark}
+
+自由模完全由如下泛性质决定：
+\begin{thm}
+    设$S$是自由$R$-模$M$的基，则映射$S\to M'$可唯一延拓为模同态$M\to M'$.\qed
+\end{thm}
+\begin{cor*}
+    任何$R$-模都是自由$R$-模的同态像.
+\end{cor*}
+\begin{proof}
+    取生成元集自由生成一个自由模即可.
+\end{proof}
+
+下面证明有限基的基数是$M$的不变量，与生成元的选取无关.
+\begin{lemma*}
+    设$S$是自由$R$-模的基，$I\subseteq R$是双边理想，则$M/IS$是自由$R/I$-模，基为$S/IS$.
+\end{lemma*}
+\begin{proof}
+    由$I$是理想知$IS\subseteq M$是子模\footnote{实际上易知$IS$与基$S$的选取无关.}，并且$S/IS$是生成元.注意$I$是$M/IS$的零化子，因此$M/IS$是$R/I$-模，并且$S/IS$线性无关.
+\end{proof}
+\begin{prop}
+    设$R$是交换幺环，$M$是自由$R$-模.若$S_1,S_2$是$M$的基，则$|S_1|=|S_2|$.
+\end{prop}
+\begin{proof}
+    交换幺环$R$有极大理想$I$，记$N=IS_1=IS_2$.注意$M/N$是域$R/I$上的线性空间，$S_1/N,S_2/N$是它的两个基，因此$|S_1|=|S_2|$.
+\end{proof}
+
+交换幺环$R$上的自由模$M$任意基的基数称为$M$的{\heiti 秩} $\operatorname*{rank}(M)$.零模作为自由模特别定义它的秩为零.
+
+记$R^n$为$R$作为$R$-模的$n$次直和，则若$R$-模$M$有基数$n$的基，则$M\cong R^n$.
+\begin{remark}
+    自由模可以与它的真自由子模有相同的秩.例如$\langle 2(1,0),3(0,1)\rangle\subseteq\mathbb{Z}^2$.
+
+    自由模的子模不一定是自由模.例如$\langle 2\rangle\subseteq\mathbb{Z}/6\mathbb{Z}$.
+\end{remark}
+
+自由模还有如下提升性质，满足如下性质的一般推广称为{\heiti 投射模}.
+\begin{prop}[(自由模的提升性质)]
+    设$F$是自由$R$-模，则对$R$-模之间的满同态$f\colon M\to N$和模同态$g\colon F\to N$，存在$g$的提升同态$h\colon F\to M$使下图交换：
+    \[
+    \xymatrix{
+        &M\ar@{->>}[d]^(0.42)f\\
+        F\ar[r]^g\ar@{.>}[ru]^h&N
+    }
+\]
+\end{prop}
+\begin{proof}
+    设$F$的基$\{u_\lambda\}$，由选择公理取定$\{v_\lambda\}\subseteq M$满足$f(v_\lambda)-g(u_\lambda)$，则$u_\lambda\mapsto v_\lambda$延拓为模同态$h\colon F\to M$.显然$g=fh$交换.
+\end{proof}
+\begin{prop}
+    设$P$是投射模且有满同态$\eta\colon M\to P$，则有内直和$M=\ker\eta\oplus P$.
+\end{prop}
+\begin{proof}
+    由提升性质可得模同态$\tau\colon P\to M$满足$\eta\tau=1$，因此$M=\ker\eta\oplus\operatorname*{Im}\tau$.
+\end{proof}
+\begin{cor*}
+    投射模是自由模的直和项.\qed
+\end{cor*}
+\begin{remark}
+    容易验证这也是投射模的一个等价定义.因此投射模的直和是投射模.
+\end{remark}
+
+注意对交换幺环$R$上的有限秩自由模$M$，其自同态完全由基上的取值决定，从而与矩阵相联系.实际上取定一组基就有环同构$\operatorname*{End}(M)\cong M_n(R)$.进一步又诱导出单位群之间的群同构$\operatorname*{Aut}(M)\cong\mathrm{GL}_n(R)$.
+
+如果交换幺环$R$有更好的性质，例如是主理想环，则自由模也有更好的性质.
+\begin{prop}
+    设$M$是主理想交换幺环上的秩$n$自由模，则$M$的子模也是自由模且秩$\le n$.
+\end{prop}
+\begin{proof}
+    对秩$n$归纳，零模显然.设$N$是$M$的子模，取$M$的基$\{\epsilon_i\}$.考虑$N$中全体元素$\sum\lambda_i\epsilon_i$中系数$\lambda_1$组成的理想$I_1=(r_1)$.若$r_1=0$，即$I_1=0$，此时$N$含于自由模$M_1:=\langle \epsilon_2,\cdots,\epsilon_n\rangle $，归纳即证.若$r_1\ne 0$，设$v_1\in N$的$\epsilon_1$系数为$r_1$.令$N_1=N\cap M_1$，则$N=\langle v_1\rangle\oplus N_1$.归纳知$N_1$为自由模，取它的基$v_2,\cdots,v_r$，则$\{v_j\}$是$N$的基，即$N$自由且$\operatorname*{rank}(N)\le n$.
+\end{proof}
+\begin{cor*}
+    主理想交换幺环上有限生成模的子模有限生成.
+\end{cor*}
+\begin{proof}
+    将$M$视作自由模$R^n$的同态像，则子模的原像是自由模，于是有限生成.
+\end{proof}
+
+特别地，考虑PID上的有限生成模，这允许我们归纳地讨论它的结构，从而给出它的完全分类.
+
+\section{PID上的有限生成模}
+\subsection{扭模}
+一般地，很难完全分类某一代数结构，但PID上的有限生成模恰恰可以.
+\begin{definition}
+    在$R$-模$M$中，若$a\in M$满足存在$r\in R^\times$使得$ra=0$，则称$a$是{\heiti 挠元素}或{\heiti 扭元素}.否则称$a$是{\heiti 自由元}.若$M$由挠元构成，称$M$为{\heiti 扭模}或{\heiti 挠模}.若$M$的任何非零元素自由，称$M$ {\heiti 无挠}或{\heiti 无扭}\footnote{“扭”和“挠”都是一个意思(torsion)，根据情况选用语音上合适的词汇.}.
+\end{definition}
+
+很明显，自由模是无挠的.在PID上“无挠”反过来也确定了(有限秩)自由模.
+
+\begin{thm}
+    PID上无挠的有限生成模是自由模.
+\end{thm}
+\begin{proof}
+    设非零模$M$有生成元$v_1,\cdots,v_n$.由于$M$无挠，非零元总线性无关，可取极大线性无关组$v_1,\cdots,v_r$.记自由模$N:=\langle v_1,\cdots,v_r\rangle $并设$\lambda_jv_j\in N$，其中$r<j\le n$时$\lambda_j\ne 0$.在整环中令$\lambda:=r_{r+1}\cdots r_n\ne 0$，则$\lambda v_i\in N$.因此有模同态
+    \[
+        \eta\colon M\to N,\quad v_i\mapsto\lambda v_i.
+    \]
+    由$\lambda\ne 0$及$M$无挠知$\eta$单，故$M$是PID上自由模$N$的子模.
+\end{proof}
+
+\begin{definition}
+    设$R$是整环，则$R$-模$M$的全体挠元素组成子模，称为$M$的{\heiti 扭子模}或{\heiti 挠子模} $\operatorname*{Tor}(M)$.
+\end{definition}
+
+现在可以设想：既然$\operatorname*{Tor}(M)$已经取出了全体挠元，$M/\operatorname*{Tor}(M)$似应无挠.
+\begin{prop}
+    设$M$是整环上的有限生成模，则$M/\operatorname*{Tor}(M)$无挠.
+\end{prop}
+\begin{proof}
+    往证$M/\operatorname*{Tor}(M)$中的挠元只有$0$.设$rx\in\operatorname*{Tor}(M)$，其中$r\ne 0$，则存在$s\in R^\times$使得$s(rx)=(sr)x=0$，其中$sr\ne 0$，故$x\in\operatorname*{Tor}(M)$.
+\end{proof}
+\begin{thm}
+    PID上的有限生成模$M$是挠子模$\operatorname*{Tor}(M)$与自由子模的内直和.
+\end{thm}
+\begin{proof}
+    注意$M/\operatorname*{Tor}(M)$无挠且有限生成，即$M/\operatorname*{Tor}(M)$是自由模.由自由模的提升性质即得$M=M/\operatorname*{Tor}(M)\oplus\operatorname*{Tor}(M)$，其中$M/\operatorname*{Tor}(M)\lesssim M$自由.
+\end{proof}
+
+此时$M/\operatorname*{Tor}(M)$的秩完全由$M$决定，称为有限生成模$M$的{\heiti 秩}.
+
+先来看有限生成扭模的唯一分解，{\heiti 本节以下总设$M$是PID上的有限生成扭模}.
+
+设$\mathfrak{a}\subseteq R$是理想，定义
+\[
+    M(\mathfrak{a}):=\left\{x\in M\mid \forall a\in\mathfrak{a},\,ax=0\right\},
+\]
+则$M(\mathfrak{a})$称为理想$\mathfrak{a}$ {\heiti 零化的子模}.对主理想$\mathfrak{a}=(r)$直接记为$M(r)$.
+
+容易发现如下简单性质：
+\begin{itemize}
+    \item $a\mid b\implies M(a)\subseteq M(b)$.
+    \item $a\in R^*\implies M(a)=0$.
+    \item $(d)=(a)+(b)\implies M(d)=M(a)\cap M(b)$.
+    \item $M=M(\operatorname*{ann}(M))$.
+\end{itemize}
+
+\begin{lemma*}
+    若$(a,b)=1$则$M(ab)=M(a)\oplus M(b)$.
+\end{lemma*}
+\begin{proof}
+    显然$M(a)+M(b)\subseteq M(ab)$.设$x\in M(ab)$，即$abx=0$，或$bx\in M(a),\,ax\in M(b)$.由$a,b$互素设$ua+vb=1$，则$x=uax+vbx\in M(a)+M(b)$，即$M(ab)=M(a)+M(b)$.
+\end{proof}
+
+\begin{definition}
+    设$M$是PID上的有限生成模.若$\operatorname*{ann}(M)=(p^n)$，其中$p$是素元，则称$M$为{\heiti $p$模}.对任意素元$p\in R$，子模$M_p:=\bigcup_i M(p^i)$称为$M$的{\heiti $p$分量}.
+\end{definition}
+
+有限生成扭模可以唯一分解为$p$模的直和.
+\begin{thm}
+    PID上的有限生成扭模$M$是有限多$p$子模的直和
+    \[
+        M=\bigoplus_{i=1}^rM(p_i^{n_i}),
+    \]
+    并且$M_{p_i}=M(p_i^{n_i}),\,M_p=0$\footnotemark，其中素元$p$不与任何$p_i$相伴.
+\end{thm}
+\footnotetext{这些$p$分量就说明了分解的唯一性.}
+\begin{proof}
+    设$\operatorname*{ann}(M)=(x)$且有素因子分解$x=p_1^{n_1}\cdots p_r^{n_r}$，则
+    \[
+        M=M(x)=\bigoplus_{i=1}^rM(p_i^{n_i}).
+    \]
+    若$p$与任意$p_i$不相伴，则$M(p^j)=M(x)\cap M(p^j)=0$，因为$(x,p^j)=1$.对$t\ge n_i$注意$(p_i^t,x)=p_i^{n_i}$，故$M(p_i^t)=M(x)\cap M(p_i^t)=M(p_i^{n_i})$，即$M_{p_i}=M(p_i^{n_i})$.
+\end{proof}
+
+下一步将$p$模进一步分解为循环$p$模的直和.
+
+设$M$是$p$模，则$x\in M$满足$\operatorname*{ann}(x)=(p^e)$，其中$e$称为$x$的 {\heiti $p$零化指数} $e_p(x)$.
+\begin{thm}
+    PID上的有限生成$p$模$M$是有限个循环$p$子模的直和.
+\end{thm}
+\begin{proof}
+    对极小生成元集基数$s$归纳，$s=1$平凡.设全体极小生成元集中$p$零化指数最小为$e=e_p(x_s)$并且$\{x_i\}$是极小生成元集.记$N=\langle x_1,\cdots,x_{s-1}\rangle $，则$N=\langle y_1\rangle\oplus\cdots\oplus\langle y_{s-1}\rangle $.往证$M=N\oplus\langle x_s\rangle $，或$N\cap\langle x_s\rangle=0$即可.
+    
+    在商模$M/N$中记$k=e_p(\bar x_s)$，断言$k=e$蕴含$N\cap\langle x_s\rangle=0$.实际上，设$rx_s\in N\cap\langle x_s\rangle $，则$r\bar x_s=0$，即$r\in(p^k)=(p^e)$，于是$rx_s=0$.
+
+    显然$k\le e$.假如$k<e$，有$p^kx_s\in N$.设$p^kx_s=\sum\lambda_iy_i$，则$0=\sum\lambda_ip^{e-k}y_i$，由直和知$\lambda_ip^{e-k}y_i=0$，即$\lambda_ip^{e-k}\in(p^{e_i})$，其中$e_i=e_p(y_i),\,1\le i<s$.由$x_s$极小性$e_i\ge e$，于是$\lambda_i\in(p^{e_i-e+k})\subseteq(p^k)$.设$\lambda_i=p^k\mu_i$并令$y_s=x_s-\sum\mu_iy_i$，则$p^ky_s=0$且$\{y_i\}$是极小生成元集，与$x_s$零化指数极小矛盾.
+\end{proof}
+\begin{remark}
+    证明里进一步说明了循环$p$子模的个数等于$p$模极小生成元集的基数.
+\end{remark}
+
+\subsection{标准分解}
+结合前面讨论的结果已经可以给出有限生成模的分解.现在通过一些不变量来确认分解的唯一性.
+
+注意循环$p$模$\langle x\rangle$同构于$R/(p^e)$，其中$\operatorname*{ann}(x)=(p^e)$.
+\begin{lemma*}
+    设$p,q\in R^\times$是PID中的素元，则对任意$e\in\mathbb{N}^*$有
+    \[
+        \dim_{R/(q)}R/(p^e)\Big/\bigl(R/(p^e)\bigr)q=\delta_{pq},
+    \]
+    其中Kronecker记号$\delta_{pq}$在相伴$p\sim q$意义下取$1$.
+\end{lemma*}
+\begin{proof}
+    注意$R/(p^e)\big/(R/(p^e))q$是$R/(q)$-线性空间，维数是良定的.
+
+    若$p,q$相伴，则第二模同构给出
+    \[
+        R/(p^e)\Big/\bigl(R/(p^e)\bigr)q=R/(p^e)\big/Rq/(p^e)\cong R/(q).
+    \]
+    若$p,q$互素，设$up^e+vq=1$，则对任意$r\in R$有
+    \[
+        r+(p^e)=r(up^e+vq)+(p^e)=rvq+(p^e)\in\bigl(R/(p^e)\bigr)q,
+    \]
+    即$R/(p^e)=\bigl(R/(p^e)\bigr)q$.
+\end{proof}
+\begin{thm}[(第一标准分解)]
+    PID上的有限生成模可同构唯一地分解为自由子模与有限多循环$p$子模的直和，即
+    \[
+        M\cong R^r\oplus\bigoplus_{i=1}^t\bigoplus_{j=1}^{k_i}R/(p_i^{l_{ij}}).
+    \]
+\end{thm}
+\begin{proof}
+    存在性由扭模$\operatorname*{Tor}(M)$分解即得.下证唯一性.
+
+    已知秩$r$唯一，证明扭模分解唯一即可.由上述引理知，对任意素元$p\in R^\times$有
+    \[
+        \dim_{R/(p)}\langle p^n\rangle/\langle p^n\rangle p=r+\sum_{k>n}\#\{\text{cyclic }p \text{ submodule}\cong R/(p^k)\text{ in decomposition}\}.
+    \]
+    于是用$n$维数减去$n-1$维数即知同构于$R/(p^n)$的直和分量个数，而上式唯一.
+\end{proof}
+
+利用此前得到的结果$M(a)\oplus M(b)=M(ab)$，可以将较小的循环$p$子模合成为较大的循环子模.
+\begin{thm}[(第二标准分解)]
+    PID上的有限生成模可同构唯一地分解为自由子模和零化子递增的有限多个循环子模的直和，即
+    \[
+        M\cong R^r\oplus\bigoplus_{i=1}^k R/(d_i),
+    \]
+    其中$d_i\mid d_{i+1},\,1\le i<k$.
+\end{thm}
+\begin{proof}
+    每次选取剩下的$p$方幂中最大的合成循环子模就有$d_i\mid d_{i+1}$.
+\end{proof}
+
+\begin{definition}
+    若PID上的有限生成模$M$满足
+    \[
+        M\cong R^r\oplus\bigoplus_{i=1}^k R/(d_i)=R^r\oplus\bigoplus_{i=1}^t\bigoplus_{j=1}^{k_i}R/(p_i^{l_{ij}}),
+    \]
+    其中$d_i\mid d_{i+1}$，则称$d_1,\cdots,d_k$为$M$的{\heiti 不变因子}，$p_i^{l_{ij}}$为$M$的{\heiti 初等因子}.
+\end{definition}
+\begin{remark}
+    不变因子与初等因子等价，下面只考虑其中一种即可.
+\end{remark}
+\begin{thm}[(PID上有限生成模结构)]
+    设$M$是PID上的有限生成模，则$M$存在唯一的初等因子，并且两模同构当且仅当有相同的秩和初等因子.\qed
+\end{thm}
+
+下面从矩阵角度(计算性地)给出不变因子的计算过程.
+
+设$M'$是PID上的有限生成模，则$M'\cong M/N$，其中$M$是同秩的自由模.因此可以通过$\operatorname*{End}(M)\cong M_n(R)$利用矩阵讨论自由模$M$及其子模$N$的结构.
+
+实际上，取$M$一组基$e_1,\cdots,e_m$和$N$的一组基$\alpha_1,\cdots,\alpha_n$，则$f_j=a^i_je_i$，其中$A=(a^i_j)\in M_{mn}(R)$.矩阵$A$就刻画了$M'$生成元的所有关系.
+
+{\heiti 以下均设$R$是主理想整环.}
+
+设$A,B\in M_n(R)$，若存在$P,Q\in\mathrm{GL}_n(R)$使得$B=PAQ$，则称$A$与$B$ {\heiti 相抵}或{\heiti 等价}，记为$A\sim B$.显然初等变换不改变矩阵等价类.更换$M,N$的基就相当于作相抵变换.
+
+对任意$a\in R^\times$定义素因子长度$l\colon R^\times\to\mathbb{N}$.对可逆元定义$l(a)=0$，对不可逆元定义$l(a)$为$a$的素因子分解中素因子个数(计重数).
+\begin{lemma*}
+    若$a\ne 0$，则$R$上的矩阵满足
+    \[
+        \begin{bmatrix}
+            a&b\\
+            c&d
+        \end{bmatrix}\sim\begin{bmatrix}
+            (a,b)&0\\
+            *&*
+        \end{bmatrix}.
+    \]
+\end{lemma*}
+\begin{proof}
+    设$a=da_1,\,b=db_1$且$ua_1+vb_1=1$.作初等变换易证.
+\end{proof}
+\begin{thm}
+    设$A\in M_{mn}(R)$，则
+    \[
+        A\sim\mathrm{diag}\{d_1,\cdots,d_r,0\},
+    \]
+    其中$d_i\in R^\times$且$d_i\mid d_{i+1}$在相伴意义下唯一.
+\end{thm}
+\begin{remark}
+    这给出了一般PID上矩阵的{\heiti 相抵标准形}，其中$d_i$称为矩阵$A$的{\heiti 不变因子}.
+\end{remark}
+\begin{proof}
+    不妨设$A\ne 0$并且$a_{11}\ne 0$长度最小.
+
+    若第一行都是$a_{11}$的倍数，作列变换可得第一行为$(a_{11},0)$.若不然，不妨设$a_{11}\nmid a_{12}$，则由引理$A$等价于第一行为$(d,0,*)$的矩阵并且$l(d)<l(a_{11})$.反复利用引理仍可设$A$第一行为$(a_{11},0)$，其中$a_{11}\ne 0$长度最小.对第一列也如此做.
+
+    现在$A=\mathrm{diag}(a_{11},A_1)$.若$A_1$中有元素不被$a_{11}$整除，将该行加到第一行，继续降低$a_{11}$的长度.于是$A\sim\mathrm{diag}(d_1,A_1)$，其中$d_1\ne 0$且$d_1$整除$A_1$中任何元素.归纳即得存在性.
+
+    唯一性.实际上$\mathrm{det}(A)$在相抵下完全不变，因其在初等变换下不变.全体$k$阶子式的最大公因式称为{\heiti 行列式因子} $D_k$.计$D_0=1$，则$d_i=D_{i+1}/D_i$唯一.
+\end{proof}
+\begin{cor*}
+    设$N$是$R$上秩$m$自由模$M$的子模.存在$M$的基$e_1,\cdots,e_m$使得$d_1e_1,\cdots,d_re_r$是$N$的基，其中$d_i\mid d_{i+1}$在相伴意义下唯一.此时$m-r$是商模$M/N$的秩，$d_1,\cdots,d_r$是$M/N$的不变因子.\qed
+\end{cor*}
+
+\subsection{应用}
+将Abel群视为$\mathbb{Z}$-模立得\hyperlink{thm:StrucOfFiniteGeneratedAbelGrp}{有限生成Abel群的结构定理}.
+
+将线性空间$V$视为$F[x]$-模就能得到线性变换$\bm A$的性质.
+
+由Hamilton--Cayley定理$\operatorname*{ann}(V)\ne 0$，因此$V$是扭模，从而是循环子模的直和
+\[
+    V=F[x]v_1\oplus\cdots\oplus F[x]v_s,
+\]
+其中$\operatorname*{ann}(v_i)=(d_i)$并且$d_i\mid d_{i+1}$是首一非零多项式.多项式$d_1,\cdots,d_s$称为线性变换$\bm A$的{\heiti 不变因子}.
+
+循环子模$V_i$是$\bm A$的不变子空间，维数$\dim V_i=\deg d_i=:n_i$，并且$v_i,\lambda v_i,\cdots,\lambda^{n_i-1}v_i$是基.在这组循环基下$\bm A|_{V_i}$的矩阵就是$d_i$的{\heiti 友矩阵}或{\heiti Frobenius矩阵}
+\[
+    A_i:=\begin{bmatrix}
+        0&&&&-a_0\\
+        1&0&&&-a_1\\
+        &1&\ddots&&\vdots\\
+        &&\ddots&0&-a_{n_i-2}\\
+        &&&1&-a_{n_i}
+    \end{bmatrix},
+\]
+其中$d_i(\lambda)=\sum a_i\lambda^i$.
+
+如此得到的分块对角阵$A=\mathrm{diag}(A_1,\cdots,A_s)$称为线性变换$\bm A$的{\heiti 有理标准形}.
+\begin{itemize}
+    \item $\dim V=\sum\deg d_i$.
+    \item $\operatorname*{ann}(V)=(d_s)$，即$d_s$是$\bm A$的极小多项式.
+    \item $\bm A$的特征多项式$|\lambda I-A|=\prod d_i(\lambda)$.
+\end{itemize}
+
+若$d_i$在域$F$中完全分裂，例如$F$代数闭时，线性变换$\bm A$可以有第二种分解.
+
+设$d_i$在$F[x]$中分解为
+\[
+    d_i(x)=\prod_{j=1}^r(x-\lambda_j)^{e_{ij}},\quad e_{ij}\ge 0.
+\]
+由$d_i\mid d_{i+1}$得$\{e_{ij}\}$关于$j$不减.此时循环子模$F[x]v_i$是循环$(x-\lambda_j)$模的直和，即
+\[
+    V=\bigoplus_i\bigoplus_j F[x]v_{ij},
+\]
+其中$\operatorname*{ann}(v_{ij})=(x-\lambda_j)^{e_{ij}}$.这些$(x-\lambda_j)^{e_{ij}}$称为线性变换$\bm A$的{\heiti 初等因子}.
+
+每个循环$(\lambda-\lambda_j)$子模$F[x]v_{ij}$是不变子空间，同样有循环基.取反向循环基$(x-\lambda_j)^{e_{ij}-1}v_{ij},\cdots,(x-\lambda_j)v_{ij},v_{ij}$，则$\bm A|_{F[x]v_{ij}}$的矩阵就是{\heiti Jordan块}
+\[
+    J_{ij}:=\begin{bmatrix}
+        \lambda_j&1&&&\\
+        &\lambda_j&\ddots&\\
+        &&\ddots&1\\
+        &&&\lambda_j
+    \end{bmatrix}.
+\]
+如此得到的分块对角阵$A=\mathrm{diag}(J_{ij})$称为线性变换$\bm A$的{\heiti Jordan标准形}.
+
+计算初等因子可以见第一标准分解的证明方法，即考虑
+\[
+    \operatorname*{rank}(\bm A-\lambda_j\bm I)^n-\operatorname*{rank}(\bm A-\lambda_j\bm I)^{n+1}=\sum_{k>n}\#\{\text{Jordan block of }(x-\lambda_j)^k\}.
+\]
+由此可计算出不变因子.直接计算不变因子可以利用上节最后的结果.
+
+先任取一组基$e_1,\cdots,e_n$并设$\bm A$在这组基下的矩阵$A=(a^i_j)$.作秩$n$的自由$F[x]$模$M$并设基为$\epsilon_1,\cdots,\epsilon_n$，有满同态$M\to V$.
+
+注意$\bm Ae_j=a^i_je_i=xe_j$，因此$\eta_j=x\epsilon_j-a^i_j\epsilon_i\in M$都自然地属于同态核$N$.
+
+\begin{remark}
+    实际上，对$N$中任意元素$f^i(x)\epsilon_i$的多项式次数$\max\deg f^i$归纳可知$\eta_1,\cdots,\eta_n$生成了$N$.同时，若$\eta_1,\cdots,\eta_n$在$F[x]$上线性相关，即$f^i(x)\eta_i=0$，不妨设$f^1$次数最高，展开为$e_1,\cdots,e_n$的线性组合，则$e_1$的系数$xf^1(x)-a^1_jf^j(x)=0$，但它次数为正，矛盾.因此$\eta_1,\cdots,\eta_n$是$N$的基.
+\end{remark}
+
+总之，由于$\eta_1,\cdots,\eta_n$是$N$的基，并且$\eta_j=(\delta^i_jx-a^i_j)\epsilon_i$，所以$xI-A$刻画了$F[x]$模$V$的所有生成元关系，称为$A$的{\heiti 特征矩阵}.
+
+设$xI-A$的不变因子为$d_1,\cdots,d_n$\footnote{注意性质$\mathrm{det}(xI-A)\ne 0$在等价下不变，故一定有$n$个不变因子.}，其中$d_i\mid d_{i+1}$.假设$d_1=\cdots=d_t=1\ne d_{t+1}$，则$d_{t+1},\cdots,d_n$就是线性变换$\bm A$的不变因子.
+
+\begin{remark}
+    通过在直和分解中添加零模的方式$\operatorname*{ann}(0)=(1)$，有时直接将带$1$的不变因子$d_1,\cdots,d_n$称为线性变换$\bm A$的不变因子.
+\end{remark}
+
+\section{同态与张量积}
+\subsection{张量积}
+
+\subsection{正合性}

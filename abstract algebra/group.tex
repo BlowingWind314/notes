@@ -445,6 +445,7 @@
 \end{proof}
 
 这样就把对称群$S_n$和交错群$A_n$里的置换完全弄清楚了：设$n=l_1+\cdots+l_t$是$n\ge 3$的一个{\heiti 分拆}，其中$l_1\ge\cdots\ge l_t\ge 1$，记为$(l_1,\cdots,l_t)$.任意置换$\sigma\in S_n$的轮换分解(计1-轮换)中各轮换的阶数都给出了一个$n$的分拆，称为置换$\sigma$的{\heiti 型}.置换的型在此后讨论共轭关系时还有很大作用.
+
 \subsection{自由群}\label{section:FreeGroup}
 我们此前考虑了自由幺半群，可想而知应该有一种类似的“自由构造”来产生群.对非空集$X$，为了引入逆元，取一个与$X$等势的集合$X'$并作无交并$X^*=X\sqcup X'$.考虑$X^*$生成的自由幺半群$\widetilde{X}^*$.注意“等势”意味着我们可以固定一个$X$到$X'$的双射，就记为加$'$.
 
@@ -529,6 +530,7 @@
 \begin{remark}
 	有时我们也需要{\heiti 自由Abel群}，它就是自由群加上用于保证元素可交换的生成关系.秩$r$的自由Abel群是$\mathbb{Z}^{r}=\mathbb{Z}\oplus\cdots\oplus\mathbb{Z}$.它实际上就是秩$r$自由群的\hyperlink{text:Abelianization}{交换化}.
 \end{remark}
+
 \subsection{杂例}
 先举两个有限群的重要例子，它们都是此前说的有限展示群，下标就是其阶数.
 
@@ -575,6 +577,7 @@
 其中$F$是域.用矩阵群作为出发点来研究一般的群也很有用处，即群表示论.
 
 对域$F$，它自然地对应了两个群.一是Abel加法群$F$，二是Abel乘法群$F^*$或$F^\times$.类似地，环$R$也对应有Abel加法群$R$和乘法群$R^*$或$R^\times$.
+
 \subsection{中心与换位子}
 对群$G$，它交换性的衡量可以用其中心$Z(G)\nsg G$.群$G$交换当且仅当$Z(G)=G$.
 \begin{prop}
@@ -661,7 +664,7 @@
 对有限生成Abel群同样有类似的结构定理.它一定是$\mathbb{Z}^r$和{\heiti 挠子群}(全体有限阶元素)的直积，而挠子群是一个有限Abel群.
 
 \begin{thm}[(有限生成Abel群结构)]
-	有限生成Abel群同构当且仅当秩和初等因子都相同.\qed
+	有限生成Abel群同构当且仅当秩和初等因子都相同.\qed\hypertarget{thm:StrucOfFiniteGeneratedAbelGrp}{}
 \end{thm}
 
 利用上述结构定理，容易给出Abel群的完全分类.但需要注意的是非Abel群的分类就异常复杂.简单的\hyperref[subsec:ClassificationSmallOrder]{小阶群分类}还可以做到.

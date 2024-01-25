@@ -80,7 +80,7 @@
     \[
         x^m-1=\prod_{k\mid m}\Phi_k(x),
     \]
-    其中$\Phi_k(x)$是分圆多项式.取$x=q$可得$\Phi_n(q)\mid q-1$，即$|\Phi_n(q)|\le q-1$.
+    其中$\Phi_k(x)$是分圆多项式\footnote{见域一章\hyperlink{subsec:cyclotomic}{分圆域}一节.}.取$x=q$可得$\Phi_n(q)\mid q-1$，即$|\Phi_n(q)|\le q-1$.
 
     然而$\Phi_n(x)=\prod(x-\zeta)$，其中求和遍历$n$次本原单位根$\zeta$，所以$n>1$时$|q-\zeta|>|q-1|$，所以$|\Phi_n(q)|>q-1$，矛盾.
 \end{proof}
@@ -199,11 +199,11 @@
 若$r\in R$满足$\forall x\in R,\,1-rx$可逆，称$r$是{\heiti 拟正则元}.不难证明$J(R)$由全体拟正则元组成.具体写出幂零元和可逆元可知多项式环中$N(R[x])=J(R[x])$.
 
 \subsection{分式环}
-设$S\subseteq R$非空，若$S$对乘法封闭，则称$S$是$R$的{\heiti 乘性子集}.不难验证
+设$S\subseteq R$非空，若$S$对乘法封闭\footnote{即$S$是乘法半群.}，则称$S$是$R$的{\heiti 乘性子集}.不难验证
 \[
     N:=\left\{r\in R\mid \exists s\in S,\,rs=0\right\}
 \]
-是$R$的理想，并且若$0\in S$则$N=R$；若$0\notin S$则$N\cap S=\varnothing$.
+是$R$的理想，并且若$0\in S$则$N=R$；若$0\notin S$则$N\cap S=0$.
 
 设$S$是$R$的乘性子集且$0\notin S$，在$R\times S$上定义等价关系$(r,s)\sim(r',s')$为$rs'-r's\in N$.记等价类$\overline{(r,s)}=:r/s$，得到商集
 \[
